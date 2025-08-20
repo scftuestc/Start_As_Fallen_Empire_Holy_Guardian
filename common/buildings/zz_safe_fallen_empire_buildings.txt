@@ -1,0 +1,161 @@
+building_ancient_palace = {
+    base_buildtime = @b2_time
+    capital = yes
+    # 更改为可建造
+    can_build = yes
+    can_demolish = no
+    position_priority = 0
+    capital_tier = 5
+
+    icon = building_palace
+
+    category = government
+
+    building_sets = {
+        fallen_empire
+    }
+    # 堕落帝国才可建造（显示可建造）
+    potential = {
+        exists = owner
+        owner = {
+            is_fallen_empire = yes
+            is_hive_empire = no
+        }
+    }
+    # 星球上至少有舰船庇护所才能建造
+    allow = {
+        planet ={
+            has_building = building_colony_shelter
+            NOT = { is_planet_class = pc_habitat }
+        }
+    }
+    # 当行星被其他帝国占领时，这个建筑会自动转换为列表中的某个建筑（根据新占领者的国家类型选择）
+    convert_to = {
+        building_hive_major_capital
+        building_machine_major_capital
+        building_major_capital
+        building_ancient_control_center
+        building_major_capital_wilderness
+    }
+
+    planet_modifier = {
+        # 提供住房翻倍
+        planet_housing_add = 2400
+        # 舒适度增加1K
+        planet_amenities_add = 16000
+        # 稳定度+5
+        planet_stability_add = 5
+    }
+    # 触发式修正，非格式塔堕落帝国，如果是圣卫，则岗位进行相应修改
+    triggered_planet_modifier = {
+        potential = {
+            exists = owner
+            owner = { is_fallen_empire_spiritualist = no }
+        }
+        modifier = {
+            # 岗位提供量翻倍
+            job_fe_overseer_add = 400
+            job_fe_protector_add = 400
+        }
+    }
+
+    triggered_planet_modifier = {
+        potential = {
+            exists = owner
+            owner = { is_fallen_empire_spiritualist = yes }
+        }
+        modifier = {
+            job_fe_sky_cardinal_add = 400
+            job_fe_protector_add = 400
+        }
+    }
+
+    resources = {
+        category = planet_buildings
+        cost = {
+            # 建筑修改由600调整为2000矿
+            minerals = @b4_minerals
+        }
+        upkeep = {
+            # 维护费改为8电2暗物质
+            energy = 8
+            sr_dark_matter = 2
+        }
+    }
+
+    upgrades = {
+    }
+}
+
+building_empyrean_shrine = {
+    base_buildtime = @b2_time
+    can_build = yes
+    can_demolish = yes
+
+    category = unity
+
+    building_sets = {
+        fallen_empire
+        unity
+    }
+    # 只有圣卫才可建造
+    potential = {
+        exists = owner
+        owner = {
+            is_fallen_empire_spiritualist = yes
+            is_hive_empire = no
+        }
+    }
+
+    triggered_planet_modifier = {
+        potential = {
+            exists = owner
+            owner = { is_fallen_empire = yes }
+        }
+        # 增添至500个
+        job_fe_augur_add = 500
+    }
+
+    triggered_planet_modifier = {
+        potential = {
+            exists = owner
+            owner = { has_tradition = tr_psionics_psi_corps	}
+        }
+        job_telepath_add = @fe_jobs
+    }
+
+    triggered_country_modifier = {
+        potential = {
+            exists = owner
+            owner = {
+                has_country_flag = breached_shroud
+            }
+        }
+        # 潜入花费减半
+        shroud_delve_cost = -0.25
+    }
+    # 如果没有灵能军团传统，增加官僚产出
+    triggered_planet_modifier = {
+        potential = {
+            exists = owner
+            owner = { NOT = { has_tradition = tr_psionics_psi_corps } }
+        }
+        planet_bureaucrats_produces_mult = 0.25
+    }
+
+    resources = {
+        category = planet_buildings
+        cost = {
+            # 建造成本增加2000矿
+            alloys = @b3_minerals
+            minerals = @b4_minerals
+        }
+        upkeep = {
+            # 维护费增加泽洛
+            alloys = @b2_alloy_upkeep
+            rare_crystals = 2
+            energy = 10
+            sr_zro = 2
+        }
+    }
+}

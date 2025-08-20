@@ -1,0 +1,385 @@
+namespace = safe_origin_initiallizer
+
+## 国家类型和舰船、城市外观修改
+country_event = {
+    id = safe_origin_initiallizer.1
+    hide_window = yes
+    is_triggered_only = yes
+
+    trigger = { has_origin = Start_As_Fallen_Empire_Holy_Guardians }
+
+    immediate = {
+        set_country_type = fallen_empire
+        if = {
+            limit = {
+                has_origin =  Start_As_Fallen_Empire_Holy_Guardians
+                has_ethic = ethic_fanatic_spiritualist
+            }
+            set_graphical_culture = "fallen_empire_01"
+            set_city_graphical_culture = "fallen_empire_01"
+        }
+    }
+}
+
+## 首都星系初始化
+country_event = {
+    id = safe_origin_initiallizer.2
+    hide_window = yes
+    is_triggered_only = yes
+
+    trigger = { has_origin = Start_As_Fallen_Empire_Holy_Guardians }
+
+    immediate = {
+        capital_scope.solar_system = {
+            # 天国王座星球绑定
+            every_system_planet = {
+                limit = { has_planet_flag = fallen_empire_spiritualist_capital}
+                set_owner = root
+                set_controller = root
+                set_capital = yes
+                # 为该行星添加深空擎天堡 + 4个防御平台
+                create_fe_dsc = {
+                    OWNER = root
+                    DESIGN = "NAME_FE_SPIRITUALIST_Citadel_3"
+                }
+                # 循环添加16个城市区划
+                while = {
+                    count = 16
+                    add_district = district_city
+                }
+                # 循环添加2个发电区划，并依据需要判断是否需要增加发电区划数上限和星球大小（即保证至少有2个发电区划）
+                while = {
+                    count = 2
+                    add_district_and_planet_size_if_needed_effect = {
+                        district = district_generator
+                    }
+                }
+                # 添加发电区划并特化为能源发电
+                add_zone = {
+                    district = district_generator
+                    zone = zone_energy
+                }
+                # 循环添加6个采矿区划，并依据需要判断是否需要增加发电区划数上限和星球大小（即保证至少有6个采矿区划）
+                while = {
+                    count = 6
+                    add_district_and_planet_size_if_needed_effect = {
+                        district = district_mining
+                    }
+                }
+                # 添加采矿区划并特化为矿物提取
+                add_zone = {
+                    district = district_mining
+                    zone = zone_minerals
+                }
+                # 循环添加6个农业区划，并依据需要判断是否需要增加农业区划数上限和星球大小（即保证至少有6个采矿区划）
+                while = {
+                    count = 6
+                    add_district_and_planet_size_if_needed_effect = {
+                        district = district_farming
+                    }
+                }
+                # 添加农业区划并特化为食物聚焦
+                add_zone = {
+                    district = district_farming
+                    zone = zone_food
+                }
+                # 循环添加115个堕落帝国原生物种人口组（11.5K）
+                while = {
+                    count = 115
+                    create_pop_group = {
+                        species = owner_main_species
+                    }
+                }
+                # 创建初始海军
+                create_fallen_empire_starting_navy = yes
+                # 循环添加20个灵能部队陆军
+                while = {
+                    count = 20
+                    create_army = {
+                        name = random
+                        owner = root
+                        species = root
+                        type = "psionic_army"
+                    }
+                }
+                # 为城市核心添加建筑
+                add_building = building_ancient_palace
+                add_building = building_fe_dome
+                add_building = building_fe_temple_2
+                add_building = building_fe_temple_2
+                add_building = building_fe_stronghold
+                add_building = building_fe_stronghold
+                add_building = building_dimensional_fabricator
+                add_building = building_dimensional_fabricator
+                add_building = building_affluence_center
+                add_building = building_affluence_center
+                add_building = building_nano_forge
+                add_building = building_nano_forge
+                # 为能源发电区划添加建筑
+                add_building = {
+                    zone = zone_energy
+                    building = building_class_4_singularity
+                }
+                # 为矿物提取区划添加建筑
+                add_building = {
+                    zone = zone_minerals
+                    building = building_fe_mine_2
+                }
+            }
+            # 天之殿绑定
+            every_system_planet = {
+                limit = { has_planet_flag = fallen_empire_spiritualist_sky_temple}
+                set_owner = root
+                set_controller = root
+                # 为该行星添加深空擎天堡+ 4个防御平台
+                create_fe_dsc = {
+                    OWNER = root
+                    DESIGN = "NAME_FE_SPIRITUALIST_Citadel_3"
+                }
+                # 循环添加12个城市区划
+                while = {
+                    count = 12
+                    add_district = district_city
+                }
+                # 循环添加2个农业区划，并依据需要判断是否需要增加农业区划数上限和星球大小（即保证至少有2个采矿区划）
+                while = {
+                    count = 2
+                    add_district_and_planet_size_if_needed_effect = {
+                        district = district_generator
+                    }
+                }
+                add_zone = {
+                    district = district_generator
+                    zone = zone_energy
+                }
+                # 循环添加5个农业区划，并依据需要判断是否需要增加农业区划数上限和星球大小（即保证至少有5个采矿区划）
+                while = {
+                    count = 5
+                    add_district_and_planet_size_if_needed_effect = {
+                        district = district_mining
+                    }
+                }
+                add_zone = {
+                    district = district_mining
+                    zone = zone_minerals
+                }
+                # 循环添加5个农业区划，并依据需要判断是否需要增加农业区划数上限和星球大小（即保证至少有5个采矿区划）
+                while = {
+                    count = 5
+                    add_district_and_planet_size_if_needed_effect = {
+                        district = district_farming
+                    }
+                }
+                add_zone = {
+                    district = district_farming
+                    zone = zone_food
+                }
+                # 循环添加68个堕落帝国原生物种人口组（6.8K）
+                while = {
+                    count = 68
+                    create_pop_group = {
+                        species = owner_main_species
+                    }
+                }
+                # 为城市核心添加建筑
+                add_building = building_ancient_palace
+                add_building = building_empyrean_shrine
+                add_building = building_fe_dome
+                add_building = building_dimensional_fabricator
+                add_building = building_dimensional_fabricator
+                add_building = building_fe_stronghold
+                add_building = building_nano_forge
+                add_building = building_nano_forge
+                # 为能源发电区划添加建筑
+                add_building = {
+                    zone = zone_energy
+                    building = building_class_4_singularity
+                }
+                # 为矿物提取区划添加建筑
+                add_building = {
+                    zone = zone_minerals
+                    building = building_fe_mine_2
+                }
+            }
+            # 创建首都擎天堡
+            create_fe_home_citadel = yes
+        }
+    }
+}
+
+## 相邻殖民地星系初始化
+country_event = {
+    id = safe_origin_initiallizer.3
+    hide_window = yes
+    is_triggered_only = yes
+
+    trigger = { has_origin = Start_As_Fallen_Empire_Holy_Guardians }
+
+    immediate = {
+        capital_scope.solar_system = {
+            # 绑定中间层轨道星系1
+            every_neighbor_system = {
+                limit = {
+                    NOT = { exists = space_owner }
+                    has_star_flag = fallen_empire_orbitals_system_1
+                }
+                create_fe_citadel = yes
+                random_system_planet = {
+                    limit = {
+                        is_ideal_planet_class = {
+                            who = ROOT
+                            status = yes
+                        }
+                        is_colony = no
+                    }
+                    create_fe_spiritualist_fringe_colony = yes
+                    set_owner = root
+                    set_controller = root
+                }
+                # 绑定外层边缘星系1
+                every_neighbor_system = {
+                    limit = {
+                        NOT = { exists = space_owner }
+                        has_star_flag = fallen_empire_col_system_1
+                    }
+                    create_fe_citadel = yes
+                    every_system_planet = {
+                        limit = {
+                            NOT = { exists = owner }
+                            has_planet_flag = fallen_empire_random_colony_1
+                        }
+                        create_fe_spiritualist_fringe_colony = yes
+                        set_owner = root
+                        set_controller = root
+
+                    }
+                }
+                # 绑定外层边缘星系2
+                every_neighbor_system = {
+                    limit = {
+                        NOT = { exists = space_owner }
+                        has_star_flag = fallen_empire_col_system_2
+                    }
+                    create_fe_citadel = yes
+                    every_system_planet = {
+                        limit = {
+                            NOT = { exists = owner }
+                            has_planet_flag = fallen_empire_random_colony_2
+                        }
+                        create_fe_spiritualist_fringe_colony = yes
+                        set_owner = root
+                        set_controller = root
+                    }
+                }
+            }
+            # 绑定中间层轨道星系2
+            every_neighbor_system = {
+                limit = {
+                    NOT = { exists = space_owner }
+                    has_star_flag = fallen_empire_orbitals_system_2
+                }
+                create_fe_citadel = yes
+                random_system_planet = {
+                    limit = {
+                        is_ideal_planet_class = {
+                            who = ROOT
+                            status = yes
+                        }
+                        is_colony = no
+                    }
+
+                    create_fe_spiritualist_fringe_colony = yes
+                    set_owner = root
+                    set_controller = root
+                }
+                # 绑定外层边缘星系1
+                every_neighbor_system = {
+                    limit = {
+                        NOT = { exists = space_owner }
+                        has_star_flag = fallen_empire_col_system_1
+                    }
+                    create_fe_citadel = yes
+                    every_system_planet = {
+                        limit = {
+                            NOT = { exists = owner }
+                            has_planet_flag = fallen_empire_random_colony_1
+                        }
+                        create_fe_spiritualist_fringe_colony = yes
+                        set_owner = root
+                        set_controller = root
+                    }
+                }
+                # 绑定边缘星系2
+                every_neighbor_system = {
+                    limit = {
+                        NOT = { exists = space_owner }
+                        has_star_flag = fallen_empire_col_system_2
+                    }
+                    create_fe_citadel = yes
+                    every_system_planet = {
+                        limit = {
+                            NOT = { exists = owner }
+                            has_planet_flag = fallen_empire_random_colony_2
+                        }
+                        create_fe_spiritualist_fringe_colony = yes
+                        set_owner = root
+                        set_controller = root
+                    }
+                }
+            }
+        }
+    }
+}
+
+## 杂项调整
+country_event= {
+    id = safe_origin_initiallizer.4
+    hide_window = yes
+    is_triggered_only = yes
+
+    trigger = { has_origin = Start_As_Fallen_Empire_Holy_Guardians }
+
+    immediate = {
+        # 科技调整
+        if = {
+            limit = { host_has_dlc = "Apocalypse" }
+            give_technology = {
+                tech = tech_colossus
+                message = no
+            }
+        }
+        # 添加缺失科技
+        give_technology = { tech = tech_fe_clinic_1}
+        give_technology = { tech = tech_fe_clinic_2}
+        give_technology = { tech = tech_fe_assembly_1}
+        give_technology = { tech = tech_fe_assembly_2}
+        give_technology = { tech = tech_fe_affluence_1}
+        give_technology = { tech = tech_fe_affluence_2}
+        give_technology = { tech = tech_fe_administration_1}
+        give_technology = { tech = tech_fe_administration_2}
+        give_technology = { tech = tech_fe_dome_1}
+        give_technology = { tech = tech_fe_dome_2}
+        give_technology = { tech = tech_fe_entertainment_1}
+        give_technology = { tech = tech_fe_entertainment_2}
+        give_technology = { tech = tech_fe_fabricator_1}
+        give_technology = { tech = tech_fe_fabricator_2}
+        give_technology = { tech = tech_fe_forge_1}
+        give_technology = { tech = tech_fe_forge_2}
+        give_technology = { tech = tech_fe_fortress_1}
+        give_technology = { tech = tech_fe_fortress_2}
+        give_technology = { tech = tech_fe_lab_1}
+        give_technology = { tech = tech_fe_lab_2}
+        give_technology = { tech = tech_fe_market_1}
+        give_technology = { tech = tech_fe_market_2}
+        give_technology = { tech = tech_fe_mine_1}
+        give_technology = { tech = tech_fe_mine_2}
+        give_technology = { tech = tech_fe_nourishment_1}
+        give_technology = { tech = tech_fe_nourishment_2}
+        give_technology = { tech = tech_fe_silo_1}
+        give_technology = { tech = tech_fe_silo_2}
+        give_technology = { tech = tech_fe_singularity_1}
+        give_technology = { tech = tech_fe_singularity_2}
+        # 十层循环
+        
+    }
+}

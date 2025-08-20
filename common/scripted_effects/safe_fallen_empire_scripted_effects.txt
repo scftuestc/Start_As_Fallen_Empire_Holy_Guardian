@@ -1,0 +1,69 @@
+create_fe_home_citadel = {
+    create_starbase = {
+        size = "starbase_citadel"
+
+        module = "shipyard"
+        module = "shipyard"
+        module = "hangar_bay"
+        module = "gun_battery"
+        module = "missile_battery"
+        module = "archaeo_rampart"
+
+        building = "crew_quarters"
+        building = "command_center"
+        building = "colossus_yards"
+        building = "titan_yards"
+
+        effect = {
+            while = {
+                # 更改为8个
+                count = 8
+                create_fallen_empire_platform = yes
+            }
+        }
+    }
+}
+
+create_fe_citadel = {
+    create_starbase = {
+        size = "starbase_citadel"
+        module = "shipyard"
+        module = "anchorage"
+        module = "hangar_bay"
+        module = "gun_battery"
+        module = "missile_battery"
+        module= "archaeo_rampart"
+
+        building = "crew_quarters"
+        building = "archaeo_overcharger"
+        building = "target_uplink_computer"
+        building = "titan_yards"
+
+        effect = {
+            while = {
+                # 更改为8个
+                count = 8
+                create_fallen_empire_platform = yes
+            }
+        }
+    }
+}
+
+create_fe_dsc = {
+    create_starbase = {
+        owner = $OWNER$
+        size = starbase_deep_space_citadel_3
+        design = $DESIGN$
+        building = archaeo_overcharger
+        building = disruption_field
+        building = target_uplink_computer
+        building = communications_jammer
+        effect = {
+            while = {
+                # 更改为4个
+                count = 4
+                create_fallen_empire_platform = yes
+            }
+        }
+    }
+}

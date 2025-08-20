@@ -1,0 +1,337 @@
+# See wg_example.txt for an explanation
+
+wg_fe_humiliation = {
+    casus_belli = cb_fe_punishment
+    hide_if_no_cb = yes
+
+    galactic_empire_joins_defender = {
+        from = { is_galactic_emperor = yes }
+        imperial_authority >= 100
+    }
+    # 添加递交议和协议选项
+    allowed_peace_offers = {
+        status_quo
+        demand_surrender
+    }
+
+    potential = {
+        always = yes
+    }
+    possible = {
+        always = yes
+    }
+    on_accept = {
+        custom_tooltip = wg_humiliation_fe_accept
+        save_event_target_as = fallen_empire_humiliator
+        from = {
+            fallen_empire_humiliate_effect = yes
+        }
+    }
+
+    ai_weight = {
+        weight = 5
+    }
+}
+
+wg_fe_stop_atrocities = {
+    casus_belli = cb_fe_punishment
+    hide_if_no_cb = yes
+
+    galactic_empire_joins_defender = {
+        from = { is_galactic_emperor = yes }
+        imperial_authority >= 100
+    }
+    # 添加递交议和协议选项
+    allowed_peace_offers = {
+        status_quo
+        demand_surrender
+    }
+
+    potential = {
+        always = yes
+    }
+    possible = {
+        has_ethic = ethic_fanatic_xenophile
+        from = { is_valid_target_fe_stop_atrocities = yes }
+    }
+    on_accept = {
+        custom_tooltip = wg_humiliation_fe_accept
+        save_event_target_as = fallen_empire_humiliator
+        from = {
+            fallen_empire_stop_atrocities_effect = yes
+            fallen_empire_humiliate_effect = yes
+        }
+    }
+
+    ai_weight = {
+        weight = 10
+    }
+}
+
+wg_fe_stop_ai = {
+    casus_belli = cb_fe_punishment
+    hide_if_no_cb = yes
+
+    galactic_empire_joins_defender = {
+        from = { is_galactic_emperor = yes }
+        imperial_authority >= 100
+    }
+    # 添加递交议和协议选项
+    allowed_peace_offers = {
+        status_quo
+        demand_surrender
+    }
+
+    potential = {
+        always = yes
+    }
+    possible = {
+        has_ethic = ethic_fanatic_spiritualist
+        from = { is_valid_target_fe_stop_ai = yes }
+    }
+    on_accept = {
+        custom_tooltip = wg_humiliation_fe_accept
+        save_event_target_as = fallen_empire_humiliator
+        from = {
+            fallen_empire_stop_ai_effect = yes
+            fallen_empire_humiliate_effect = yes
+        }
+    }
+
+    ai_weight = {
+        weight = 10
+    }
+}
+
+wg_fe_cleanse_holy_worlds = {
+    casus_belli = cb_fe_punishment
+    hide_if_no_cb = yes
+
+    galactic_empire_joins_defender = {
+        from = { is_galactic_emperor = yes }
+        imperial_authority >= 100
+    }
+    # 圣地战争必须赢！，禁止维持现状和投降
+    forbidden_peace_offers = {
+        status_quo = ""
+        surrender = ""
+    }
+    surrender_acceptance = -1000
+
+    potential = {
+        always = yes
+    }
+    possible = {
+        has_ai_personality_behaviour = holy_planets
+        from = { is_valid_target_fe_cleanse_holy_worlds = yes }
+    }
+    on_accept = {
+        custom_tooltip = wg_humiliation_fe_accept
+        save_event_target_as = fallen_empire_humiliator
+        from = {
+            fallen_empire_cleanse_holy_worlds_effect = yes
+            fallen_empire_humiliate_effect = yes
+        }
+    }
+
+    ai_weight = {
+        weight = 20
+    }
+}
+
+wg_fe_cleanse_border_worlds = {
+    casus_belli = cb_fe_punishment
+    hide_if_no_cb = yes
+
+    galactic_empire_joins_defender = {
+        from = { is_galactic_emperor = yes }
+        imperial_authority >= 100
+    }
+    # 添加递交议和协议选项
+    allowed_peace_offers = {
+        status_quo
+        demand_surrender
+    }
+
+    potential = {
+        always = yes
+    }
+    possible = {
+        has_ai_personality_behaviour = demands_clear_borders
+        is_neighbor_of = from
+    }
+    on_accept = {
+        custom_tooltip = wg_humiliation_fe_accept
+        save_event_target_as = fallen_empire_humiliator
+        from = {
+            fallen_empire_cleanse_border_worlds_effect = yes
+            fallen_empire_humiliate_effect = yes
+        }
+    }
+
+    ai_weight = {
+        weight = 20
+    }
+}
+
+wg_ae_domination = {
+    # 更改宣战理由
+    casus_belli = cb_ae_subjugation
+    # 取消防御方的战争目标，避免全面战争
+    # set_defender_wargoal = wg_end_threat_vs_ae_subjugation
+    hide_if_no_cb = yes
+
+    galactic_empire_joins_defender = {
+        from = { is_galactic_emperor = yes }
+        imperial_authority >= 100
+    }
+
+    forbidden_peace_offers = {
+        surrender = ""
+    }
+
+    cede_claims = occupied_only
+
+    potential = {
+        is_country_type = awakened_fallen_empire
+        NOR = {
+            is_machine_empire = yes
+            has_country_flag = fallen_empire_hive_growth
+            has_country_flag = fallen_empire_hive_war
+        }
+    }
+    possible = {
+        always = yes
+    }
+    on_accept = {
+        if = {
+            limit = { from = { has_been_declared_crisis = yes } }
+            break = yes
+            # do nothing;
+            # FEs may go to war against BtC empires, just not vassalize them
+        }
+        else_if = {
+            limit = {
+                is_xenophile = yes
+            }
+            from = {
+                set_subject_of = {
+                    who = root
+                    preset = preset_signatory
+                }
+            }
+        }
+        else_if = {
+            limit = {
+                is_xenophobe = yes
+            }
+            from = {
+                set_subject_of = {
+                    who = root
+                    preset = preset_thrall
+                }
+            }
+        }
+        else_if = {
+            limit = {
+                is_spiritualist = yes
+            }
+            from = {
+                set_subject_of = {
+                    who = root
+                    preset = preset_dominion
+                }
+                if = {
+                    limit = {
+                        is_gestalt = no
+                    }
+                    shift_ethic = ethic_fanatic_spiritualist
+                }
+            }
+        }
+        else_if = {
+            limit = {
+                is_materialist = yes
+            }
+            from = {
+                set_subject_of = {
+                    who = root
+                    preset = preset_satellite
+                }
+            }
+        }
+        else_if = {
+            limit = {
+                has_country_flag = fallen_empire_hive_control
+            }
+            from = {
+                set_subject_of = {
+                    who = root
+                    preset = preset_political_client
+                }
+            }
+        }
+    }
+
+    ai_weight = {
+        weight = 100
+        modifier = {
+            factor = 0
+            from = {
+                OR = {
+                    is_level_4_player_crisis = yes
+                    is_level_5_player_crisis = yes
+                }
+            }
+        }
+        modifier = {
+            factor = 0.1
+            from = { is_homicidal = yes }
+        }
+    }
+}
+
+wg_end_threat_ae = {
+    # 更改宣战理由
+    casus_belli = cb_fe_ae_crisis_containment
+
+    hide_if_no_cb = yes
+    # 改为非全面战争
+    total_war = no
+    # 取消防御方战争目标绑定
+    # set_defender_wargoal = wg_ae_domination
+
+    allowed_peace_offers = {
+        status_quo
+        demand_surrender
+    }
+    # 我方拒绝投降
+    surrender_acceptance = -1000
+
+    potential = {
+        is_country_type = fallen_empire
+        is_country_type = awakened_fallen_empire
+        from = {
+            is_country_type = synth_queen
+            has_valid_civic = civic_fanatic_purifiers
+            has_valid_civic = civic_machine_terminator
+            has_valid_civic = civic_machine_assimilator
+            NOT = { has_valid_civic = civic_hive_devouring_swarm }
+        }
+    }
+    possible = {
+        custom_tooltip = {
+            fail_text = cannot_use_against_emperor
+            OR = {
+                from = { is_galactic_emperor = no }
+                is_galactic_community_member = no
+            }
+        }
+    }
+
+    ai_weight = {
+        weight = 0
+    }
+}
+
+
