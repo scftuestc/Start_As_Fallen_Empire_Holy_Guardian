@@ -1,0 +1,280 @@
+greetings = {
+    # 普政堕落不屑一顾问候（10句）
+    # Dismissive Greetings
+    01_FALLEN_EMPIRE_DISMISSIVE_GREETING_TO_SAFE = {
+        weight = {
+            weight = 3000
+        }
+        trigger = {
+            is_country_type = fallen_empire
+            NOT = { is_at_war_with = FROM }
+            is_dismissive_to = FROM
+            is_machine_empire = no
+            FROM = {
+                is_fallen_empire = yes
+                is_machine_empire = no
+            }
+        }
+    }
+    02_FALLEN_EMPIRE_DISMISSIVE_GREETING_TO_SAFE = {
+        weight = {
+            weight = 3000
+        }
+        trigger = {
+            is_country_type = fallen_empire
+            NOT = { is_at_war_with = FROM }
+            is_dismissive_to = FROM
+            is_machine_empire = no
+            FROM = {
+                is_fallen_empire = yes
+                is_machine_empire = no
+            }
+        }
+    }
+    03_FALLEN_EMPIRE_DISMISSIVE_GREETING_TO_SAFE = {
+        weight = {
+            weight = 3000
+        }
+        trigger = {
+            is_country_type = fallen_empire
+            NOT = { is_at_war_with = FROM }
+            is_dismissive_to = FROM
+            is_machine_empire = no
+            FROM = {
+                is_fallen_empire = yes
+                is_machine_empire = no
+            }
+        }
+    }
+    04_FALLEN_EMPIRE_DISMISSIVE_GREETING_TO_SAFE = {
+        weight = {
+            weight = 3000
+        }
+        trigger = {
+            is_country_type = fallen_empire
+            NOT = { is_at_war_with = FROM }
+            is_dismissive_to = FROM
+            is_machine_empire = no
+            FROM = {
+                is_fallen_empire = yes
+                is_machine_empire = no
+            }
+        }
+    }
+    05_FALLEN_EMPIRE_DISMISSIVE_GREETING_TO_SAFE = {
+        weight = {
+            weight = 3000
+        }
+        trigger = {
+            is_country_type = fallen_empire
+            NOT = { is_at_war_with = FROM }
+            is_dismissive_to = FROM
+            is_machine_empire = no
+            FROM = {
+                is_fallen_empire = yes
+                is_machine_empire = no
+            }
+        }
+    }
+    06_FALLEN_EMPIRE_DISMISSIVE_GREETING_TO_SAFE = {
+        weight = {
+            weight = 3000
+        }
+        trigger = {
+            is_country_type = fallen_empire
+            NOT = { is_at_war_with = FROM }
+            is_dismissive_to = FROM
+            is_machine_empire = no
+            FROM = {
+                is_fallen_empire = yes
+                is_machine_empire = no
+            }
+        }
+    }
+    07_FALLEN_EMPIRE_DISMISSIVE_GREETING_TO_SAFE = {
+        weight = {
+            weight = 3000
+        }
+        trigger = {
+            is_country_type = fallen_empire
+            NOT = { is_at_war_with = FROM }
+            is_dismissive_to = FROM
+            is_machine_empire = no
+            FROM = {
+                is_fallen_empire = yes
+                is_machine_empire = no
+            }
+        }
+    }
+    08_FALLEN_EMPIRE_DISMISSIVE_GREETING_TO_SAFE = {
+        weight = {
+            weight = 3000
+        }
+        trigger = {
+            is_country_type = fallen_empire
+            NOT = { is_at_war_with = FROM }
+            is_dismissive_to = FROM
+            is_machine_empire = no
+            FROM = {
+                is_fallen_empire = yes
+                is_machine_empire = no
+            }
+        }
+    }
+    09_FALLEN_EMPIRE_DISMISSIVE_GREETING_TO_SAFE = {
+        weight = {
+            weight = 3000
+        }
+        trigger = {
+            is_country_type = fallen_empire
+            NOT = { is_at_war_with = FROM }
+            is_dismissive_to = FROM
+            is_machine_empire = no
+            FROM = {
+                is_fallen_empire = yes
+                is_machine_empire = no
+            }
+        }
+    }
+    10_FALLEN_EMPIRE_DISMISSIVE_GREETING_TO_SAFE = {
+        weight = {
+            weight = 3000
+        }
+        trigger = {
+            is_country_type = fallen_empire
+            NOT = { is_at_war_with = FROM }
+            is_dismissive_to = FROM
+            is_machine_empire = no
+            FROM = {
+                is_fallen_empire = yes
+                is_machine_empire = no
+            }
+        }
+    }
+
+
+    # 堕落普政敌意问候（8句）
+    # Angry Greeting
+    01_FALLEN_EMPIRE_ANGRY_GREETING_TO_SAFE = {
+        weight = {
+            weight = 3000
+        }
+        trigger = {
+            is_country_type = fallen_empire
+            NOT = { is_at_war_with = FROM }
+            is_angry_to = FROM
+            is_fallen_empire_machine = no
+            FROM = {
+                is_fallen_empire = yes
+                is_machine_empire = no
+            }
+        }
+    }
+    02_FALLEN_EMPIRE_ANGRY_GREETING_TO_SAFE = {
+        weight = {
+            weight = 3000
+        }
+        trigger = {
+            is_country_type = fallen_empire
+            NOT = { is_at_war_with = FROM }
+            is_angry_to = FROM
+            is_fallen_empire_machine = no
+            FROM = {
+                is_fallen_empire = yes
+                is_machine_empire = no
+            }
+        }
+    }
+    03_FALLEN_EMPIRE_ANGRY_GREETING_TO_SAFE = {
+        weight = {
+            weight = 3000
+        }
+        trigger = {
+            is_country_type = fallen_empire
+            NOT = { is_at_war_with = FROM }
+            is_angry_to = FROM
+            is_fallen_empire_machine = no
+            FROM = {
+                is_fallen_empire = yes
+                is_machine_empire = no
+            }
+        }
+    }
+    04_FALLEN_EMPIRE_ANGRY_GREETING_TO_SAFE = {
+        weight = {
+            weight = 3000
+        }
+        trigger = {
+            is_country_type = fallen_empire
+            NOT = { is_at_war_with = FROM }
+            is_angry_to = FROM
+            is_fallen_empire_machine = no
+            FROM = {
+                is_fallen_empire = yes
+                is_machine_empire = no
+            }
+        }
+    }
+    05_FALLEN_EMPIRE_ANGRY_GREETING_TO_SAFE = {
+        weight = {
+            weight = 3000
+        }
+        trigger = {
+            is_country_type = fallen_empire
+            NOT = { is_at_war_with = FROM }
+            is_angry_to = FROM
+            is_fallen_empire_machine = no
+            FROM = {
+                is_fallen_empire = yes
+                is_machine_empire = no
+            }
+        }
+    }
+    06_FALLEN_EMPIRE_ANGRY_GREETING_TO_SAFE = {
+        weight = {
+            weight = 3000
+        }
+        trigger = {
+            is_country_type = fallen_empire
+            NOT = { is_at_war_with = FROM }
+            is_angry_to = FROM
+            is_fallen_empire_machine = no
+            FROM = {
+                is_fallen_empire = yes
+                is_machine_empire = no
+            }
+        }
+    }
+    07_FALLEN_EMPIRE_ANGRY_GREETING_TO_SAFE = {
+        weight = {
+            weight = 3000
+        }
+        trigger = {
+            is_country_type = fallen_empire
+            NOT = { is_at_war_with = FROM }
+            is_angry_to = FROM
+            is_fallen_empire_machine = no
+            FROM = {
+                is_fallen_empire = yes
+                is_machine_empire = no
+            }
+        }
+    }
+    08_FALLEN_EMPIRE_ANGRY_GREETING_TO_SAFE = {
+        weight = {
+            weight = 3000
+        }
+        trigger = {
+            is_country_type = fallen_empire
+            NOT = { is_at_war_with = FROM }
+            is_angry_to = FROM
+            is_fallen_empire_machine = no
+            FROM = {
+                is_fallen_empire = yes
+                is_machine_empire = no
+            }
+        }
+    }
+
+}
+

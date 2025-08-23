@@ -1,0 +1,25 @@
+﻿l_simp_chinese:
+
+# 不屑一顾问候
+ # Dismissive Greeting
+ 01_FALLEN_EMPIRE_DISMISSIVE_GREETING_TO_SAFE:"啊，[From.GetName]。你们居然还没在漫长的沉睡中彻底腐朽？真是...顽强。"
+ 02_FALLEN_EMPIRE_DISMISSIVE_GREETING_TO_SAFE:"说吧，[From.GetSpeciesNamePlural]。但愿你们那停滞了千年的思维能提出点新颖的东西。"
+ 03_FALLEN_EMPIRE_DISMISSIVE_GREETING_TO_SAFE:"我们感知到你的通讯了，[From.GetName]。希望这不是又一次关于边界星尘的无聊抱怨。"
+ 04_FALLEN_EMPIRE_DISMISSIVE_GREETING_TO_SAFE:"又一个轮回，又一次对话。开始吧，[From.GetSpeciesNamePlural]，说说你们那‘重要’的事。"
+ 05_FALLEN_EMPIRE_DISMISSIVE_GREETING_TO_SAFE:"哦？是[From.GetName]啊。你们那些老掉牙的教条和规矩，至今仍未变通吗？"
+ 06_FALLEN_EMPIRE_DISMISSIVE_GREETING_TO_SAFE:"通讯接通了。提醒你，[From.GetSpeciesNamePlural]，我们的耐心和你们的科技一样，早已停滞不前。"
+ 07_FALLEN_EMPIRE_DISMISSIVE_GREETING_TO_SAFE:"啧，[From.GetName]。你们那套陈腐的仪式和传统，还没被时间淘汰吗？真是…执着。"
+ 08_FALLEN_EMPIRE_DISMISSIVE_GREETING_TO_SAFE:"通讯连接建立。但愿你们要讨论的事，能配得上我们为此耗费的微不足道的能量。"
+ 09_FALLEN_EMPIRE_DISMISSIVE_GREETING_TO_SAFE:"[From.GetSpeciesNamePlural]… 你们的存在，就像宇宙背景辐射一样，恒定且…无关紧要。"
+ 10_FALLEN_EMPIRE_DISMISSIVE_GREETING_TO_SAFE:"“说吧。但我们提醒你，[From.GetName]，我们对重复历史的循环辩论毫无兴趣。"
+
+# 愤怒问候
+ # Angry Greeting
+ 01_FALLEN_EMPIRE_ANGRY_GREETING_TO_SAFE:"[From.GetName]！你们竟敢触碰明令禁止的禁忌！难道古老的盟约在你们眼中已如废纸？"
+ 02_FALLEN_EMPIRE_ANGRY_GREETING_TO_SAFE:"你们越界了，[From.GetSpeciesNamePlural]！立刻撤回，否则休怪我们不顾往日旧情，重启尘封的战争引擎！"
+ 03_FALLEN_EMPIRE_ANGRY_GREETING_TO_SAFE:"[From.GetSpeciesNamePlural]！你们打破了我们之间互不侵犯的古老盟约！这份耻辱唯有鲜血才能洗刷！"
+ 04_FALLEN_EMPIRE_ANGRY_GREETING_TO_SAFE:"非同根而生，互戕岂有理？尔若不容我，我剑亦不利！"
+ 05_FALLEN_EMPIRE_ANGRY_GREETING_TO_SAFE:"狂妄之徒！[From.GetName]，你们在的挑衅行为已被视为宣战！我们千年积累的怒火丝毫不比你们逊色！"
+ 06_FALLEN_EMPIRE_ANGRY_GREETING_TO_SAFE:"古老的盟约已被你们践踏在脚下，[From.GetSpeciesNamePlural]。准备好迎接一场为永恒铭刻的战争吧！"
+ 07_FALLEN_EMPIRE_ANGRY_GREETING_TO_SAFE:"[From.GetSpeciesNamePlural]！万年来的和平竟被你们如此轻易地撕毁！那就如你们所愿，让战火重燃，直至一方化为星尘！"
+ 08_FALLEN_EMPIRE_ANGRY_GREETING_TO_SAFE:"[From.GetName]！你们的傲慢终于越过了最终的底线！我们的利爪与尖牙可不会像你们那般腐朽。"

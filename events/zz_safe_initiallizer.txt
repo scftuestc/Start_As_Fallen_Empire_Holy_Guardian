@@ -338,48 +338,86 @@ country_event= {
     is_triggered_only = yes
 
     trigger = { has_origin = Start_As_Fallen_Empire_Holy_Guardians }
-
+    # 科技调整
     immediate = {
-        # 科技调整
+        # 缺失的巨像科技补充（需要有启示录DLC）
         if = {
             limit = { host_has_dlc = "Apocalypse" }
-            give_technology = {
-                tech = tech_colossus
-                message = no
-            }
+            give_technology = { tech = tech_colossus message = no }
+            give_technology = { tech = tech_pk_cracker }
+            give_technology = { tech = tech_pk_shielder }
+            give_technology = { tech = tech_pk_neutron }
+            give_technology = { tech = tech_archaeo_pk_devolving_beam }
+            give_technology = { tech = tech_pk_godray }
         }
-        # 添加缺失科技
-        give_technology = { tech = tech_fe_clinic_1}
-        give_technology = { tech = tech_fe_clinic_2}
-        give_technology = { tech = tech_fe_assembly_1}
-        give_technology = { tech = tech_fe_assembly_2}
-        give_technology = { tech = tech_fe_affluence_1}
-        give_technology = { tech = tech_fe_affluence_2}
-        give_technology = { tech = tech_fe_administration_1}
-        give_technology = { tech = tech_fe_administration_2}
-        give_technology = { tech = tech_fe_dome_1}
-        give_technology = { tech = tech_fe_dome_2}
-        give_technology = { tech = tech_fe_entertainment_1}
-        give_technology = { tech = tech_fe_entertainment_2}
-        give_technology = { tech = tech_fe_fabricator_1}
-        give_technology = { tech = tech_fe_fabricator_2}
-        give_technology = { tech = tech_fe_forge_1}
-        give_technology = { tech = tech_fe_forge_2}
-        give_technology = { tech = tech_fe_fortress_1}
-        give_technology = { tech = tech_fe_fortress_2}
-        give_technology = { tech = tech_fe_lab_1}
-        give_technology = { tech = tech_fe_lab_2}
-        give_technology = { tech = tech_fe_market_1}
-        give_technology = { tech = tech_fe_market_2}
-        give_technology = { tech = tech_fe_mine_1}
-        give_technology = { tech = tech_fe_mine_2}
-        give_technology = { tech = tech_fe_nourishment_1}
-        give_technology = { tech = tech_fe_nourishment_2}
-        give_technology = { tech = tech_fe_silo_1}
-        give_technology = { tech = tech_fe_silo_2}
-        give_technology = { tech = tech_fe_singularity_1}
-        give_technology = { tech = tech_fe_singularity_2}
-        # 十层循环
-        
+        # 缺失的堕落建筑科技补充
+        give_technology = { tech = tech_fe_clinic_1 message = no}
+        give_technology = { tech = tech_fe_clinic_2 message = no}
+        give_technology = { tech = tech_fe_assembly_1 message = no}
+        give_technology = { tech = tech_fe_assembly_2 message = no}
+        give_technology = { tech = tech_fe_affluence_1 message = no}
+        give_technology = { tech = tech_fe_affluence_2 message = no}
+        give_technology = { tech = tech_fe_administration_1 message = no}
+        give_technology = { tech = tech_fe_administration_2 message = no}
+        give_technology = { tech = tech_fe_dome_1 message = no}
+        give_technology = { tech = tech_fe_dome_2 message = no}
+        give_technology = { tech = tech_fe_entertainment_1 message = no}
+        give_technology = { tech = tech_fe_entertainment_2 message = no}
+        give_technology = { tech = tech_fe_fabricator_1 message = no}
+        give_technology = { tech = tech_fe_fabricator_2 message = no}
+        give_technology = { tech = tech_fe_forge_1 message = no}
+        give_technology = { tech = tech_fe_forge_2 message = no}
+        give_technology = { tech = tech_fe_fortress_1 message = no}
+        give_technology = { tech = tech_fe_fortress_2 message = no}
+        give_technology = { tech = tech_fe_lab_1 message = no}
+        give_technology = { tech = tech_fe_lab_2 message = no}
+        give_technology = { tech = tech_fe_market_1 message = no}
+        give_technology = { tech = tech_fe_market_2 message = no}
+        give_technology = { tech = tech_fe_mine_1 message = no}
+        give_technology = { tech = tech_fe_mine_2 message = no}
+        give_technology = { tech = tech_fe_nourishment_1 message = no}
+        give_technology = { tech = tech_fe_nourishment_2 message = no}
+        give_technology = { tech = tech_fe_silo_1 message = no}
+        give_technology = { tech = tech_fe_silo_2 message = no}
+        give_technology = { tech = tech_fe_singularity_1 message = no}
+        give_technology = { tech = tech_fe_singularity_2 message = no}
+        # 缺失的暗物质科技补充
+        give_technology = { tech = tech_dark_matter_deflector message = no}
+        give_technology = { tech = tech_dark_matter_detection message = no}
+        give_technology = { tech = tech_dark_matter_power_core message = no}
+        give_technology = { tech = tech_dark_matter_propulsion message = no}
+        give_technology = { tech = tech_cloaking_dark_matter  message = no}
+        give_technology = { tech = tech_mine_dark_matter  message = no}
+        # 缺失的十层循环补充
+        while = {
+            count = 10
+            # 物理学
+            give_technology = { tech = tech_repeatable_improved_tile_energy_output message = no }
+            give_technology = { tech = tech_repeatable_improved_shield_output message = no }
+            give_technology = { tech = tech_repeatable_weapon_type_energy_damage message = no }
+            give_technology = { tech = tech_repeatable_weapon_type_energy_fire_rate message = no }
+            give_technology = { tech = tech_repeatable_reduced_building_cost message = no }
+            # 社会学
+            give_technology = { tech = tech_repeatable_improved_tile_food_output message = no }
+            give_technology = { tech = tech_repeatable_improved_core_system_cap message = no }
+            give_technology = { tech = tech_repeatable_improved_army_damage message = no }
+            give_technology = { tech = tech_repeatable_improved_army_health message = no }
+            give_technology = { tech = tech_repeatable_improved_leader_life_span message = no }
+            give_technology = { tech = tech_repeatable_naval_cap message = no }
+            give_technology = { tech = tech_repeatable_command_limit message = no }
+            give_technology = { tech = tech_repeatable_improved_starbase_capacity message = no }
+            # 工程学
+            give_technology = { tech = tech_repeatable_improved_tile_mineral_output message = no }
+            give_technology = { tech = tech_repeatable_improved_military_station_damage message = no }
+            give_technology = { tech = tech_repeatable_improved_military_station_health message = no }
+            give_technology = { tech = tech_repeatable_improved_armor_output message = no }
+            give_technology = { tech = tech_repeatable_weapon_type_explosive_damage message = no }
+            give_technology = { tech = tech_repeatable_weapon_type_explosive_fire_rate message = no }
+            give_technology = { tech = tech_repeatable_weapon_type_kinetic_damage message = no }
+            give_technology = { tech = tech_repeatable_weapon_type_kinetic_fire_rate message = no }
+            give_technology = { tech = tech_repeatable_weapon_type_strike_craft_fire_damage message = no }
+            give_technology = { tech = tech_repeatable_weapon_type_strike_craft_fire_rate message = no }
+            give_technology = { tech = tech_repeatable_reduced_building_time message = no }
+        }
     }
 }
