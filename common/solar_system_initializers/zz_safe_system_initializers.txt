@@ -25,8 +25,6 @@ safe_fallen_2 = {
         radius = 50
     }
 
-    flags = { fallen_empire_spiritualist_capital_system }
-
     planet = {
         count = 1
         class = star
@@ -35,10 +33,10 @@ safe_fallen_2 = {
         size = { min = 20 max = 30 }
         has_ring = no
     }
+
     change_orbit = 50
 
     planet = {
-        # 小行星个数更改为2-4个
         count = { min = 2 max = 4 }
         class = pc_asteroid
         orbit_distance = 0
@@ -52,6 +50,7 @@ safe_fallen_2 = {
         orbit_angle = { min = 90 max = 270 }
 
         change_orbit = @base_moon_distance
+
         moon = {
             count = { min = 0 max = 1 }
             class = random_non_colonizable
@@ -62,6 +61,7 @@ safe_fallen_2 = {
 
     planet = {
         name = "NAME_Celestial_Throne"
+        starting_planet = yes
         orbit_distance = 20
         class = pc_gaia
         orbit_angle = { min = 90 max = 270 }
@@ -146,30 +146,26 @@ safe_fallen_2 = {
     # 四个带有祝福圣地盖亚星球的星系初始化
     neighbor_system = {
         distance = { min = 30 max = 100 }
-        initializer = "fallen_holy_01"
+        initializer = "safe_fallen_holy_01"
     }
     neighbor_system = {
         distance = { min = 50 max = 150 }
-        initializer = "fallen_holy_02"
+        initializer = "safe_fallen_holy_02"
     }
     neighbor_system = {
         distance = { min = 80 max = 200 }
-        initializer = "fallen_holy_03"
+        initializer = "safe_fallen_holy_03"
     }
     neighbor_system = {
         distance = { min = 120 max = 250 }
-        initializer = "fallen_holy_04"
+        initializer = "safe_fallen_holy_04"
     }
     # 带有虚境星球的特殊星系的初始化
     neighbor_system = {
         # 概率提高为75%
         spawn_chance = 75
         distance = { min = 0 max = 30 }
-        initializer = "fallen_shrouded"
-    }
-
-    init_effect = {
-        create_fe_home_citadel = yes
+        initializer = "safe_fallen_shrouded"
     }
 }
 
@@ -203,13 +199,11 @@ safe_fallen_orbitals_1 = {
     }
 
     neighbor_system = {
-        distance = { min = 0 max = 50 }
         # 限制为1跳范围内
         hyperlane_jumps = 1
         initializer = "safe_fallen_col_1"
     }
     neighbor_system = {
-        distance = { min = 0 max = 50 }
         hyperlane_jumps = 1
         initializer = "safe_fallen_col_2"
     }
@@ -266,13 +260,11 @@ safe_fallen_orbitals_2 = {
     }
 
     neighbor_system = {
-        distance = { min = 0 max = 50 }
-        hyperlane_jumps = 1
+        hyperlane_jumps = { min = 1 max = 2 }
         initializer = "safe_fallen_col_1"
     }
     neighbor_system = {
-        distance = { min = 0 max = 50 }
-        hyperlane_jumps = 1
+        hyperlane_jumps = { min = 1 max = 2 }
         initializer = "safe_fallen_col_2"
     }
 }
@@ -377,10 +369,6 @@ safe_fallen_col_1 = {
             orbit_angle = { min = 90 max = 270 }
             orbit_distance = 5
         }
-    }
-
-    init_effect = {
-        create_fe_citadel = yes
     }
 }
 
@@ -490,16 +478,12 @@ safe_fallen_col_2 = {
         class = random_non_colonizable
         orbit_angle = { min = 90 max = 270 }
     }
-
-    init_effect = {
-        create_fe_citadel = yes
-    }
 }
 
 ### SPECIAL FALLEN EMPIRE SYSTEMS   失落帝国特殊星系初始化系统
 ## 带虚境星球的星系初始化
 # Shrouded Planet
-fallen_shrouded = {
+safe_fallen_shrouded = {
     class = sc_black_hole
     flags = { fallen_shrouded }
 
@@ -569,7 +553,7 @@ fallen_shrouded = {
 
 ## 带祝圣世界盖亚星球的星系初始化
 # Fallen Empire's Holy World 1
-fallen_holy_01 = {
+safe_fallen_holy_01 = {
     class = "rl_standard_stars"
 
     flags = { holy_system_1 }
@@ -639,7 +623,7 @@ fallen_holy_01 = {
 }
 
 # Fallen Empire's Holy World 2
-fallen_holy_02 = {
+safe_fallen_holy_02 = {
     class = "rl_standard_stars"
     asteroid_belt = {
         type = rocky_asteroid_belt
@@ -728,7 +712,7 @@ fallen_holy_02 = {
 }
 
 # Fallen Empire's Holy World 3
-fallen_holy_03 = {
+safe_fallen_holy_03 = {
     class = "rl_standard_stars"
 
     flags = { holy_system_3 }
@@ -809,7 +793,7 @@ fallen_holy_03 = {
 }
 
 # Fallen Empire's Holy World 4
-fallen_holy_04 = {
+safe_fallen_holy_04 = {
     class = "rl_standard_stars"
     asteroid_belt = {
         type = rocky_asteroid_belt

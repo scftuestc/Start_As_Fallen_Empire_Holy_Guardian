@@ -1,0 +1,16 @@
+﻿l_simp_chinese:
+
+ # 殖民地类型本地化覆盖
+ col_fe_capital: "失落帝国首都"
+ col_fe_capital_desc: "$col_fe_colony_desc$"
+ col_fe_capital_tt: "该帝国虽已沉寂，但其传说般的科技仍在驱动宏伟建筑不眠不休地运转，令人惊叹。"
+
+ col_fe_colony: "失落帝国殖民地"
+ col_fe_colony_desc: "提升£stability£§S稳定度§!并提供£amenities£§S舒适度§!.减少£building£§S行星基础设施维护费§!。"
+ col_fe_colony_tt: "$col_fe_capital_tt$"
+
+ # 国名理念本地化覆盖
+ civic_lethargic_leadership: "暮气沉沉的领袖"
+ civic_lethargic_leadership_desc: "千年智慧给他们带来了深邃的远见，但也带来了对变革的深深倦怠"
+ civic_empire_in_decline: "衰落的帝国"
+ civic_empire_in_decline_desc: "曾触摸星辰，制定律法的古老帝国，如今只愿守护故土，静观兴衰。"

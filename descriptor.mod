@@ -1,7 +1,7 @@
-version="4.0.21"
+version="4.0.22"
 tags={
 	"Buildings"
 	"Events"
 }
 name="Start As Fallen Empire Holy Guardian"
-supported_version="v4.0.22-wilderness"
+supported_version="v4.0.22"

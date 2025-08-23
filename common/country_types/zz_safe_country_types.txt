@@ -20,7 +20,7 @@ fallen_empire = {
     observable = yes
 
     faction = {
-        needs_border_access = yes
+        needs_border_access = no
     }
 
     ai = {
@@ -58,6 +58,10 @@ fallen_empire = {
                 action_cancel_trade_deal
                 action_insult
                 action_make_claims_diplomacy_view
+                # 建立/管理增加间谍
+                action_build_spy_network
+                action_manage_spy_network
+
             }
             can_send = {
                 action_declare_war
@@ -68,6 +72,10 @@ fallen_empire = {
                 action_cancel_trade_deal
                 action_open_borders
                 action_close_borders
+                # 建立/管理间谍网络
+                action_build_spy_network
+                action_manage_spy_network
+
             }
         }
     }
@@ -96,8 +104,6 @@ awakened_fallen_empire = {
     counts_for_victory = yes
     sub_title = "COUNTRY_AWAKENED_FALLEN_EMPIRE"
     sub_title_desc = "COUNTRY_AWAKENED_FALLEN_EMPIRE_DESC"
-
-    #显示设置为可游玩
     playable = yes
     #受难度加成影响
     has_difficulty_bonuses = yes
@@ -114,7 +120,7 @@ awakened_fallen_empire = {
     observable = yes
 
     faction = {
-        needs_border_access = yes
+        needs_border_access = no
     }
 
     ai = {

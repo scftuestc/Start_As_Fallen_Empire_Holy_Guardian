@@ -16,12 +16,8 @@ Start_As_Fallen_Empire_Holy_Guardians = {
         # 政体必须为帝制
         authority = { OR = { value = auth_imperial } }
         # 国策必须为两者
-        civics = {
-            OR = {
-                value = civic_lethargic_leadership
-                value = civic_empire_in_decline
-            }
-        }
+        civics = { OR = { value = safe_civic_lethargic_leadership } }
+        civics = { OR = { value = safe_civic_empire_in_decline } }
     }
     random_weight = { base = 0 }
 

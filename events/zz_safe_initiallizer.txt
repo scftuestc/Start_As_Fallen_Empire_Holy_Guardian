@@ -31,12 +31,20 @@ country_event = {
 
     immediate = {
         capital_scope.solar_system = {
+            # 创建首都擎天堡
+            create_fe_home_citadel = yes
             # 天国王座星球绑定
             every_system_planet = {
                 limit = { has_planet_flag = fallen_empire_spiritualist_capital}
                 set_owner = root
                 set_controller = root
                 set_capital = yes
+                set_name = "NAME_Celestial_Throne"
+                # 洗一遍球，不然会有奇怪的bug，蠢驴error.log中未报告原因
+                reroll_deposits = yes
+                remove_all_buildings = yes
+                remove_all_districts = yes
+                clear_blockers = yes
                 # 为该行星添加深空擎天堡 + 4个防御平台
                 create_fe_dsc = {
                     OWNER = root
@@ -201,8 +209,6 @@ country_event = {
                     building = building_fe_mine_2
                 }
             }
-            # 创建首都擎天堡
-            create_fe_home_citadel = yes
         }
     }
 }
@@ -344,50 +350,26 @@ country_event= {
         if = {
             limit = { host_has_dlc = "Apocalypse" }
             give_technology = { tech = tech_colossus message = no }
-            give_technology = { tech = tech_pk_cracker }
-            give_technology = { tech = tech_pk_shielder }
-            give_technology = { tech = tech_pk_neutron }
-            give_technology = { tech = tech_archaeo_pk_devolving_beam }
-            give_technology = { tech = tech_pk_godray }
+            give_technology = { tech = tech_pk_cracker message = no}
+            give_technology = { tech = tech_pk_shielder message = no}
+            give_technology = { tech = tech_pk_neutron message = no}
+            give_technology = { tech = tech_archaeo_pk_devolving_beam message = no}
+            give_technology = { tech = tech_pk_godray message = no}
+            give_technology = { tech = tech_pk_nanobots message = no }
         }
-        # 缺失的堕落建筑科技补充
-        give_technology = { tech = tech_fe_clinic_1 message = no}
-        give_technology = { tech = tech_fe_clinic_2 message = no}
-        give_technology = { tech = tech_fe_assembly_1 message = no}
-        give_technology = { tech = tech_fe_assembly_2 message = no}
-        give_technology = { tech = tech_fe_affluence_1 message = no}
-        give_technology = { tech = tech_fe_affluence_2 message = no}
-        give_technology = { tech = tech_fe_administration_1 message = no}
-        give_technology = { tech = tech_fe_administration_2 message = no}
-        give_technology = { tech = tech_fe_dome_1 message = no}
-        give_technology = { tech = tech_fe_dome_2 message = no}
-        give_technology = { tech = tech_fe_entertainment_1 message = no}
-        give_technology = { tech = tech_fe_entertainment_2 message = no}
-        give_technology = { tech = tech_fe_fabricator_1 message = no}
-        give_technology = { tech = tech_fe_fabricator_2 message = no}
-        give_technology = { tech = tech_fe_forge_1 message = no}
-        give_technology = { tech = tech_fe_forge_2 message = no}
-        give_technology = { tech = tech_fe_fortress_1 message = no}
-        give_technology = { tech = tech_fe_fortress_2 message = no}
-        give_technology = { tech = tech_fe_lab_1 message = no}
-        give_technology = { tech = tech_fe_lab_2 message = no}
-        give_technology = { tech = tech_fe_market_1 message = no}
-        give_technology = { tech = tech_fe_market_2 message = no}
-        give_technology = { tech = tech_fe_mine_1 message = no}
-        give_technology = { tech = tech_fe_mine_2 message = no}
-        give_technology = { tech = tech_fe_nourishment_1 message = no}
-        give_technology = { tech = tech_fe_nourishment_2 message = no}
-        give_technology = { tech = tech_fe_silo_1 message = no}
-        give_technology = { tech = tech_fe_silo_2 message = no}
-        give_technology = { tech = tech_fe_singularity_1 message = no}
-        give_technology = { tech = tech_fe_singularity_2 message = no}
-        # 缺失的暗物质科技补充
-        give_technology = { tech = tech_dark_matter_deflector message = no}
-        give_technology = { tech = tech_dark_matter_detection message = no}
-        give_technology = { tech = tech_dark_matter_power_core message = no}
-        give_technology = { tech = tech_dark_matter_propulsion message = no}
-        give_technology = { tech = tech_cloaking_dark_matter  message = no}
-        give_technology = { tech = tech_mine_dark_matter  message = no}
+        # 缺失的物理学科技补充
+        give_technology = { tech = tech_archeology_lab_ancrel message = no}
+        give_technology = { tech = tech_combat_computers_autonomous message = no }
+        # 缺失的社会学科技补充
+        ## 博物天枢用修复巨构事件链开始获得？
+        give_technology = { tech = tech_adaptive_combat_algorithms message = no }  # 初始物种为机器人才能有的
+        give_technology = { tech = tech_biomechanics message = no } # 初始物种为机器人才能有的
+        give_technology = { tech = tech_psi_jump_drive_1 message = no }
+        give_technology = { tech = tech_psionic_barrier message = no }
+        give_technology = { tech = tech_psionic_shield message = no}
+        # 缺失的工程学科技补充
+        give_technology = { tech = tech_micro_replicators message = no } # 初始物种为机器人才能有的
+        give_technology = { tech = tech_self_assembling_components message = no } # 初始物种为机器人才能有的
         # 缺失的十层循环补充
         while = {
             count = 10
@@ -419,5 +401,32 @@ country_event= {
             give_technology = { tech = tech_repeatable_weapon_type_strike_craft_fire_rate message = no }
             give_technology = { tech = tech_repeatable_reduced_building_time message = no }
         }
+        # 殖民地与舰船调整
+        every_owned_planet = {
+            if = {
+                limit = {
+                    is_colony = yes
+                    is_capital = yes
+                }
+                set_colony_type = col_fe_capital
+            }
+            if = {
+                limit = {
+                    is_colony = yes
+                    is_capital = no
+                }
+                set_colony_type = col_fe_colony
+            }
+        }
+        add_modifier = { modifier = fe_ship_cost_modifier }
+        add_global_ship_design = "NAME_Cleanser"
+        add_global_ship_design = "NAME_Eternal"
+        add_global_ship_design = "NAME_Avatar"
+        add_global_ship_design = "NAME_Zealot"
+        add_global_ship_design = "NAME_Penitent"
+        add_global_ship_design = "NAME_Faith"
+        add_global_ship_design = "NAME_Pilgrim"
+        add_global_ship_design = "NAME_FE_Starbase"
+
     }
 }

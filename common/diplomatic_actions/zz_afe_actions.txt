@@ -43,6 +43,7 @@ action_build_spy_network = {
     potential = {
         hidden_trigger = {
             OR = {
+                # 添加堕落/觉醒帝国
                 is_country_type = default
                 is_country_type = fallen_empire
                 is_country_type = awakened_fallen_empire
@@ -120,6 +121,7 @@ action_manage_spy_network = {
 
     potential = {
         hidden_trigger = {
+            # 添加堕落/觉醒帝国
             OR = {
                 is_country_type = default
                 is_country_type = fallen_empire

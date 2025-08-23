@@ -1,0 +1,11 @@
+﻿l_simp_chinese:
+
+ safe_fallen_2_NAME:"圣地守卫者母星系"
+
+ col_ae_capital: "觉醒帝国首都"
+ col_ae_capital_desc: "$col_fe_colony_desc$"
+ col_ae_capital_tt: "该帝国已然复兴，在其不朽科技的磅礴伟力下，无数造物正从流水线上如洪流般喷涌而出，令人目不暇接。"
+
+ col_ae_colony: "觉醒帝国殖民地"
+ col_ae_colony_desc: "提升£stability£§S稳定度§!并提供£amenities£§S舒适度§!.减少£building£§S行星基础设施维护费§!。提升£job£§S岗位效率§!。"
+ col_ae_colony_tt: "$col_ae_capital_tt$"

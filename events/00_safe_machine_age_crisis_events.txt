@@ -1,0 +1,51 @@
+#Synth Queen
+#crisis.8000-8999 - Spawning and Player Facing Events
+#crisis.9000-9999 - Player Situation
+#crisis.10000-10999 - Hidden Queen Events and Retalitations
+#crisis.20000-25000 - Player Investigations
+
+#########################
+#						#
+# Cosmogenesis Events	#
+#	 					#
+#########################
+# 对“多事的年轻种族”事件重载，现在堕落帝国不会扣玩家好感
+namespace = crisis
+country_event = {
+    id = crisis.7275
+    hide_window = yes
+    is_triggered_only = yes
+
+    trigger = {
+        is_country_type = default
+        just_researched_fe_tech = yes
+        NOT = {
+            has_origin = origin_scion
+            has_origin = Start_As_Fallen_Empire_Holy_Guardians
+        }
+    }
+
+    immediate = {
+        every_country = {
+            limit = {
+                OR = {
+                    is_country_type = fallen_empire
+                    is_country_type = awakened_fallen_empire
+                }
+            }
+            if = {
+                limit = { has_ai_personality = fallen_empire_materialist }
+                add_opinion_modifier = {
+                    modifier = opinion_fallen_wannabe_materialist
+                    who = root
+                }
+            }
+            else = {
+                add_opinion_modifier = {
+                    modifier = opinion_fallen_wannabe
+                    who = root
+                }
+            }
+        }
+    }
+}
