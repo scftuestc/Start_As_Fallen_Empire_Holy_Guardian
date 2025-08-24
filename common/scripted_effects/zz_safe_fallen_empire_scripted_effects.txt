@@ -1,3 +1,4 @@
+# 原版生成堕落恒星基地脚本修改
 create_fe_home_citadel = {
     create_starbase = {
         size = "starbase_citadel"
@@ -65,5 +66,52 @@ create_fe_dsc = {
                 create_fallen_empire_platform = yes
             }
         }
+    }
+}
+
+# 十层科技循环
+give_repeatable_tech= {
+    while = {
+        count = 10
+        # 物理学
+        give_technology = { tech = tech_repeatable_improved_tile_energy_output message = no }
+        give_technology = { tech = tech_repeatable_improved_shield_output message = no }
+        give_technology = { tech = tech_repeatable_weapon_type_energy_damage message = no }
+        give_technology = { tech = tech_repeatable_weapon_type_energy_fire_rate message = no }
+        give_technology = { tech = tech_repeatable_reduced_building_cost message = no }
+        # 社会学
+        give_technology = { tech = tech_repeatable_improved_tile_food_output message = no }
+        give_technology = { tech = tech_repeatable_improved_core_system_cap message = no }
+        give_technology = { tech = tech_repeatable_improved_army_damage message = no }
+        give_technology = { tech = tech_repeatable_improved_army_health message = no }
+        give_technology = { tech = tech_repeatable_improved_leader_life_span message = no }
+        give_technology = { tech = tech_repeatable_naval_cap message = no }
+        give_technology = { tech = tech_repeatable_command_limit message = no }
+        give_technology = { tech = tech_repeatable_improved_starbase_capacity message = no }
+        # 工程学
+        give_technology = { tech = tech_repeatable_improved_tile_mineral_output message = no }
+        give_technology = { tech = tech_repeatable_improved_military_station_damage message = no }
+        give_technology = { tech = tech_repeatable_improved_military_station_health message = no }
+        give_technology = { tech = tech_repeatable_improved_armor_output message = no }
+        give_technology = { tech = tech_repeatable_weapon_type_explosive_damage message = no }
+        give_technology = { tech = tech_repeatable_weapon_type_explosive_fire_rate message = no }
+        give_technology = { tech = tech_repeatable_weapon_type_kinetic_damage message = no }
+        give_technology = { tech = tech_repeatable_weapon_type_kinetic_fire_rate message = no }
+        give_technology = { tech = tech_repeatable_weapon_type_strike_craft_fire_damage message = no }
+        give_technology = { tech = tech_repeatable_weapon_type_strike_craft_fire_rate message = no }
+        give_technology = { tech = tech_repeatable_reduced_building_time message = no }
+    }
+}
+# 巨像科技
+give_colossus_tech ={
+    if = {
+        limit = { host_has_dlc = "Apocalypse" }
+        give_technology = { tech = tech_colossus message = no }
+        give_technology = { tech = tech_pk_cracker message = no}
+        give_technology = { tech = tech_pk_shielder message = no}
+        give_technology = { tech = tech_pk_neutron message = no}
+        give_technology = { tech = tech_archaeo_pk_devolving_beam message = no}
+        give_technology = { tech = tech_pk_godray message = no}
+        give_technology = { tech = tech_pk_nanobots message = no }
     }
 }

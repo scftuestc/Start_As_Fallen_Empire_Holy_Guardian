@@ -24,6 +24,7 @@ safe_fallen_2 = {
         type = rocky_asteroid_belt
         radius = 50
     }
+    flags = { fallen_empire_spiritualist_capital_system }
 
     planet = {
         count = 1
@@ -134,13 +135,10 @@ safe_fallen_2 = {
     # 相邻轨道星系初始化
     neighbor_system = {
         distance = { min = 0 max = 50 }
-        # 限制为1跳范围内
-        hyperlane_jumps = 1
         initializer = "safe_fallen_orbitals_1"
     }
     neighbor_system = {
         distance = { min = 0 max = 50 }
-        hyperlane_jumps = 1
         initializer = "safe_fallen_orbitals_2"
     }
     # 四个带有祝福圣地盖亚星球的星系初始化
@@ -162,8 +160,8 @@ safe_fallen_2 = {
     }
     # 带有虚境星球的特殊星系的初始化
     neighbor_system = {
-        # 概率提高为75%
-        spawn_chance = 75
+        # 概率提高到50%
+        spawn_chance = 50
         distance = { min = 0 max = 30 }
         initializer = "safe_fallen_shrouded"
     }
@@ -199,12 +197,11 @@ safe_fallen_orbitals_1 = {
     }
 
     neighbor_system = {
-        # 限制为1跳范围内
-        hyperlane_jumps = 1
+        distance = { min = 0 max = 50 }
         initializer = "safe_fallen_col_1"
     }
     neighbor_system = {
-        hyperlane_jumps = 1
+        distance = { min = 0 max = 50 }
         initializer = "safe_fallen_col_2"
     }
 }
@@ -260,11 +257,11 @@ safe_fallen_orbitals_2 = {
     }
 
     neighbor_system = {
-        hyperlane_jumps = { min = 1 max = 2 }
+        distance = { min = 0 max = 50 }
         initializer = "safe_fallen_col_1"
     }
     neighbor_system = {
-        hyperlane_jumps = { min = 1 max = 2 }
+        distance = { min = 0 max = 50 }
         initializer = "safe_fallen_col_2"
     }
 }

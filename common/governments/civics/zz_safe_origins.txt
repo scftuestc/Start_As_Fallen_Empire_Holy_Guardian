@@ -18,9 +18,28 @@ Start_As_Fallen_Empire_Holy_Guardians = {
         # 国策必须为两者
         civics = { OR = { value = safe_civic_lethargic_leadership } }
         civics = { OR = { value = safe_civic_empire_in_decline } }
+        # 物种不能为机械物种
+        species_archetype = { NOT = { value = MACHINE } }
+        # 不能使用生物舰船组
+        graphical_culture = {
+            NOR = {
+                text = graphical_culture_tooltip_not_biological
+                value = biogenesis_01
+                value = biogenesis_02
+            }
+        }
     }
-    random_weight = { base = 0 }
+    # 添加相关物种特质
+    traits = {
+        trait = trait_pc_gaia_preference
+        trait = trait_psionic
+    }
 
-    description = "Start_As_Holy_Guardians"
+    random_weight = { base = 0 }
+    ai_playable = { always = no }
+
+    description = "Start_As_Fallen_Empire_Holy_Guardians_effect"
     advanced_start = no
+    # 设置country flag为custom_start_screen来自定义开局本文描述，避免被原版覆盖
+    flags = { custom_start_screen }
 }

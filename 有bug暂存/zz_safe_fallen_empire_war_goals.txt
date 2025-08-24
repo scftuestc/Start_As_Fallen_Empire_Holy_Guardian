@@ -372,3 +372,114 @@ give_technology = { tech = tech_dark_matter_power_core message = no}
 give_technology = { tech = tech_dark_matter_propulsion message = no}
 give_technology = { tech = tech_cloaking_dark_matter  message = no}
 give_technology = { tech = tech_mine_dark_matter  message = no}
+
+capital_scope.solar_system = {
+    # 绑定中间层轨道星系1
+    every_neighbor_system = {
+        limit = {
+            NOT = { exists = space_owner }
+            has_star_flag = fallen_empire_orbitals_system_1
+        }
+        create_fe_citadel = yes
+        random_system_planet = {
+            limit = {
+                is_ideal_planet_class = {
+                    who = ROOT
+                    status = yes
+                }
+                is_colony = no
+            }
+            create_fe_spiritualist_fringe_colony = yes
+            set_owner = root
+            set_controller = root
+        }
+        # 绑定外层边缘星系1
+        every_neighbor_system = {
+            limit = {
+                NOT = { exists = space_owner }
+                has_star_flag = fallen_empire_col_system_1
+            }
+            create_fe_citadel = yes
+            every_system_planet = {
+                limit = {
+                    NOT = { exists = owner }
+                    has_planet_flag = fallen_empire_random_colony_1
+                }
+                create_fe_spiritualist_fringe_colony = yes
+                set_owner = root
+                set_controller = root
+            }
+        }
+        # 绑定外层边缘星系2
+        every_neighbor_system = {
+            limit = {
+                NOT = { exists = space_owner }
+                has_star_flag = fallen_empire_col_system_2
+            }
+            create_fe_citadel = yes
+            every_system_planet = {
+                limit = {
+                    NOT = { exists = owner }
+                    has_planet_flag = fallen_empire_random_colony_2
+                }
+                create_fe_spiritualist_fringe_colony = yes
+                set_owner = root
+                set_controller = root
+            }
+        }
+    }
+    # 绑定中间层轨道星系2
+    every_neighbor_system = {
+        limit = {
+            NOT = { exists = space_owner }
+            has_star_flag = fallen_empire_orbitals_system_2
+        }
+        create_fe_citadel = yes
+        random_system_planet = {
+            limit = {
+                is_ideal_planet_class = {
+                    who = ROOT
+                    status = yes
+                }
+                is_colony = no
+            }
+            create_fe_spiritualist_fringe_colony = yes
+            set_owner = root
+            set_controller = root
+        }
+        # 绑定外层边缘星系1
+        every_neighbor_system = {
+            limit = {
+                NOT = { exists = space_owner }
+                has_star_flag = fallen_empire_col_system_1
+            }
+            create_fe_citadel = yes
+            every_system_planet = {
+                limit = {
+                    NOT = { exists = owner }
+                    has_planet_flag = fallen_empire_random_colony_1
+                }
+                create_fe_spiritualist_fringe_colony = yes
+                set_owner = root
+                set_controller = root
+            }
+        }
+        # 绑定边缘星系2
+        every_neighbor_system = {
+            limit = {
+                NOT = { exists = space_owner }
+                has_star_flag = fallen_empire_col_system_2
+            }
+            create_fe_citadel = yes
+            every_system_planet = {
+                limit = {
+                    NOT = { exists = owner }
+                    has_planet_flag = fallen_empire_random_colony_2
+                }
+                create_fe_spiritualist_fringe_colony = yes
+                set_owner = root
+                set_controller = root
+            }
+        }
+    }
+}

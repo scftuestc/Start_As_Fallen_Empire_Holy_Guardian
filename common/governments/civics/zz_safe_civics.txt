@@ -73,11 +73,14 @@
 civic_lethargic_leadership = {
     modification = no
     icon = "gfx/interface/icons/governments/civics/civic_lethargic_leadership.dds"
+
     potential = {
         country_type = { value = fallen_empire }
         ethics = { NOT = { value = ethic_gestalt_consciousness } }
     }
+
     random_weight = { base = @civic_default_random_weight }
+
     description = FALLEN_EMPIRE_LETHARGY_1
     modifier = {
         leaders_upkeep_mult = -0.75
@@ -88,11 +91,13 @@ civic_lethargic_leadership = {
 civic_empire_in_decline = {
     modification = no
     icon = "gfx/interface/icons/governments/civics/civic_empire_in_decline.dds"
+
     potential = {
         country_type = { value = fallen_empire }
         ethics = { NOT = { value = ethic_gestalt_consciousness } }
     }
     random_weight = { base = @civic_default_random_weight }
+
     description = FALLEN_EMPIRE_LETHARGY_2
     modifier = {
         planet_pops_upkeep_mult = -0.75
@@ -105,13 +110,16 @@ safe_civic_lethargic_leadership = {
     modification = no
     ai_playable = { always = no }
     icon = "gfx/interface/icons/governments/civics/civic_lethargic_leadership.dds"
+
     potential = {
         origin = { value = Start_As_Fallen_Empire_Holy_Guardians }
         authority = { NOT = { value = auth_corporate } }
         ethics = { NOT = { value = ethic_gestalt_consciousness } }
     }
+
     random_weight = { base = 0 }
     ai_weight = { base = 0 }
+
     description = FALLEN_EMPIRE_LETHARGY_1
     modifier = {
         leaders_upkeep_mult = -0.75
@@ -122,13 +130,16 @@ safe_civic_lethargic_leadership = {
 safe_civic_empire_in_decline = {
     modification = no
     icon = "gfx/interface/icons/governments/civics/civic_empire_in_decline.dds"
+
     potential = {
         origin = { value = Start_As_Fallen_Empire_Holy_Guardians }
         authority = { NOT = { value = auth_corporate } }
         ethics = { NOT = { value = ethic_gestalt_consciousness } }
     }
+
     random_weight = { base = 0 }
     ai_weight = { base = 0 }
+
     description = FALLEN_EMPIRE_LETHARGY_2
     modifier = {
         planet_pops_upkeep_mult = -0.75
@@ -143,12 +154,15 @@ safe_civic_revanchist_fervor = {
     modification = no
     ai_playable = { always = no }
     icon = "gfx/interface/icons/governments/civics/civic_revanchist_fervor.dds"
+
     potential = {
         country_type = { value = awakened_fallen_empire }
         ethics = { NOT = { value = ethic_gestalt_consciousness } }
     }
+
     ai_weight = { base = 0 }
     random_weight = { base = 0 }
+
     modifier = {
         logistic_growth_mult = 0.66
         ship_weapon_damage = 0.66
@@ -159,15 +173,17 @@ safe_civic_ancient_caches_of_technology = {
     modification = no
     icon = "gfx/interface/icons/governments/civics/civic_ancient_caches_of_technology.dds"
     ai_playable = { always = no }
+
     potential = {
         country_type = { value = awakened_fallen_empire }
         ethics = { NOT = { value = ethic_gestalt_consciousness } }
     }
-    random_weight = { base = @civic_default_random_weight }
+
+    random_weight = { base = 0 }
+    ai_weight = { base = 0 }
+
     modifier = {
         planet_jobs_produces_mult = 0.66
         all_technology_research_speed = 0.66
     }
-    random_weight = { base = 0 }
-    ai_weight = { base = 0 }
 }

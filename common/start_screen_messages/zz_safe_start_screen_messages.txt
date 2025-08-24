@@ -1,0 +1,6 @@
+part = {
+    location = 0
+    localization = "START_SCREEN_MESSAGE_SAFE_FALLEN_EMPIRE_SPIRITUALIST"
+
+    trigger = { has_origin = Start_As_Fallen_Empire_Holy_Guardians }
+}

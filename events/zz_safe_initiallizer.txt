@@ -15,8 +15,8 @@ country_event = {
                 has_origin =  Start_As_Fallen_Empire_Holy_Guardians
                 has_ethic = ethic_fanatic_spiritualist
             }
-            set_graphical_culture = "fallen_empire_01"
-            set_city_graphical_culture = "fallen_empire_01"
+            set_graphical_culture = "fallen_empire_02"
+            set_city_graphical_culture = "fallen_empire_02"
         }
     }
 }
@@ -30,9 +30,12 @@ country_event = {
     trigger = { has_origin = Start_As_Fallen_Empire_Holy_Guardians }
 
     immediate = {
-        capital_scope.solar_system = {
+        every_system = {
+            limit = { has_star_flag = fallen_empire_spiritualist_capital_system  }
             # 创建首都擎天堡
             create_fe_home_citadel = yes
+        }
+        capital_scope.solar_system = {
             # 天国王座星球绑定
             every_system_planet = {
                 limit = { has_planet_flag = fallen_empire_spiritualist_capital}
@@ -113,15 +116,14 @@ country_event = {
                 # 为城市核心添加建筑
                 add_building = building_ancient_palace
                 add_building = building_fe_dome
+                add_building = building_fe_dome
                 add_building = building_fe_temple_2
                 add_building = building_fe_temple_2
+                add_building = building_fe_mine_2
                 add_building = building_fe_stronghold
                 add_building = building_fe_stronghold
                 add_building = building_dimensional_fabricator
-                add_building = building_dimensional_fabricator
                 add_building = building_affluence_center
-                add_building = building_affluence_center
-                add_building = building_nano_forge
                 add_building = building_nano_forge
                 # 为能源发电区划添加建筑
                 add_building = {
@@ -222,116 +224,76 @@ country_event = {
     trigger = { has_origin = Start_As_Fallen_Empire_Holy_Guardians }
 
     immediate = {
-        capital_scope.solar_system = {
-            # 绑定中间层轨道星系1
-            every_neighbor_system = {
-                limit = {
-                    NOT = { exists = space_owner }
-                    has_star_flag = fallen_empire_orbitals_system_1
-                }
-                create_fe_citadel = yes
-                random_system_planet = {
-                    limit = {
-                        is_ideal_planet_class = {
-                            who = ROOT
-                            status = yes
-                        }
-                        is_colony = no
-                    }
-                    create_fe_spiritualist_fringe_colony = yes
-                    set_owner = root
-                    set_controller = root
-                }
-                # 绑定外层边缘星系1
-                every_neighbor_system = {
-                    limit = {
-                        NOT = { exists = space_owner }
-                        has_star_flag = fallen_empire_col_system_1
-                    }
-                    create_fe_citadel = yes
-                    every_system_planet = {
-                        limit = {
-                            NOT = { exists = owner }
-                            has_planet_flag = fallen_empire_random_colony_1
-                        }
-                        create_fe_spiritualist_fringe_colony = yes
-                        set_owner = root
-                        set_controller = root
-
-                    }
-                }
-                # 绑定外层边缘星系2
-                every_neighbor_system = {
-                    limit = {
-                        NOT = { exists = space_owner }
-                        has_star_flag = fallen_empire_col_system_2
-                    }
-                    create_fe_citadel = yes
-                    every_system_planet = {
-                        limit = {
-                            NOT = { exists = owner }
-                            has_planet_flag = fallen_empire_random_colony_2
-                        }
-                        create_fe_spiritualist_fringe_colony = yes
-                        set_owner = root
-                        set_controller = root
-                    }
-                }
+        # 中间层殖民地
+        every_system = {
+            limit = {
+                NOT = { exists = space_owner }
+                has_star_flag = fallen_empire_orbitals_system_1
             }
-            # 绑定中间层轨道星系2
-            every_neighbor_system = {
+            create_fe_citadel = yes
+            random_system_planet = {
                 limit = {
-                    NOT = { exists = space_owner }
-                    has_star_flag = fallen_empire_orbitals_system_2
+                    is_ideal_planet_class = {
+                        who = ROOT
+                        status = yes
+                    }
+                    is_colony = no
                 }
-                create_fe_citadel = yes
-                random_system_planet = {
-                    limit = {
-                        is_ideal_planet_class = {
-                            who = ROOT
-                            status = yes
-                        }
-                        is_colony = no
+                create_fe_spiritualist_fringe_colony = yes
+                set_owner = root
+                set_controller = root
+            }
+        }
+        every_system = {
+            limit = {
+                NOT = { exists = space_owner }
+                has_star_flag = fallen_empire_orbitals_system_2
+            }
+            create_fe_citadel = yes
+            random_system_planet = {
+                limit = {
+                    is_ideal_planet_class = {
+                        who = ROOT
+                        status = yes
                     }
-
-                    create_fe_spiritualist_fringe_colony = yes
-                    set_owner = root
-                    set_controller = root
+                    is_colony = no
                 }
-                # 绑定外层边缘星系1
-                every_neighbor_system = {
-                    limit = {
-                        NOT = { exists = space_owner }
-                        has_star_flag = fallen_empire_col_system_1
-                    }
-                    create_fe_citadel = yes
-                    every_system_planet = {
-                        limit = {
-                            NOT = { exists = owner }
-                            has_planet_flag = fallen_empire_random_colony_1
-                        }
-                        create_fe_spiritualist_fringe_colony = yes
-                        set_owner = root
-                        set_controller = root
-                    }
+                create_fe_spiritualist_fringe_colony = yes
+                set_owner = root
+                set_controller = root
+            }
+        }
+        # 外层殖民地
+        every_system = {
+            limit = {
+                NOT = { exists = space_owner }
+                has_star_flag = fallen_empire_col_system_1
+            }
+            create_fe_citadel = yes
+            every_system_planet = {
+                limit = {
+                    NOT = { exists = owner }
+                    has_planet_flag = fallen_empire_random_colony_1
                 }
-                # 绑定边缘星系2
-                every_neighbor_system = {
-                    limit = {
-                        NOT = { exists = space_owner }
-                        has_star_flag = fallen_empire_col_system_2
-                    }
-                    create_fe_citadel = yes
-                    every_system_planet = {
-                        limit = {
-                            NOT = { exists = owner }
-                            has_planet_flag = fallen_empire_random_colony_2
-                        }
-                        create_fe_spiritualist_fringe_colony = yes
-                        set_owner = root
-                        set_controller = root
-                    }
+                create_fe_spiritualist_fringe_colony = yes
+                set_owner = root
+                set_controller = root
+            }
+        }
+        every_system = {
+            limit = {
+                NOT = { exists = space_owner }
+                has_star_flag = fallen_empire_col_system_2
+            }
+            create_fe_citadel = yes
+            every_system_planet = {
+                limit = {
+                    NOT = { exists = owner }
+                    has_planet_flag = fallen_empire_random_colony_2
                 }
+                create_fe_spiritualist_fringe_colony = yes
+                set_owner = root
+                set_controller = root
             }
         }
     }
@@ -347,16 +309,9 @@ country_event= {
     # 科技调整
     immediate = {
         # 缺失的巨像科技补充（需要有启示录DLC）
-        if = {
-            limit = { host_has_dlc = "Apocalypse" }
-            give_technology = { tech = tech_colossus message = no }
-            give_technology = { tech = tech_pk_cracker message = no}
-            give_technology = { tech = tech_pk_shielder message = no}
-            give_technology = { tech = tech_pk_neutron message = no}
-            give_technology = { tech = tech_archaeo_pk_devolving_beam message = no}
-            give_technology = { tech = tech_pk_godray message = no}
-            give_technology = { tech = tech_pk_nanobots message = no }
-        }
+        give_colossus_tech = yes
+        # 缺失的十层循环补充
+        give_repeatable_tech = yes
         # 缺失的物理学科技补充
         give_technology = { tech = tech_archeology_lab_ancrel message = no}
         give_technology = { tech = tech_combat_computers_autonomous message = no }
@@ -370,37 +325,6 @@ country_event= {
         # 缺失的工程学科技补充
         give_technology = { tech = tech_micro_replicators message = no } # 初始物种为机器人才能有的
         give_technology = { tech = tech_self_assembling_components message = no } # 初始物种为机器人才能有的
-        # 缺失的十层循环补充
-        while = {
-            count = 10
-            # 物理学
-            give_technology = { tech = tech_repeatable_improved_tile_energy_output message = no }
-            give_technology = { tech = tech_repeatable_improved_shield_output message = no }
-            give_technology = { tech = tech_repeatable_weapon_type_energy_damage message = no }
-            give_technology = { tech = tech_repeatable_weapon_type_energy_fire_rate message = no }
-            give_technology = { tech = tech_repeatable_reduced_building_cost message = no }
-            # 社会学
-            give_technology = { tech = tech_repeatable_improved_tile_food_output message = no }
-            give_technology = { tech = tech_repeatable_improved_core_system_cap message = no }
-            give_technology = { tech = tech_repeatable_improved_army_damage message = no }
-            give_technology = { tech = tech_repeatable_improved_army_health message = no }
-            give_technology = { tech = tech_repeatable_improved_leader_life_span message = no }
-            give_technology = { tech = tech_repeatable_naval_cap message = no }
-            give_technology = { tech = tech_repeatable_command_limit message = no }
-            give_technology = { tech = tech_repeatable_improved_starbase_capacity message = no }
-            # 工程学
-            give_technology = { tech = tech_repeatable_improved_tile_mineral_output message = no }
-            give_technology = { tech = tech_repeatable_improved_military_station_damage message = no }
-            give_technology = { tech = tech_repeatable_improved_military_station_health message = no }
-            give_technology = { tech = tech_repeatable_improved_armor_output message = no }
-            give_technology = { tech = tech_repeatable_weapon_type_explosive_damage message = no }
-            give_technology = { tech = tech_repeatable_weapon_type_explosive_fire_rate message = no }
-            give_technology = { tech = tech_repeatable_weapon_type_kinetic_damage message = no }
-            give_technology = { tech = tech_repeatable_weapon_type_kinetic_fire_rate message = no }
-            give_technology = { tech = tech_repeatable_weapon_type_strike_craft_fire_damage message = no }
-            give_technology = { tech = tech_repeatable_weapon_type_strike_craft_fire_rate message = no }
-            give_technology = { tech = tech_repeatable_reduced_building_time message = no }
-        }
         # 殖民地与舰船调整
         every_owned_planet = {
             if = {
@@ -418,15 +342,21 @@ country_event= {
                 set_colony_type = col_fe_colony
             }
         }
+        every_owned_fleet = {
+            # 删掉科研和工程船，后续用事件给
+            if = {
+                limit = {
+                    OR = {
+                        is_ship_class = shipclass_constructor
+                        is_ship_class = shipclass_science_ship
+                    }
+                }
+                delete_fleet = this
+            }
+            # 删掉初始给的3个护卫舰的小舰队
+            if = { limit = { fleet_size = 3 } delete_fleet = this }
+        }
         add_modifier = { modifier = fe_ship_cost_modifier }
-        add_global_ship_design = "NAME_Cleanser"
-        add_global_ship_design = "NAME_Eternal"
-        add_global_ship_design = "NAME_Avatar"
-        add_global_ship_design = "NAME_Zealot"
-        add_global_ship_design = "NAME_Penitent"
-        add_global_ship_design = "NAME_Faith"
-        add_global_ship_design = "NAME_Pilgrim"
-        add_global_ship_design = "NAME_FE_Starbase"
 
     }
 }
