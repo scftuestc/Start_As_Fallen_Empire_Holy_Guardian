@@ -1,0 +1,32 @@
+# 给圣地守卫者用的物种舰船组
+SAFE_Spiritualist= {
+
+    archetype = BIOLOGICAL
+    randomized = { always = no }
+    playable = { always = yes }
+
+    possible = {
+        AND = {
+            authority = {
+                NOR = {
+                    value = auth_hive_mind
+                    value = auth_corporate
+                }
+            }
+            ethics = {
+                OR = {
+                    value = ethic_fanatic_spiritualist
+                }
+            }
+        }
+    }
+
+    gender = no
+
+    possible_secondary = { always = no text = SECONDARY_SPECIES_CLASS_INVALID }
+
+    graphical_culture = safe_fallen_empire_spiritualist
+
+    move_pop_sound_effect = "moving_pop_confirmation"
+
+}

@@ -29,11 +29,8 @@ Start_As_Fallen_Empire_Holy_Guardians = {
             }
         }
     }
-    # 添加相关物种特质
-    traits = {
-        trait = trait_pc_gaia_preference
-        trait = trait_psionic
-    }
+    # 添加必要物种特质：灵能
+    traits = { trait = trait_psionic }
 
     random_weight = { base = 0 }
     ai_playable = { always = no }

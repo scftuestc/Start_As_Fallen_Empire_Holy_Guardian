@@ -6,7 +6,7 @@
  col_fe_capital_tt: "该帝国虽已沉寂，但其传说般的科技仍在驱动宏伟建筑不眠不休地运转，令人惊叹。"
 
  col_fe_colony: "失落帝国殖民地"
- col_fe_colony_desc: "提升£stability£§S稳定度§!并提供£amenities£§S舒适度§!\n减少£building£§S行星基础设施维护费§!。"
+ col_fe_colony_desc: "提升£stability£§S稳定度§!并提供£amenities£§S舒适度§!。\n减少£building£§S行星基础设施维护费§!。"
  col_fe_colony_tt: "$col_fe_capital_tt$"
 
  # 国名理念本地化覆盖

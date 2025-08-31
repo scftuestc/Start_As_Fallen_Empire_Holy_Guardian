@@ -1,0 +1,743 @@
+# Icons set here are the ones show in the actual slot. The reason is so that we can support different icons for different sizes.
+
+############################
+# POWER / COST OF REACTORS #
+############################
+# 能源为原来的1.5倍，花费不变
+
+##############
+# 护航舰反应堆 #
+##############
+@cruiser_reactor_power_1 = 420
+@cruiser_reactor_power_2 = 540
+@cruiser_reactor_power_3 = 720
+@cruiser_reactor_power_4 = 930
+@cruiser_reactor_power_5 = 1200
+@cruiser_reactor_power_6 = 1545
+
+@cruiser_reactor_cost_1 = 40
+@cruiser_reactor_cost_2 = 52
+@cruiser_reactor_cost_3 = 68
+@cruiser_reactor_cost_4 = 88
+@cruiser_reactor_cost_5 = 112
+@cruiser_reactor_cost_6 = 148
+
+#################
+# 战列巡洋舰反应堆 #
+#################
+@battleship_reactor_power_1 = 825
+@battleship_reactor_power_2 = 1080
+@battleship_reactor_power_3 = 1425
+@battleship_reactor_power_4 = 1875
+@battleship_reactor_power_5 = 2325
+@battleship_reactor_power_6 = 3000
+
+@battleship_reactor_cost_1 = 80
+@battleship_reactor_cost_2 = 104
+@battleship_reactor_cost_3 = 136
+@battleship_reactor_cost_4 = 176
+@battleship_reactor_cost_5 = 224
+@battleship_reactor_cost_6 = 296
+
+#############
+# 泰坦反应堆 #
+#############
+@titan_reactor_power_1 = 1650
+@titan_reactor_power_2 = 2175
+@titan_reactor_power_3 = 2850
+@titan_reactor_power_4 = 3750
+@titan_reactor_power_5 = 4800
+@titan_reactor_power_6 = 6300
+
+@titan_reactor_cost_1 = 160
+@titan_reactor_cost_2 = 208
+@titan_reactor_cost_3 = 272
+@titan_reactor_cost_4 = 352
+@titan_reactor_cost_5 = 448
+@titan_reactor_cost_6 = 592
+
+##############
+# 护航舰反应堆 #
+##############
+
+utility_component_template = {
+    key = "FESMALLSHIP_FISSION_REACTOR"
+    size = small
+    icon = "GFX_ship_part_reactor_1"
+    icon_frame = 1
+    power = @cruiser_reactor_power_1
+    resources = {
+        category = ship_components
+        cost = { alloys = @cruiser_reactor_cost_1 }
+        upkeep = {
+            energy = 0.40
+            alloys = 0.04
+        }
+    }
+    prerequisites = { "tech_fission_power" }
+    component_set = "power_core"
+    size_restriction = { small_ship_fallen_empire }
+
+    potential = {
+        from = {
+            country_uses_bio_ships = no
+            is_country_type = fallen_empire
+        }
+    }
+
+    show_tech_unlock_if = {
+        country_uses_bio_ships = no
+    }
+    upgrades_to = "FESMALLSHIP_FUSION_REACTOR"
+
+    ai_weight = {
+        weight = 1
+    }
+}
+
+utility_component_template = {
+    key = "FESMALLSHIP_FUSION_REACTOR"
+    size = small
+    icon = "GFX_ship_part_reactor_2"
+    icon_frame = 1
+    power = @cruiser_reactor_power_2
+    resources = {
+        category = ship_components
+        cost = { alloys = @cruiser_reactor_cost_2 }
+        upkeep = {
+            energy = 0.52
+            alloys = 0.052
+        }
+    }
+    prerequisites = { "tech_fusion_power" }
+    component_set = "power_core"
+    size_restriction = { small_ship_fallen_empire }
+
+    potential = {
+        from = {
+            country_uses_bio_ships = no
+            is_country_type = fallen_empire
+        }
+    }
+
+    show_tech_unlock_if = {
+        country_uses_bio_ships = no
+    }
+    upgrades_to = "FESMALLSHIP_COLD_FUSION_REACTOR"
+
+    ai_weight = {
+        weight = 2
+    }
+}
+
+utility_component_template = {
+    key = "FESMALLSHIP_COLD_FUSION_REACTOR"
+    size = small
+    icon = "GFX_ship_part_reactor_3"
+    icon_frame = 1
+    power = @cruiser_reactor_power_3
+    resources = {
+        category = ship_components
+        cost = { alloys = @cruiser_reactor_cost_3 }
+        upkeep = {
+            energy = 0.68
+            alloys = 0.068
+        }
+    }
+
+    prerequisites = { "tech_cold_fusion_power" }
+    component_set = "power_core"
+    size_restriction = { small_ship_fallen_empire }
+
+    potential = {
+        from = {
+            country_uses_bio_ships = no
+            is_country_type = fallen_empire
+        }
+    }
+
+    show_tech_unlock_if = {
+        country_uses_bio_ships = no
+    }
+    upgrades_to = "FESMALLSHIP_ANTIMATTER_REACTOR"
+
+    ai_weight = {
+        weight = 3
+    }
+}
+
+utility_component_template = {
+    key = "FESMALLSHIP_ANTIMATTER_REACTOR"
+    size = small
+    icon = "GFX_ship_part_reactor_4"
+    icon_frame = 1
+    power = @cruiser_reactor_power_4
+    resources = {
+        category = ship_components
+        cost = { alloys = @cruiser_reactor_cost_4 }
+        upkeep = {
+            energy = 0.88
+            alloys = 0.088
+        }
+    }
+
+    prerequisites = { "tech_antimatter_power" }
+    component_set = "power_core"
+    size_restriction = { small_ship_fallen_empire }
+
+    potential = {
+        from = {
+            country_uses_bio_ships = no
+            is_country_type = fallen_empire
+        }
+    }
+
+    show_tech_unlock_if = {
+        country_uses_bio_ships = no
+    }
+    upgrades_to = "FESMALLSHIP_ZERO_POINT_REACTOR"
+
+    ai_weight = {
+        weight = 4
+    }
+}
+
+utility_component_template = {
+    key = "FESMALLSHIP_ZERO_POINT_REACTOR"
+    size = small
+    icon = "GFX_ship_part_reactor_5"
+    icon_frame = 1
+    power = @cruiser_reactor_power_5
+    resources = {
+        category = ship_components
+        cost = { alloys = @cruiser_reactor_cost_5 }
+        upkeep = {
+            energy = 1.14
+            alloys = 0.114
+        }
+    }
+
+    prerequisites = { "tech_zero_point_power" }
+    component_set = "power_core"
+    size_restriction = { small_ship_fallen_empire }
+
+    potential = {
+        from = {
+            country_uses_bio_ships = no
+            is_country_type = fallen_empire
+        }
+    }
+
+    show_tech_unlock_if = {
+        country_uses_bio_ships = no
+    }
+    upgrades_to = "FESMALLSHIP_DARK_MATTER_REACTOR"
+
+    ai_weight = {
+        weight = 5
+    }
+}
+
+utility_component_template = {
+    key = "FESMALLSHIP_DARK_MATTER_REACTOR"
+    size = small
+    icon = "GFX_ship_part_dark_matter_power_core"
+    icon_frame = 1
+    power = @cruiser_reactor_power_6
+    resources = {
+        category = ship_components
+        cost = {
+            alloys = @cruiser_reactor_cost_6
+            sr_dark_matter = 4
+        }
+        upkeep = {
+            energy = 1.48
+            alloys = 0.148
+        }
+    }
+
+    prerequisites = { "tech_dark_matter_power_core" }
+    component_set = "power_core"
+    size_restriction = { small_ship_fallen_empire }
+
+    potential = {
+        from = {
+            country_uses_bio_ships = no
+            is_country_type = fallen_empire
+        }
+    }
+
+    show_tech_unlock_if = {
+        country_uses_bio_ships = no
+    }
+
+    ai_weight = {
+        weight = 6
+        modifier = {
+            factor = 0.0
+            no_resource_for_component = { RESOURCE = sr_dark_matter }
+        }
+        modifier = {
+            factor = 0.0
+            is_ai = yes
+        }
+    }
+}
+
+#################
+# 战列巡洋舰反应堆 #
+#################
+utility_component_template = {
+    key = "FELARGESHIP_FISSION_REACTOR"
+    size = small
+    icon = "GFX_ship_part_reactor_1"
+    icon_frame = 1
+    power = @battleship_reactor_power_1
+    resources = {
+        category = ship_components
+        cost = { alloys = @battleship_reactor_cost_1 }
+        upkeep = {
+            energy = 0.80
+            alloys = 0.08
+        }
+    }
+
+    prerequisites = { "tech_fission_power" }
+    component_set = "power_core"
+    size_restriction = { large_ship_fallen_empire }
+
+    potential = {
+        from = {
+            country_uses_bio_ships = no
+            is_country_type = fallen_empire
+        }
+    }
+
+    show_tech_unlock_if = {
+        country_uses_bio_ships = no
+    }
+    upgrades_to = "FELARGESHIP_FUSION_REACTOR"
+
+    ai_weight = {
+        weight = 1
+    }
+}
+
+utility_component_template = {
+    key = "FELARGESHIP_FUSION_REACTOR"
+    size = small
+    icon = "GFX_ship_part_reactor_2"
+    icon_frame = 1
+    power = @battleship_reactor_power_2
+    resources = {
+        category = ship_components
+        cost = { alloys = @battleship_reactor_cost_2 }
+        upkeep = {
+            energy = 0.80
+            alloys = 0.08
+        }
+    }
+
+    prerequisites = { "tech_fusion_power" }
+    component_set = "power_core"
+    size_restriction = { large_ship_fallen_empire }
+
+    potential = {
+        from = {
+            country_uses_bio_ships = no
+            is_country_type = fallen_empire
+        }
+    }
+
+    show_tech_unlock_if = {
+        country_uses_bio_ships = no
+    }
+    upgrades_to = "FELARGESHIP_COLD_FUSION_REACTOR"
+
+    ai_weight = {
+        weight = 2
+    }
+}
+
+utility_component_template = {
+    key = "FELARGESHIP_COLD_FUSION_REACTOR"
+    size = small
+    icon = "GFX_ship_part_reactor_3"
+    icon_frame = 1
+    power = @battleship_reactor_power_3
+    resources = {
+        category = ship_components
+        cost = { alloys = @battleship_reactor_cost_3 }
+        upkeep = {
+            energy = 0.80
+            alloys = 0.08
+        }
+    }
+
+    prerequisites = { "tech_cold_fusion_power" }
+    component_set = "power_core"
+    size_restriction = { large_ship_fallen_empire }
+
+    potential = {
+        from = {
+            country_uses_bio_ships = no
+            is_country_type = fallen_empire
+        }
+    }
+
+    show_tech_unlock_if = {
+        country_uses_bio_ships = no
+    }
+    upgrades_to = "FELARGESHIP_ANTIMATTER_REACTOR"
+
+    ai_weight = {
+        weight = 3
+    }
+}
+
+utility_component_template = {
+    key = "FELARGESHIP_ANTIMATTER_REACTOR"
+    size = small
+    icon = "GFX_ship_part_reactor_4"
+    icon_frame = 1
+    power = @battleship_reactor_power_4
+    resources = {
+        category = ship_components
+        cost = { alloys = @battleship_reactor_cost_4 }
+        upkeep = {
+            energy = 0.80
+            alloys = 0.08
+        }
+    }
+
+    prerequisites = { "tech_antimatter_power" }
+    component_set = "power_core"
+    size_restriction = { large_ship_fallen_empire }
+
+    potential = {
+        from = {
+            country_uses_bio_ships = no
+            is_country_type = fallen_empire
+        }
+    }
+
+    show_tech_unlock_if = {
+        country_uses_bio_ships = no
+    }
+    upgrades_to = "FELARGESHIP_ZERO_POINT_REACTOR"
+
+    ai_weight = {
+        weight = 4
+    }
+}
+
+utility_component_template = {
+    key = "FELARGESHIP_ZERO_POINT_REACTOR"
+    size = small
+    icon = "GFX_ship_part_reactor_5"
+    icon_frame = 1
+    power = @battleship_reactor_power_5
+    resources = {
+        category = ship_components
+        cost = { alloys = @battleship_reactor_cost_5 }
+        upkeep = {
+            energy = 0.80
+            alloys = 0.08
+        }
+    }
+
+    prerequisites = { "tech_zero_point_power" }
+    component_set = "power_core"
+    size_restriction = { large_ship_fallen_empire }
+
+    potential = {
+        from = {
+            country_uses_bio_ships = no
+            is_country_type = fallen_empire
+        }
+    }
+
+    show_tech_unlock_if = {
+        country_uses_bio_ships = no
+    }
+    upgrades_to = "FELARGESHIP_DARK_MATTER_REACTOR"
+
+    ai_weight = {
+        weight = 5
+    }
+}
+
+utility_component_template = {
+    key = "FELARGESHIP_DARK_MATTER_REACTOR"
+    size = small
+    icon = "GFX_ship_part_dark_matter_power_core"
+    icon_frame = 1
+    power = @battleship_reactor_power_6
+    resources = {
+        category = ship_components
+        cost = {
+            alloys = @battleship_reactor_cost_6
+            sr_dark_matter = 8
+        }
+        upkeep = {
+            energy = 2.98
+            alloys = 0.298
+        }
+    }
+
+    prerequisites = { "tech_dark_matter_power_core" }
+    component_set = "power_core"
+    size_restriction = { large_ship_fallen_empire }
+
+    potential = {
+        from = {
+            country_uses_bio_ships = no
+            is_country_type = fallen_empire
+        }
+    }
+
+    show_tech_unlock_if = {
+        country_uses_bio_ships = no
+    }
+
+    ai_weight = {
+        weight = 6
+        modifier = {
+            factor = 0.0
+            no_resource_for_component = { RESOURCE = sr_dark_matter }
+        }
+        modifier = {
+            factor = 0.0
+            is_ai = yes
+        }
+    }
+}
+
+#############
+# 泰坦反应堆 #
+#############
+utility_component_template = {
+    key = "FETITAN_FISSION_REACTOR"
+    size = small
+    icon = "GFX_ship_part_reactor_1"
+    icon_frame = 1
+    power = @titan_reactor_power_1
+    resources = {
+        category = ship_components
+        cost = { alloys = @titan_reactor_cost_1 }
+        upkeep = {
+            energy = 0.80
+            alloys = 0.08
+        }
+    }
+
+    prerequisites = { "tech_fission_power" }
+    component_set = "power_core"
+    size_restriction = { massive_ship_fallen_empire }
+
+    potential = {
+        from = {
+            country_uses_bio_ships = no
+            is_country_type = fallen_empire
+        }
+    }
+
+    show_tech_unlock_if = {
+        country_uses_bio_ships = no
+    }
+    upgrades_to = "FELARGESHIP_FUSION_REACTOR"
+
+    ai_weight = {
+        weight = 1
+    }
+}
+
+utility_component_template = {
+    key = "FETITAN_FUSION_REACTOR"
+    size = small
+    icon = "GFX_ship_part_reactor_2"
+    icon_frame = 1
+    power = @titan_reactor_power_2
+    resources = {
+        category = ship_components
+        cost = { alloys = @titan_reactor_cost_2 }
+        upkeep = {
+            energy = 0.80
+            alloys = 0.08
+        }
+    }
+
+    prerequisites = { "tech_fusion_power" }
+    component_set = "power_core"
+    size_restriction = { massive_ship_fallen_empire }
+
+    potential = {
+        from = {
+            country_uses_bio_ships = no
+            is_country_type = fallen_empire
+        }
+    }
+
+    show_tech_unlock_if = {
+        country_uses_bio_ships = no
+    }
+    upgrades_to = "FELARGESHIP_COLD_FUSION_REACTOR"
+
+    ai_weight = {
+        weight = 2
+    }
+}
+
+utility_component_template = {
+    key = "FETITAN_COLD_FUSION_REACTOR"
+    size = small
+    icon = "GFX_ship_part_reactor_3"
+    icon_frame = 1
+    power = @titan_reactor_power_3
+    resources = {
+        category = ship_components
+        cost = { alloys = @titan_reactor_cost_3 }
+        upkeep = {
+            energy = 0.80
+            alloys = 0.08
+        }
+    }
+
+    prerequisites = { "tech_cold_fusion_power" }
+    component_set = "power_core"
+    size_restriction = { massive_ship_fallen_empire }
+
+    potential = {
+        from = {
+            country_uses_bio_ships = no
+            is_country_type = fallen_empire
+        }
+    }
+
+    show_tech_unlock_if = {
+        country_uses_bio_ships = no
+    }
+    upgrades_to = "FELARGESHIP_ANTIMATTER_REACTOR"
+
+    ai_weight = {
+        weight = 3
+    }
+}
+
+utility_component_template = {
+    key = "FETITAN_ANTIMATTER_REACTOR"
+    size = small
+    icon = "GFX_ship_part_reactor_4"
+    icon_frame = 1
+    power = @titan_reactor_power_4
+    resources = {
+        category = ship_components
+        cost = { alloys = @titan_reactor_cost_4 }
+        upkeep = {
+            energy = 0.80
+            alloys = 0.08
+        }
+    }
+
+    prerequisites = { "tech_antimatter_power" }
+    component_set = "power_core"
+    size_restriction = { massive_ship_fallen_empire }
+
+    potential = {
+        from = {
+            country_uses_bio_ships = no
+            is_country_type = fallen_empire
+        }
+    }
+
+    show_tech_unlock_if = {
+        country_uses_bio_ships = no
+    }
+    upgrades_to = "FELARGESHIP_ZERO_POINT_REACTOR"
+
+    ai_weight = {
+        weight = 4
+    }
+}
+
+utility_component_template = {
+    key = "FETITAN_ZERO_POINT_REACTOR"
+    size = small
+    icon = "GFX_ship_part_reactor_5"
+    icon_frame = 1
+    power = @titan_reactor_power_5
+    resources = {
+        category = ship_components
+        cost = { alloys = @titan_reactor_cost_5 }
+        upkeep = {
+            energy = 0.80
+            alloys = 0.08
+        }
+    }
+
+    prerequisites = { "tech_zero_point_power" }
+    component_set = "power_core"
+    size_restriction = { massive_ship_fallen_empire }
+
+    potential = {
+        from = {
+            country_uses_bio_ships = no
+            is_country_type = fallen_empire
+        }
+    }
+
+    show_tech_unlock_if = {
+        country_uses_bio_ships = no
+    }
+    upgrades_to = "FELARGESHIP_DARK_MATTER_REACTOR"
+
+    ai_weight = {
+        weight = 5
+    }
+}
+
+utility_component_template = {
+    key = "FETITAN_DARK_MATTER_REACTOR"
+    size = small
+    icon = "GFX_ship_part_dark_matter_power_core"
+    icon_frame = 1
+    power = @titan_reactor_power_6
+    resources = {
+        category = ship_components
+        cost = {
+            alloys = @titan_reactor_cost_6
+            sr_dark_matter = 8
+        }
+        upkeep = {
+            energy = 2.98
+            alloys = 0.298
+        }
+    }
+
+    prerequisites = { "tech_dark_matter_power_core" }
+    component_set = "power_core"
+    size_restriction = { massive_ship_fallen_empire }
+
+    potential = {
+        from = {
+            country_uses_bio_ships = no
+            is_country_type = fallen_empire
+        }
+    }
+
+    show_tech_unlock_if = {
+        country_uses_bio_ships = no
+    }
+
+    ai_weight = {
+        weight = 6
+        modifier = {
+            factor = 0.0
+            no_resource_for_component = { RESOURCE = sr_dark_matter }
+        }
+        modifier = {
+            factor = 0.0
+            is_ai = yes
+        }
+    }
+}

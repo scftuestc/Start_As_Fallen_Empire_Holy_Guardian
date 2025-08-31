@@ -1,0 +1,43 @@
+﻿l_simp_chinese:
+
+ Start_As_Fallen_Empire_Holy_Guardians:"扎克兰的救赎"
+ Start_As_Fallen_Empire_Holy_Guardians_desc:"在银河的黑暗时代，我们曾是伟大先驱§H扎克兰§!的虔诚追随者。当古老的预警系统被触发，我们苏醒于一个陌生的新银河，发现扎克兰的遗产已被时间掩埋。"
+
+ Start_As_Fallen_Empire_Holy_Guardians_effect:"—$SPECIES_TRAITS$灵能\n—起始科技：全科技\n—星球偏好：['concept_gaia_preference']\n"
+
+ START_SCREEN_MESSAGE_SAFE_FALLEN_EMPIRE_SPIRITUALIST:"我们的文明曾追寻着先驱者扎克兰的脚步，在群星间建立了繁荣的圣地网络。作为守护者，我们见证了银河的无数兴衰变迁。\n\n随着时间流逝，我们逐渐退隐至核心星域，专注于守护古老的知识与传统。漫长的岁月让我们变得保守而内省，科技发展陷入停滞，帝国的疆域也不再扩张。我们在静默中观察着银河，守护着那些被遗忘的秘密。\n\n如今，新的动荡时代即将来临。古老的预警系统被激活，迫使我们从千年的沉寂中苏醒。扎克兰留下的遗产正面临威胁，我们必须重新拾起守护者的职责，在变化的银河中寻找属于自己的道路。"
+
+ SAFE_Spiritualist:"圣地守卫者"
+
+# Ship Design
+ fallen_empire_large_warship_key:"舰载核心"
+ fallen_empire_large_warship_torpedo_key:"鱼雷核心"
+ fallen_empire_warship_small_key:"巨炮核心"
+ fallen_empire_warship_small_torpedo_key:"鱼雷核心"
+ fallen_empire_massive_warship_key:"$massive_ship_fallen_empire$"
+ fallen_empire_station_small_key:"$military_station_small_fallen_empire$"
+
+# 反应堆
+ FESMALLSHIP_FISSION_REACTOR:"失落帝国裂变反应堆"
+ FESMALLSHIP_FUSION_REACTOR:"失落帝国聚变反应堆"
+ FESMALLSHIP_COLD_FUSION_REACTOR:"失落帝国冷核聚变反应堆"
+ FESMALLSHIP_ANTIMATTER_REACTOR:"失落帝国反物质反应堆"
+ FESMALLSHIP_ZERO_POINT_REACTOR:"失落帝国零点反应堆"
+ FESMALLSHIP_DARK_MATTER_REACTOR:"失落帝国暗物质反应堆"
+
+ FELARGESHIP_FISSION_REACTOR:"失落帝国裂变反应堆"
+ FELARGESHIP_FUSION_REACTOR:"失落帝国聚变反应堆"
+ FELARGESHIP_COLD_FUSION_REACTOR:"失落帝国冷核聚变反应堆"
+ FELARGESHIP_ANTIMATTER_REACTOR:"失落帝国反物质反应堆"
+ FELARGESHIP_ZERO_POINT_REACTOR:"失落帝国零点反应堆"
+ FELARGESHIP_DARK_MATTER_REACTOR:"失落帝国暗物质反应堆"
+
+ FETITAN_FISSION_REACTOR:"失落帝国裂变反应堆"
+ FETITAN_FUSION_REACTOR:"失落帝国聚变反应堆"
+ FETITAN_COLD_FUSION_REACTOR:"失落帝国冷核聚变反应堆"
+ FETITAN_ANTIMATTER_REACTOR:"失落帝国反物质反应堆"
+ FETITAN_ZERO_POINT_REACTOR:"失落帝国零点反应堆"
+ FETITAN_DARK_MATTER_REACTOR:"失落帝国暗物质反应堆"
+
+
+

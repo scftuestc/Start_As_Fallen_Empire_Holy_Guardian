@@ -13,10 +13,9 @@ country_event = {
         if = {
             limit = {
                 has_origin =  Start_As_Fallen_Empire_Holy_Guardians
-                has_ethic = ethic_fanatic_spiritualist
             }
-            set_graphical_culture = "fallen_empire_02"
-            set_city_graphical_culture = "fallen_empire_02"
+            set_graphical_culture = "safe_fallen_empire_spiritualist"
+            set_city_graphical_culture = "safe_fallen_empire_spiritualist"
         }
     }
 }
@@ -30,11 +29,6 @@ country_event = {
     trigger = { has_origin = Start_As_Fallen_Empire_Holy_Guardians }
 
     immediate = {
-        every_system = {
-            limit = { has_star_flag = fallen_empire_spiritualist_capital_system  }
-            # 创建首都擎天堡
-            create_fe_home_citadel = yes
-        }
         capital_scope.solar_system = {
             # 天国王座星球绑定
             every_system_planet = {
@@ -210,6 +204,13 @@ country_event = {
                     zone = zone_minerals
                     building = building_fe_mine_2
                 }
+            }
+            # 首都星港修正
+            every_starbase_in_system = {
+                limit = {
+                    has_starbase_size = starbase_starport
+                }
+                set_starbase_size = starbase_citadel
             }
         }
     }
