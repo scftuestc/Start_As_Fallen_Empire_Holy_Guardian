@@ -1,0 +1,36 @@
+# 跃迁引擎
+component_set = {
+    key = "fe_ftl_components"
+
+    required_component_set = yes
+    is_core_component_set = yes
+    icon = "GFX_ship_part_hyperdrive"
+    icon_frame = 1
+}
+# 探测器
+component_set = {
+    key = "fe_sensor_components"
+
+    required_component_set = yes
+    is_core_component_set = yes
+    icon = "GFX_ship_part_sensor_4"
+    icon_frame = 1
+}
+# 推进器
+component_set = {
+    key = "fe_thruster_components"
+
+    required_component_set = yes
+    is_core_component_set = yes
+    icon = "GFX_ship_part_thruster_1"
+    icon_frame = 1
+}
+# 反应堆
+component_set = {
+    key = "fe_power_core"
+
+    required_component_set = yes
+    is_core_component_set = yes
+    icon = "GFX_ship_part_dark_matter_power_core"
+    icon_frame = 1
+}

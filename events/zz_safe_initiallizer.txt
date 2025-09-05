@@ -358,6 +358,5 @@ country_event= {
             if = { limit = { fleet_size = 3 } delete_fleet = this }
         }
         add_modifier = { modifier = fe_ship_cost_modifier }
-
     }
 }

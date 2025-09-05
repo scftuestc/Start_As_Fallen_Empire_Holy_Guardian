@@ -1,0 +1,315 @@
+# Icons set here are the ones show in the actual slot.
+@cost1 = 5
+@cost2 = 10
+@cost3 = 15
+@cost4 = 20
+
+@power0 = -5
+@power1 = -10
+@power2 = -15
+@power3 = -20
+@power4 = -30
+
+#############
+# UTILITIES #
+#############
+
+### NON-FTL DRIVE
+utility_component_template = {
+    key = "FE_EMPTY_DRIVE"
+    size = small
+    icon = "GFX_ship_part_empty_ftl_drive"
+    icon_frame = 1
+    power = 0
+
+    potential = {
+        from = {
+            country_uses_bio_ships = no
+        }
+    }
+
+    show_tech_unlock_if = {
+        country_uses_bio_ships = no
+    }
+    component_set = "fe_ftl_components"
+    upgrades_to = "FE_SUBSPACE_DRIVE"
+
+    ai_weight = {
+        base = 0
+    }
+}
+
+# Subspace Drive
+utility_component_template = {
+    key = "FE_SUBSPACE_DRIVE"
+    size = small
+    icon = "GFX_ship_part_subspace_drive"
+    icon_frame = 1
+
+    power = @power0
+    resources = {
+        category = ship_components
+        cost = {
+            alloys = @cost1
+        }
+    }
+
+    potential = {
+        is_eager_explorer_ship = no
+        OR = {
+            ship_uses_civilian_cloaks = yes
+            is_ship_class = shipclass_transport
+            ship_is_fallen_empire = yes
+        }
+        from = {
+            country_uses_bio_ships = no
+            is_country_type = fallen_empire
+        }
+    }
+
+    show_tech_unlock_if = {
+        country_uses_bio_ships = no
+    }
+
+    ftl = no
+    jumpdrive = yes
+    ship_modifier = {
+        ship_jumpdrive_cooldown_mult = -0.50
+        ship_ftl_jumpdrive_range_mult = -0.75
+    }
+    prerequisites = { "tech_subspace_drive" }
+    ai_weight = {
+        weight = 1
+    }
+    component_set = "fe_ftl_components"
+    upgrades_to = "FE_HYPER_DRIVE_1"
+}
+
+
+### HYPER DRIVES
+utility_component_template = {
+    key = "FE_HYPER_DRIVE_1"
+    size = small
+    icon = "GFX_ship_part_hyper_drive_1"
+    icon_frame = 1
+    power = @power1
+    resources = {
+        category = ship_components
+        cost = {
+            alloys = @cost1
+        }
+    }
+    ftl = yes
+
+    ship_modifier = {
+        ship_disengage_opportunities_add = 2
+        ship_windup_mult = -0.35
+    }
+
+    ai_weight = {
+        weight = 1
+    }
+
+    potential = {
+        is_eager_explorer_ship = no
+        OR = {
+            ship_uses_civilian_cloaks = yes
+            is_ship_class = shipclass_transport
+            ship_is_fallen_empire = yes
+        }
+        from = {
+            country_uses_bio_ships = no
+            is_country_type = fallen_empire
+        }
+    }
+
+    show_tech_unlock_if = {
+        country_uses_bio_ships = no
+    }
+    prerequisites = { "tech_hyper_drive_1" }
+    component_set = "fe_ftl_components"
+    upgrades_to = "FE_HYPER_DRIVE_2"
+}
+
+utility_component_template = {
+    key = "FE_HYPER_DRIVE_2"
+    size = small
+    icon = "GFX_ship_part_hyper_drive_2"
+    icon_frame = 1
+    power = @power2
+    resources = {
+        category = ship_components
+        cost = {
+            alloys = @cost2
+        }
+    }
+    ftl = yes
+    ship_modifier = {
+        ship_disengage_opportunities_add = 3
+        ship_windup_mult = -0.45
+    }
+
+    ai_weight = {
+        weight = 2
+    }
+
+    potential = {
+        is_eager_explorer_ship = no
+        OR = {
+            ship_uses_civilian_cloaks = yes
+            is_ship_class = shipclass_transport
+            ship_is_fallen_empire = yes
+        }
+        from = {
+            country_uses_bio_ships = no
+            is_country_type = fallen_empire
+        }
+    }
+
+    show_tech_unlock_if = {
+        country_uses_bio_ships = no
+    }
+    prerequisites = { "tech_hyper_drive_2" }
+    component_set = "fe_ftl_components"
+    upgrades_to = "FE_HYPER_DRIVE_3"
+}
+
+utility_component_template = {
+    key = "FE_HYPER_DRIVE_3"
+    size = small
+    icon = "GFX_ship_part_hyper_drive_3"
+    icon_frame = 1
+    power = @power3
+    resources = {
+        category = ship_components
+        cost = {
+            alloys = @cost3
+        }
+    }
+    ftl = yes
+    ship_modifier = {
+        ship_disengage_opportunities_add = 4
+        ship_windup_mult = -0.6
+    }
+
+    ai_weight = {
+        weight = 3
+    }
+
+    potential = {
+        is_eager_explorer_ship = no
+        OR = {
+            ship_uses_civilian_cloaks = yes
+            is_ship_class = shipclass_transport
+            ship_is_fallen_empire = yes
+        }
+        from = {
+            country_uses_bio_ships = no
+            is_country_type = fallen_empire
+        }
+    }
+
+    show_tech_unlock_if = {
+        country_uses_bio_ships = no
+    }
+    prerequisites = { "tech_hyper_drive_3" }
+    component_set = "fe_ftl_components"
+    upgrades_to = "FE_JUMP_DRIVE_1"
+}
+
+### Jump drives
+
+utility_component_template = {
+    key = "FE_JUMP_DRIVE_1"
+    size = small
+    icon = "GFX_ship_part_jump_drive_1"
+    icon_frame = 1
+    power = @power4
+    resources = {
+        category = ship_components
+        cost = {
+            alloys = @cost4
+        }
+    }
+
+    potential = {
+        is_eager_explorer_ship = no
+        OR = {
+            ship_uses_civilian_cloaks = yes
+            is_ship_class = shipclass_transport
+            ship_is_fallen_empire = yes
+        }
+        from = {
+            country_uses_bio_ships = no
+            is_country_type = fallen_empire
+        }
+    }
+
+    show_tech_unlock_if = {
+        country_uses_bio_ships = no
+    }
+
+    ftl = yes
+    jumpdrive = yes
+    ship_modifier = {
+        ship_disengage_opportunities_add = 5
+        ship_windup_mult = -0.75
+        ship_ftl_jumpdrive_range_mult = 0.5
+    }
+
+    ai_weight = {
+        weight = 4
+    }
+
+    prerequisites = { "tech_jump_drive_1" }
+    component_set = "fe_ftl_components"
+    upgrades_to = "FE_PSI_JUMP_DRIVE_1"
+}
+
+### Jump drives
+utility_component_template = {
+    key = "FE_PSI_JUMP_DRIVE_1"
+    size = small
+    icon = "GFX_ship_part_psi_jump_drive_1"
+    icon_frame = 1
+    power = @power4
+    resources = {
+        category = ship_components
+        cost = {
+            alloys = @cost4
+        }
+    }
+
+    potential = {
+        is_eager_explorer_ship = no
+        OR = {
+            ship_uses_civilian_cloaks = yes
+            ship_is_fallen_empire = yes
+            is_ship_class = shipclass_transport
+        }
+        from = {
+            country_uses_bio_ships = no
+            is_country_type = fallen_empire
+            has_ethic = ethic_fanatic_spiritualist
+        }
+    }
+
+    show_tech_unlock_if = {
+        country_uses_bio_ships = no
+    }
+
+    ftl = yes
+    jumpdrive = yes
+    ship_modifier = {
+        ship_disengage_opportunities_add = 6
+        ship_windup_mult = -0.9
+        ship_ftl_jumpdrive_range_mult = 0.9
+    }
+
+    ai_weight = {
+        weight = 5
+    }
+
+    prerequisites = { "tech_psi_jump_drive_1" }
+    component_set = "fe_ftl_components"
+}

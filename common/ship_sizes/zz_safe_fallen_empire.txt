@@ -40,12 +40,12 @@ massive_ship_fallen_empire = {
     rotation_speed = 0.1
     collision_radius = @titan_collision_radius
     modifier = {
-        ship_evasion_add = 4
-        ship_hull_regen_add_perc = 0.5
-        ship_armor_regen_add_perc = 0.5
+        ship_evasion_add = 6
+        ship_hull_regen_add_perc = 0.75
+        ship_armor_regen_add_perc = 0.75
     }
     ship_modifier = {
-        ship_weapon_range_mult = 0.25
+        ship_weapon_range_mult = 0.4
     }
     max_hitpoints = @fe_titan_hp
     size_multiplier = 32
@@ -60,7 +60,7 @@ massive_ship_fallen_empire = {
     resources = {
         category = ships
         cost = {
-            alloys = 10000
+            alloys = 12500
         }
     }
 
@@ -74,16 +74,15 @@ massive_ship_fallen_empire = {
     is_designable = yes
     enable_default_design = yes
     # 增加侧位插槽
-    required_component_set = "power_core"
-    required_component_set = "ftl_components"
-    required_component_set = "thruster_components"
-    required_component_set = "sensor_components"
+    required_component_set = "fe_power_core"
+    required_component_set = "fe_ftl_components"
+    required_component_set = "fe_thruster_components"
+    required_component_set = "fe_sensor_components"
     required_component_set = "combat_computers"
-    required_component_set = "ship_aura_components"
-
 
     potential_country = {
         is_fallen_empire = yes
+        country_uses_bio_ships = no
     }
 }
 
@@ -96,12 +95,12 @@ large_ship_fallen_empire = {
     rotation_speed = 0.15
     collision_radius = @battleship_collision_radius
     modifier = {
-        ship_evasion_add = 15
-        ship_hull_regen_add_perc = 0.5
-        ship_armor_regen_add_perc = 0.5
+        ship_evasion_add = 20
+        ship_hull_regen_add_perc = 0.85
+        ship_armor_regen_add_perc = 0.85
     }
     ship_modifier = {
-        ship_weapon_range_mult = 0.25
+        ship_weapon_range_mult = 0.35
     }
     max_hitpoints = @fe_battleship_hp
     size_multiplier = 8
@@ -130,14 +129,15 @@ large_ship_fallen_empire = {
     is_designable = yes
     enable_default_design = yes
     # 增加侧边插槽
-    required_component_set = "power_core"
-    required_component_set = "ftl_components"
-    required_component_set = "thruster_components"
-    required_component_set = "sensor_components"
+    required_component_set = "fe_power_core"
+    required_component_set = "fe_ftl_components"
+    required_component_set = "fe_thruster_components"
+    required_component_set = "fe_sensor_components"
     required_component_set = "combat_computers"
 
     potential_country = {
         is_fallen_empire = yes
+        country_uses_bio_ships = no
     }
 }
 
@@ -150,12 +150,12 @@ small_ship_fallen_empire = {
     rotation_speed = 0.2
     collision_radius = @destroyer_collision_radius
     modifier = {
-        ship_evasion_add = 60
-        ship_hull_regen_add_perc = 0.5
-        ship_armor_regen_add_perc = 0.5
+        ship_evasion_add = 80
+        ship_hull_regen_add_perc = 0.9
+        ship_armor_regen_add_perc = 0.9
     }
     ship_modifier = {
-        ship_weapon_range_mult = 0.25
+        ship_weapon_range_mult = 0.4
     }
     max_hitpoints = @fe_destroyer_hp
     size_multiplier = 2
@@ -184,120 +184,14 @@ small_ship_fallen_empire = {
     is_designable = yes
     enable_default_design = yes
     # 增加侧边插槽
-    required_component_set = "power_core"
-    required_component_set = "ftl_components"
-    required_component_set = "thruster_components"
-    required_component_set = "sensor_components"
+    required_component_set = "fe_power_core"
+    required_component_set = "fe_ftl_components"
+    required_component_set = "fe_thruster_components"
+    required_component_set = "fe_sensor_components"
     required_component_set = "combat_computers"
 
     potential_country = {
         is_fallen_empire = yes
+        country_uses_bio_ships = no
     }
-}
-
-# 防御平台
-military_station_small_fallen_empire = {
-    graphical_culture = { "fallen_empire_01" "fallen_empire_02" "fallen_empire_03" "fallen_empire_04" "fallen_machine_empire_01" "biogenesis_01_fallen_empire" safe_fallen_empire_spiritualist}
-    max_speed = 6
-    rotation_speed = 10
-    acceleration = 10
-    modifier = {
-        ship_evasion_mult = -2
-        ship_hull_regen_add_perc = 0.5
-        ship_armor_regen_add_perc = 0.5
-        ships_upkeep_mult = -0.35
-    }
-    ship_modifier = {
-        ship_weapon_range_mult = 0.4
-    }
-    max_hitpoints = @station_medium_hp
-
-    combat_size_multiplier = 4
-    size_multiplier = 2
-    fleet_slot_size = 2
-    section_slots = {
-        "mid" = { locator = "part1" }
-    }
-    num_target_locators = 0
-    is_space_station = yes
-    build_block_radius = @build_block_radius_military
-
-    uses_name_prefix = no
-    takes_name_from_ship_design = yes
-
-    resources = {
-        category = ships
-        cost = {
-            alloys = 1000
-        }
-    }
-
-    base_buildtime = 280
-
-    use_shipnames_from = military_station_small
-
-    # 更改为yes
-    is_designable = yes
-    enable_default_design = yes
-    # 增加侧边插槽
-    required_component_set = "power_core"
-    required_component_set = "sensor_components"
-    required_component_set = "combat_computers"
-
-    class = shipclass_military_station
-    construction_type = starbase_defenses
-    icon = ship_size_military_station
-}
-
-
-# 离子加农炮
-military_station_large_fallen_empire = {
-    graphical_culture = { "fallen_empire_01" "fallen_empire_02" "fallen_empire_03" "fallen_empire_04" "fallen_machine_empire_01" safe_fallen_empire_spiritualist safe_fallen_empire_spiritualist}
-    max_speed = 6
-    rotation_speed = 10
-    acceleration = 10
-    modifier = {
-        ship_evasion_mult = -1
-        ships_upkeep_mult = -0.25
-    }
-    ship_modifier = {
-        ship_weapon_range_mult = 0.20
-    }
-    max_hitpoints = @station_large_hp
-    combat_size_multiplier = 20
-    size_multiplier = 8
-    fleet_slot_size = 4
-    section_slots = {
-        "mid" = { locator = "part1" }
-    }
-    num_target_locators = 0
-    is_space_station = yes
-    build_block_radius = @build_block_radius_military
-
-    uses_name_prefix = no
-    takes_name_from_ship_design = yes
-
-    resources = {
-        category = ships
-        cost = {
-            alloys = 5000
-        }
-    }
-
-    base_buildtime = 540
-    is_listed = no
-
-    use_shipnames_from = military_station_small
-
-    # 更改为yes
-    is_designable = yes
-    enable_default_design = yes
-    # 增加侧边插槽
-    required_component_set = "power_core"
-    required_component_set = "sensor_components"
-    required_component_set = "combat_computers"
-
-    class = shipclass_military_station
-    construction_type = starbase_defenses
-    icon = ship_size_military_station
 }

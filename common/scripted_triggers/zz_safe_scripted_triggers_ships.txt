@@ -1,0 +1,18 @@
+#####################
+# Scripted Triggers #
+#       Ships       #
+#####################
+
+# 堕落帝国三独有船类型
+ship_is_fallen_empire = {
+    OR = {
+        # 原版堕落飞船
+        is_ship_size = small_ship_fallen_empire
+        is_ship_size = large_ship_fallen_empire
+        is_ship_size = massive_ship_fallen_empire
+        # 文灾飞的飞船
+        is_ship_size = cosmo_crisis_destroyer
+        is_ship_size = cosmo_crisis_battlecruiser
+        is_ship_size = cosmo_crisis_titan
+    }
+}
