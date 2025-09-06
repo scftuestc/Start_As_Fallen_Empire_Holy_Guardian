@@ -57,11 +57,10 @@ utility_component_template = {
 
     show_tech_unlock_if = {
         country_uses_bio_ships = no
+        is_country_type = fallen_empire
     }
 
-    ai_weight = {
-        weight = 1
-    }
+    ai_weight = { weight = 1 }
 }
 
 utility_component_template = {
@@ -102,11 +101,10 @@ utility_component_template = {
 
     show_tech_unlock_if = {
         country_uses_bio_ships = no
+        is_country_type = fallen_empire
     }
 
-    ai_weight = {
-        weight = 10
-    }
+    ai_weight = { weight = 2 }
 }
 
 utility_component_template = {
@@ -147,11 +145,10 @@ utility_component_template = {
 
     show_tech_unlock_if = {
         country_uses_bio_ships = no
+        is_country_type = fallen_empire
     }
 
-    ai_weight = {
-        weight = 100
-    }
+    ai_weight = { weight = 3 }
 }
 
 utility_component_template = {
@@ -188,12 +185,11 @@ utility_component_template = {
 
     show_tech_unlock_if = {
         country_uses_bio_ships = no
+        is_country_type = fallen_empire
     }
 
     prerequisites = { "tech_sensors_4" }
     component_set = "fe_sensor_components"
 
-    ai_weight = {
-        weight = 1000
-    }
+    ai_weight = { weight = 4 }
 }

@@ -30,7 +30,7 @@
 # FALLEN EMPIRE #
 #################
 
-# Fallen Empire Massive Ship
+# Fallen Empire Massive Ship 失落帝国泰坦
 massive_ship_fallen_empire = {
     formation_priority = @titan_formation_priority
     #entity = titan_entity
@@ -64,7 +64,7 @@ massive_ship_fallen_empire = {
         }
     }
 
-    base_buildtime = 1200
+    base_buildtime = 720
 
     use_shipnames_from = titan
 
@@ -73,12 +73,13 @@ massive_ship_fallen_empire = {
     # 更改为yes
     is_designable = yes
     enable_default_design = yes
+    enable_3dview_in_ship_browser = yes
     # 增加侧位插槽
     required_component_set = "fe_power_core"
     required_component_set = "fe_ftl_components"
     required_component_set = "fe_thruster_components"
     required_component_set = "fe_sensor_components"
-    required_component_set = "combat_computers"
+    required_component_set = "fe_combat_computers"
 
     potential_country = {
         is_fallen_empire = yes
@@ -86,7 +87,7 @@ massive_ship_fallen_empire = {
     }
 }
 
-# Fallen Empire Large Ship
+# Fallen Empire Large Ship 失落帝国战列巡洋舰
 large_ship_fallen_empire = {
     formation_priority = @battleship_formation_priority
     graphical_culture = { "fallen_empire_01" "fallen_empire_02" "fallen_empire_03" "fallen_empire_04" "fallen_machine_empire_01" safe_fallen_empire_spiritualist}
@@ -119,7 +120,7 @@ large_ship_fallen_empire = {
         }
     }
 
-    base_buildtime = 480
+    base_buildtime = 360
 
     use_shipnames_from = battleship
 
@@ -128,12 +129,13 @@ large_ship_fallen_empire = {
     # 更改为yes
     is_designable = yes
     enable_default_design = yes
+    enable_3dview_in_ship_browser = yes
     # 增加侧边插槽
     required_component_set = "fe_power_core"
     required_component_set = "fe_ftl_components"
     required_component_set = "fe_thruster_components"
     required_component_set = "fe_sensor_components"
-    required_component_set = "combat_computers"
+    required_component_set = "fe_combat_computers"
 
     potential_country = {
         is_fallen_empire = yes
@@ -141,7 +143,7 @@ large_ship_fallen_empire = {
     }
 }
 
-# Fallen Empire Small Ship
+# Fallen Empire Small Ship 失落帝国护航舰
 small_ship_fallen_empire = {
     formation_priority = @destroyer_formation_priority
     graphical_culture = { "fallen_empire_01" "fallen_empire_02" "fallen_empire_03" "fallen_empire_04" "fallen_machine_empire_01" safe_fallen_empire_spiritualist}
@@ -174,7 +176,7 @@ small_ship_fallen_empire = {
         }
     }
 
-    base_buildtime = 120
+    base_buildtime = 180
 
     use_shipnames_from = destroyer
 
@@ -183,12 +185,13 @@ small_ship_fallen_empire = {
     # 更改为yes
     is_designable = yes
     enable_default_design = yes
+    enable_3dview_in_ship_browser = yes
     # 增加侧边插槽
     required_component_set = "fe_power_core"
     required_component_set = "fe_ftl_components"
     required_component_set = "fe_thruster_components"
     required_component_set = "fe_sensor_components"
-    required_component_set = "combat_computers"
+    required_component_set = "fe_combat_computers"
 
     potential_country = {
         is_fallen_empire = yes

@@ -3,14 +3,13 @@
 ############################
 # POWER / COST OF REACTORS #
 ############################
-# 能源为原来的1.5倍，花费不变
-
-@cruiser_reactor_power_1 = 420
-@cruiser_reactor_power_2 = 540
-@cruiser_reactor_power_3 = 720
-@cruiser_reactor_power_4 = 930
-@cruiser_reactor_power_5 = 1200
-@cruiser_reactor_power_6 = 1545
+# 能源为原版的2倍，花费不变
+@cruiser_reactor_power_1 = 560
+@cruiser_reactor_power_2 = 720
+@cruiser_reactor_power_3 = 960
+@cruiser_reactor_power_4 = 1240
+@cruiser_reactor_power_5 = 1600
+@cruiser_reactor_power_6 = 2060
 
 @cruiser_reactor_cost_1 = 40
 @cruiser_reactor_cost_2 = 52
@@ -19,12 +18,12 @@
 @cruiser_reactor_cost_5 = 112
 @cruiser_reactor_cost_6 = 148
 
-@battleship_reactor_power_1 = 825
-@battleship_reactor_power_2 = 1080
-@battleship_reactor_power_3 = 1425
-@battleship_reactor_power_4 = 1875
-@battleship_reactor_power_5 = 2325
-@battleship_reactor_power_6 = 3000
+@battleship_reactor_power_1 = 1100
+@battleship_reactor_power_2 = 1440
+@battleship_reactor_power_3 = 1900
+@battleship_reactor_power_4 = 2500
+@battleship_reactor_power_5 = 3100
+@battleship_reactor_power_6 = 4000
 
 @battleship_reactor_cost_1 = 80
 @battleship_reactor_cost_2 = 104
@@ -33,12 +32,12 @@
 @battleship_reactor_cost_5 = 224
 @battleship_reactor_cost_6 = 296
 
-@titan_reactor_power_1 = 1650
-@titan_reactor_power_2 = 2175
-@titan_reactor_power_3 = 2850
-@titan_reactor_power_4 = 3750
-@titan_reactor_power_5 = 4800
-@titan_reactor_power_6 = 6300
+@titan_reactor_power_1 = 2200
+@titan_reactor_power_2 = 2900
+@titan_reactor_power_3 = 3800
+@titan_reactor_power_4 = 5000
+@titan_reactor_power_5 = 6400
+@titan_reactor_power_6 = 8400
 
 @titan_reactor_cost_1 = 160
 @titan_reactor_cost_2 = 208
@@ -50,7 +49,6 @@
 ##############
 # 护航舰反应堆 #
 ##############
-
 utility_component_template = {
     key = "FE_SMALLSHIP_FISSION_REACTOR"
     size = small
@@ -67,26 +65,22 @@ utility_component_template = {
     }
     prerequisites = { "tech_fission_power" }
     component_set = "fe_power_core"
-    size_restriction = {
-        small_ship_fallen_empire
-        cosmo_crisis_destroyer
-    }
 
     potential = {
         from = {
             country_uses_bio_ships = no
             is_country_type = fallen_empire
         }
+        fe_ship_uses_cruiser_reactors = yes
     }
 
     show_tech_unlock_if = {
         country_uses_bio_ships = no
+        is_country_type = fallen_empire
     }
     upgrades_to = "FE_SMALLSHIP_FUSION_REACTOR"
 
-    ai_weight = {
-        weight = 1
-    }
+    ai_weight = { weight = 1 }
 }
 
 utility_component_template = {
@@ -105,26 +99,22 @@ utility_component_template = {
     }
     prerequisites = { "tech_fusion_power" }
     component_set = "fe_power_core"
-    size_restriction = {
-        small_ship_fallen_empire
-        cosmo_crisis_destroyer
-    }
 
     potential = {
         from = {
             country_uses_bio_ships = no
             is_country_type = fallen_empire
         }
+        fe_ship_uses_cruiser_reactors = yes
     }
 
     show_tech_unlock_if = {
         country_uses_bio_ships = no
+        is_country_type = fallen_empire
     }
     upgrades_to = "FE_SMALLSHIP_COLD_FUSION_REACTOR"
 
-    ai_weight = {
-        weight = 2
-    }
+    ai_weight = { weight = 2 }
 }
 
 utility_component_template = {
@@ -144,26 +134,22 @@ utility_component_template = {
 
     prerequisites = { "tech_cold_fusion_power" }
     component_set = "fe_power_core"
-    size_restriction = {
-        small_ship_fallen_empire
-        cosmo_crisis_destroyer
-    }
 
     potential = {
         from = {
             country_uses_bio_ships = no
             is_country_type = fallen_empire
         }
+        fe_ship_uses_cruiser_reactors = yes
     }
 
     show_tech_unlock_if = {
         country_uses_bio_ships = no
+        is_country_type = fallen_empire
     }
     upgrades_to = "FE_SMALLSHIP_ANTIMATTER_REACTOR"
 
-    ai_weight = {
-        weight = 3
-    }
+    ai_weight = { weight = 3 }
 }
 
 utility_component_template = {
@@ -183,26 +169,22 @@ utility_component_template = {
 
     prerequisites = { "tech_antimatter_power" }
     component_set = "fe_power_core"
-    size_restriction = {
-        small_ship_fallen_empire
-        cosmo_crisis_destroyer
-    }
 
     potential = {
         from = {
             country_uses_bio_ships = no
             is_country_type = fallen_empire
         }
+        fe_ship_uses_cruiser_reactors = yes
     }
 
     show_tech_unlock_if = {
         country_uses_bio_ships = no
+        is_country_type = fallen_empire
     }
     upgrades_to = "FE_SMALLSHIP_ZERO_POINT_REACTOR"
 
-    ai_weight = {
-        weight = 4
-    }
+    ai_weight = { weight = 4 }
 }
 
 utility_component_template = {
@@ -222,26 +204,22 @@ utility_component_template = {
 
     prerequisites = { "tech_zero_point_power" }
     component_set = "fe_power_core"
-    size_restriction = {
-        small_ship_fallen_empire
-        cosmo_crisis_destroyer
-    }
 
     potential = {
         from = {
             country_uses_bio_ships = no
             is_country_type = fallen_empire
         }
+        fe_ship_uses_cruiser_reactors = yes
     }
 
     show_tech_unlock_if = {
         country_uses_bio_ships = no
+        is_country_type = fallen_empire
     }
     upgrades_to = "FE_SMALLSHIP_DARK_MATTER_REACTOR"
 
-    ai_weight = {
-        weight = 5
-    }
+    ai_weight = { weight = 5 }
 }
 
 utility_component_template = {
@@ -264,20 +242,18 @@ utility_component_template = {
 
     prerequisites = { "tech_dark_matter_power_core" }
     component_set = "fe_power_core"
-    size_restriction = {
-        small_ship_fallen_empire
-        cosmo_crisis_destroyer
-    }
 
     potential = {
         from = {
             country_uses_bio_ships = no
             is_country_type = fallen_empire
         }
+        fe_ship_uses_cruiser_reactors = yes
     }
 
     show_tech_unlock_if = {
         country_uses_bio_ships = no
+        is_country_type = fallen_empire
     }
 
     ai_weight = {
@@ -313,26 +289,22 @@ utility_component_template = {
 
     prerequisites = { "tech_fission_power" }
     component_set = "fe_power_core"
-    size_restriction = {
-        large_ship_fallen_empire
-        cosmo_crisis_battlecruiser
-    }
 
     potential = {
         from = {
             country_uses_bio_ships = no
             is_country_type = fallen_empire
         }
+        fe_ship_uses_battleship_reactors = yes
     }
 
     show_tech_unlock_if = {
         country_uses_bio_ships = no
+        is_country_type = fallen_empire
     }
     upgrades_to = "FE_LARGESHIP_FUSION_REACTOR"
 
-    ai_weight = {
-        weight = 1
-    }
+    ai_weight = { weight = 1 }
 }
 
 utility_component_template = {
@@ -352,26 +324,22 @@ utility_component_template = {
 
     prerequisites = { "tech_fusion_power" }
     component_set = "fe_power_core"
-    size_restriction = {
-        large_ship_fallen_empire
-        cosmo_crisis_battlecruiser
-    }
 
     potential = {
         from = {
             country_uses_bio_ships = no
             is_country_type = fallen_empire
         }
+        fe_ship_uses_battleship_reactors = yes
     }
 
     show_tech_unlock_if = {
         country_uses_bio_ships = no
+        is_country_type = fallen_empire
     }
     upgrades_to = "FE_LARGESHIP_COLD_FUSION_REACTOR"
 
-    ai_weight = {
-        weight = 2
-    }
+    ai_weight = { weight = 2 }
 }
 
 utility_component_template = {
@@ -391,26 +359,22 @@ utility_component_template = {
 
     prerequisites = { "tech_cold_fusion_power" }
     component_set = "fe_power_core"
-    size_restriction = {
-        large_ship_fallen_empire
-        cosmo_crisis_battlecruiser
-    }
 
     potential = {
         from = {
             country_uses_bio_ships = no
             is_country_type = fallen_empire
         }
+        fe_ship_uses_battleship_reactors = yes
     }
 
     show_tech_unlock_if = {
         country_uses_bio_ships = no
+        is_country_type = fallen_empire
     }
     upgrades_to = "FE_LARGESHIP_ANTIMATTER_REACTOR"
 
-    ai_weight = {
-        weight = 3
-    }
+    ai_weight = { weight = 3 }
 }
 
 utility_component_template = {
@@ -430,26 +394,22 @@ utility_component_template = {
 
     prerequisites = { "tech_antimatter_power" }
     component_set = "fe_power_core"
-    size_restriction = {
-        large_ship_fallen_empire
-        cosmo_crisis_battlecruiser
-    }
 
     potential = {
         from = {
             country_uses_bio_ships = no
             is_country_type = fallen_empire
         }
+        fe_ship_uses_battleship_reactors = yes
     }
 
     show_tech_unlock_if = {
         country_uses_bio_ships = no
+        is_country_type = fallen_empire
     }
     upgrades_to = "FE_LARGESHIP_ZERO_POINT_REACTOR"
 
-    ai_weight = {
-        weight = 4
-    }
+    ai_weight = { weight = 4 }
 }
 
 utility_component_template = {
@@ -469,26 +429,22 @@ utility_component_template = {
 
     prerequisites = { "tech_zero_point_power" }
     component_set = "fe_power_core"
-    size_restriction = {
-        large_ship_fallen_empire
-        cosmo_crisis_battlecruiser
-    }
 
     potential = {
         from = {
             country_uses_bio_ships = no
             is_country_type = fallen_empire
         }
+        fe_ship_uses_battleship_reactors = yes
     }
 
     show_tech_unlock_if = {
         country_uses_bio_ships = no
+        is_country_type = fallen_empire
     }
     upgrades_to = "FE_LARGESHIP_DARK_MATTER_REACTOR"
 
-    ai_weight = {
-        weight = 5
-    }
+    ai_weight = { weight = 5 }
 }
 
 utility_component_template = {
@@ -511,20 +467,18 @@ utility_component_template = {
 
     prerequisites = { "tech_dark_matter_power_core" }
     component_set = "fe_power_core"
-    size_restriction = {
-        large_ship_fallen_empire
-        cosmo_crisis_battlecruiser
-    }
 
     potential = {
         from = {
             country_uses_bio_ships = no
             is_country_type = fallen_empire
         }
+        fe_ship_uses_battleship_reactors = yes
     }
 
     show_tech_unlock_if = {
         country_uses_bio_ships = no
+        is_country_type = fallen_empire
     }
 
     ai_weight = {
@@ -560,26 +514,22 @@ utility_component_template = {
 
     prerequisites = { "tech_fission_power" }
     component_set = "fe_power_core"
-    size_restriction = {
-        massive_ship_fallen_empire
-        cosmo_crisis_titan
-    }
 
     potential = {
         from = {
             country_uses_bio_ships = no
             is_country_type = fallen_empire
         }
+        fe_ship_uses_titan_reactors = yes
     }
 
     show_tech_unlock_if = {
         country_uses_bio_ships = no
+        is_country_type = fallen_empire
     }
     upgrades_to = "FE_TITAN_FUSION_REACTOR"
 
-    ai_weight = {
-        weight = 1
-    }
+    ai_weight = { weight = 1 }
 }
 
 utility_component_template = {
@@ -599,26 +549,22 @@ utility_component_template = {
 
     prerequisites = { "tech_fusion_power" }
     component_set = "fe_power_core"
-    size_restriction = {
-        massive_ship_fallen_empire
-        cosmo_crisis_titan
-    }
 
     potential = {
         from = {
             country_uses_bio_ships = no
             is_country_type = fallen_empire
         }
+        fe_ship_uses_titan_reactors = yes
     }
 
     show_tech_unlock_if = {
         country_uses_bio_ships = no
+        is_country_type = fallen_empire
     }
     upgrades_to = "FE_TITAN_COLD_FUSION_REACTOR"
 
-    ai_weight = {
-        weight = 2
-    }
+    ai_weight = { weight = 2 }
 }
 
 utility_component_template = {
@@ -638,26 +584,22 @@ utility_component_template = {
 
     prerequisites = { "tech_cold_fusion_power" }
     component_set = "fe_power_core"
-    size_restriction = {
-        massive_ship_fallen_empire
-        cosmo_crisis_titan
-    }
 
     potential = {
         from = {
             country_uses_bio_ships = no
             is_country_type = fallen_empire
         }
+        fe_ship_uses_titan_reactors = yes
     }
 
     show_tech_unlock_if = {
         country_uses_bio_ships = no
+        is_country_type = fallen_empire
     }
     upgrades_to = "FE_TITAN_ANTIMATTER_REACTOR"
 
-    ai_weight = {
-        weight = 3
-    }
+    ai_weight = { weight = 3 }
 }
 
 utility_component_template = {
@@ -677,25 +619,22 @@ utility_component_template = {
 
     prerequisites = { "tech_antimatter_power" }
     component_set = "fe_power_core"
-    size_restriction = {
-        massive_ship_fallen_empire
-        cosmo_crisis_titan
-    }
+
     potential = {
         from = {
             country_uses_bio_ships = no
             is_country_type = fallen_empire
         }
+        fe_ship_uses_titan_reactors = yes
     }
 
     show_tech_unlock_if = {
         country_uses_bio_ships = no
+        is_country_type = fallen_empire
     }
     upgrades_to = "FE_TITAN_ZERO_POINT_REACTOR"
 
-    ai_weight = {
-        weight = 4
-    }
+    ai_weight = { weight = 4 }
 }
 
 utility_component_template = {
@@ -715,26 +654,22 @@ utility_component_template = {
 
     prerequisites = { "tech_zero_point_power" }
     component_set = "fe_power_core"
-    size_restriction = {
-        massive_ship_fallen_empire
-        cosmo_crisis_titan
-    }
 
     potential = {
         from = {
             country_uses_bio_ships = no
             is_country_type = fallen_empire
         }
+        fe_ship_uses_titan_reactors = yes
     }
 
     show_tech_unlock_if = {
         country_uses_bio_ships = no
+        is_country_type = fallen_empire
     }
     upgrades_to = "FE_TITAN_DARK_MATTER_REACTOR"
 
-    ai_weight = {
-        weight = 5
-    }
+    ai_weight = { weight = 5 }
 }
 
 utility_component_template = {
@@ -757,20 +692,18 @@ utility_component_template = {
 
     prerequisites = { "tech_dark_matter_power_core" }
     component_set = "fe_power_core"
-    size_restriction = {
-        massive_ship_fallen_empire
-        cosmo_crisis_titan
-    }
 
     potential = {
         from = {
             country_uses_bio_ships = no
             is_country_type = fallen_empire
         }
+        fe_ship_uses_titan_reactors = yes
     }
 
     show_tech_unlock_if = {
         country_uses_bio_ships = no
+        is_country_type = fallen_empire
     }
 
     ai_weight = {

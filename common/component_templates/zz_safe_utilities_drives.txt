@@ -34,9 +34,7 @@ utility_component_template = {
     component_set = "fe_ftl_components"
     upgrades_to = "FE_SUBSPACE_DRIVE"
 
-    ai_weight = {
-        base = 0
-    }
+    ai_weight = { base = 0 }
 }
 
 # Subspace Drive
@@ -69,6 +67,7 @@ utility_component_template = {
 
     show_tech_unlock_if = {
         country_uses_bio_ships = no
+        is_country_type = fallen_empire
     }
 
     ftl = no
@@ -78,9 +77,7 @@ utility_component_template = {
         ship_ftl_jumpdrive_range_mult = -0.75
     }
     prerequisites = { "tech_subspace_drive" }
-    ai_weight = {
-        weight = 1
-    }
+    ai_weight = { weight = 1 }
     component_set = "fe_ftl_components"
     upgrades_to = "FE_HYPER_DRIVE_1"
 }
@@ -106,9 +103,7 @@ utility_component_template = {
         ship_windup_mult = -0.35
     }
 
-    ai_weight = {
-        weight = 1
-    }
+    ai_weight = { weight = 2 }
 
     potential = {
         is_eager_explorer_ship = no
@@ -125,6 +120,7 @@ utility_component_template = {
 
     show_tech_unlock_if = {
         country_uses_bio_ships = no
+        is_country_type = fallen_empire
     }
     prerequisites = { "tech_hyper_drive_1" }
     component_set = "fe_ftl_components"
@@ -149,9 +145,7 @@ utility_component_template = {
         ship_windup_mult = -0.45
     }
 
-    ai_weight = {
-        weight = 2
-    }
+    ai_weight = { weight = 3 }
 
     potential = {
         is_eager_explorer_ship = no
@@ -168,6 +162,7 @@ utility_component_template = {
 
     show_tech_unlock_if = {
         country_uses_bio_ships = no
+        is_country_type = fallen_empire
     }
     prerequisites = { "tech_hyper_drive_2" }
     component_set = "fe_ftl_components"
@@ -192,9 +187,7 @@ utility_component_template = {
         ship_windup_mult = -0.6
     }
 
-    ai_weight = {
-        weight = 3
-    }
+    ai_weight = { weight = 4 }
 
     potential = {
         is_eager_explorer_ship = no
@@ -211,6 +204,7 @@ utility_component_template = {
 
     show_tech_unlock_if = {
         country_uses_bio_ships = no
+        is_country_type = fallen_empire
     }
     prerequisites = { "tech_hyper_drive_3" }
     component_set = "fe_ftl_components"
@@ -247,6 +241,7 @@ utility_component_template = {
 
     show_tech_unlock_if = {
         country_uses_bio_ships = no
+        is_country_type = fallen_empire
     }
 
     ftl = yes
@@ -257,9 +252,7 @@ utility_component_template = {
         ship_ftl_jumpdrive_range_mult = 0.5
     }
 
-    ai_weight = {
-        weight = 4
-    }
+    ai_weight = { weight = 5 }
 
     prerequisites = { "tech_jump_drive_1" }
     component_set = "fe_ftl_components"
@@ -296,6 +289,7 @@ utility_component_template = {
 
     show_tech_unlock_if = {
         country_uses_bio_ships = no
+        is_country_type = fallen_empire
     }
 
     ftl = yes
@@ -306,9 +300,7 @@ utility_component_template = {
         ship_ftl_jumpdrive_range_mult = 0.9
     }
 
-    ai_weight = {
-        weight = 5
-    }
+    ai_weight = { weight = 6 }
 
     prerequisites = { "tech_psi_jump_drive_1" }
     component_set = "fe_ftl_components"

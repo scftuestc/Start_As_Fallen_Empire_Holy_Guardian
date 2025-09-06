@@ -1,10 +1,10 @@
+# 让本起源也可以用原版的随机名字
 empire_name_format = {
     random_weight = {
         factor = 0
         modifier = {
             add = 100
-            has_government = gov_stagnant_ascendancy
-            # 让起源也可以用原版的随机名字
+            has_government = safe_gov_stagnant_ascendancy
             has_origin = Start_As_Fallen_Empire_Holy_Guardians
             has_ethic = ethic_fanatic_spiritualist
         }

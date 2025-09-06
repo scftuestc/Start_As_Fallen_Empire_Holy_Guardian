@@ -1,20 +1,21 @@
-@cruiser_power_1 = -40
-@cruiser_power_2 = -60
-@cruiser_power_3 = -80
-@cruiser_power_4 = -100
-@cruiser_power_5 = -120
+# 能耗减半，花费不变
+@cruiser_power_1 = -20
+@cruiser_power_2 = -30
+@cruiser_power_3 = -40
+@cruiser_power_4 = -50
+@cruiser_power_5 = -60
 
-@battleship_power_1 = -80
-@battleship_power_2 = -120
-@battleship_power_3 = -160
-@battleship_power_4 = -200
-@battleship_power_5 = -240
+@battleship_power_1 = -40
+@battleship_power_2 = -60
+@battleship_power_3 = -80
+@battleship_power_4 = -100
+@battleship_power_5 = -120
 
-@titan_power_1 = -160
-@titan_power_2 = -240
-@titan_power_3 = -320
-@titan_power_4 = -400
-@titan_power_5 = -480
+@titan_power_1 = -80
+@titan_power_2 = -120
+@titan_power_3 = -160
+@titan_power_4 = -200
+@titan_power_5 = -240
 
 @cruiser_cost1 = 12
 @cruiser_cost2 = 24
@@ -51,27 +52,23 @@ utility_component_template = {
     }
 
     modifier = {
-        ship_base_speed_mult = 0.25
+        ship_base_speed_mult = 0.20
         ship_evasion_add = 3
     }
 
     prerequisites = { "tech_thrusters_1" }
     component_set = "fe_thruster_components"
-    size_restriction = {
-        small_ship_fallen_empire
-        cosmo_crisis_destroyer
-    }
+
     potential = {
         from = {
             country_uses_bio_ships = no
             is_country_type = fallen_empire
         }
+        fe_ship_uses_cruiser_thrusters = yes
     }
     upgrades_to = "FE_SMALL_SHIP_THRUSTER_2"
 
-    ai_weight = {
-        weight = 1
-    }
+    ai_weight = { weight = 1 }
 }
 
 utility_component_template = {
@@ -88,27 +85,23 @@ utility_component_template = {
     }
 
     modifier = {
-        ship_base_speed_mult = 0.4
+        ship_base_speed_mult = 0.45
         ship_evasion_add = 5
     }
 
     prerequisites = { "tech_thrusters_2" }
     component_set = "fe_thruster_components"
-    size_restriction = {
-        small_ship_fallen_empire
-        cosmo_crisis_destroyer
-    }
+
     potential = {
         from = {
             country_uses_bio_ships = no
             is_country_type = fallen_empire
         }
+        fe_ship_uses_cruiser_thrusters = yes
     }
     upgrades_to = "FE_SMALL_SHIP_THRUSTER_3"
 
-    ai_weight = {
-        weight = 2
-    }
+    ai_weight = { weight = 2 }
 }
 
 utility_component_template = {
@@ -130,21 +123,17 @@ utility_component_template = {
 
     prerequisites = { "tech_thrusters_3" }
     component_set = "fe_thruster_components"
-    size_restriction = {
-        small_ship_fallen_empire
-        cosmo_crisis_destroyer
-    }
+
     potential = {
         from = {
             country_uses_bio_ships = no
             is_country_type = fallen_empire
         }
+        fe_ship_uses_cruiser_thrusters = yes
     }
     upgrades_to = "FE_SMALL_SHIP_THRUSTER_4"
 
-    ai_weight = {
-        weight = 3
-    }
+    ai_weight = { weight = 3 }
 }
 
 utility_component_template = {
@@ -160,27 +149,23 @@ utility_component_template = {
         }
     }
     modifier = {
-        ship_base_speed_mult = 0.8
+        ship_base_speed_mult = 0.9
         ship_evasion_add = 9
     }
 
     prerequisites = { "tech_thrusters_4" }
     component_set = "fe_thruster_components"
-    size_restriction = {
-        small_ship_fallen_empire
-        cosmo_crisis_destroyer
-    }
+
     potential = {
         from = {
             country_uses_bio_ships = no
             is_country_type = fallen_empire
         }
+        fe_ship_uses_cruiser_thrusters = yes
     }
     upgrades_to = "FE_SMALL_SHIP_THRUSTER_5"
 
-    ai_weight = {
-        weight = 4
-    }
+    ai_weight = { weight = 4 }
 }
 
 utility_component_template = {
@@ -203,15 +188,13 @@ utility_component_template = {
 
     prerequisites = { "tech_dark_matter_propulsion" }
     component_set = "fe_thruster_components"
-    size_restriction = {
-        small_ship_fallen_empire
-        cosmo_crisis_destroyer
-    }
+
     potential = {
         from = {
             country_uses_bio_ships = no
             is_country_type = fallen_empire
         }
+        fe_ship_uses_cruiser_thrusters = yes
     }
 
     ai_weight = {
@@ -251,21 +234,17 @@ utility_component_template = {
 
     prerequisites = { "tech_thrusters_1" }
     component_set = "fe_thruster_components"
-    size_restriction = {
-        large_ship_fallen_empire
-        cosmo_crisis_battlecruiser
-    }
+
     potential = {
         from = {
             country_uses_bio_ships = no
             is_country_type = fallen_empire
         }
+        fe_ship_uses_battleship_thrusters = yes
     }
     upgrades_to = "FE_LARGE_SHIP_THRUSTER_2"
 
-    ai_weight = {
-        weight = 1
-    }
+    ai_weight = { weight = 1 }
 }
 
 utility_component_template = {
@@ -282,27 +261,23 @@ utility_component_template = {
     }
 
     modifier = {
-        ship_base_speed_mult = 0.4
+        ship_base_speed_mult = 0.5
         ship_evasion_add = 5
     }
 
     prerequisites = { "tech_thrusters_2" }
     component_set = "fe_thruster_components"
-    size_restriction = {
-        large_ship_fallen_empire
-        cosmo_crisis_battlecruiser
-    }
+
     potential = {
         from = {
             country_uses_bio_ships = no
             is_country_type = fallen_empire
         }
+        fe_ship_uses_battleship_thrusters = yes
     }
     upgrades_to = "FE_LARGE_SHIP_THRUSTER_3"
 
-    ai_weight = {
-        weight = 2
-    }
+    ai_weight = { weight = 2 }
 }
 
 utility_component_template = {
@@ -324,21 +299,17 @@ utility_component_template = {
 
     prerequisites = { "tech_thrusters_3" }
     component_set = "fe_thruster_components"
-    size_restriction = {
-        large_ship_fallen_empire
-        cosmo_crisis_battlecruiser
-    }
+
     potential = {
         from = {
             country_uses_bio_ships = no
             is_country_type = fallen_empire
         }
+        fe_ship_uses_battleship_thrusters = yes
     }
     upgrades_to = "FE_LARGE_SHIP_THRUSTER_4"
 
-    ai_weight = {
-        weight = 3
-    }
+    ai_weight = { weight = 3 }
 }
 
 utility_component_template = {
@@ -354,27 +325,23 @@ utility_component_template = {
         }
     }
     modifier = {
-        ship_base_speed_mult = 0.8
+        ship_base_speed_mult = 0.9
         ship_evasion_add = 9
     }
 
     prerequisites = { "tech_thrusters_4" }
     component_set = "fe_thruster_components"
-    size_restriction = {
-        large_ship_fallen_empire
-        cosmo_crisis_battlecruiser
-    }
+
     potential = {
         from = {
             country_uses_bio_ships = no
             is_country_type = fallen_empire
         }
+        fe_ship_uses_battleship_thrusters = yes
     }
     upgrades_to = "FE_LARGE_SHIP_THRUSTER_5"
 
-    ai_weight = {
-        weight = 4
-    }
+    ai_weight = { weight = 4 }
 }
 
 utility_component_template = {
@@ -392,20 +359,18 @@ utility_component_template = {
     }
     modifier = {
         ship_base_speed_mult = 1.5
-        ship_evasion_add = 12
+        ship_evasion_add = 15
     }
 
     prerequisites = { "tech_dark_matter_propulsion" }
     component_set = "fe_thruster_components"
-    size_restriction = {
-        large_ship_fallen_empire
-        cosmo_crisis_battlecruiser
-    }
+
     potential = {
         from = {
             country_uses_bio_ships = no
             is_country_type = fallen_empire
         }
+        fe_ship_uses_battleship_thrusters = yes
     }
 
     ai_weight = {
@@ -439,26 +404,22 @@ utility_component_template = {
 
     modifier = {
         ship_base_speed_mult = 0.25
-        ship_evasion_add = 1
+        ship_evasion_add = 3
     }
 
     prerequisites = { "tech_thrusters_1" }
     component_set = "fe_thruster_components"
-    size_restriction = {
-        massive_ship_fallen_empire
-        cosmo_crisis_titan
-    }
+
     potential = {
         from = {
             country_uses_bio_ships = no
             is_country_type = fallen_empire
         }
+        fe_ship_uses_titan_thrusters = yes
     }
     upgrades_to = "FE_TITAN_SHIP_THRUSTER_2"
 
-    ai_weight = {
-        weight = 1
-    }
+    ai_weight = { weight = 1 }
 }
 
 utility_component_template = {
@@ -475,27 +436,23 @@ utility_component_template = {
     }
 
     modifier = {
-        ship_base_speed_mult = 0.4
-        ship_evasion_add = 3
+        ship_base_speed_mult = 0.5
+        ship_evasion_add = 5
     }
 
     prerequisites = { "tech_thrusters_2" }
     component_set = "fe_thruster_components"
-    size_restriction = {
-        massive_ship_fallen_empire
-        cosmo_crisis_titan
-    }
+
     potential = {
         from = {
             country_uses_bio_ships = no
             is_country_type = fallen_empire
         }
+        fe_ship_uses_titan_thrusters = yes
     }
     upgrades_to = "FE_TITAN_SHIP_THRUSTER_3"
 
-    ai_weight = {
-        weight = 2
-    }
+    ai_weight = { weight = 2 }
 }
 
 utility_component_template = {
@@ -512,26 +469,22 @@ utility_component_template = {
     }
     modifier = {
         ship_base_speed_mult = 0.65
-        ship_evasion_add = 5
+        ship_evasion_add = 7
     }
 
     prerequisites = { "tech_thrusters_3" }
     component_set = "fe_thruster_components"
-    size_restriction = {
-        massive_ship_fallen_empire
-        cosmo_crisis_titan
-    }
+
     potential = {
         from = {
             country_uses_bio_ships = no
             is_country_type = fallen_empire
         }
+        fe_ship_uses_titan_thrusters = yes
     }
     upgrades_to = "FE_TITAN_SHIP_THRUSTER_4"
 
-    ai_weight = {
-        weight = 3
-    }
+    ai_weight = { weight = 3 }
 }
 
 utility_component_template = {
@@ -547,27 +500,23 @@ utility_component_template = {
         }
     }
     modifier = {
-        ship_base_speed_mult = 0.8
-        ship_evasion_add = 7
+        ship_base_speed_mult = 0.9
+        ship_evasion_add = 9
     }
 
     prerequisites = { "tech_thrusters_4" }
     component_set = "fe_thruster_components"
-    size_restriction = {
-        massive_ship_fallen_empire
-        cosmo_crisis_titan
-    }
+
     potential = {
         from = {
             country_uses_bio_ships = no
             is_country_type = fallen_empire
         }
+        fe_ship_uses_titan_thrusters = yes
     }
     upgrades_to = "FE_TITAN_SHIP_THRUSTER_5"
 
-    ai_weight = {
-        weight = 4
-    }
+    ai_weight = { weight = 4 }
 }
 
 utility_component_template = {
@@ -585,20 +534,18 @@ utility_component_template = {
     }
     modifier = {
         ship_base_speed_mult = 1.5
-        ship_evasion_add = 9
+        ship_evasion_add = 15
     }
 
     prerequisites = { "tech_dark_matter_propulsion" }
     component_set = "fe_thruster_components"
-    size_restriction = {
-        massive_ship_fallen_empire
-        cosmo_crisis_titan
-    }
+
     potential = {
         from = {
             country_uses_bio_ships = no
             is_country_type = fallen_empire
         }
+        fe_ship_uses_titan_thrusters = yes
     }
 
     ai_weight = {

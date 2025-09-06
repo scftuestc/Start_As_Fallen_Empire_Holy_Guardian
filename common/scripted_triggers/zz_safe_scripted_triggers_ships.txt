@@ -3,16 +3,133 @@
 #       Ships       #
 #####################
 
-# 堕落帝国三独有船类型
+# 堕落帝国三独有船类型+灾飞路线飞船
 ship_is_fallen_empire = {
     OR = {
-        # 原版堕落飞船
+        # 原版堕落舰船
         is_ship_size = small_ship_fallen_empire
         is_ship_size = large_ship_fallen_empire
         is_ship_size = massive_ship_fallen_empire
-        # 文灾飞的飞船
+        # 走文灾飞的舰船
         is_ship_size = cosmo_crisis_destroyer
         is_ship_size = cosmo_crisis_battlecruiser
         is_ship_size = cosmo_crisis_titan
+        # 走武灾飞的舰船
+        is_ship_size = star_eater
+    }
+}
+
+### 用于反应堆
+fe_ship_uses_cruiser_reactors = {
+    OR = {
+        # 原版堕落舰船
+        is_ship_size = small_ship_fallen_empire
+        # 走文灾飞的舰船
+        is_ship_size = cosmo_crisis_destroyer
+    }
+}
+
+fe_ship_uses_battleship_reactors = {
+    OR = {
+        # 原版堕落舰船
+        is_ship_size = large_ship_fallen_empire
+        # 走文灾飞的舰船
+        is_ship_size = cosmo_crisis_battlecruiser
+    }
+}
+
+fe_ship_uses_titan_reactors = {
+    OR = {
+        # 原版堕落舰船
+        is_ship_size = massive_ship_fallen_empire
+        # 走文灾飞的舰船
+        is_ship_size = cosmo_crisis_titan
+    }
+}
+
+### 用于推进器
+fe_ship_uses_cruiser_thrusters = {
+    OR = {
+        # 原版堕落舰船
+        is_ship_size = small_ship_fallen_empire
+        # 走文灾飞的舰船
+        is_ship_size = cosmo_crisis_destroyer
+    }
+}
+
+fe_ship_uses_battleship_thrusters = {
+    OR = {
+        # 原版堕落舰船
+        is_ship_size = large_ship_fallen_empire
+        # 走文灾飞的舰船
+        is_ship_size = cosmo_crisis_battlecruiser
+    }
+}
+
+fe_ship_uses_titan_thrusters = {
+    OR = {
+        # 原版堕落舰船
+        is_ship_size = massive_ship_fallen_empire
+        # 走文灾飞的舰船
+        is_ship_size = cosmo_crisis_titan
+    }
+}
+
+### 用于作战电脑
+fe_ship_uses_swarm_role = {
+    OR = {
+        # 原版堕落舰船
+        is_ship_size = small_ship_fallen_empire
+        # 走文灾飞的舰船
+        is_ship_size = cosmo_crisis_destroyer
+    }
+}
+
+fe_ship_uses_picket_role = {
+    OR = {
+        # 原版堕落舰船
+        is_ship_size = small_ship_fallen_empire
+        # 走文灾飞的舰船
+        is_ship_size = cosmo_crisis_destroyer
+    }
+}
+
+fe_ship_uses_line_role = {
+    OR = {
+        # 原版堕落舰船
+        is_ship_size = small_ship_fallen_empire
+        is_ship_size = large_ship_fallen_empire
+        # 走文灾飞的舰船
+        is_ship_size = cosmo_crisis_destroyer
+        is_ship_size = cosmo_crisis_battlecruiser
+
+    }
+}
+
+fe_ship_uses_artillery_role = {
+    OR = {
+        # 原版堕落舰船
+        is_ship_size = small_ship_fallen_empire
+        is_ship_size = large_ship_fallen_empire
+        is_ship_size = massive_ship_fallen_empire
+        # 走文灾飞的舰船
+        is_ship_size = cosmo_crisis_destroyer
+        is_ship_size = cosmo_crisis_battlecruiser
+        is_ship_size = cosmo_crisis_titan
+        # 走武灾飞的舰船
+        is_ship_size = star_eater
+    }
+}
+
+fe_ship_uses_carrier_role = {
+    OR = {
+        # 原版堕落舰船
+        is_ship_size = large_ship_fallen_empire
+        is_ship_size = massive_ship_fallen_empire
+        # 走文灾飞的舰船
+        is_ship_size = cosmo_crisis_battlecruiser
+        is_ship_size = cosmo_crisis_titan
+        # 走武灾飞的舰船
+        is_ship_size = star_eater
     }
 }

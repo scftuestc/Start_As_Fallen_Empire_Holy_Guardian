@@ -1,4 +1,4 @@
-# Fallen Empire Massive Ship Section
+# Fallen Empire Massive Ship Section 失落帝国泰坦舰船区段
 ship_section_template = {
     key = "fallen_empire_massive_warship_key"
     ship_size = massive_ship_fallen_empire
@@ -106,7 +106,7 @@ ship_section_template = {
     aux_utility_slots = 4
 }
 
-# Fallen Empire Large Ship Section
+# Fallen Empire Large Ship Section 失落帝国战列巡洋舰区段——航母核心
 ship_section_template = {
     key = "fallen_empire_large_warship_key"
     ship_size = large_ship_fallen_empire
@@ -174,7 +174,7 @@ ship_section_template = {
 }
 
 
-# Fallen Empire Large Ship Section
+# Fallen Empire Large Ship Section 失落帝国战列巡洋舰区段——鱼雷核心
 ship_section_template = {
     key = "fallen_empire_large_warship_torpedo_key"
     ship_size = large_ship_fallen_empire
@@ -253,7 +253,7 @@ ship_section_template = {
     aux_utility_slots = 3
 }
 
-# Fallen Empire Small Ship Section
+# Fallen Empire Small Ship Section 失落帝国护航舰区段——巨炮核心
 ship_section_template = {
     key = "fallen_empire_warship_small_key"
     ship_size = small_ship_fallen_empire
@@ -317,7 +317,7 @@ ship_section_template = {
 }
 
 
-# Fallen Empire Small Ship Section
+# Fallen Empire Small Ship Section 失落帝国护航舰区段——鱼类核心
 ship_section_template = {
     key = "fallen_empire_warship_small_torpedo_key"
     ship_size = small_ship_fallen_empire

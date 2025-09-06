@@ -1,32 +1,132 @@
-# 原版生成堕落恒星基地脚本修改
-create_fe_home_citadel = {
-    create_starbase = {
-        size = "starbase_citadel"
+### 用于进游戏时的初始化脚本，不动原版脚本，抄过来按需求修改用，加前缀safe
 
-        module = "shipyard"
-        module = "shipyard"
-        module = "hangar_bay"
-        module = "gun_battery"
-        module = "missile_battery"
-        module = "archaeo_rampart"
-
-        building = "crew_quarters"
-        building = "command_center"
-        building = "colossus_yards"
-        building = "titan_yards"
-
-        effect = {
-            while = {
-                # 更改为8个
-                count = 8
-                create_fallen_empire_platform = yes
-            }
+# 创建护航就
+safe_create_fallen_empire_small_ship = {
+    if = {
+        limit = {
+            owner = { has_ethic = ethic_fanatic_spiritualist }
+        }
+        create_ship = {
+            name = random
+            random_existing_design = small_ship_fallen_empire
+            graphical_culture = owner
         }
     }
 }
-
-create_fe_citadel = {
+# 创建战列巡洋舰
+safe_create_fallen_empire_large_ship = {
+    if = {
+        limit = {
+            owner = { has_ethic = ethic_fanatic_spiritualist }
+        }
+        create_ship = {
+            name = random
+            random_existing_design = large_ship_fallen_empire
+            graphical_culture = owner
+        }
+    }
+}
+# 创建泰坦
+safe_create_fallen_empire_titan = {
+    if = {
+        limit = {
+            owner = { has_ethic = ethic_fanatic_spiritualist }
+        }
+        create_ship = {
+            name = random
+            random_existing_design = massive_ship_fallen_empire
+            graphical_culture = owner
+        }
+    }
+}
+# 创建巨像
+safe_create_fallen_empire_colossus = {
+    if = {
+        limit = {
+            host_has_dlc = apocalypse
+            owner = { has_ethic = ethic_fanatic_spiritualist }
+        }
+        create_ship = {
+            name = random
+            random_existing_design = colossus
+            graphical_culture = owner
+        }
+    }
+}
+# 创建舰队(20艘护航舰+10艘战略巡洋舰+1艘泰坦)
+safe_create_fallen_empire_fleet = {
+    owner = {
+        create_leader = {
+            class = commander
+            species = owner_main_species
+            name = random
+            leader_age_min = 25
+            leader_age_max = 45
+        }
+        last_created_leader = {
+            add_trait = {
+                trait = subclass_commander_admiral
+            }
+            add_skill = 9
+        }
+    }
+    create_fleet = {
+        effect = {
+            set_owner = root
+            while = {
+                count = 10
+                safe_create_fallen_empire_large_ship = yes
+            }
+            while = {
+                count = 20
+                safe_create_fallen_empire_small_ship = yes
+            }
+            safe_create_fallen_empire_titan = yes
+            set_location = root.capital_scope.star
+        }
+    }
+    last_created_fleet = { assign_leader = last_created_leader }
+}
+# 创建初始海军(40艘护航舰+20艘战略巡洋舰+2艘泰坦+1艘巨像)
+safe_create_fallen_empire_starting_navy = {
+    while = {
+        count = 2
+        safe_create_fallen_empire_fleet = yes
+    }
+    create_fleet = {
+        effect = {
+            set_owner = root
+            safe_create_fallen_empire_colossus = yes
+            set_location = root.capital_scope.star
+        }
+    }
+}
+# 创建首都恒星基地
+# 直接使用原版的create_fe_home_citadel有bug，error.log 未指明原因。目前采用：定位原始首都的二级星堡，升级到堕落五级擎天堡的方案
+safe_create_fe_home_citadel = {
+    # 模块设置
+    set_starbase_size =  starbase_citadel
+    set_starbase_module = { slot = 1 module = shipyard }
+    set_starbase_module = { slot = 2 module = anchorage }
+    set_starbase_module = { slot = 3 module = hangar_bay }
+    set_starbase_module = { slot = 4 module = gun_battery }
+    set_starbase_module = { slot = 5 module = missile_battery }
+    set_starbase_module = { slot = 6 module = archaeo_rampart }
+    # 恒星基地建筑设置
+    set_starbase_building = { slot = 1 building = "crew_quarters" }
+    set_starbase_building = { slot = 2 building = "archaeo_overcharger" }
+    set_starbase_building = { slot = 3 building = "titan_yards" }
+    set_starbase_building = { slot = 4 building = "colossus_yards" }
+    # 防御平台设置
+    while = {
+        count = 10
+        create_fallen_empire_platform = yes
+    }
+}
+# 创建殖民地恒星基地
+safe_create_fe_citadel = {
     create_starbase = {
+        owner = $OWNER$
         size = "starbase_citadel"
         module = "shipyard"
         module = "anchorage"
@@ -42,15 +142,14 @@ create_fe_citadel = {
 
         effect = {
             while = {
-                # 更改为8个
                 count = 8
                 create_fallen_empire_platform = yes
             }
         }
     }
 }
-
-create_fe_dsc = {
+# 创建深空擎天堡
+safe_create_fe_dsc = {
     create_starbase = {
         owner = $OWNER$
         size = starbase_deep_space_citadel_3
@@ -68,9 +167,8 @@ create_fe_dsc = {
         }
     }
 }
-
-# 十层科技循环
-give_repeatable_tech= {
+# 添加缺失的十层科技循环
+give_missing_repeatable_tech= {
     while = {
         count = 10
         # 物理学
@@ -102,8 +200,8 @@ give_repeatable_tech= {
         give_technology = { tech = tech_repeatable_reduced_building_time message = no }
     }
 }
-# 巨像科技
-give_colossus_tech ={
+# 添加缺失的巨像科技
+give_missing_colossus_tech = {
     if = {
         limit = { host_has_dlc = "Apocalypse" }
         give_technology = { tech = tech_colossus message = no }
@@ -115,4 +213,40 @@ give_colossus_tech ={
         give_technology = { tech = tech_pk_nanobots message = no }
     }
 }
-
+# 添加缺失的其他科技
+give_missing_other_tech = {
+    # 缺失的科技为：创建帝国时，初始物种为机器族才能有的科技，以及灵能科技
+    # 还缺失走文灾飞路线的十个扭曲现实法则科技，蠢驴脑抽了，这也能算在堕落的全科技中吗？
+    # 缺失的物理学科技补充
+    give_technology = { tech = tech_archeology_lab_ancrel message = no}
+    give_technology = { tech = tech_combat_computers_autonomous message = no }
+    # 缺失的社会学科技补充
+    give_technology = { tech = tech_adaptive_combat_algorithms message = no }
+    give_technology = { tech = tech_biomechanics message = no }
+    give_technology = { tech = tech_psi_jump_drive_1 message = no }
+    give_technology = { tech = tech_psionic_barrier message = no }
+    give_technology = { tech = tech_psionic_shield message = no}
+    # 缺失的工程学科技补充
+    give_technology = { tech = tech_micro_replicators message = no }
+    give_technology = { tech = tech_self_assembling_components message = no }
+}
+# 添加对应的飞升和传统书
+add_ascension_perk_and_tradition = {
+    if = {
+        limit = { owner = { has_ethic = ethic_fanatic_spiritualist } }
+        # 添加飞升
+        add_ascension_perk = ap_consecrated_worlds
+        add_ascension_perk = ap_galactic_wonders_utopia_and_megacorp
+        add_ascension_perk = ap_world_shaper
+        add_ascension_perk = ap_colossus
+        add_ascension_perk = ap_mind_over_matter
+        # 添加传统树
+        add_tradition = tr_psionics_adopt # 开门
+        add_tradition = tr_psionics_psi_corps
+        add_tradition = tr_psionics_mind_readers
+        add_tradition = tr_psionics_psionic_assimilation
+        add_tradition = tr_psionics_breach_shroud
+        add_tradition = tr_psionics_shrouded_encryption
+        add_tradition = tr_psionics_finish # 闭门
+    }
+}

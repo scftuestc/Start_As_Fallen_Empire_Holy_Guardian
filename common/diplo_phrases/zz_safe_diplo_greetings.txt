@@ -1,3 +1,10 @@
+#######################
+# DIPLOMACY: GREETINGS
+#######################
+# FROM = initiator of the diplomatic action; ROOT = recipient of the diplomatic action
+# 均是非战争状态下的问候
+
+## 玩家与AI都是堕落
 greetings = {
     # 普政堕落不屑一顾问候（10句）
     # Dismissive Greetings
@@ -275,6 +282,24 @@ greetings = {
             }
         }
     }
-
 }
 
+## 玩家为堕落，AI为觉醒
+greetings = {
+}
+
+## 玩家为觉醒，AI为堕落
+greetings = {
+}
+
+## 玩家和AI都是觉醒
+greetings = {
+}
+
+## 玩家为堕落，AI为非堕落/觉醒
+greetings = {
+}
+
+## 玩家为觉醒，AI为非堕落/觉醒
+greetings = {
+}

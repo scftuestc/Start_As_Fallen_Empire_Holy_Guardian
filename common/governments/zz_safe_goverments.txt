@@ -145,6 +145,7 @@ safe_gov_awakened_ascendancy = {
     possible = {
         has_valid_civic = safe_civic_revanchist_fervor
         has_valid_civic = safe_civic_ancient_caches_of_technology
+        has_origin = Start_As_Fallen_Empire_Holy_Guardians
     }
 
     weight = {
