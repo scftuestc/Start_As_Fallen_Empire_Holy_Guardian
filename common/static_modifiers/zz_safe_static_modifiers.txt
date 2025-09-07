@@ -1,0 +1,7 @@
+##########################################################################
+# Planet Modifiers
+##########################################################################
+safe_holy_planet = {
+    icon = "gfx/interface/icons/planet_modifiers/pm_consecrated_worlds.dds"
+    icon_frame = 3
+}

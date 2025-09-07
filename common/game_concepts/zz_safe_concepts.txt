@@ -1,0 +1,8 @@
+# 补充需要的concept
+concept_psionic = {
+    icon = "gfx/interface/icons/traits/trait_psionic_species.dds"
+}
+
+concept_all_technology = {
+    icon = "gfx/interface/icons/research_icon.dds"
+}

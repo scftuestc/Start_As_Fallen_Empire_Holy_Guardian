@@ -1,0 +1,38 @@
+##########################################################################
+# Empire Policies
+#
+# #####
+#
+# AI:
+# Base AI-weight is 100, if unchanged
+# AI will grab whatever policy-option has the highest weight
+#
+# #####
+#
+##########################################################################
+
+diplomatic_stance = {
+
+    option = {
+        name = "diplo_stance_isolationist_fallen_empire"
+        icon = "GFX_diplomatic_stance_isolationist"
+
+        potential = {
+            is_country_type = fallen_empire
+        }
+
+        policy_flags = {
+            diplo_stance_isolationist_fallen_empire
+        }
+
+        modifier = {
+            diplo_weight_mult = -2.0
+            country_war_exhaustion_mult = -0.50
+            country_naval_cap_mult = 1.0
+        }
+
+        ai_weight = {
+            weight = 100
+        }
+    }
+}

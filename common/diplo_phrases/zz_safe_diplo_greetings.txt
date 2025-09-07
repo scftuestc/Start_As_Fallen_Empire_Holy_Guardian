@@ -302,4 +302,5 @@ greetings = {
 
 ## 玩家为觉醒，AI为非堕落/觉醒
 greetings = {
+
 }

@@ -29,13 +29,17 @@ Start_As_Fallen_Empire_Holy_Guardians = {
             }
         }
     }
-    # 添加必要物种特质：灵能
-    traits = { trait = trait_psionic }
+    # 添加必要物种特质：灵能、盖亚星球偏好
+    traits = {
+        trait = trait_pc_gaia_preference
+        trait = trait_psionic
+    }
 
     random_weight = { base = 0 }
     ai_playable = { always = no }
 
     description = "Start_As_Fallen_Empire_Holy_Guardians_effect"
+    negative_description = "Start_As_Fallen_Empire_Holy_Guardians_negative_effect"
     advanced_start = no
     # 设置country flag为custom_start_screen来自定义开局本文描述，避免被原版覆盖
     flags = { custom_start_screen }

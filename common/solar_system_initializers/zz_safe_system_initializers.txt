@@ -1,4 +1,4 @@
-@base_moon_distance = 10
+@base_moon_distance = 15
 
 ###   分层的星系结构：
 #  首都星系 (safe_fallen_2)
@@ -22,7 +22,7 @@ safe_fallen_2 = {
     class = "rl_standard_stars"
     asteroid_belt = {
         type = rocky_asteroid_belt
-        radius = 50
+        radius = 60
     }
     flags = { fallen_empire_spiritualist_capital_system }
 
@@ -31,21 +31,53 @@ safe_fallen_2 = {
         class = star
         orbit_distance = 0
         orbit_angle = 1
-        size = { min = 20 max = 30 }
+        size = { min = 22 max = 26 }
         has_ring = no
+        # 增加开采资源
+        init_effect = {
+            random_list = {
+                50 = {
+                    add_deposit = d_energy_3
+                    add_deposit = d_physics_2
+                }
+                50 = {
+                    add_deposit = d_energy_5
+                }
+            }
+        }
     }
 
-    change_orbit = 50
+    change_orbit = 60
 
     planet = {
-        count = { min = 2 max = 4 }
+        count = { min = 2 max = 3 }
         class = pc_asteroid
         orbit_distance = 0
         orbit_angle = { min = 40 max = 100 }
+        # 增加开采资源
+        init_effect = {
+            random_list = {
+                25 = {
+                    add_deposit = d_minerals_3
+                    add_deposit = d_rare_crystals_2
+                }
+                25 = {
+                    add_deposit = d_minerals_3
+                    add_deposit = d_engineering_2
+                }
+                25 = {
+                    add_deposit = d_engineering_3
+                    add_deposit = d_rare_crystals_2
+                }
+                25 = {
+                    add_deposit = d_minerals_5
+                }
+            }
+        }
     }
 
     planet = {
-        count = { min = 0 max = 2 }
+        count = 1
         orbit_distance = 20
         class = random_non_colonizable
         orbit_angle = { min = 90 max = 270 }
@@ -56,17 +88,18 @@ safe_fallen_2 = {
             count = { min = 0 max = 1 }
             class = random_non_colonizable
             orbit_angle = { min = 90 max = 270 }
-            orbit_distance = 5
+            orbit_distance = 0
         }
     }
 
     planet = {
         name = "NAME_Celestial_Throne"
         starting_planet = yes
-        orbit_distance = 20
+        orbit_distance = 30
         class = pc_gaia
         orbit_angle = { min = 90 max = 270 }
-        size = 30
+        size = 28
+        has_ring = no
         deposit_blockers = none
         modifiers = none
         init_effect = {
@@ -78,14 +111,28 @@ safe_fallen_2 = {
             }
             set_planet_flag = fallen_empire_spiritualist_capital
         }
+
         change_orbit = @base_moon_distance
+
         moon = {
             name = "NAME_The_Mistake"
             class = "pc_broken"
+            size = 10
+            has_ring = yes
             orbit_angle = { min = 90 max = 270 }
-            orbit_distance = 5
+            orbit_distance = 0
             modifiers = none
-            init_effect = { prevent_anomaly = yes }
+            init_effect = {
+                prevent_anomaly = yes
+                random_list = {
+                    50 = {
+                        add_deposit = d_society_3
+                    }
+                    50 = {
+                        add_deposit = d_alloys_3
+                    }
+                }
+            }
         }
     }
 
@@ -94,27 +141,40 @@ safe_fallen_2 = {
         orbit_distance = 30
         class = pc_gaia
         orbit_angle = { min = 90 max = 270 }
-        size = 22
+        size = 25
+        has_ring = no
         deposit_blockers = none
         modifiers = none
         init_effect = {
             set_planet_flag = fallen_empire_spiritualist_sky_temple
             prevent_anomaly = yes
         }
+
+        change_orbit = @base_moon_distance
+
+        moon = {
+            count = 1
+            size = { min = 6 max = 8 }
+            class = random_non_colonizable
+            orbit_angle = { min = 90 max = 270 }
+            orbit_distance = 0
+        }
     }
 
     planet = {
-        count = { min = 2 max = 4 }
+        count = 2
         orbit_distance = 20
         class = random_non_colonizable
+        size = { min = 12 max = 18 }
         orbit_angle = { min = 90 max = 270 }
 
         change_orbit = @base_moon_distance
+
         moon = {
             count = { min = 0 max = 1 }
             class = random_non_colonizable
             orbit_angle = { min = 90 max = 270 }
-            orbit_distance = 5
+            orbit_distance = 0
         }
     }
 
@@ -122,15 +182,45 @@ safe_fallen_2 = {
         count = { min = 1 max = 2 }
         orbit_distance = 20
         class = pc_gas_giant
+        size = { min = 20 max = 25}
+        has_ring = yes
         orbit_angle = { min = 90 max = 270 }
+        init_effect = {
+            random_list = {
+                25 = {
+                    add_deposit = d_energy_2
+                    add_deposit = d_society_3
+                }
+                25 = {
+                    add_deposit = d_society_3
+                    add_deposit = d_exotic_gases_2
+                }
+                25 = {
+                    add_deposit = d_energy_3
+                    add_deposit = d_exotic_gases_2
+                }
+                25 = {
+                    add_deposit = d_society_5
+                }
+            }
+        }
 
         change_orbit = @base_moon_distance
+
         moon = {
-            count = { min = 0 max = 3 }
+            count = { min = 1 max = 2 }
+            size = { min = 8 max = 10 }
             class = random_non_colonizable
             orbit_angle = { min = 90 max = 270 }
-            orbit_distance = 5
+            orbit_distance = 0
         }
+    }
+
+    planet = {
+        count = { min = 0 max = 1 }
+        class = random_non_colonizable
+        orbit_distance = 20
+        orbit_angle = { min = 40 max = 110 }
     }
     # 相邻轨道星系初始化
     neighbor_system = {
@@ -160,8 +250,8 @@ safe_fallen_2 = {
     }
     # 带有虚境星球的特殊星系的初始化
     neighbor_system = {
-        # 概率提高到50%
-        spawn_chance = 50
+        # 概率提高到75%
+        spawn_chance = 75
         distance = { min = 0 max = 30 }
         initializer = "safe_fallen_shrouded"
     }
@@ -169,30 +259,49 @@ safe_fallen_2 = {
 
 safe_fallen_orbitals_1 = {
     class = "rl_standard_stars"
+
+    asteroid_belt = {
+        type = icy_asteroid_belt
+        radius = 180
+    }
+
     planet = {
         count = 1
         class = star
         orbit_distance = 0
         orbit_angle = 1
-        size = { min = 20 max = 30 }
+        size = { min = 22 max = 26 }
         has_ring = no
+        init_effect = {
+            random_list = {
+                50 = {
+                    add_deposit = d_energy_3
+                    add_deposit = d_physics_2
+                }
+                50 = {
+                    add_deposit = d_energy_5
+                }
+            }
+        }
     }
 
     flags = { fallen_empire_orbitals_system_1 }
 
-    change_orbit = 45
+    change_orbit = 50
 
     planet = {
-        count = { min = 2 max = 10 }
+        count = { min = 6 max = 8 }
         orbit_distance = 20
+        class = random_non_colonizable
         orbit_angle = { min = 90 max = 270 }
 
         change_orbit = @base_moon_distance
 
         moon = {
             count = { min = 0 max = 1 }
+            class = random_non_colonizable
             orbit_angle = { min = 90 max = 270 }
-            orbit_distance = 5
+            orbit_distance = 0
         }
     }
 
@@ -212,8 +321,8 @@ safe_fallen_orbitals_2 = {
     flags = { fallen_empire_orbitals_system_2 }
 
     asteroid_belt = {
-        type = rocky_asteroid_belt
-        radius = 95
+        type = icy_asteroid_belt
+        radius = 120
     }
 
     planet = {
@@ -221,38 +330,71 @@ safe_fallen_orbitals_2 = {
         class = star
         orbit_distance = 0
         orbit_angle = 1
-        size = { min = 20 max = 30 }
+        size = { min = 22 max = 26 }
         has_ring = no
+        init_effect = {
+            random_list = {
+                50 = {
+                    add_deposit = d_energy_3
+                    add_deposit = d_physics_2
+                }
+                50 = {
+                    add_deposit = d_energy_5
+                }
+            }
+        }
     }
 
-    change_orbit = 30
+    change_orbit = 50
 
     planet = {
         count = 2
         orbit_distance = 20
         orbit_angle = { min = 90 max = 270 }
+        class = random_non_colonizable
     }
 
-    change_orbit = 25
+    change_orbit = 30
 
     planet = {
-        count = { min = 1 max = 4 }
+        count = { min = 2 max = 3 }
         class = pc_asteroid
         orbit_distance = 0
         orbit_angle = { min = 90 max = 270 }
+        init_effect = {
+            random_list = {
+                25 = {
+                    add_deposit = d_minerals_3
+                    add_deposit = d_rare_crystals_2
+                }
+                25 = {
+                    add_deposit = d_minerals_3
+                    add_deposit = d_engineering_2
+                }
+                25 = {
+                    add_deposit = d_engineering_3
+                    add_deposit = d_rare_crystals_2
+                }
+                25 = {
+                    add_deposit = d_minerals_5
+                }
+            }
+        }
     }
 
     planet = {
-        count = { min = 2 max = 5 }
-        orbit_distance = 25
+        count = { min = 2 max = 3 }
+        orbit_distance = 20
         orbit_angle = { min = 90 max = 270 }
+        class = random_non_colonizable
 
         change_orbit = @base_moon_distance
 
         moon = {
             count = { min = 0 max = 1 }
+            class = random_non_colonizable
             orbit_angle = { min = 90 max = 270 }
-            orbit_distance = 5
+            orbit_distance = 0
         }
     }
 
@@ -270,7 +412,7 @@ safe_fallen_col_1 = {
     class = "rl_standard_stars"
     asteroid_belt = {
         type = rocky_asteroid_belt
-        radius = 50
+        radius = 60
     }
 
     flags = { fallen_empire_col_system_1 }
@@ -280,21 +422,43 @@ safe_fallen_col_1 = {
         class = star
         orbit_distance = 0
         orbit_angle = 1
-        size = { min = 20 max = 30 }
+        size = { min = 22 max = 26 }
         has_ring = no
+        init_effect = {
+            random_list = {
+                50 = {
+                    add_deposit = d_energy_3
+                    add_deposit = d_physics_2
+                }
+                50 = {
+                    add_deposit = d_energy_5
+                }
+            }
+        }
     }
 
-    change_orbit = 50
+    change_orbit = 60
 
     planet = {
-        count = { min = 1 max = 3 }
+        count = { min = 2 max = 3 }
         class = pc_asteroid
         orbit_distance = 0
         orbit_angle = { min = 40 max = 100 }
+        init_effect = {
+            random_list = {
+                50 = {
+                    add_deposit = d_minerals_3
+                    add_deposit = d_rare_crystals_2
+                }
+                50 = {
+                    add_deposit = d_minerals_5
+                }
+            }
+        }
     }
 
     planet = {
-        count = { min = 0 max = 2 }
+        count = { min = 1 max = 2 }
         orbit_distance = 20
         class = random_non_colonizable
         orbit_angle = { min = 90 max = 270 }
@@ -305,11 +469,9 @@ safe_fallen_col_1 = {
             count = { min = 0 max = 1 }
             class = random_non_colonizable
             orbit_angle = { min = 90 max = 270 }
-            orbit_distance = 5
+            orbit_distance = 0
         }
     }
-
-    change_orbit = 10
 
     planet = {
         count = 1
@@ -317,7 +479,8 @@ safe_fallen_col_1 = {
         home_planet = yes
         class = ideal_planet_class
         orbit_angle = { min = 90 max = 270 }
-        size = 16
+        size = 22
+        has_ring = no
         deposit_blockers = none
         modifiers = none
 
@@ -329,15 +492,16 @@ safe_fallen_col_1 = {
         change_orbit = @base_moon_distance
 
         moon = {
-            count = { min = 0 max = 1 }
+            count = 1
+            size = { min = 6 max = 8 }
             class = random_non_colonizable
             orbit_angle = { min = 90 max = 270 }
-            orbit_distance = 5
+            orbit_distance = 0
         }
     }
 
     planet = {
-        count = { min = 2 max = 4 }
+        count = { min = 1 max = 2 }
         orbit_distance = 20
         class = random_non_colonizable
         orbit_angle = { min = 90 max = 270 }
@@ -348,7 +512,7 @@ safe_fallen_col_1 = {
             count = { min = 0 max = 1 }
             class = random_non_colonizable
             orbit_angle = { min = 90 max = 270 }
-            orbit_distance = 5
+            orbit_distance = 0
         }
     }
 
@@ -356,15 +520,37 @@ safe_fallen_col_1 = {
         count = { min = 1 max = 2 }
         orbit_distance = 20
         class = pc_gas_giant
+        size = { min = 20 max = 25 }
+        has_ring = yes
         orbit_angle = { min = 90 max = 270 }
+        init_effect = {
+            random_list = {
+                25 = {
+                    add_deposit = d_energy_2
+                    add_deposit = d_society_3
+                }
+                25 = {
+                    add_deposit = d_society_3
+                    add_deposit = d_exotic_gases_2
+                }
+                25 = {
+                    add_deposit = d_energy_3
+                    add_deposit = d_exotic_gases_2
+                }
+                25 = {
+                    add_deposit = d_society_5
+                }
+            }
+        }
 
         change_orbit = @base_moon_distance
 
         moon = {
-            count = { min = 0 max = 3 }
+            count = { min = 1 max = 2 }
+            size = {min = 8 max = 10}
             class = random_non_colonizable
             orbit_angle = { min = 90 max = 270 }
-            orbit_distance = 5
+            orbit_distance = 0
         }
     }
 }
@@ -373,7 +559,7 @@ safe_fallen_col_2 = {
     class = "rl_standard_stars"
     asteroid_belt = {
         type = rocky_asteroid_belt
-        radius = 115
+        radius = 60
     }
 
     flags = { fallen_empire_col_system_2 }
@@ -383,19 +569,65 @@ safe_fallen_col_2 = {
         class = star
         orbit_distance = 0
         orbit_angle = 1
-        size = { min = 20 max = 30 }
+        size = { min = 22 max = 26 }
         has_ring = no
+        init_effect = {
+            random_list = {
+                50 = {
+                    add_deposit = d_energy_3
+                    add_deposit = d_physics_2
+                }
+                50 = {
+                    add_deposit = d_energy_5
+                }
+            }
+        }
     }
 
     change_orbit = 60
 
     planet = {
+        count = { min = 2 max = 3 }
+        class = pc_asteroid
+        orbit_distance = 0
+        orbit_angle = { min = 40 max = 110 }
+        init_effect = {
+            random_list = {
+                50 = {
+                    add_deposit = d_minerals_3
+                    add_deposit = d_rare_crystals_2
+                }
+                50 = {
+                    add_deposit = d_minerals_5
+                }
+            }
+        }
+    }
+
+    planet = {
+        count = { min = 1 max = 2 }
+        orbit_distance = 20
+        class = random_non_colonizable
+        orbit_angle = { min = 90 max = 270 }
+
+        change_orbit = @base_moon_distance
+
+        moon = {
+            count = { min = 0 max = 1 }
+            class = random_non_colonizable
+            orbit_angle = { min = 90 max = 270 }
+            orbit_distance = 0
+        }
+    }
+
+    planet = {
         count = 1
         home_planet = yes
         class = ideal_planet_class
-        orbit_distance = 0
+        orbit_distance = 20
         orbit_angle = { min = 90 max = 270 }
-        size = { min = 16 max = 16 }
+        size = 22
+        has_ring = no
         deposit_blockers = none
         modifiers = none
 
@@ -408,15 +640,16 @@ safe_fallen_col_2 = {
         change_orbit = @base_moon_distance
 
         moon = {
-            count = { min = 0 max = 1 }
+            count = 1
+            size = { min = 6 max = 8 }
             class = random_non_colonizable
             orbit_angle = { min = 90 max = 270 }
-            orbit_distance = 5
+            orbit_distance = 0
         }
     }
 
     planet = {
-        count = 2
+        count = { min = 2 max = 3 }
         orbit_distance = 20
         class = random_non_colonizable
         orbit_angle = { min = 90 max = 270 }
@@ -426,54 +659,54 @@ safe_fallen_col_2 = {
             count = { min = 0 max = 1 }
             class = random_non_colonizable
             orbit_angle = { min = 90 max = 270 }
-            orbit_distance = 5
+            orbit_distance = 0
         }
     }
 
-    change_orbit = 15
-
-    planet = {
-        count = { min = 2 max = 3 }
-        class = pc_asteroid
-        orbit_distance = 0
-        orbit_angle = { min = 40 max = 110 }
-    }
-
-    planet = {
-        count = { min = 2 max = 4 }
-        orbit_distance = 25
-        class = random_non_colonizable
-        orbit_angle = { min = 90 max = 270 }
-
-        change_orbit = @base_moon_distance
-
-        moon = {
-            count = { min = 0 max = 1 }
-            class = random_non_colonizable
-            orbit_angle = { min = 90 max = 270 }
-            orbit_distance = 5
-        }
-    }
 
     planet = {
         count = { min = 1 max = 2 }
         orbit_distance = 20
         class = pc_gas_giant
+        size = { min = 20 max = 24 }
+        has_ring = yes
         orbit_angle = { min = 90 max = 270 }
+        init_effect = {
+            random_list = {
+                25 = {
+                    add_deposit = d_energy_2
+                    add_deposit = d_society_3
+                }
+                25 = {
+                    add_deposit = d_society_3
+                    add_deposit = d_exotic_gases_2
+                }
+                25 = {
+                    add_deposit = d_energy_3
+                    add_deposit = d_exotic_gases_2
+                }
+                25 = {
+                    add_deposit = d_society_5
+                }
+            }
+        }
+
         change_orbit = @base_moon_distance
+
         moon = {
-            count = { min = 0 max = 3 }
+            count = { min = 1 max = 2 }
+            size = { min = 8 max = 10 }
             class = random_non_colonizable
             orbit_angle = { min = 90 max = 270 }
-            orbit_distance = 5
+            orbit_distance = 0
         }
     }
 
     planet = {
-        count = { min = 0 max = 2 }
-        orbit_distance = 20
+        count = { min = 0 max = 1 }
         class = random_non_colonizable
-        orbit_angle = { min = 90 max = 270 }
+        orbit_distance = 20
+        orbit_angle = { min = 40 max = 110 }
     }
 }
 
@@ -509,8 +742,11 @@ safe_fallen_shrouded = {
         class = pc_shrouded
         name = "NAME_Apostasy"
         orbit_angle = { min = 90 max = 270 }
-        size = 22
+        size = 20
         modifiers = none
+        init_effect = {
+            add_deposit = d_zro_deposit_4
+        }
     }
 
     planet = {
@@ -526,13 +762,13 @@ safe_fallen_shrouded = {
         orbit_distance = 25
         class = pc_frozen
         orbit_angle = { min = 90 max = 270 }
-        size = 25
+        size = 24
         change_orbit = @base_moon_distance
 
         moon = {
             count = 1
             class = pc_barren_cold
-            size = 7
+            size = 8
             orbit_angle = { min = 90 max = 270 }
             orbit_distance = 5
         }
@@ -579,7 +815,7 @@ safe_fallen_holy_01 = {
         init_effect = {
             prevent_anomaly = yes
             add_modifier = {
-                modifier = "holy_planet"
+                modifier = "safe_holy_planet"
                 days = -1
             }
             create_ambient_object = {
@@ -660,7 +896,7 @@ safe_fallen_holy_02 = {
         orbit_distance = 25
         class = "pc_gaia"
         orbit_angle = { min = 90 max = 270 }
-        size = 14
+        size = 16
         name = "NAME_Emerald_Mausoleum"
         deposit_blockers = none
         flags = { holy_world_2 }
@@ -668,7 +904,7 @@ safe_fallen_holy_02 = {
         init_effect = {
             prevent_anomaly = yes
             add_modifier = {
-                modifier = "holy_planet"
+                modifier = "safe_holy_planet"
                 days = -1
             }
             create_ambient_object = {
@@ -733,12 +969,12 @@ safe_fallen_holy_03 = {
         deposit_blockers = none
         orbit_angle = { min = 90 max = 270 }
         flags = { holy_world_3 }
-        size = 10
+        size = 14
 
         init_effect = {
             prevent_anomaly = yes
             add_modifier = {
-                modifier = "holy_planet"
+                modifier = "safe_holy_planet"
                 days = -1
             }
             create_ambient_object = {
@@ -818,12 +1054,12 @@ safe_fallen_holy_04 = {
         deposit_blockers = none
         orbit_angle = { min = 90 max = 270 }
         flags = { holy_world_4 }
-        size = 25
+        size = 24
 
         init_effect = {
             prevent_anomaly = yes
             add_modifier = {
-                modifier = "holy_planet"
+                modifier = "safe_holy_planet"
                 days = -1
             }
             create_ambient_object = {

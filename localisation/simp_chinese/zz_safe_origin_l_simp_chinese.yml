@@ -1,25 +1,33 @@
 ﻿l_simp_chinese:
 
+ # game concept
+ concept_psionic:"$trait_psionic$"
+ concept_psionic_desc:"—£happiness£['concept_happiness']：§G+5%§!\n—£job_researcher£['concept_planet_researchers']$BONUS_WORKFORCE_FOR$：§G+10%§!\n—£job_bureaucrat£['concept_planet_bureaucrats']$BONUS_WORKFORCE_FOR$：§G+10%§!\n—£job_enforcer£['concept_planet_enforcers']$BONUS_WORKFORCE_FOR$：§G+10%§!\n—$TRAIT_IMPROVES_LEADERS$\n\n§L$trait_psionic_desc$§!"
+ concept_all_technology:"全科技"
+ concept_all_technology_desc:"—获得除飞升，传统、特殊事件给予的科技以外的其他所有科技。\n\n§L该帝国掌握了宇宙中几乎所有的基础科技§!。"
  # 起源说明
- Start_As_Fallen_Empire_Holy_Guardians:"扎克兰的救赎"
- Start_As_Fallen_Empire_Holy_Guardians_desc:"在银河的黑暗时代，我们曾是伟大先驱§H扎克兰§!的虔诚追随者。当古老的预警系统被触发，我们苏醒于一个陌生的新银河，发现扎克兰的遗产已被时间掩埋。"
- Start_As_Fallen_Empire_Holy_Guardians_effect:"—$SPECIES_TRAITS$灵能\n—起始科技：全科技\n—星球偏好：['concept_gaia_preference']\n"
+ NO_CHALLENGING_ORIGIN:"§R-警告：毫无挑战性的起源\n-警告：§Y$personality_fallen_empire_spiritualist$§!将禁用除['concept_psionic_ascension']以外的所有飞升路线。§!\n"
+ Start_As_Fallen_Empire_Holy_Guardians:"$origin_fallen_empire$"
+ Start_As_Fallen_Empire_Holy_Guardians_desc:"$NO_CHALLENGING_ORIGIN$\n$origin_fallen_empire_desc$"
+ Start_As_Fallen_Empire_Holy_Guardians_effect:"—母星：§Y$NAME_Celestial_Throne$§!\n—$SPECIES_TRAITS$['concept_psionic']\n—$TECH_STARTING$：['concept_all_technology']\n"
+ Start_As_Fallen_Empire_Holy_Guardians_negative_effect:"—宜居星球偏好：['concept_gaia_preference']"
  # 国名理念
- safe_civic_lethargic_leadership: "暮气沉沉的领袖"
+ safe_civic_lethargic_leadership: "$civic_lethargic_leadership$"
  safe_civic_lethargic_leadership_desc: "千年智慧给他们带来了深邃的远见，但也带来了对变革的深深倦怠。"
- safe_civic_empire_in_decline: "衰落的帝国"
+ safe_civic_empire_in_decline: "$civic_empire_in_decline$"
  safe_civic_empire_in_decline_desc: "曾触摸星辰，制定律法的古老帝国，如今只愿守护故土，静观兴衰。"
  # 政体
- safe_gov_stagnant_ascendancy: "停滞圣权"
- safe_gov_stagnant_ascendancy_desc: "停滞圣权是一种政府和社会的发展已经停滞不前，并仍旧坚守着腐朽的传统与早已被遗忘的教义的古老国家。"
- safe_gov_awakened_ascendancy: "复兴圣权"
- safe_gov_awakened_ascendancy_desc: "复兴后的帝国将从其旷日已久的安眠中惊醒，并且试图在浩瀚星海中夺回失去已久的遗产。"
+ safe_gov_stagnant_ascendancy: "$stagnated_ascendancy$"
+ safe_gov_stagnant_ascendancy_desc: "$stagnated_ascendancy_desc$"
+ safe_gov_awakened_ascendancy: "$awakened_ascendancy$"
+ safe_gov_awakened_ascendancy_desc: "$awakened_ascendancy_desc$"
  # 初始星系说明
- safe_fallen_2_NAME:"圣地守卫者母星系"
+ safe_fallen_2_NAME:"$HOME_SYSTEM$$personality_fallen_empire_spiritualist$"
  # 给圣地守卫者用的物种舰船组
- SAFE_Spiritualist:"圣地守卫者"
+ SAFE_Spiritualist:"$personality_fallen_empire_spiritualist$"
+
  # 开局说明
- START_SCREEN_MESSAGE_SAFE_FALLEN_EMPIRE_SPIRITUALIST:"我们的文明曾追寻着先驱者扎克兰的脚步，在群星间建立了繁荣的圣地网络。作为守护者，我们见证了银河的无数兴衰变迁。\n\n随着时间流逝，我们逐渐退隐至核心星域，专注于守护古老的知识与传统。漫长的岁月让我们变得保守而内省，科技发展陷入停滞，帝国的疆域也不再扩张。我们在静默中观察着银河，守护着那些被遗忘的秘密。\n\n如今，新的动荡时代即将来临。古老的预警系统被激活，迫使我们从千年的沉寂中苏醒。扎克兰留下的遗产正面临威胁，我们必须重新拾起守护者的职责，在变化的银河中寻找属于自己的道路。"
+ START_SCREEN_MESSAGE_SAFE_FALLEN_EMPIRE_SPIRITUALIST:"我们的文明曾追寻着先驱者扎克兰的脚步，在群星间建立了繁荣的圣地网络。作为守护者，我们见证了银河的无数兴衰变迁。\n\n随着时间流逝，我们逐渐退隐至核心星域，专注于守护古老的知识与传统。漫长的岁月让我们变得保守而内省，科技发展陷入停滞，帝国的疆域也不再扩张。我们在静默中观察着银河，守护着那些被遗忘的秘密。\n\n如今，新的动荡时代即将来临。古老的预警系统若被激活，将使我们从千年的沉寂中苏醒。我们必须在变化的银河中重新寻找属于自己的道路。"
  # 殖民地类型说明
  col_ae_capital: "觉醒帝国首都"
  col_ae_capital_desc: "$col_fe_colony_desc$"
