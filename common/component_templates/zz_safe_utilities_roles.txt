@@ -21,7 +21,7 @@ utility_component_template = {
     potential = {
         from = {
             country_uses_bio_ships = no
-            is_country_type = fallen_empire
+            is_fallen_empire = yes
         }
         OR = {
             ship_is_fallen_empire = yes
@@ -32,7 +32,7 @@ utility_component_template = {
 
     show_tech_unlock_if = {
         country_uses_bio_ships = no
-        is_country_type = fallen_empire
+        is_fallen_empire = yes
     }
     component_set = "fe_combat_computers"
 
@@ -61,14 +61,14 @@ utility_component_template = {
     potential = {
         from = {
             country_uses_bio_ships = no
-            is_country_type = fallen_empire
+            is_fallen_empire = yes
         }
         fe_ship_uses_swarm_role = yes
     }
 
     show_tech_unlock_if = {
         country_uses_bio_ships = no
-        is_country_type = fallen_empire
+        is_fallen_empire = yes
     }
     component_set = "fe_combat_computers"
     ship_behavior = "swarm"
@@ -102,14 +102,14 @@ utility_component_template = {
     potential = {
         from = {
             country_uses_bio_ships = no
-            is_country_type = fallen_empire
+            is_fallen_empire = yes
         }
         fe_ship_uses_swarm_role = yes
     }
 
     show_tech_unlock_if = {
         country_uses_bio_ships = no
-        is_country_type = fallen_empire
+        is_fallen_empire = yes
     }
     component_set = "fe_combat_computers"
     ship_behavior = "swarm"
@@ -143,14 +143,14 @@ utility_component_template = {
     potential = {
         from = {
             country_uses_bio_ships = no
-            is_country_type = fallen_empire
+            is_fallen_empire = yes
         }
         fe_ship_uses_swarm_role = yes
     }
 
     show_tech_unlock_if = {
         country_uses_bio_ships = no
-        is_country_type = fallen_empire
+        is_fallen_empire = yes
     }
     component_set = "fe_combat_computers"
     ship_behavior = "swarm"
@@ -164,7 +164,20 @@ utility_component_template = {
         ship_fire_rate_mult = 0.45
     }
 
-    ai_weight = { weight = 3 }
+    ai_weight = {
+        weight = 3
+        modifier = {
+            factor = 0
+            OR = {
+                has_global_flag = ghost_signal_5_flag
+                has_global_flag = ghost_signal_4_flag
+                has_global_flag = ghost_signal_3_flag
+                has_global_flag = ghost_signal_2_flag
+                has_global_flag = ghost_signal_1_flag
+                has_policy_flag = ai_outlawed
+            }
+        }
+    }
 }
 # 预知接口仅限选择了灵能飞升的帝国通过国家事件：预知接口获得对应科技，且无法被逆向工程
 utility_component_template = {
@@ -183,23 +196,16 @@ utility_component_template = {
     potential = {
         from = {
             country_uses_bio_ships = no
-            is_country_type = fallen_empire
-            OR = {
-                has_ethic = ethic_spiritualist
-                has_ethic = ethic_fanatic_spiritualist
-            }
+            is_fallen_empire_spiritualist = yes
         }
         fe_ship_uses_swarm_role = yes
     }
 
     show_tech_unlock_if = {
         country_uses_bio_ships = no
-        is_country_type = fallen_empire
-        OR = {
-            has_ethic = ethic_spiritualist
-            has_ethic = ethic_fanatic_spiritualist
-        }
+        is_fallen_empire_spiritualist = yes
     }
+
     component_set = "fe_combat_computers"
     ship_behavior = "swarm"
     upgrade_path = swarm
@@ -212,7 +218,7 @@ utility_component_template = {
         ship_fire_rate_mult = 0.60
     }
 
-    ai_weight = { weight = 0 }
+    ai_weight = { weight = 4 }
 }
 
 ######################
@@ -236,15 +242,16 @@ utility_component_template = {
     potential = {
         from = {
             country_uses_bio_ships = no
-            is_country_type = fallen_empire
+            is_fallen_empire = yes
         }
         fe_ship_uses_picket_role = yes
     }
 
     show_tech_unlock_if = {
         country_uses_bio_ships = no
-        is_country_type = fallen_empire
+        is_fallen_empire = yes
     }
+
     component_set = "fe_combat_computers"
     ship_behavior = "picket"
     upgrade_path = picket
@@ -274,14 +281,14 @@ utility_component_template = {
     potential = {
         from = {
             country_uses_bio_ships = no
-            is_country_type = fallen_empire
+            is_fallen_empire = yes
         }
         fe_ship_uses_picket_role = yes
     }
 
     show_tech_unlock_if = {
         country_uses_bio_ships = no
-        is_country_type = fallen_empire
+        is_fallen_empire = yes
     }
     component_set = "fe_combat_computers"
     ship_behavior = "picket"
@@ -316,15 +323,16 @@ utility_component_template = {
     potential = {
         from = {
             country_uses_bio_ships = no
-            is_country_type = fallen_empire
+            is_fallen_empire = yes
         }
         fe_ship_uses_picket_role = yes
     }
 
     show_tech_unlock_if = {
         country_uses_bio_ships = no
-        is_country_type = fallen_empire
+        is_fallen_empire = yes
     }
+
     component_set = "fe_combat_computers"
     ship_behavior = "picket"
     upgrade_path = picket
@@ -338,7 +346,20 @@ utility_component_template = {
         ship_tracking_add = 30
     }
 
-    ai_weight = { weight = 3 }
+    ai_weight = {
+        weight = 3
+        modifier = {
+            factor = 0
+            OR = {
+                has_global_flag = ghost_signal_5_flag
+                has_global_flag = ghost_signal_4_flag
+                has_global_flag = ghost_signal_3_flag
+                has_global_flag = ghost_signal_2_flag
+                has_global_flag = ghost_signal_1_flag
+                has_policy_flag = ai_outlawed
+            }
+        }
+    }
 }
 
 utility_component_template = {
@@ -357,23 +378,16 @@ utility_component_template = {
     potential = {
         from = {
             country_uses_bio_ships = no
-            is_country_type = fallen_empire
-            OR = {
-                has_ethic = ethic_spiritualist
-                has_ethic = ethic_fanatic_spiritualist
-            }
+            is_fallen_empire_spiritualist = yes
         }
         fe_ship_uses_picket_role = yes
     }
 
     show_tech_unlock_if = {
         country_uses_bio_ships = no
-        is_country_type = fallen_empire
-        OR = {
-            has_ethic = ethic_spiritualist
-            has_ethic = ethic_fanatic_spiritualist
-        }
+        is_fallen_empire_spiritualist = yes
     }
+
     component_set = "fe_combat_computers"
     ship_behavior = "picket"
     upgrade_path = picket
@@ -387,7 +401,7 @@ utility_component_template = {
         ship_tracking_add = 40
     }
 
-    ai_weight = { weight = 0 }
+    ai_weight = { weight = 4 }
 }
 
 ####################
@@ -411,15 +425,16 @@ utility_component_template = {
     potential = {
         from = {
             country_uses_bio_ships = no
-            is_country_type = fallen_empire
+            is_fallen_empire = yes
         }
         fe_ship_uses_line_role = yes
     }
 
     show_tech_unlock_if = {
         country_uses_bio_ships = no
-        is_country_type = fallen_empire
+        is_fallen_empire = yes
     }
+
     component_set = "fe_combat_computers"
     ship_behavior = "line"
     upgrade_path = line
@@ -450,14 +465,14 @@ utility_component_template = {
     potential = {
         from = {
             country_uses_bio_ships = no
-            is_country_type = fallen_empire
+            is_fallen_empire = yes
         }
         fe_ship_uses_line_role = yes
     }
 
     show_tech_unlock_if = {
         country_uses_bio_ships = no
-        is_country_type = fallen_empire
+        is_fallen_empire = yes
     }
     component_set = "fe_combat_computers"
     ship_behavior = "line"
@@ -489,15 +504,16 @@ utility_component_template = {
     potential = {
         from = {
             country_uses_bio_ships = no
-            is_country_type = fallen_empire
+            is_fallen_empire = yes
         }
         fe_ship_uses_line_role = yes
     }
 
     show_tech_unlock_if = {
         country_uses_bio_ships = no
-        is_country_type = fallen_empire
+        is_fallen_empire = yes
     }
+
     component_set = "fe_combat_computers"
     ship_behavior = "line"
     upgrade_path = line
@@ -508,7 +524,20 @@ utility_component_template = {
         ship_accuracy_add = 20
     }
 
-    ai_weight = { weight = 0 }
+    ai_weight = {
+        weight = 3
+        modifier = {
+            factor = 0
+            OR = {
+                has_global_flag = ghost_signal_5_flag
+                has_global_flag = ghost_signal_4_flag
+                has_global_flag = ghost_signal_3_flag
+                has_global_flag = ghost_signal_2_flag
+                has_global_flag = ghost_signal_1_flag
+                has_policy_flag = ai_outlawed
+            }
+        }
+    }
 }
 
 utility_component_template = {
@@ -527,23 +556,16 @@ utility_component_template = {
     potential = {
         from = {
             country_uses_bio_ships = no
-            is_country_type = fallen_empire
-            OR = {
-                has_ethic = ethic_spiritualist
-                has_ethic = ethic_fanatic_spiritualist
-            }
+            is_fallen_empire_spiritualist = yes
         }
         fe_ship_uses_line_role = yes
     }
 
     show_tech_unlock_if = {
         country_uses_bio_ships = no
-        is_country_type = fallen_empire
-        OR = {
-            has_ethic = ethic_spiritualist
-            has_ethic = ethic_fanatic_spiritualist
-        }
+        is_fallen_empire_spiritualist = yes
     }
+
     component_set = "fe_combat_computers"
     ship_behavior = "line"
     upgrade_path = line
@@ -555,7 +577,7 @@ utility_component_template = {
         ship_tracking_add = 20
     }
 
-    ai_weight = { weight = 0 }
+    ai_weight = { weight = 4 }
 }
 
 ######################
@@ -579,15 +601,16 @@ utility_component_template = {
     potential = {
         from = {
             country_uses_bio_ships = no
-            is_country_type = fallen_empire
+            is_fallen_empire = yes
         }
         fe_ship_uses_artillery_role = yes
     }
 
     show_tech_unlock_if = {
         country_uses_bio_ships = no
-        is_country_type = fallen_empire
+        is_fallen_empire = yes
     }
+
     component_set = "fe_combat_computers"
     ship_behavior = "artillery"
     upgrade_path = artillery
@@ -618,15 +641,16 @@ utility_component_template = {
     potential = {
         from = {
             country_uses_bio_ships = no
-            is_country_type = fallen_empire
+            is_fallen_empire = yes
         }
         fe_ship_uses_artillery_role = yes
     }
 
     show_tech_unlock_if = {
         country_uses_bio_ships = no
-        is_country_type = fallen_empire
+        is_fallen_empire = yes
     }
+
     component_set = "fe_combat_computers"
     ship_behavior = "artillery"
     upgrade_path = artillery
@@ -657,15 +681,16 @@ utility_component_template = {
     potential = {
         from = {
             country_uses_bio_ships = no
-            is_country_type = fallen_empire
+            is_fallen_empire = yes
         }
         fe_ship_uses_artillery_role = yes
     }
 
     show_tech_unlock_if = {
         country_uses_bio_ships = no
-        is_country_type = fallen_empire
+        is_fallen_empire = yes
     }
+
     component_set = "fe_combat_computers"
     ship_behavior = "artillery"
     upgrade_path = artillery
@@ -676,7 +701,20 @@ utility_component_template = {
         ship_weapon_range_mult = 0.45
     }
 
-    ai_weight = { weight = 3 }
+    ai_weight = {
+        weight = 3
+        modifier = {
+            factor = 0
+            OR = {
+                has_global_flag = ghost_signal_5_flag
+                has_global_flag = ghost_signal_4_flag
+                has_global_flag = ghost_signal_3_flag
+                has_global_flag = ghost_signal_2_flag
+                has_global_flag = ghost_signal_1_flag
+                has_policy_flag = ai_outlawed
+            }
+        }
+    }
 }
 
 utility_component_template = {
@@ -695,23 +733,16 @@ utility_component_template = {
     potential = {
         from = {
             country_uses_bio_ships = no
-            is_country_type = fallen_empire
-            OR = {
-                has_ethic = ethic_spiritualist
-                has_ethic = ethic_fanatic_spiritualist
-            }
+            is_fallen_empire_spiritualist = yes
         }
         fe_ship_uses_artillery_role = yes
     }
 
     show_tech_unlock_if = {
         country_uses_bio_ships = no
-        is_country_type = fallen_empire
-        OR = {
-            has_ethic = ethic_spiritualist
-            has_ethic = ethic_fanatic_spiritualist
-        }
+        is_fallen_empire_spiritualist = yes
     }
+
     component_set = "fe_combat_computers"
     ship_behavior = "artillery"
     upgrade_path = artillery
@@ -723,7 +754,7 @@ utility_component_template = {
         ship_tracking_add = 20
     }
 
-    ai_weight = { weight = 0 }
+    ai_weight = { weight = 4 }
 }
 
 ######################
@@ -747,15 +778,16 @@ utility_component_template = {
     potential = {
         from = {
             country_uses_bio_ships = no
-            is_country_type = fallen_empire
+            is_fallen_empire = yes
         }
         fe_ship_uses_carrier_role = yes
     }
 
     show_tech_unlock_if = {
         country_uses_bio_ships = no
-        is_country_type = fallen_empire
+        is_fallen_empire = yes
     }
+
     component_set = "fe_combat_computers"
     ship_behavior = "carrier"
     upgrade_path = carrier
@@ -786,15 +818,16 @@ utility_component_template = {
     potential = {
         from = {
             country_uses_bio_ships = no
-            is_country_type = fallen_empire
+            is_fallen_empire = yes
         }
         fe_ship_uses_carrier_role = yes
     }
 
     show_tech_unlock_if = {
         country_uses_bio_ships = no
-        is_country_type = fallen_empire
+        is_fallen_empire = yes
     }
+
     component_set = "fe_combat_computers"
     ship_behavior = "carrier"
     upgrade_path = carrier
@@ -824,15 +857,16 @@ utility_component_template = {
     potential = {
         from = {
             country_uses_bio_ships = no
-            is_country_type = fallen_empire
+            is_fallen_empire = yes
         }
         fe_ship_uses_carrier_role = yes
     }
 
     show_tech_unlock_if = {
         country_uses_bio_ships = no
-        is_country_type = fallen_empire
+        is_fallen_empire = yes
     }
+
     component_set = "fe_combat_computers"
     ship_behavior = "carrier"
     upgrade_path = carrier
@@ -842,7 +876,20 @@ utility_component_template = {
         ship_engagement_range_mult = 1.0
     }
 
-    ai_weight = { weight = 3 }
+    ai_weight = {
+        weight = 3
+        modifier = {
+            factor = 0
+            OR = {
+                has_global_flag = ghost_signal_5_flag
+                has_global_flag = ghost_signal_4_flag
+                has_global_flag = ghost_signal_3_flag
+                has_global_flag = ghost_signal_2_flag
+                has_global_flag = ghost_signal_1_flag
+                has_policy_flag = ai_outlawed
+            }
+        }
+    }
 }
 
 utility_component_template = {
@@ -861,23 +908,16 @@ utility_component_template = {
     potential = {
         from = {
             country_uses_bio_ships = no
-            is_country_type = fallen_empire
-            OR = {
-                has_ethic = ethic_spiritualist
-                has_ethic = ethic_fanatic_spiritualist
-            }
+            is_fallen_empire_spiritualist = yes
         }
         fe_ship_uses_carrier_role = yes
     }
 
     show_tech_unlock_if = {
         country_uses_bio_ships = no
-        is_country_type = fallen_empire
-        OR = {
-            has_ethic = ethic_spiritualist
-            has_ethic = ethic_fanatic_spiritualist
-        }
+        is_fallen_empire_spiritualist = yes
     }
+
     component_set = "fe_combat_computers"
     ship_behavior = "carrier"
     upgrade_path = carrier
@@ -888,5 +928,180 @@ utility_component_template = {
         ship_tracking_add = 20
     }
 
-    ai_weight = { weight = 0 }
+    ai_weight = { weight = 4 }
+}
+
+##############
+# 平台作战电脑 #
+##############
+
+utility_component_template = {
+    key = "FE_COMBAT_COMPUTER_PLATFORM_BASIC"
+    size = small
+    icon = "GFX_ship_part_computer_platform_basic"
+    icon_frame = 1
+    power = @power1
+    resources = {
+        category = ship_components
+        cost = {
+            alloys = @cost1
+        }
+    }
+    potential = {
+        from = {
+            country_uses_bio_ships = no
+            is_fallen_empire = yes
+        }
+        fe_ship_uses_platform_computers = yes
+    }
+
+    show_tech_unlock_if = {
+        country_uses_bio_ships = no
+        is_fallen_empire = yes
+    }
+
+    component_set = "fe_combat_computers"
+    ship_behavior = "platform"
+    prerequisites = { "tech_combat_computers_1" }
+    upgrades_to = "FE_COMBAT_COMPUTER_PLATFORM_ADVANCED"
+
+    ship_modifier = {
+        ship_fire_rate_mult = 0.40
+        ship_tracking_add = 20
+    }
+
+    ai_weight = {
+        weight = 2
+    }
+}
+
+utility_component_template = {
+    key = "FE_COMBAT_COMPUTER_PLATFORM_ADVANCED"
+    size = small
+    icon = "GFX_ship_part_computer_platform_advanced"
+    icon_frame = 1
+    power = @power2
+    resources = {
+        category = ship_components
+        cost = {
+            alloys = @cost2
+        }
+    }
+    potential = {
+        from = {
+            country_uses_bio_ships = no
+            is_fallen_empire = yes
+        }
+        fe_ship_uses_platform_computers = yes
+    }
+
+    show_tech_unlock_if = {
+        country_uses_bio_ships = no
+        is_fallen_empire = yes
+    }
+
+    component_set = "fe_combat_computers"
+    ship_behavior = "platform"
+    prerequisites = { "tech_combat_computers_2" }
+    upgrades_to = "FE_COMBAT_COMPUTER_PLATFORM_SAPIENT"
+
+    ship_modifier = {
+        ship_fire_rate_mult = 0.50
+        ship_tracking_add = 25
+    }
+
+    ai_weight = {
+        weight = 3
+    }
+}
+
+utility_component_template = {
+    key = "FE_COMBAT_COMPUTER_PLATFORM_SAPIENT"
+    size = small
+    icon = "GFX_ship_part_computer_platform_sapient"
+    icon_frame = 1
+    power = @power3
+    resources = {
+        category = ship_components
+        cost = {
+            alloys = @cost3
+        }
+    }
+    potential = {
+        from = {
+            country_uses_bio_ships = no
+            is_fallen_empire = yes
+        }
+        fe_ship_uses_platform_computers = yes
+    }
+
+    show_tech_unlock_if = {
+        country_uses_bio_ships = no
+        is_fallen_empire = yes
+    }
+
+    component_set = "fe_combat_computers"
+    ship_behavior = "platform"
+    prerequisites = { "tech_combat_computers_3" }
+
+    ship_modifier = {
+        ship_fire_rate_mult = 0.60
+        ship_tracking_add = 30
+        ship_accuracy_add = 15
+    }
+
+    ai_weight = {
+        weight = 5
+        modifier = {
+            factor = 0
+            OR = {
+                has_global_flag = ghost_signal_5_flag
+                has_global_flag = ghost_signal_4_flag
+                has_global_flag = ghost_signal_3_flag
+                has_global_flag = ghost_signal_2_flag
+                has_global_flag = ghost_signal_1_flag
+                has_policy_flag = ai_outlawed
+            }
+        }
+    }
+}
+
+utility_component_template = {
+    key = "FE_COMBAT_COMPUTER_PLATFORM_PRECOG"
+    size = small
+    icon = "GFX_ship_part_computer_platform_precog"
+    icon_frame = 1
+    power = @power3
+    resources = {
+        category = ship_components
+        cost = {
+            alloys = @cost3
+        }
+    }
+    potential = {
+        from = {
+            country_uses_bio_ships = no
+            is_fallen_empire_spiritualist = yes
+        }
+        fe_ship_uses_platform_computers = yes
+    }
+
+    show_tech_unlock_if = {
+        country_uses_bio_ships = no
+        is_fallen_empire_spiritualist = yes
+    }
+
+    component_set = "fe_combat_computers"
+    ship_behavior = "platform"
+    prerequisites = { "tech_precognition_interface" }
+
+    ship_modifier = {
+        ship_fire_rate_mult = 0.70
+        ship_tracking_add = 40
+        ship_accuracy_add = 20
+    }
+
+    ai_weight = {
+        weight = 4
+    }
 }

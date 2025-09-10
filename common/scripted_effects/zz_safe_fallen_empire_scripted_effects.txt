@@ -48,7 +48,7 @@ safe_create_fallen_empire_colossus = {
         }
         create_ship = {
             name = random
-            random_existing_design = colossus
+            design = "NAME_Cleanser"
             graphical_culture = owner
         }
     }
@@ -93,11 +93,27 @@ safe_create_fallen_empire_starting_navy = {
         count = 2
         safe_create_fallen_empire_fleet = yes
     }
-    create_fleet = {
-        effect = {
-            set_owner = root
-            safe_create_fallen_empire_colossus = yes
-            set_location = root.capital_scope.star
+    if = {
+        limit = { host_has_dlc = "Apocalypse" }
+        create_fleet = {
+            effect = {
+                set_owner = prev.owner
+                safe_create_fallen_empire_colossus = yes
+                set_location = root.capital_scope.star
+            }
+        }
+    }
+}
+# 创建防御平台
+safe_create_fallen_empire_platform = {
+    if = {
+        limit = {
+            owner = { has_ethic = ethic_fanatic_spiritualist }
+        }
+        create_ship = {
+            name = random
+            random_existing_design = military_station_small_fallen_empire
+            graphical_culture = owner
         }
     }
 }
@@ -120,7 +136,7 @@ safe_create_fe_home_citadel = {
     # 防御平台设置
     while = {
         count = 10
-        create_fallen_empire_platform = yes
+        safe_create_fallen_empire_platform = yes
     }
 }
 # 创建殖民地恒星基地
@@ -143,7 +159,7 @@ safe_create_fe_citadel = {
         effect = {
             while = {
                 count = 8
-                create_fallen_empire_platform = yes
+                safe_create_fallen_empire_platform = yes
             }
         }
     }
@@ -162,7 +178,7 @@ safe_create_fe_dsc = {
             while = {
                 # 更改为4个
                 count = 4
-                create_fallen_empire_platform = yes
+                safe_create_fallen_empire_platform = yes
             }
         }
     }

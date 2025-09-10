@@ -20,3 +20,16 @@
  civic_lethargic_leadership_desc: "千年智慧给他们带来了深邃的远见，但也带来了对变革的深深倦怠"
  civic_empire_in_decline: "衰落的帝国"
  civic_empire_in_decline_desc: "曾触摸星辰，制定律法的古老帝国，如今只愿守护故土，静观兴衰。"
+
+ # 舰船类型名称覆盖
+ massive_ship_fallen_empire:"失落帝国泰坦"
+ massive_ship_fallen_empire_plural: "失落帝国泰坦"
+ large_ship_fallen_empire: "失落帝国战列巡洋舰"
+ large_ship_fallen_empire_plural: "失落帝国战列巡洋舰"
+ small_ship_fallen_empire: "失落帝国护航舰"
+ small_ship_fallen_empire_plural: "失落帝国护航舰"
+ military_station_small_fallen_empire:"失落帝国哨站"
+ military_station_small_fallen_empire_plural: "失落帝国哨站"
+ military_station_large_fallen_empire:"失落帝国堡垒"
+ military_station_large_fallen_empire_plural: "失落帝国堡垒"
+

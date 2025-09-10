@@ -98,7 +98,7 @@ safe_fallen_2 = {
         orbit_distance = 30
         class = pc_gaia
         orbit_angle = { min = 90 max = 270 }
-        size = 28
+        size = 30
         has_ring = no
         deposit_blockers = none
         modifiers = none

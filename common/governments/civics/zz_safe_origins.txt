@@ -5,6 +5,8 @@ Start_As_Fallen_Empire_Holy_Guardians = {
     picture = GFX_evt_city_ruins
     # 强制母星盖亚星球开局
     starting_colony = pc_gaia
+    # 强制宜居星球偏好：盖亚
+    habitability_preference = pc_gaia
     # 星系初始化
     initializers = { safe_fallen_2}
 

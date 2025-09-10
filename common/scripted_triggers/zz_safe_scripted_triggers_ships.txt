@@ -16,6 +16,10 @@ ship_is_fallen_empire = {
         is_ship_size = cosmo_crisis_titan
         # 走武灾飞的舰船
         is_ship_size = star_eater
+        # 堕落哨站
+        is_ship_size = military_station_small_fallen_empire
+        # 堕落堡垒
+        is_ship_size = military_station_large_fallen_empire
     }
 }
 
@@ -44,6 +48,15 @@ fe_ship_uses_titan_reactors = {
         is_ship_size = massive_ship_fallen_empire
         # 走文灾飞的舰船
         is_ship_size = cosmo_crisis_titan
+    }
+}
+
+fe_ship_uses_platform_reactors = {
+    OR = {
+        # 堕落哨站
+        is_ship_size = military_station_small_fallen_empire
+        # 堕落堡垒
+        is_ship_size = military_station_large_fallen_empire
     }
 }
 
@@ -131,5 +144,14 @@ fe_ship_uses_carrier_role = {
         is_ship_size = cosmo_crisis_titan
         # 走武灾飞的舰船
         is_ship_size = star_eater
+    }
+}
+
+fe_ship_uses_platform_computers = {
+    OR = {
+        # 堕落哨站
+        is_ship_size = military_station_small_fallen_empire
+        # 堕落堡垒
+        is_ship_size = military_station_large_fallen_empire
     }
 }

@@ -62,7 +62,7 @@ utility_component_template = {
     potential = {
         from = {
             country_uses_bio_ships = no
-            is_country_type = fallen_empire
+            is_fallen_empire = yes
         }
         fe_ship_uses_cruiser_thrusters = yes
     }
@@ -95,7 +95,7 @@ utility_component_template = {
     potential = {
         from = {
             country_uses_bio_ships = no
-            is_country_type = fallen_empire
+            is_fallen_empire = yes
         }
         fe_ship_uses_cruiser_thrusters = yes
     }
@@ -127,7 +127,7 @@ utility_component_template = {
     potential = {
         from = {
             country_uses_bio_ships = no
-            is_country_type = fallen_empire
+            is_fallen_empire = yes
         }
         fe_ship_uses_cruiser_thrusters = yes
     }
@@ -159,7 +159,7 @@ utility_component_template = {
     potential = {
         from = {
             country_uses_bio_ships = no
-            is_country_type = fallen_empire
+            is_fallen_empire = yes
         }
         fe_ship_uses_cruiser_thrusters = yes
     }
@@ -192,7 +192,7 @@ utility_component_template = {
     potential = {
         from = {
             country_uses_bio_ships = no
-            is_country_type = fallen_empire
+            is_fallen_empire = yes
         }
         fe_ship_uses_cruiser_thrusters = yes
     }
@@ -238,7 +238,7 @@ utility_component_template = {
     potential = {
         from = {
             country_uses_bio_ships = no
-            is_country_type = fallen_empire
+            is_fallen_empire = yes
         }
         fe_ship_uses_battleship_thrusters = yes
     }
@@ -271,7 +271,7 @@ utility_component_template = {
     potential = {
         from = {
             country_uses_bio_ships = no
-            is_country_type = fallen_empire
+            is_fallen_empire = yes
         }
         fe_ship_uses_battleship_thrusters = yes
     }
@@ -303,7 +303,7 @@ utility_component_template = {
     potential = {
         from = {
             country_uses_bio_ships = no
-            is_country_type = fallen_empire
+            is_fallen_empire = yes
         }
         fe_ship_uses_battleship_thrusters = yes
     }
@@ -335,7 +335,7 @@ utility_component_template = {
     potential = {
         from = {
             country_uses_bio_ships = no
-            is_country_type = fallen_empire
+            is_fallen_empire = yes
         }
         fe_ship_uses_battleship_thrusters = yes
     }
@@ -368,7 +368,7 @@ utility_component_template = {
     potential = {
         from = {
             country_uses_bio_ships = no
-            is_country_type = fallen_empire
+            is_fallen_empire = yes
         }
         fe_ship_uses_battleship_thrusters = yes
     }
@@ -413,7 +413,7 @@ utility_component_template = {
     potential = {
         from = {
             country_uses_bio_ships = no
-            is_country_type = fallen_empire
+            is_fallen_empire = yes
         }
         fe_ship_uses_titan_thrusters = yes
     }
@@ -446,7 +446,7 @@ utility_component_template = {
     potential = {
         from = {
             country_uses_bio_ships = no
-            is_country_type = fallen_empire
+            is_fallen_empire = yes
         }
         fe_ship_uses_titan_thrusters = yes
     }
@@ -478,7 +478,7 @@ utility_component_template = {
     potential = {
         from = {
             country_uses_bio_ships = no
-            is_country_type = fallen_empire
+            is_fallen_empire = yes
         }
         fe_ship_uses_titan_thrusters = yes
     }
@@ -510,7 +510,7 @@ utility_component_template = {
     potential = {
         from = {
             country_uses_bio_ships = no
-            is_country_type = fallen_empire
+            is_fallen_empire = yes
         }
         fe_ship_uses_titan_thrusters = yes
     }
@@ -543,7 +543,7 @@ utility_component_template = {
     potential = {
         from = {
             country_uses_bio_ships = no
-            is_country_type = fallen_empire
+            is_fallen_empire = yes
         }
         fe_ship_uses_titan_thrusters = yes
     }

@@ -4,13 +4,13 @@
  concept_psionic:"$trait_psionic$"
  concept_psionic_desc:"—£happiness£['concept_happiness']：§G+5%§!\n—£job_researcher£['concept_planet_researchers']$BONUS_WORKFORCE_FOR$：§G+10%§!\n—£job_bureaucrat£['concept_planet_bureaucrats']$BONUS_WORKFORCE_FOR$：§G+10%§!\n—£job_enforcer£['concept_planet_enforcers']$BONUS_WORKFORCE_FOR$：§G+10%§!\n—$TRAIT_IMPROVES_LEADERS$\n\n§L$trait_psionic_desc$§!"
  concept_all_technology:"全科技"
- concept_all_technology_desc:"—获得除飞升，传统、特殊事件给予的科技以外的其他所有科技。\n\n§L该帝国掌握了宇宙中几乎所有的基础科技§!。"
+ concept_all_technology_desc:"—全部基础科技，仅不包括部分由['concept_ascension_perks']、['concept_traditions']及特殊['concept_event_chains']所授予的科技。\n\n§L该帝国如作弊般知晓了星系中的几乎所有的秘密。§!"
  # 起源说明
- NO_CHALLENGING_ORIGIN:"§R-警告：毫无挑战性的起源\n-警告：§Y$personality_fallen_empire_spiritualist$§!将禁用除['concept_psionic_ascension']以外的所有飞升路线。§!\n"
+ NO_CHALLENGING_ORIGIN:"§R-警告：开局将强制选择['concept_psionic_ascension']路线并完成§Y灵能传统树§!。§!\n\n§B-提示：这是一个毫无挑战性的起源§!\n"
  Start_As_Fallen_Empire_Holy_Guardians:"$origin_fallen_empire$"
  Start_As_Fallen_Empire_Holy_Guardians_desc:"$NO_CHALLENGING_ORIGIN$\n$origin_fallen_empire_desc$"
- Start_As_Fallen_Empire_Holy_Guardians_effect:"—母星：§Y$NAME_Celestial_Throne$§!\n—$SPECIES_TRAITS$['concept_psionic']\n—$TECH_STARTING$：['concept_all_technology']\n"
- Start_As_Fallen_Empire_Holy_Guardians_negative_effect:"—宜居星球偏好：['concept_gaia_preference']"
+ Start_As_Fallen_Empire_Holy_Guardians_effect:"—母星系：必定生成§Y$NAME_Celestial_Throne$§!与§Y$NAME_Sky_Temple$§!\n—规模：§Y$NAME_Celestial_Throne$§!£planetsize£30 | §Y$NAME_Sky_Temple$§! £planetsize£25\n—存在其他多个殖民地：规模为£planetsize£22的['concept_pc_gaia']\n—$SPECIES_TRAITS$['concept_psionic']\n—$TECH_STARTING$：['concept_all_technology']"
+ Start_As_Fallen_Empire_Holy_Guardians_negative_effect:"—无法扩张领土\n—£pop£§H人口§!：停止增长\n—宜居星球偏好：['concept_gaia_preference']\n"
  # 国名理念
  safe_civic_lethargic_leadership: "$civic_lethargic_leadership$"
  safe_civic_lethargic_leadership_desc: "千年智慧给他们带来了深邃的远见，但也带来了对变革的深深倦怠。"

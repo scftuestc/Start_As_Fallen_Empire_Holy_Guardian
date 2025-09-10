@@ -130,6 +130,7 @@ country_event = {
                 limit = { has_planet_flag = fallen_empire_spiritualist_sky_temple}
                 set_owner = root
                 set_controller = root
+                set_name = "NAME_Sky_Temple"
                 # 洗一遍球，不然会有奇怪的bug，蠢驴error.log中未报告原因
                 reroll_deposits = yes
                 remove_all_buildings = yes

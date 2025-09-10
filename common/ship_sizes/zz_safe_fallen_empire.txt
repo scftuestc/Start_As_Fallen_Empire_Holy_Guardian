@@ -26,6 +26,14 @@
 @speed_fast = 140
 @speed_very_fast = 160
 
+# 生命值翻倍
+@fe_destroyer_hp = 2000
+@fe_battleship_hp = 10000
+@fe_titan_hp = 40000
+
+# 增加5000
+@station_medium_hp = 20000
+@station_large_hp = 30000
 #################
 # FALLEN EMPIRE #
 #################
@@ -197,4 +205,114 @@ small_ship_fallen_empire = {
         is_fallen_empire = yes
         country_uses_bio_ships = no
     }
+}
+
+# Fallen Empire Defense Platform 失落帝国哨站
+military_station_small_fallen_empire = {
+    graphical_culture = { "fallen_empire_01" "fallen_empire_02" "fallen_empire_03" "fallen_empire_04" "fallen_machine_empire_01" "biogenesis_01_fallen_empire" "safe_fallen_empire_spiritualist" }
+    max_speed = 6
+    rotation_speed = 10
+    acceleration = 10
+    modifier = {
+        ship_evasion_mult = -1
+        ship_hull_regen_add_perc = 0.5
+        ship_armor_regen_add_perc = 0.5
+        ships_upkeep_mult = -0.5
+    }
+    ship_modifier = {
+        ship_weapon_range_mult = 0.6
+    }
+    max_hitpoints = @station_medium_hp
+
+    combat_size_multiplier = 4
+    size_multiplier = 2
+    fleet_slot_size = 2
+    section_slots = {
+        "mid" = { locator = "part1" }
+    }
+    num_target_locators = 0
+    is_space_station = yes
+    build_block_radius = @build_block_radius_military
+
+    uses_name_prefix = no
+    takes_name_from_ship_design = yes
+
+    resources = {
+        category = ships
+        cost = {
+            alloys = 1000
+        }
+    }
+
+    base_buildtime = 270
+
+    use_shipnames_from = military_station_small
+
+    class = shipclass_military_station
+    construction_type = starbase_defenses
+
+    # 增加侧边插槽
+    required_component_set = "fe_power_core"
+    required_component_set = "fe_sensor_components"
+    required_component_set = "fe_combat_computers"
+
+    # 改为yes
+    is_designable = yes
+    enable_3dview_in_ship_browser = yes
+    enable_default_design = yes
+    icon = ship_size_military_station
+}
+
+# Fallen Empire Large Station 失落帝国堡垒
+military_station_large_fallen_empire = {
+    graphical_culture = { "fallen_empire_01" "fallen_empire_02" "fallen_empire_03" "fallen_empire_04" "fallen_machine_empire_01" "safe_fallen_empire_spiritualist" }
+    max_speed = 6
+    rotation_speed = 10
+    acceleration = 10
+    modifier = {
+        ship_evasion_mult = -1
+        ships_upkeep_mult = -0.50
+    }
+    ship_modifier = {
+        ship_weapon_range_mult = 0.40
+    }
+    max_hitpoints = @station_large_hp
+    combat_size_multiplier = 20
+    size_multiplier = 6
+    fleet_slot_size = 4
+    section_slots = {
+        "mid" = { locator = "part1" }
+    }
+    num_target_locators = 0
+    is_space_station = yes
+    build_block_radius = @build_block_radius_military
+
+    uses_name_prefix = no
+    takes_name_from_ship_design = yes
+
+    resources = {
+        category = ships
+        cost = {
+            alloys = 5000
+        }
+    }
+
+    base_buildtime = 540
+
+    use_shipnames_from = military_station_small
+
+    class = shipclass_military_station
+    construction_type = starbase_defenses
+
+    # 更改为yes
+    is_designable = yes
+    enable_3dview_in_ship_browser = yes
+    enable_default_design = yes
+
+    # 增加侧边插槽
+    required_component_set = "fe_power_core"
+    required_component_set = "fe_sensor_components"
+    required_component_set = "fe_combat_computers"
+
+    icon = ship_size_military_station
 }

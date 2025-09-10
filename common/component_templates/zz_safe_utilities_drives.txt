@@ -61,13 +61,13 @@ utility_component_template = {
         }
         from = {
             country_uses_bio_ships = no
-            is_country_type = fallen_empire
+            is_fallen_empire =yes
         }
     }
 
     show_tech_unlock_if = {
         country_uses_bio_ships = no
-        is_country_type = fallen_empire
+        is_fallen_empire = yes
     }
 
     ftl = no
@@ -114,7 +114,7 @@ utility_component_template = {
         }
         from = {
             country_uses_bio_ships = no
-            is_country_type = fallen_empire
+            is_fallen_empire = yes
         }
     }
 
@@ -156,13 +156,13 @@ utility_component_template = {
         }
         from = {
             country_uses_bio_ships = no
-            is_country_type = fallen_empire
+            is_fallen_empire = yes
         }
     }
 
     show_tech_unlock_if = {
         country_uses_bio_ships = no
-        is_country_type = fallen_empire
+        is_fallen_empire = yes
     }
     prerequisites = { "tech_hyper_drive_2" }
     component_set = "fe_ftl_components"
@@ -198,13 +198,13 @@ utility_component_template = {
         }
         from = {
             country_uses_bio_ships = no
-            is_country_type = fallen_empire
+            is_fallen_empire = yes
         }
     }
 
     show_tech_unlock_if = {
         country_uses_bio_ships = no
-        is_country_type = fallen_empire
+        is_fallen_empire = yes
     }
     prerequisites = { "tech_hyper_drive_3" }
     component_set = "fe_ftl_components"
@@ -235,7 +235,7 @@ utility_component_template = {
         }
         from = {
             country_uses_bio_ships = no
-            is_country_type = fallen_empire
+            is_fallen_empire = yes
         }
     }
 
@@ -282,14 +282,13 @@ utility_component_template = {
         }
         from = {
             country_uses_bio_ships = no
-            is_country_type = fallen_empire
-            has_ethic = ethic_fanatic_spiritualist
+            is_fallen_empire_spiritualist = yes
         }
     }
 
     show_tech_unlock_if = {
         country_uses_bio_ships = no
-        is_country_type = fallen_empire
+        is_fallen_empire = yes
     }
 
     ftl = yes
