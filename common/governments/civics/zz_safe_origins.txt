@@ -37,6 +37,12 @@ Start_As_Fallen_Empire_Holy_Guardians = {
         trait = trait_psionic
     }
 
+    modifier = {
+        country_naval_cap_add = 1000
+        country_resource_max_add = 100000
+        country_resource_max_minor_artifacts_add = 1000
+    }
+
     random_weight = { base = 0 }
     ai_playable = { always = no }
 

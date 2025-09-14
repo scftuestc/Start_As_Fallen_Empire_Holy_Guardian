@@ -39,18 +39,18 @@ building_ancient_palace = {
     }
 
     planet_modifier = {
-        # 提供住房翻倍
-        planet_housing_add = 2400
-        # 舒适度增加1K
-        planet_amenities_add = 16000
-        # 稳定度+5
-        planet_stability_add = 5
+        planet_housing_add = 3000
+        planet_amenities_add = 15000
+        planet_stability_add = 10
     }
-    # 触发式修正，非格式塔堕落帝国，如果是圣卫，则岗位进行相应修改
+
     triggered_planet_modifier = {
         potential = {
             exists = owner
-            owner = { is_fallen_empire_spiritualist = no }
+            owner = {
+                is_fallen_empire_spiritualist = no
+                is_ai = yes
+            }
         }
         modifier = {
             # 岗位提供量翻倍
@@ -62,7 +62,10 @@ building_ancient_palace = {
     triggered_planet_modifier = {
         potential = {
             exists = owner
-            owner = { is_fallen_empire_spiritualist = yes }
+            owner = {
+                is_fallen_empire_spiritualist = yes
+                is_ai = yes
+            }
         }
         modifier = {
             job_fe_sky_cardinal_add = 400
@@ -70,14 +73,27 @@ building_ancient_palace = {
         }
     }
 
+    triggered_planet_modifier = {
+        potential = {
+            exists = owner
+            owner = {
+                is_fallen_empire_spiritualist = yes
+                is_ai = no
+            }
+        }
+        modifier = {
+            # 换用我们自己定义的岗位
+            job_safe_fe_sky_cardinal_add = 400
+            job_safe_fe_protector_add = 400
+        }
+    }
+
     resources = {
         category = planet_buildings
         cost = {
-            # 建筑修改由600调整为2000矿
             minerals = @b4_minerals
         }
         upkeep = {
-            # 维护费改为8电2暗物质
             energy = 8
             sr_dark_matter = 2
         }
@@ -110,18 +126,34 @@ building_empyrean_shrine = {
     triggered_planet_modifier = {
         potential = {
             exists = owner
-            owner = { is_fallen_empire = yes }
+            owner = {
+                is_fallen_empire = yes
+                is_ai = yes
+            }
         }
-        # 增添至500个
-        job_fe_augur_add = 500
+        # 增添至600个
+        job_fe_augur_add = 600
     }
 
     triggered_planet_modifier = {
         potential = {
             exists = owner
-            owner = { has_tradition = tr_psionics_psi_corps	}
+            owner = {
+                is_fallen_empire = yes
+                is_ai = no
+            }
         }
-        job_telepath_add = @fe_jobs
+        # 使用自定义的岗位
+        job_safe_fe_augur_add = 600
+    }
+
+    triggered_planet_modifier = {
+        potential = {
+            exists = owner
+            owner = { has_tradition = tr_psionics_psi_corps}
+        }
+        job_safe_fe_augur_max_workforce_mult = 0.5
+        job_safe_fe_augur_add = 200
     }
 
     triggered_country_modifier = {
@@ -132,26 +164,24 @@ building_empyrean_shrine = {
             }
         }
         # 潜入花费减半
-        shroud_delve_cost = -0.25
+        shroud_delve_cost = -0.50
     }
-    # 如果没有灵能军团传统，增加官僚产出
+
     triggered_planet_modifier = {
         potential = {
             exists = owner
             owner = { NOT = { has_tradition = tr_psionics_psi_corps } }
         }
-        planet_bureaucrats_produces_mult = 0.25
+        planet_bureaucrats_produces_mult = 0.50
     }
 
     resources = {
         category = planet_buildings
         cost = {
-            # 建造成本增加2000矿
             alloys = @b3_minerals
             minerals = @b4_minerals
         }
         upkeep = {
-            # 维护费增加泽洛
             alloys = @b2_alloy_upkeep
             rare_crystals = 2
             energy = 10

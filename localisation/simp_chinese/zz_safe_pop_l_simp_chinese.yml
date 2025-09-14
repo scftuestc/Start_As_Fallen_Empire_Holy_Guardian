@@ -1,0 +1,37 @@
+﻿l_simp_chinese:
+
+ # pop_categories 人口类别
+ pop_cat_precursor_archon: "精英$pop_cat_precursor$"
+ pop_cat_precursor_archon_plural: "$pop_cat_precursor_archon$"
+ pop_cat_precursor_archon_desc: "这些古老的统治者们自文明的黎明时代便执掌权柄，其智慧与远见维系着帝国的永恒长存。"
+ mod_pop_cat_precursor_archon_political_power: "$pop_cat_precursor_archon$政治权力"
+ mod_pop_cat_precursor_archon_happiness: "$pop_cat_precursor_archon$幸福度"
+
+ pop_cat_precursor_artisan: "匠师$pop_cat_precursor$"
+ pop_cat_precursor_artisan_plural:"$pop_cat_precursor_artisan$"
+ pop_cat_precursor_artisan_desc: "帝国艺术与科技的守护者，其掌握的古老技艺早已臻至化境，所造之物远超寻常的工业制品。"
+ mod_pop_cat_precursor_artisan_political_power: "$pop_cat_precursor_artisan$政治权力"
+ mod_pop_cat_precursor_artisan_happiness: "$pop_cat_precursor_artisan$幸福度"
+
+ pop_cat_precursor_warden: "守望$pop_cat_precursor$"
+ pop_cat_precursor_warden_plural:"$pop_cat_precursor_warden$"
+ pop_cat_precursor_warden_desc: "帝国沉默而忠诚的基石，他们世代恪守职责，维持着古老社会机器的每一个齿轮精准运转。"
+ mod_pop_cat_precursor_warden_political_power: "$pop_cat_precursor_warden$政治权力"
+ mod_pop_cat_precursor_warden_happiness: "$pop_cat_precursor_warden$幸福度"
+
+ # pop_jobs 岗位
+ job_safe_fe_sky_cardinal:"$job_fe_sky_cardinal$"
+ job_safe_fe_sky_cardinal_plural:"$job_fe_sky_cardinal_plural$"
+ job_safe_fe_sky_cardinal_desc:"$job_fe_sky_cardinal_desc$"
+ mod_job_safe_fe_sky_cardinal_add:"$job_safe_fe_sky_cardinal$岗位"
+
+ job_safe_fe_protector:"$job_fe_protector$"
+ job_safe_fe_protector_plural:"$job_fe_protector_plural$"
+ job_safe_fe_protector_desc:"$job_fe_protector_desc$"
+ mod_job_safe_fe_protector_add:"$job_safe_fe_protector$岗位"
+
+ job_safe_fe_augur:"$job_fe_augur$"
+ job_safe_fe_augur_plural:"$job_fe_augur_plural$"
+ job_safe_fe_augur_desc:"$job_fe_augur_desc$"
+ mod_job_safe_fe_augur_add:"$job_safe_fe_augur$岗位"
+ mod_job_safe_fe_augur_max_workforce_mult:"$job_safe_fe_augur$产出"

@@ -1,0 +1,381 @@
+# 原版堕落的岗位不做改动，加前缀safe重写
+# 对应原版的politician
+safe_fe_sky_cardinal = {
+    category = precursor_archon
+
+    is_capped_by_modifier = yes
+
+    swappable_data = {
+        default = {
+            condition_string = RULER_JOB_TRIGGER
+            icon = high_priest
+            building_icon = building_palace
+        }
+        swap_type = {
+            trigger = {
+                politician_is_noble = yes
+            }
+            name = noble
+            icon = noble
+            desc = job_noble_desc
+            weight = 10
+        }
+        swap_type = {
+            trigger = {
+                politician_is_merchant = yes
+            }
+            name = merchant
+            icon = merchant
+            desc = job_merchant_desc
+            weight = 10
+        }
+        swap_type = {
+            trigger = {
+                politician_is_planetary_warden = yes
+            }
+            name = warden
+            icon = enforcer
+            desc = job_warden_desc
+            weight = 15
+        }
+    }
+
+
+    tags = { amenities unity}
+
+    possible_pre_triggers = {
+        has_owner = yes
+        is_enslaved = no
+        is_being_purged = no
+        is_being_assimilated = no
+        is_sapient = yes
+    }
+
+    possible_precalc = can_fill_precursor_job
+
+    possible = {
+        owner = {
+            has_ethic = ethic_fanatic_spiritualist
+            is_ai = no
+        }
+        is_same_species = owner
+    }
+
+    resources = {
+        # 产出受到planet_politicians的修正影响
+        category = planet_politicians
+        # 基本产出
+        produces = {
+            unity = 10
+            trade = 3
+            society_research = 3
+        }
+        # 通过国策转变为Merchant后
+        produces = {
+            trigger = {
+                exists = planet
+                planet = {
+                    OR = {
+                        politician_is_merchant = yes
+                        politician_is_augmentation_merchant = yes
+                    }
+                }
+            }
+            unity = -5
+            trade = 7
+        }
+
+        upkeep = {
+            consumer_goods = 3
+            rare_crystals = 2
+        }
+    }
+
+    planet_modifier = {
+        planet_stability_add = 10
+        pop_government_ethic_attraction = 0.2
+    }
+
+    triggered_planet_modifier = {
+        potential = {
+            always = yes
+        }
+        planet_amenities_add = 600
+        mult = value:scripted_modifier_mult|MODIFIER|pop_job_amenities_mult|
+    }
+
+
+    weight = {
+        weight = @ruler_job_weight
+
+        mult = value:job_weights_modifier|JOB|politician|RESOURCE|unity|
+        mult = value:scripted_modifier_job_weight_mult|MODIFIER|pop_job_amenities_mult|
+
+        modifier = {
+            factor = 1.0
+            exists = owner
+            owner = {
+                is_ai = no
+            }
+        }
+        modifier = {
+            factor = 0.1
+            has_citizenship_rights = no
+            NOT = { has_trait = trait_mechanical }
+        }
+        # crisis purge
+        modifier = {
+            factor = 0.01
+            exists = planet
+            exists = planet.controller
+            planet.controller = {
+                OR = {
+                    is_country_type = swarm
+                    is_country_type = ai_empire
+                }
+            }
+        }
+    }
+
+    inline_script = "jobs/automodding_priority_charisma"
+
+    # 人口晋升
+    promotion = {
+        time = 90
+        effect = {
+            pop_amount_change_category = {
+                CATEGORY = precursor_archon
+                AMOUNT = local_pop_amount
+            }
+        }
+    }
+}
+
+# 对应于原版执法者，在堕落里从专家层拉到精英层了
+safe_fe_protector = {
+    category = precursor_archon
+
+    swappable_data = {
+        default = {
+            condition_string = RULER_JOB_TRIGGER
+            icon = enforcer
+            building_icon = building_fe_stronghold
+        }
+    }
+
+    tags = { crime enforcer soldier }
+
+    possible_pre_triggers = {
+        has_owner = yes
+        is_enslaved = no
+        is_being_purged = no
+        is_being_assimilated = no
+        is_sapient = yes
+    }
+
+    possible_precalc = can_fill_precursor_job
+
+    possible = {
+        owner = {
+            has_ethic = ethic_fanatic_spiritualist
+            is_ai = no
+        }
+        is_same_species = owner
+    }
+
+    resources = {
+        category = planet_enforcers
+        produces = {
+            unity = 5
+        }
+        upkeep = {
+            consumer_goods = 2
+        }
+    }
+
+    planet_modifier = {
+        planet_crime_add = -50
+        planet_defense_armies_add = 4
+    }
+
+    inline_script = "jobs/job_enforcer_additional_modifiers"
+
+    weight = {
+        weight = @ruler_job_weight
+
+        modifier = {
+            factor = 1.0
+            exists = owner
+            owner = {
+                is_ai = no
+            }
+        }
+        modifier = {
+            factor = 0.1
+            has_citizenship_rights = no
+            NOT = { has_trait = trait_mechanical }
+        }
+        modifier = {
+            factor = 0.1
+            can_take_servant_job = yes
+        }
+        # 当帝国中存在其他物种时，有这些特质的物种选择该岗位的权重会更高
+        modifier = {
+            factor = 2
+            has_trait = trait_presapient_earthbound
+        }
+        modifier = {
+            factor = 1.1
+            has_trait = trait_limited_regeneration
+        }
+        modifier = {
+            factor = 2
+            has_trait = trait_resilient
+        }
+        modifier = {
+            factor = 2
+            has_trait = trait_very_strong
+        }
+        modifier = {
+            factor = 1.5
+            has_trait = trait_strong
+        }
+        # crisis purge
+        modifier = {
+            factor = 0.01
+            exists = planet
+            exists = planet.controller
+            planet.controller = {
+                OR = {
+                    is_country_type = swarm
+                    is_country_type = ai_empire
+                }
+            }
+        }
+    }
+    # 人口晋升
+    promotion = {
+        time = 90
+        effect = {
+            pop_amount_change_category = {
+                CATEGORY = precursor_archon
+                AMOUNT = local_pop_amount
+            }
+        }
+    }
+}
+
+# 对应于原版灵能使
+safe_fe_augur = {
+    category = precursor_artisan
+    is_capped_by_modifier = yes
+
+    swappable_data = {
+        default = {
+            condition_string = SPECIALIST_JOB_TRIGGER
+            building_icon = building_empyrean_shrine
+            icon = telepath
+        }
+    }
+
+    tags = { unity crime soldier}
+
+    possible_pre_triggers = {
+        has_owner = yes
+        is_being_purged = no
+        is_being_assimilated = no
+        is_sapient = yes
+    }
+
+    possible_precalc = can_fill_precursor_job
+
+    possible = {
+        owner = { has_ethic = ethic_fanatic_spiritualist }
+        OR = {
+            has_trait = trait_latent_psionic
+            has_trait = trait_psionic
+        }
+        is_same_species = owner
+    }
+
+    triggered_planet_modifier = {
+        potential = {
+            always = yes
+        }
+        planet_crime_add = -5
+        planet_defense_armies_add = 2
+    }
+
+    resources = {
+        category = planet_telepaths
+        produces = {
+            unity = 19
+        }
+        produces = {
+            trigger = {
+                exists = owner
+                owner = { has_active_tradition = tr_domination_judgment_corps }
+            }
+            unity = 1
+        }
+        # 与虚境通信签订契约后的加成
+        produces = {
+            trigger = {
+                exists = owner
+                owner = { has_country_flag = whisperers_covenant_confirmed }
+            }
+            physics_research = 3
+            engineering_research = 3
+            society_research = 3
+        }
+        produces = {
+            trigger = {
+                exists = owner
+                owner = { has_country_flag = whisperers_covenant_rank_1 }
+            }
+            physics_research = 3
+            engineering_research = 3
+            society_research = 3
+        }
+        upkeep = {
+            energy = 1
+            sr_zro = 0.5
+        }
+        upkeep = {
+            trigger = {
+                exists = planet
+                planet = { has_modifier = anticrime_campaign }
+            }
+            energy = 2
+        }
+    }
+
+    inline_script = "jobs/job_enforcer_additional_modifiers"
+    inline_script = "jobs/job_telepath_additional_modifiers"
+
+    weight = {
+        weight = @specialist_job_weight
+
+        mult = 2
+        mult = value:job_weights_modifier|JOB|telepath|RESOURCE|unity|
+
+        modifier = {
+            factor = 0.1
+            has_citizenship_rights = no
+        }
+        # crisis purge
+        modifier = {
+            factor = 0.01
+            exists = planet
+            exists = planet.controller
+            planet.controller = {
+                OR = {
+                    is_country_type = swarm
+                    is_country_type = ai_empire
+                }
+            }
+        }
+    }
+
+    inline_script = "jobs/automodding_priority_unity"
+}

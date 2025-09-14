@@ -2,7 +2,7 @@
  # 外交姿态说明本地化覆盖
  diplo_stance_isolationist_fallen_empire: "韬光养晦"
  diplo_stance_isolationist_fallen_empire_name: "$diplo_stance_isolationist_fallen_empire$"
- diplo_stance_isolationist_fallen_empire_desc: "该帝国早已陷入了长久的黑暗时代，几乎将自己从星系中隔绝。\n虽不再受年轻种族的爱戴，却仍掌握着深不可测的古老权柄，在必要时会降下宛若神罚的雷霆之怒。\n\n§E失落帝国现在可以加入§Y星海共同体§!和§Y星海参议院§!。\n§R代价是§Y外交权重§!会被严重削弱。§!\n"
+ diplo_stance_isolationist_fallen_empire_desc: "该帝国早已陷入了长久的黑暗时代，几乎将自己从星系中隔绝。\n虽不再受年轻种族的敬重，却仍掌握着深不可测的古老权柄，在必要时会降下宛若神罚的雷霆之怒。\n\n§E失落帝国现在可以加入§Y星海共同体§!和§Y星海参议院§!。\n§R代价是§Y外交权重§!会被严重削弱。§!\n"
 
  # 特质本地化覆盖
  trait_psionic_desc: "§L这个物种的全体人员都掌握了强大的灵能力量。这代表着他们之间用心灵感应沟通。§!" # 汉化组多打了一个换行符\n
