@@ -21,7 +21,7 @@ col_fe_capital = {
     planet_modifier = {
         planet_stability_add = 20
         planet_amenities_add = 2000
-        planet_structures_upkeep_mult = -0.33
+        planet_structures_upkeep_mult = -0.50
     }
 
     weight_modifier = {
@@ -42,7 +42,7 @@ col_fe_colony = {
     planet_modifier = {
         planet_stability_add = 10
         planet_amenities_add = 1000
-        planet_structures_upkeep_mult = -0.33
+        planet_structures_upkeep_mult = -0.25
     }
 
     weight_modifier = {
@@ -84,7 +84,7 @@ col_ae_colony = {
     planet_modifier = {
         planet_stability_add = 15
         planet_amenities_add = 2000
-        planet_structures_upkeep_mult = -0.66
+        planet_structures_upkeep_mult = -0.50
         pop_bonus_workforce_mult = 0.66
     }
 

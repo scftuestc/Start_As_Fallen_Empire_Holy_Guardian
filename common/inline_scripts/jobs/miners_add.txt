@@ -1,0 +1,70 @@
+### Regular Empires
+triggered_planet_modifier = {
+	potential = {
+		exists = owner
+		owner = {
+			is_regular_empire = yes
+			is_ai = yes
+		}
+	}
+	modifier = {
+		job_miner_add = $AMOUNT$
+	}
+}
+
+triggered_planet_modifier = {
+	potential = {
+		exists = owner
+		owner = {
+			is_regular_empire = yes
+			is_ai = no
+			is_fallen_empire_spiritualist = no
+		}
+	}
+	modifier = {
+		job_miner_add = $AMOUNT$
+	}
+}
+
+# Spiritualist FE
+triggered_planet_modifier = {
+	potential = {
+		NOT = { is_planet_class = pc_shattered_ring_habitable }
+		exists = owner
+		owner = {
+			is_fallen_empire_spiritualist = yes
+			is_ai = yes
+		}
+	}
+	modifier = {
+		job_fe_acolyte_mine_add = $AMOUNT$
+	}
+}
+# 自定义岗位
+triggered_planet_modifier = {
+	potential = {
+		NOT = { is_planet_class = pc_shattered_ring_habitable }
+		exists = owner
+		owner = {
+			is_fallen_empire_spiritualist = yes
+			is_ai = no
+		}
+	}
+	# 自定义岗位
+	modifier = {
+		job_safe_fe_acolyte_mine_add = $AMOUNT$
+	}
+}
+
+# Gestalt Empires
+triggered_planet_modifier = {
+	potential = {
+		exists = owner
+		owner = {
+			is_gestalt = yes
+		}
+	}
+	modifier = {
+		job_mining_drone_add = $AMOUNT$
+	}
+}

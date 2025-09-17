@@ -83,8 +83,8 @@ civic_lethargic_leadership = {
 
     description = FALLEN_EMPIRE_LETHARGY_1
     modifier = {
-        leaders_upkeep_mult = -0.75
-        starbase_shipyard_build_speed_mult = -10.0
+        leaders_upkeep_mult = 0.5
+        starbase_shipyard_build_speed_mult = -10
     }
 }
 
@@ -100,7 +100,7 @@ civic_empire_in_decline = {
 
     description = FALLEN_EMPIRE_LETHARGY_2
     modifier = {
-        planet_pops_upkeep_mult = -0.75
+        planet_pops_upkeep_mult = 0.5
         shipsize_starbase_outpost_build_speed_mult = -10
         shipclass_colonizer_build_speed_mult = -10
     }
@@ -122,8 +122,8 @@ safe_civic_lethargic_leadership = {
 
     description = FALLEN_EMPIRE_LETHARGY_1
     modifier = {
-        leaders_upkeep_mult = -0.75
-        starbase_shipyard_build_speed_mult = -10.0
+        leaders_upkeep_mult = 0.5
+        starbase_shipyard_build_speed_mult = -10
     }
 }
 
@@ -142,7 +142,7 @@ safe_civic_empire_in_decline = {
 
     description = FALLEN_EMPIRE_LETHARGY_2
     modifier = {
-        planet_pops_upkeep_mult = -0.75
+        planet_pops_upkeep_mult = 0.5
         shipsize_starbase_outpost_build_speed_mult = -10
         shipclass_colonizer_build_speed_mult = -10
     }

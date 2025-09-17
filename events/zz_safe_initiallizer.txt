@@ -37,6 +37,8 @@ country_event = {
                 remove_all_buildings = yes
                 remove_all_districts = yes
                 clear_blockers = yes
+                # 设置10级行星飞升
+                set_planetary_ascension_tier = 10
                 # 为该行星添加深空擎天堡 + 4个防御平台
                 safe_create_fe_dsc = {
                     OWNER = root
@@ -54,7 +56,7 @@ country_event = {
                         district = district_generator
                     }
                 }
-                # 添加发电区划并特化为能源发电
+                # 将发电区划特化为能源发电
                 add_zone = {
                     district = district_generator
                     zone = zone_energy
@@ -66,7 +68,7 @@ country_event = {
                         district = district_mining
                     }
                 }
-                # 添加采矿区划并特化为矿物提取
+                # 将采矿区划特化为矿物提取
                 add_zone = {
                     district = district_mining
                     zone = zone_minerals
@@ -78,14 +80,14 @@ country_event = {
                         district = district_farming
                     }
                 }
-                # 添加农业区划并特化为食物聚焦
+                # 将农业区划特化为食物聚焦
                 add_zone = {
                     district = district_farming
                     zone = zone_food
                 }
-                # 循环添加115个堕落帝国原生物种人口组（11.5K）
+                # 循环添加125个堕落帝国原生物种人口组（12.5K）
                 while = {
-                    count = 115
+                    count = 125
                     create_pop_group = {
                         species = owner_main_species
                     }
@@ -114,15 +116,15 @@ country_event = {
                 add_building = building_dimensional_fabricator
                 add_building = building_affluence_center
                 add_building = building_nano_forge
-                # 为能源发电区划添加建筑
+                # 为发电区划添加建筑
                 add_building = {
-                    zone = zone_energy
+                    district = district_generator
                     building = building_class_4_singularity
                 }
-                # 为矿物提取区划添加建筑
+                # 为农业区划添加建筑
                 add_building = {
-                    zone = zone_minerals
-                    building = building_fe_mine_2
+                    district = district_farming
+                    building = building_nourishment_center
                 }
             }
             # 天之殿绑定
@@ -136,6 +138,8 @@ country_event = {
                 remove_all_buildings = yes
                 remove_all_districts = yes
                 clear_blockers = yes
+                # 设置10级行星飞升
+                set_planetary_ascension_tier = 10
                 # 为该行星添加深空擎天堡+ 4个防御平台
                 safe_create_fe_dsc = {
                     OWNER = root
@@ -153,6 +157,7 @@ country_event = {
                         district = district_generator
                     }
                 }
+                # 将发电区划特化为能源发电
                 add_zone = {
                     district = district_generator
                     zone = zone_energy
@@ -164,6 +169,7 @@ country_event = {
                         district = district_mining
                     }
                 }
+                # 将采矿区划特化为矿物提取
                 add_zone = {
                     district = district_mining
                     zone = zone_minerals
@@ -175,6 +181,7 @@ country_event = {
                         district = district_farming
                     }
                 }
+                # 将农业区划特化为食物聚焦
                 add_zone = {
                     district = district_farming
                     zone = zone_food
@@ -195,15 +202,20 @@ country_event = {
                 add_building = building_fe_stronghold
                 add_building = building_nano_forge
                 add_building = building_nano_forge
-                # 为能源发电区划添加建筑
+                # 为发电区划添加建筑
                 add_building = {
-                    zone = zone_energy
+                    district = district_generator
                     building = building_class_4_singularity
                 }
-                # 为矿物提取区划添加建筑
+                # 为采矿区划添加建筑
                 add_building = {
-                    zone = zone_minerals
+                    district = district_mining
                     building = building_fe_mine_2
+                }
+                # 为农业区划添加建筑
+                add_building = {
+                    district = district_farming
+                    building = building_nourishment_center
                 }
             }
             # 首都星港修正（有bug不能直接用原版create_fe_home_citadel）
@@ -239,9 +251,16 @@ country_event = {
                     }
                     is_colony = no
                 }
+                # 洗球
+                reroll_deposits = yes
+                remove_all_buildings = yes
+                remove_all_districts = yes
+                clear_blockers = yes
                 create_fe_spiritualist_fringe_colony = yes
                 set_owner = root
                 set_controller = root
+                # 行星10级飞升
+                set_planetary_ascension_tier = 10
             }
         }
         every_system = {
@@ -258,9 +277,16 @@ country_event = {
                     }
                     is_colony = no
                 }
+                # 洗球
+                reroll_deposits = yes
+                remove_all_buildings = yes
+                remove_all_districts = yes
+                clear_blockers = yes
                 create_fe_spiritualist_fringe_colony = yes
                 set_owner = root
                 set_controller = root
+                # 行星10级飞升
+                set_planetary_ascension_tier = 10
             }
         }
         # 外层殖民地
@@ -275,9 +301,16 @@ country_event = {
                     NOT = { exists = owner }
                     has_planet_flag = fallen_empire_random_colony_1
                 }
+                # 洗球
+                reroll_deposits = yes
+                remove_all_buildings = yes
+                remove_all_districts = yes
+                clear_blockers = yes
                 create_fe_spiritualist_fringe_colony = yes
                 set_owner = root
                 set_controller = root
+                # 行星10级飞升
+                set_planetary_ascension_tier = 10
             }
         }
         every_system = {
@@ -291,9 +324,17 @@ country_event = {
                     NOT = { exists = owner }
                     has_planet_flag = fallen_empire_random_colony_2
                 }
+                # 洗球
+                reroll_deposits = yes
+                remove_all_buildings = yes
+                remove_all_districts = yes
+                clear_blockers = yes
                 create_fe_spiritualist_fringe_colony = yes
                 set_owner = root
                 set_controller = root
+                # 行星10级飞升
+                set_planetary_ascension_tier = 10
+
             }
         }
     }
@@ -348,6 +389,5 @@ country_event= {
             # 删掉初始给的3个护卫舰的小舰队
             if = { limit = { fleet_size = 3 } delete_fleet = this }
         }
-
     }
 }

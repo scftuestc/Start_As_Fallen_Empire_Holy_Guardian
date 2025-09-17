@@ -105,6 +105,8 @@ building_ancient_palace = {
 
 building_empyrean_shrine = {
     base_buildtime = @b2_time
+    # 限制为一个星球只能建造一座
+    planet_limit = 1
     can_build = yes
     can_demolish = yes
 
@@ -153,7 +155,6 @@ building_empyrean_shrine = {
             owner = { has_tradition = tr_psionics_psi_corps}
         }
         job_safe_fe_augur_max_workforce_mult = 0.5
-        job_safe_fe_augur_add = 200
     }
 
     triggered_country_modifier = {
@@ -188,4 +189,1142 @@ building_empyrean_shrine = {
             sr_zro = 2
         }
     }
+}
+
+# Non-Capital Buildings
+building_affluence_emporium = {
+    base_buildtime = @b2_time
+    can_build = yes
+    can_demolish = yes
+    icon = building_affluence_emporium
+
+    category = manufacturing
+
+    building_sets = {
+        fallen_empire
+        industrial
+        factory
+    }
+
+    potential = {
+        exists = owner
+        owner = {
+            OR = {
+                is_fallen_empire = yes
+                has_country_flag = affluence_emporium_can_build
+                has_technology = tech_fe_affluence_1
+            }
+            is_hive_empire = no
+        }
+        NOR = {
+            has_modifier = resort_colony
+            has_modifier = slave_colony
+            has_modifier = penal_colony
+        }
+    }
+
+    allow = {
+        custom_tooltip = {
+            fail_text = ancrel.10004.failtext
+            owner = {
+                OR = {
+                    check_variable = { which = affluence_emporium_build_count value >= 1 }
+                    is_fallen_empire = yes
+                    has_technology = tech_fe_affluence_1
+                }
+            }
+        }
+    }
+
+    destroy_trigger = {
+        always = no
+    }
+
+    resources = {
+        category = planet_buildings
+        cost = {
+            alloys = @b3_minerals
+            rare_crystals = @fe_sr_cost
+        }
+        produces = {
+            consumer_goods = 50
+            trade = 10
+        }
+        upkeep = {
+            rare_crystals = 2
+            alloys = 5
+            energy = 20
+        }
+        cost = {
+            trigger = {
+                owner = { is_wilderness_empire = yes }
+            }
+            biomass = @b3_biomass
+        }
+    }
+
+    triggered_planet_modifier = {
+        potential = {
+            exists = owner
+            owner = {
+                is_wilderness_empire = yes
+                has_tradition = tr_purity_finish
+            }
+        }
+        planet_building_build_speed_mult = 0.03
+        planet_decision_enact_speed_mult = 0.03
+    }
+
+    triggered_planet_modifier = {
+        potential = {
+            exists = owner
+            owner = {
+                is_fallen_empire_spiritualist = yes
+                is_ai = no
+            }
+        }
+        job_safe_fe_acolyte_artisan_max_workforce_mult = 0.05
+    }
+
+    inline_script = {
+        script = jobs/factory_add
+        AMOUNT = @fe_jobs
+    }
+
+    planet_modifier = {
+        planet_amenities_add = 1000
+        pop_happiness = 0.25
+    }
+
+    on_queued = {
+        if = { # kill on the same planet
+            limit = {
+                is_variable_set = local_spent_biomass
+                any_owned_pop_group = {
+                    has_trait = trait_wilderness
+                    pop_group_size > local_spent_biomass
+                }
+            }
+            random_owned_pop_group = {
+                limit = {
+                    has_trait = trait_wilderness
+                    pop_group_size > local_spent_biomass
+                }
+                kill_pop_group = {
+                    pop_group = this
+                    amount = local_spent_biomass
+                }
+            }
+        }
+        else_if = {
+            limit = { is_variable_set = local_spent_biomass }
+            owner = {
+                global_biomass_spender = yes
+            }
+        }
+        owner = {
+            subtract_variable = { which = affluence_emporium_build_count value = 1 }
+        }
+    }
+
+    on_unqueued = {
+        unqueue_biomass_effect = yes
+        owner = {
+            change_variable = { which = affluence_emporium_build_count value = 1 }
+        }
+    }
+
+    upgrades = {
+        building_affluence_center
+    }
+
+    show_in_tech = tech_fe_affluence_1
+}
+
+building_affluence_center = {
+    base_buildtime = @b2_time
+    can_build = no
+    icon = building_affluence_center
+
+    category = manufacturing
+
+    building_sets = {
+        fallen_empire
+        industrial
+        factory
+    }
+
+    potential = {
+        exists = owner
+        owner = {
+            OR = {
+                is_fallen_empire = yes
+                has_technology = tech_fe_affluence_2
+                has_country_flag = affluence_emporium_can_build
+            }
+        }
+        NOR = {
+            has_modifier = resort_colony
+            has_modifier = slave_colony
+            has_modifier = penal_colony
+        }
+    }
+
+    allow = {
+        custom_tooltip = {
+            fail_text = ancrel.10004.failtext
+            exists = owner
+            owner = {
+                OR = {
+                    check_variable = { which = affluence_emporium_upgrade_count value >= 1 }
+                    is_fallen_empire = yes
+                    has_technology = tech_fe_affluence_2
+                }
+            }
+        }
+    }
+
+    destroy_trigger = {
+        always = no
+    }
+
+    resources = {
+        category = planet_buildings
+        produces = {
+            consumer_goods = 100
+            trade = 20
+        }
+        cost = {
+            alloys = @b3_minerals
+        }
+        upkeep = {
+            rare_crystals = 3
+            alloys = 8
+            minerals = 50
+            energy = 20
+        }
+        cost = {
+            trigger = {
+                owner = { is_wilderness_empire = yes }
+            }
+            biomass = @b3_biomass
+        }
+    }
+
+    triggered_planet_modifier = {
+        potential = {
+            exists = owner
+            owner = {
+                is_wilderness_empire = yes
+                has_tradition = tr_purity_finish
+            }
+        }
+        planet_building_build_speed_mult = 0.03
+        planet_decision_enact_speed_mult = 0.03
+    }
+
+    triggered_planet_modifier = {
+        potential = {
+            exists = owner
+            owner = {
+                is_fallen_empire_spiritualist = yes
+                is_ai = no
+            }
+        }
+        job_safe_fe_acolyte_artisan_max_workforce_mult = 0.10
+        job_safe_fe_acolyte_artisan_max_workforce_add = 1
+    }
+
+    planet_modifier = {
+        planet_amenities_add = 2000
+        pop_happiness = 0.5
+    }
+
+    inline_script = {
+        script = jobs/factory_add
+        AMOUNT = 800
+    }
+
+    on_queued = {
+        if = { # kill on the same planet
+            limit = {
+                is_variable_set = local_spent_biomass
+                any_owned_pop_group = {
+                    has_trait = trait_wilderness
+                    pop_group_size > local_spent_biomass
+                }
+            }
+            random_owned_pop_group = {
+                limit = {
+                    has_trait = trait_wilderness
+                    pop_group_size > local_spent_biomass
+                }
+                kill_pop_group = {
+                    pop_group = this
+                    amount = local_spent_biomass
+                }
+            }
+        }
+        else_if = {
+            limit = { is_variable_set = local_spent_biomass }
+            owner = {
+                global_biomass_spender = yes
+            }
+        }
+        owner = {
+            subtract_variable = { which = affluence_emporium_upgrade_count value = 1 }
+        }
+    }
+
+    on_unqueued = {
+        unqueue_biomass_effect = yes
+        owner = {
+            change_variable = { which = affluence_emporium_upgrade_count value = 1 }
+        }
+    }
+
+    show_in_tech = tech_fe_affluence_2
+}
+
+building_class_3_singularity = {
+    base_buildtime = @b2_time
+    can_build = yes
+    can_demolish = yes
+
+    category = resource
+
+    building_sets = {
+        fallen_empire
+        fallen_empire_generator
+    }
+
+    potential = {
+        exists = owner
+        owner = {
+            OR = {
+                is_fallen_empire = yes
+                has_technology = tech_fe_singularity_1
+                has_country_flag = class_3_singularity_can_build
+            }
+        }
+        NOR = {
+            has_modifier = resort_colony
+            has_modifier = slave_colony
+            has_modifier = penal_colony
+        }
+    }
+
+    allow = {
+        custom_tooltip = {
+            fail_text = ancrel.10004.failtext
+            owner = {
+                OR = {
+                    check_variable = { which = class_3_singularity_build_count value >= 1 }
+                    is_fallen_empire = yes
+                    has_technology = tech_fe_singularity_1
+                }
+            }
+        }
+    }
+
+    destroy_trigger = {
+        always = no
+    }
+
+    inline_script = {
+        script = jobs/technicians_add
+        AMOUNT = @fe_jobs
+    }
+
+    resources = {
+        category = planet_buildings
+        cost = {
+            alloys = 900
+            sr_dark_matter = 350
+        }
+        produces = {
+            energy = 200
+            trade = 30
+        }
+        upkeep = {
+            alloys = @b3_alloy_upkeep
+            sr_dark_matter = 2
+        }
+        cost = {
+            trigger = {
+                owner = { is_wilderness_empire = yes }
+            }
+            biomass = @b3_biomass
+        }
+    }
+
+    triggered_planet_modifier = {
+        potential = {
+            exists = owner
+            owner = {
+                is_wilderness_empire = yes
+                has_tradition = tr_purity_finish
+            }
+        }
+        planet_building_build_speed_mult = 0.03
+        planet_decision_enact_speed_mult = 0.03
+    }
+
+    triggered_planet_modifier = {
+        potential = {
+            exists = owner
+            owner = {
+                is_fallen_empire_spiritualist = yes
+                is_ai = no
+            }
+        }
+        job_safe_fe_acolyte_generator_max_workforce_mult = 0.05
+    }
+
+    on_queued = {
+        if = { # kill on the same planet
+            limit = {
+                is_variable_set = local_spent_biomass
+                any_owned_pop_group = {
+                    has_trait = trait_wilderness
+                    pop_group_size > local_spent_biomass
+                }
+            }
+            random_owned_pop_group = {
+                limit = {
+                    has_trait = trait_wilderness
+                    pop_group_size > local_spent_biomass
+                }
+                kill_pop_group = {
+                    pop_group = this
+                    amount = local_spent_biomass
+                }
+            }
+        }
+        else_if = {
+            limit = { is_variable_set = local_spent_biomass }
+            owner = {
+                global_biomass_spender = yes
+            }
+        }
+        owner = {
+            subtract_variable = { which = class_3_singularity_build_count value = 1 }
+        }
+    }
+
+    on_unqueued = {
+        unqueue_biomass_effect = yes
+        owner = {
+            change_variable = { which = class_3_singularity_build_count value = 1 }
+        }
+    }
+
+    upgrades = {
+        building_class_4_singularity
+    }
+
+    show_in_tech = tech_fe_singularity_1
+}
+
+building_class_4_singularity = {
+    base_buildtime = @b2_time
+    can_build = no
+
+    category = resource
+
+    building_sets = {
+        fallen_empire
+        fallen_empire_generator
+    }
+
+    potential = {
+        exists = owner
+        owner = {
+            OR = {
+                is_fallen_empire = yes
+                has_technology = tech_fe_singularity_2
+                has_country_flag = class_3_singularity_can_build
+            }
+        }
+        NOR = {
+            has_modifier = resort_colony
+            has_modifier = slave_colony
+            has_modifier = penal_colony
+        }
+    }
+
+    allow = {
+        custom_tooltip = {
+            fail_text = ancrel.10004.failtext
+            exists = owner
+            owner = {
+                OR = {
+                    check_variable = { which = class_3_singularity_upgrade_count value >= 1 }
+                    is_fallen_empire = yes
+                    has_technology = tech_fe_singularity_2
+                }
+            }
+        }
+    }
+
+    destroy_trigger = {
+        always = no
+    }
+
+    inline_script = {
+        script = jobs/technicians_add
+        # 增加至800个
+        AMOUNT = 800
+    }
+
+    resources = {
+        category = planet_buildings
+        cost = {
+            alloys = 1200
+            sr_dark_matter = 50
+        }
+        produces = {
+            energy = 350
+            trade = 75
+        }
+        upkeep = {
+            alloys = 10
+            sr_dark_matter = 3
+        }
+        cost = {
+            trigger = {
+                owner = { is_wilderness_empire = yes }
+            }
+            biomass = @b3_biomass
+        }
+    }
+
+    triggered_planet_modifier = {
+        potential = {
+            exists = owner
+            owner = {
+                is_wilderness_empire = yes
+                has_tradition = tr_purity_finish
+            }
+        }
+        planet_building_build_speed_mult = 0.03
+        planet_decision_enact_speed_mult = 0.03
+    }
+
+    triggered_planet_modifier = {
+        potential = {
+            exists = owner
+            owner = {
+                is_fallen_empire_spiritualist = yes
+                is_ai = no
+            }
+        }
+        job_safe_fe_acolyte_generator_max_workforce_mult = 0.10
+        job_safe_fe_acolyte_generator_max_workforce_add = 1
+    }
+
+    on_queued = {
+        if = { # kill on the same planet
+            limit = {
+                is_variable_set = local_spent_biomass
+                any_owned_pop_group = {
+                    has_trait = trait_wilderness
+                    pop_group_size > local_spent_biomass
+                }
+            }
+            random_owned_pop_group = {
+                limit = {
+                    has_trait = trait_wilderness
+                    pop_group_size > local_spent_biomass
+                }
+                kill_pop_group = {
+                    pop_group = this
+                    amount = local_spent_biomass
+                }
+            }
+        }
+        else_if = {
+            limit = { is_variable_set = local_spent_biomass }
+            owner = {
+                global_biomass_spender = yes
+            }
+        }
+        owner = {
+            subtract_variable = { which = class_3_singularity_upgrade_count value = 1 }
+        }
+    }
+
+    on_unqueued = {
+        unqueue_biomass_effect = yes
+        owner = {
+            change_variable = { which = class_3_singularity_upgrade_count value = 1 }
+        }
+    }
+
+    show_in_tech = tech_fe_singularity_2
+}
+
+building_fe_mine_1 = {
+    base_buildtime = @b2_time
+    can_build = yes
+    can_demolish = yes
+
+    category = resource
+
+    building_sets = {
+        fallen_empire
+        fallen_empire_mining
+    }
+
+    potential = {
+        exists = owner
+        owner = {
+            OR = {
+                is_fallen_empire = yes
+                has_technology = tech_fe_mine_1
+                has_country_flag = fe_mine_1_can_build
+            }
+        }
+        NOR = {
+            has_modifier = resort_colony
+            has_modifier = slave_colony
+            has_modifier = penal_colony
+        }
+        NOT = { is_planet_class = pc_ringworld_habitable }
+    }
+
+    allow = {
+        custom_tooltip = {
+            fail_text = ancrel.10004.failtext
+            exists = owner
+            owner = {
+                OR = {
+                    check_variable = { which = fe_mine_1_build_count value >= 1 }
+                    is_fallen_empire = yes
+                    has_technology = tech_fe_mine_1
+                }
+            }
+        }
+    }
+
+    destroy_trigger = {
+        always = no
+    }
+
+    inline_script = {
+        script = jobs/miners_add
+        AMOUNT = @fe_jobs
+    }
+
+    resources = {
+        category = planet_buildings
+        produces = {
+            minerals = 200
+            trade = 25
+        }
+        cost = {
+            alloys = @b3_minerals
+            volatile_motes = @fe_sr_cost
+        }
+        upkeep = {
+            alloys = @b3_alloy_upkeep
+            volatile_motes = 2
+            energy = 15
+        }
+        cost = {
+            trigger = {
+                owner = { is_wilderness_empire = yes }
+            }
+            biomass = @b3_biomass
+        }
+    }
+
+    triggered_planet_modifier = {
+        potential = {
+            exists = owner
+            owner = {
+                is_wilderness_empire = yes
+                has_tradition = tr_purity_finish
+            }
+        }
+        planet_building_build_speed_mult = 0.03
+        planet_decision_enact_speed_mult = 0.03
+    }
+
+    triggered_planet_modifier = {
+        potential = {
+            exists = owner
+            owner = {
+                is_fallen_empire_spiritualist = yes
+                is_ai = no
+            }
+        }
+        job_safe_fe_acolyte_mine_max_workforce_mult = 0.05
+    }
+
+    upgrades = {
+        building_fe_mine_2
+    }
+
+    on_queued = {
+        if = { # kill on the same planet
+            limit = {
+                is_variable_set = local_spent_biomass
+                any_owned_pop_group = {
+                    has_trait = trait_wilderness
+                    pop_group_size > local_spent_biomass
+                }
+            }
+            random_owned_pop_group = {
+                limit = {
+                    has_trait = trait_wilderness
+                    pop_group_size > local_spent_biomass
+                }
+                kill_pop_group = {
+                    pop_group = this
+                    amount = local_spent_biomass
+                }
+            }
+        }
+        else_if = {
+            limit = { is_variable_set = local_spent_biomass }
+            owner = {
+                global_biomass_spender = yes
+            }
+        }
+        owner = {
+            subtract_variable = { which = fe_mine_1_build_count value = 1 }
+        }
+    }
+
+    on_unqueued = {
+        unqueue_biomass_effect = yes
+        owner = {
+            change_variable = { which = fe_mine_1_build_count value = 1 }
+        }
+    }
+
+    show_in_tech = tech_fe_mine_1
+}
+
+building_fe_mine_2 = {
+    base_buildtime = @b2_time
+    can_build = no
+
+    category = resource
+
+    building_sets = {
+        fallen_empire
+        fallen_empire_mining
+    }
+
+    potential = {
+        exists = owner
+        owner = {
+            OR = {
+                is_fallen_empire = yes
+                has_technology = tech_fe_mine_2
+                has_country_flag = fe_mine_1_can_build
+            }
+        }
+        NOR = {
+            has_modifier = resort_colony
+            has_modifier = slave_colony
+            has_modifier = penal_colony
+        }
+        NOT = { is_planet_class = pc_ringworld_habitable }
+    }
+
+    allow = {
+        custom_tooltip = {
+            fail_text = ancrel.10004.failtext
+            exists = owner
+            owner = {
+                OR = {
+                    check_variable = { which = fe_mine_1_upgrade_count value >= 1 }
+                    is_fallen_empire = yes
+                    has_technology = tech_fe_mine_2
+                }
+            }
+        }
+    }
+
+    destroy_trigger = {
+        always = no
+    }
+
+    inline_script = {
+        script = jobs/miners_add
+        # 增加至800
+        AMOUNT = 800
+    }
+
+    resources = {
+        category = planet_buildings
+        cost = {
+            alloys = @b3_minerals
+        }
+        produces = {
+            minerals = 400
+            trade = 50
+        }
+        upkeep = {
+            alloys = 10
+            volatile_motes = 3
+            energy = 30
+        }
+        cost = {
+            trigger = {
+                owner = { is_wilderness_empire = yes }
+            }
+            biomass = @b3_biomass
+        }
+
+    }
+
+    triggered_planet_modifier = {
+        potential = {
+            exists = owner
+            owner = {
+                is_wilderness_empire = yes
+                has_tradition = tr_purity_finish
+            }
+        }
+        planet_building_build_speed_mult = 0.03
+        planet_decision_enact_speed_mult = 0.03
+    }
+
+    triggered_planet_modifier = {
+        potential = {
+            exists = owner
+            owner = {
+                is_fallen_empire_spiritualist = yes
+                is_ai = no
+            }
+        }
+        job_safe_fe_acolyte_mine_max_workforce_mult = 0.10
+        job_safe_fe_acolyte_mine_max_workforce_add = 1
+    }
+
+    on_queued = {
+        if = { # kill on the same planet
+            limit = {
+                is_variable_set = local_spent_biomass
+                any_owned_pop_group = {
+                    has_trait = trait_wilderness
+                    pop_group_size > local_spent_biomass
+                }
+            }
+            random_owned_pop_group = {
+                limit = {
+                    has_trait = trait_wilderness
+                    pop_group_size > local_spent_biomass
+                }
+                kill_pop_group = {
+                    pop_group = this
+                    amount = local_spent_biomass
+                }
+            }
+        }
+        else_if = {
+            limit = { is_variable_set = local_spent_biomass }
+            owner = {
+                global_biomass_spender = yes
+            }
+        }
+        owner = {
+            subtract_variable = { which = fe_mine_1_upgrade_count value = 1 }
+        }
+    }
+
+    on_unqueued = {
+        unqueue_biomass_effect = yes
+        owner = {
+            change_variable = { which = fe_mine_1_upgrade_count value = 1 }
+        }
+    }
+
+    show_in_tech = tech_fe_mine_2
+}
+
+building_nourishment_complex = {
+    base_buildtime = @b2_time
+    can_build = yes
+    can_demolish = yes
+
+    category = resource
+
+    building_sets = {
+        fallen_empire
+        fallen_empire_farming
+    }
+
+    potential = {
+        exists = owner
+        owner = {
+            OR = {
+                is_fallen_empire = yes
+                has_country_flag = nourishment_complex_can_build
+                has_technology = tech_fe_nourishment_1
+            }
+        }
+        NOR = {
+            has_modifier = resort_colony
+            has_modifier = slave_colony
+            has_modifier = penal_colony
+        }
+    }
+
+    allow = {
+        custom_tooltip = {
+            fail_text = ancrel.10004.failtext
+            owner = {
+                OR = {
+                    check_variable = { which = nourishment_complex_build_count value >= 1 }
+                    is_fallen_empire = yes
+                    has_technology = tech_fe_nourishment_1
+                }
+            }
+        }
+    }
+
+    destroy_trigger = {
+        always = no
+    }
+
+    inline_script = {
+        script = jobs/farmers_add
+        AMOUNT = @fe_jobs
+    }
+
+    resources = {
+        category = planet_buildings
+        produces = {
+            food = 100
+            trade = 25
+        }
+        cost = {
+            alloys = @b3_minerals
+        }
+        upkeep = {
+            alloys = @b2_alloy_upkeep
+            exotic_gases = 2
+            energy = 20
+        }
+        cost = {
+            trigger = {
+                owner = { is_wilderness_empire = yes }
+            }
+            biomass = @b3_biomass
+        }
+    }
+
+    triggered_planet_modifier = {
+        potential = {
+            exists = owner
+            owner = {
+                is_wilderness_empire = yes
+                has_tradition = tr_purity_finish
+            }
+        }
+        planet_building_build_speed_mult = 0.03
+        planet_decision_enact_speed_mult = 0.03
+    }
+
+    triggered_planet_modifier = {
+        potential = {
+            exists = owner
+            owner = {
+                is_fallen_empire_spiritualist = yes
+                is_ai = no
+            }
+        }
+        job_safe_fe_acolyte_farm_max_workforce_mult = 0.05
+    }
+
+    on_queued = {
+        if = { # kill on the same planet
+            limit = {
+                is_variable_set = local_spent_biomass
+                any_owned_pop_group = {
+                    has_trait = trait_wilderness
+                    pop_group_size > local_spent_biomass
+                }
+            }
+            random_owned_pop_group = {
+                limit = {
+                    has_trait = trait_wilderness
+                    pop_group_size > local_spent_biomass
+                }
+                kill_pop_group = {
+                    pop_group = this
+                    amount = local_spent_biomass
+                }
+            }
+        }
+        else_if = {
+            limit = { is_variable_set = local_spent_biomass }
+            owner = {
+                global_biomass_spender = yes
+            }
+        }
+        owner = {
+            subtract_variable = { which = nourishment_complex_build_count value = 1 }
+        }
+    }
+
+    on_unqueued = {
+        unqueue_biomass_effect = yes
+        owner = {
+            change_variable = { which = nourishment_complex_build_count value = 1 }
+        }
+    }
+
+    upgrades = {
+        building_nourishment_center
+    }
+
+    show_in_tech = tech_fe_nourishment_1
+}
+
+building_nourishment_center = {
+    base_buildtime = @b2_time
+    can_build = no
+
+    category = resource
+
+    building_sets = {
+        fallen_empire
+        fallen_empire_farming
+    }
+
+    potential = {
+        exists = owner
+        owner = {
+            OR = {
+                is_fallen_empire = yes
+                has_technology = tech_fe_nourishment_2
+                has_country_flag = nourishment_complex_can_build
+            }
+        }
+        NOR = {
+            has_modifier = resort_colony
+            has_modifier = slave_colony
+            has_modifier = penal_colony
+        }
+    }
+
+    allow = {
+        custom_tooltip = {
+            fail_text = ancrel.10004.failtext
+            exists = owner
+            owner = {
+                OR = {
+                    check_variable = { which = nourishment_complex_upgrade_count value >= 1 }
+                    is_fallen_empire = yes
+                    has_technology = tech_fe_nourishment_2
+                }
+            }
+        }
+    }
+
+    destroy_trigger = {
+        always = no
+    }
+
+    planet_modifier = {
+        pop_environment_tolerance = 0.10
+    }
+
+    inline_script = {
+        script = jobs/farmers_add
+        # 增加至800
+        AMOUNT = 800
+    }
+
+    resources = {
+        category = planet_buildings
+        produces = {
+            food = 200
+            trade = 50
+        }
+        cost = {
+            alloys = @b3_minerals
+        }
+        upkeep = {
+            alloys = 10
+            exotic_gases = 3
+            energy = 30
+        }
+        cost = {
+            trigger = {
+                owner = { is_wilderness_empire = yes }
+            }
+            biomass = @b3_biomass
+        }
+    }
+
+    triggered_planet_modifier = {
+        potential = {
+            exists = owner
+            owner = {
+                is_wilderness_empire = yes
+                has_tradition = tr_purity_finish
+            }
+        }
+        planet_building_build_speed_mult = 0.03
+        planet_decision_enact_speed_mult = 0.03
+    }
+
+    triggered_planet_modifier = {
+        potential = {
+            exists = owner
+            owner = {
+                is_fallen_empire_spiritualist = yes
+                is_ai = no
+            }
+        }
+        job_safe_fe_acolyte_farm_max_workforce_mult = 0.1
+        job_safe_fe_acolyte_farm_max_workforce_add = 1
+    }
+
+    on_queued = {
+        if = { # kill on the same planet
+            limit = {
+                is_variable_set = local_spent_biomass
+                any_owned_pop_group = {
+                    has_trait = trait_wilderness
+                    pop_group_size > local_spent_biomass
+                }
+            }
+            random_owned_pop_group = {
+                limit = {
+                    has_trait = trait_wilderness
+                    pop_group_size > local_spent_biomass
+                }
+                kill_pop_group = {
+                    pop_group = this
+                    amount = local_spent_biomass
+                }
+            }
+        }
+        else_if = {
+            limit = { is_variable_set = local_spent_biomass }
+            owner = {
+                global_biomass_spender = yes
+            }
+        }
+        owner = {
+            subtract_variable = { which = nourishment_complex_upgrade_count value = 1 }
+        }
+    }
+
+    on_unqueued = {
+        unqueue_biomass_effect = yes
+        owner = {
+            change_variable = { which = nourishment_complex_upgrade_count value = 1 }
+        }
+    }
+
+    show_in_tech = tech_fe_nourishment_2
 }

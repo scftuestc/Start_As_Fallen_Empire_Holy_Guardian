@@ -479,7 +479,7 @@ safe_fallen_col_1 = {
         home_planet = yes
         class = ideal_planet_class
         orbit_angle = { min = 90 max = 270 }
-        size = 22
+        size = 21
         has_ring = no
         deposit_blockers = none
         modifiers = none
@@ -626,7 +626,7 @@ safe_fallen_col_2 = {
         class = ideal_planet_class
         orbit_distance = 20
         orbit_angle = { min = 90 max = 270 }
-        size = 22
+        size = 21
         has_ring = no
         deposit_blockers = none
         modifiers = none

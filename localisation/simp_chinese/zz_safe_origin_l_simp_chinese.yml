@@ -9,7 +9,7 @@
  NO_CHALLENGING_ORIGIN:"§R-警告：开局将强制选择['concept_psionic_ascension']路线并完成§Y灵能传统树§!。§!\n\n§B-提示：这是一个毫无挑战性的起源§!\n"
  Start_As_Fallen_Empire_Holy_Guardians:"$origin_fallen_empire$"
  Start_As_Fallen_Empire_Holy_Guardians_desc:"$NO_CHALLENGING_ORIGIN$\n$origin_fallen_empire_desc$"
- Start_As_Fallen_Empire_Holy_Guardians_effect:"—母星系：必定生成§Y$NAME_Celestial_Throne$§!与§Y$NAME_Sky_Temple$§!\n—规模：§Y$NAME_Celestial_Throne$§!£planetsize£30 | §Y$NAME_Sky_Temple$§! £planetsize£25\n—存在其他多个规模为£planetsize£21的['concept_pc_gaia']殖民地\n—$SPECIES_TRAITS$['concept_psionic']\n—$TECH_STARTING$：['concept_all_technology']"
+ Start_As_Fallen_Empire_Holy_Guardians_effect:"—母星系：必定生成§Y$NAME_Celestial_Throne$§!与§Y$NAME_Sky_Temple$§!\n—规模：§Y$NAME_Celestial_Throne$§!£planetsize£30 | §Y$NAME_Sky_Temple$§! £planetsize£25\n—存在其他多个规模为£planetsize£21的['concept_pc_gaia']殖民地\n—初始['concept_planetary_ascension']：§Y10级§!\n—$SPECIES_TRAITS$['concept_psionic']\n—$TECH_STARTING$：['concept_all_technology']"
  Start_As_Fallen_Empire_Holy_Guardians_negative_effect:"—觉醒前无法扩张领土\n—£pop£§H人口§!：停止增长\n—宜居星球偏好：['concept_gaia_preference']\n"
  # 国名理念
  safe_civic_lethargic_leadership: "$civic_lethargic_leadership$"
