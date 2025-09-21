@@ -1,9 +1,13 @@
+#####################
+# Capital buildings #
+#####################
 building_ancient_palace = {
     base_buildtime = @b2_time
     capital = yes
-    # 更改为可建造
-    can_build = yes
+    can_build = no
     can_demolish = no
+    can_be_ruined = no
+    can_be_disabled = no
     position_priority = 0
     capital_tier = 5
 
@@ -19,17 +23,19 @@ building_ancient_palace = {
         exists = owner
         owner = {
             is_fallen_empire = yes
-            is_hive_empire = no
+            is_fallen_empire_hive = no
+        }
+        NOR = {
+            has_modifier = resort_colony
+            has_modifier = slave_colony
         }
     }
-    # 星球上至少有舰船庇护所才能建造
+
     allow = {
-        planet ={
-            has_building = building_colony_shelter
-            NOT = { is_planet_class = pc_habitat }
-        }
+        sapient_pop_amount >= 1000
     }
-    # 当行星被其他帝国占领时，这个建筑会自动转换为列表中的某个建筑（根据新占领者的国家类型选择）
+
+    # 依据不同的政体，这个建筑会自动转换为列表中的某个建筑
     convert_to = {
         building_hive_major_capital
         building_machine_major_capital
@@ -39,9 +45,11 @@ building_ancient_palace = {
     }
 
     planet_modifier = {
-        planet_housing_add = 3000
-        planet_amenities_add = 15000
-        planet_stability_add = 10
+        planet_housing_add = 5000
+        planet_amenities_add = 20000
+        planet_stability_add = 20
+        planet_defense_armies_add = 20
+        planet_max_branch_office_buildings_add = 4
     }
 
     triggered_planet_modifier = {
@@ -49,7 +57,6 @@ building_ancient_palace = {
             exists = owner
             owner = {
                 is_fallen_empire_spiritualist = no
-                is_ai = yes
             }
         }
         modifier = {
@@ -64,7 +71,7 @@ building_ancient_palace = {
             exists = owner
             owner = {
                 is_fallen_empire_spiritualist = yes
-                is_ai = yes
+                NOT = { has_origin = Start_As_Fallen_Empire_Holy_Guardians }
             }
         }
         modifier = {
@@ -78,7 +85,7 @@ building_ancient_palace = {
             exists = owner
             owner = {
                 is_fallen_empire_spiritualist = yes
-                is_ai = no
+                has_origin = Start_As_Fallen_Empire_Holy_Guardians
             }
         }
         modifier = {
@@ -94,21 +101,31 @@ building_ancient_palace = {
             minerals = @b4_minerals
         }
         upkeep = {
-            energy = 8
-            sr_dark_matter = 2
+            energy = 20
         }
+    }
+
+    prerequisites = { tech_fe_administration_2 }
+
+    show_tech_unlock_if = {
+        is_fallen_empire = yes
+        is_fallen_empire_hive = no
     }
 
     upgrades = {
     }
 }
 
+###################
+# Unity buildings #
+###################
 building_empyrean_shrine = {
     base_buildtime = @b2_time
     # 限制为一个星球只能建造一座
     planet_limit = 1
     can_build = yes
     can_demolish = yes
+    position_priority = 1
 
     category = unity
 
@@ -116,12 +133,16 @@ building_empyrean_shrine = {
         fallen_empire
         unity
     }
+
     # 只有圣卫才可建造
     potential = {
         exists = owner
         owner = {
             is_fallen_empire_spiritualist = yes
-            is_hive_empire = no
+        }
+        NOT = {
+            has_modifier = slave_colony
+            has_modifier = penal_colony
         }
     }
 
@@ -129,8 +150,8 @@ building_empyrean_shrine = {
         potential = {
             exists = owner
             owner = {
-                is_fallen_empire = yes
-                is_ai = yes
+                is_fallen_empire_spiritualist = yes
+                NOT = { has_origin = Start_As_Fallen_Empire_Holy_Guardians }
             }
         }
         # 增添至600个
@@ -141,8 +162,8 @@ building_empyrean_shrine = {
         potential = {
             exists = owner
             owner = {
-                is_fallen_empire = yes
-                is_ai = no
+                is_fallen_empire_spiritualist = yes
+                has_origin = Start_As_Fallen_Empire_Holy_Guardians
             }
         }
         # 使用自定义的岗位
@@ -154,7 +175,15 @@ building_empyrean_shrine = {
             exists = owner
             owner = { has_tradition = tr_psionics_psi_corps}
         }
-        job_safe_fe_augur_max_workforce_mult = 0.5
+        pop_safe_fe_augur_bonus_workforce_mult = 0.5
+    }
+
+    triggered_planet_modifier = {
+        potential = {
+            exists = owner
+            owner = { NOT = { has_tradition = tr_psionics_psi_corps } }
+        }
+        planet_bureaucrats_produces_mult = 0.50
     }
 
     triggered_country_modifier = {
@@ -168,14 +197,6 @@ building_empyrean_shrine = {
         shroud_delve_cost = -0.50
     }
 
-    triggered_planet_modifier = {
-        potential = {
-            exists = owner
-            owner = { NOT = { has_tradition = tr_psionics_psi_corps } }
-        }
-        planet_bureaucrats_produces_mult = 0.50
-    }
-
     resources = {
         category = planet_buildings
         cost = {
@@ -184,14 +205,655 @@ building_empyrean_shrine = {
         }
         upkeep = {
             alloys = @b2_alloy_upkeep
-            rare_crystals = 2
-            energy = 10
+            energy = 20
             sr_zro = 2
+        }
+    }
+
+    prerequisites = { tech_fe_administration_2 }
+
+    show_tech_unlock_if = {
+        is_fallen_empire_spiritualist = yes
+    }
+}
+
+building_fe_temple_1 = {
+    base_buildtime = @b2_time
+    can_build = yes
+    can_demolish = yes
+
+    category = unity
+
+    building_sets = {
+        fallen_empire
+        unity
+    }
+
+    potential = {
+        exists = owner
+        owner = {
+            is_spiritualist = yes
+            OR = {
+                is_fallen_empire = yes
+                has_technology = tech_fe_administration_1
+                has_country_flag = fe_administration_1_can_build # Using Administration 1 for this one instead of temple to avoid ethic swap shennanigans
+            }
+        }
+        NOT = {
+            has_modifier = slave_colony
+            has_modifier = penal_colony
+        }
+    }
+
+    allow = {
+        custom_tooltip = {
+            fail_text = ancrel.10004.failtext
+            exists = owner
+            owner = {
+                OR = {
+                    check_variable = { which = fe_administration_1_build_count value >= 1 }
+                    is_fallen_empire = yes
+                    has_technology = tech_fe_administration_1
+                }
+            }
+        }
+    }
+
+    destroy_trigger = {
+        exists = owner
+        owner = { is_spiritualist = no }
+    }
+
+    convert_to = {
+        building_fe_administration_1
+        building_fe_administration_machine_1
+        building_fe_administration_hive_1
+    }
+
+    resources = {
+        category = planet_buildings
+        cost = {
+            alloys = @b3_minerals
+            rare_crystals = @fe_sr_cost
+        }
+        upkeep = {
+            rare_crystals = 2
+            alloys = @b2_alloy_upkeep
+            energy = 15
+        }
+        cost = {
+            trigger = {
+                owner = { is_wilderness_empire = yes }
+            }
+            biomass = @b3_biomass
+        }
+        produces = {
+            unity = 20
+        }
+    }
+
+    triggered_planet_modifier = {
+        potential = {
+            exists = owner
+            owner = {
+                is_wilderness_empire = yes
+                has_tradition = tr_purity_finish
+            }
+        }
+        planet_building_build_speed_mult = 0.03
+        planet_decision_enact_speed_mult = 0.03
+    }
+
+    inline_script = {
+        script = jobs/priests_add
+        AMOUNT = @fe_jobs
+    }
+
+    upgrades = {
+        building_fe_temple_2
+    }
+
+    on_queued = {
+        if = { # kill on the same planet
+            limit = {
+                is_variable_set = local_spent_biomass
+                any_owned_pop_group = {
+                    has_trait = trait_wilderness
+                    pop_group_size > local_spent_biomass
+                }
+            }
+            random_owned_pop_group = {
+                limit = {
+                    has_trait = trait_wilderness
+                    pop_group_size > local_spent_biomass
+                }
+                kill_pop_group = {
+                    pop_group = this
+                    amount = local_spent_biomass
+                }
+            }
+        }
+        else_if = {
+            limit = { is_variable_set = local_spent_biomass }
+            owner = {
+                global_biomass_spender = yes
+            }
+        }
+        owner = {
+            subtract_variable = { which = fe_administration_1_build_count value = 1 }
+        }
+    }
+
+    on_unqueued = {
+        unqueue_biomass_effect = yes
+        owner = {
+            change_variable = { which = fe_administration_1_build_count value = 1 }
+        }
+    }
+
+    show_in_tech = tech_fe_administration_1
+
+    show_tech_unlock_if = {
+        OR = {
+            is_spiritualist = yes
+            has_make_spiritualist_perk = yes
         }
     }
 }
 
-# Non-Capital Buildings
+building_fe_temple_2 = {
+    base_buildtime = @b2_time
+    can_build = no
+
+    category = unity
+
+    building_sets = {
+        fallen_empire
+        unity
+    }
+
+    potential = {
+        exists = owner
+        owner = {
+            is_spiritualist = yes
+            OR = {
+                is_fallen_empire = yes
+                has_technology = tech_fe_administration_2
+                has_country_flag = fe_administration_1_can_build
+            }
+        }
+        NOT = {
+            has_modifier = slave_colony
+            has_modifier = penal_colony
+        }
+    }
+
+    allow = {
+        custom_tooltip = {
+            fail_text = ancrel.10004.failtext
+            exists = owner
+            owner = {
+                OR = {
+                    check_variable = { which = fe_administration_1_upgrade_count value >= 1 }
+                    is_fallen_empire = yes
+                    has_technology = tech_fe_administration_2
+                }
+            }
+        }
+    }
+
+    destroy_trigger = {
+        exists = owner
+        owner = {
+            is_spiritualist = no
+        }
+    }
+
+    convert_to = {
+        building_fe_administration_2
+        building_fe_administration_machine_2
+        building_fe_administration_hive_2
+    }
+
+    resources = {
+        category = planet_buildings
+        cost = {
+            alloys = @b3_minerals
+        }
+        upkeep = {
+            rare_crystals = 2
+            alloys = @b2_alloy_upkeep
+            energy = 15
+        }
+        cost = {
+            trigger = {
+                owner = { is_wilderness_empire = yes }
+            }
+            biomass = @b3_biomass
+        }
+        produces = {
+            unity = 50
+        }
+    }
+
+    triggered_planet_modifier = {
+        potential = {
+            exists = owner
+            owner = {
+                is_wilderness_empire = yes
+                has_tradition = tr_purity_finish
+            }
+        }
+        planet_building_build_speed_mult = 0.03
+        planet_decision_enact_speed_mult = 0.03
+    }
+
+    planet_modifier = {
+        pop_housing_usage_mult = -0.15
+    }
+
+    inline_script = {
+        script = jobs/priests_add
+        AMOUNT = 800
+    }
+
+    on_queued = {
+        if = { # kill on the same planet
+            limit = {
+                is_variable_set = local_spent_biomass
+                any_owned_pop_group = {
+                    has_trait = trait_wilderness
+                    pop_group_size > local_spent_biomass
+                }
+            }
+            random_owned_pop_group = {
+                limit = {
+                    has_trait = trait_wilderness
+                    pop_group_size > local_spent_biomass
+                }
+                kill_pop_group = {
+                    pop_group = this
+                    amount = local_spent_biomass
+                }
+            }
+        }
+        else_if = {
+            limit = { is_variable_set = local_spent_biomass }
+            owner = {
+                global_biomass_spender = yes
+            }
+        }
+        owner = {
+            subtract_variable = { which = fe_administration_1_upgrade_count value = 1 }
+        }
+    }
+
+    on_unqueued = {
+        unqueue_biomass_effect = yes
+        owner = {
+            change_variable = { which = fe_administration_1_upgrade_count value = 1 }
+        }
+    }
+
+    show_in_tech = tech_fe_administration_2
+
+    show_tech_unlock_if = {
+        OR = {
+            is_spiritualist = yes
+            has_make_spiritualist_perk = yes
+        }
+    }
+}
+
+#####################
+# Science buildings #
+#####################
+building_fe_lab_1 = {
+    base_buildtime = @b2_time
+    can_build = yes
+    can_demolish = yes
+
+    category = research
+
+    building_sets = {
+        fallen_empire
+        research
+        physics
+        society
+        engineering
+    }
+
+    potential = {
+        exists = owner
+        owner = {
+            OR = {
+                is_fallen_empire = yes
+                has_technology = tech_fe_lab_1
+                has_country_flag = fe_lab_1_can_build
+            }
+        }
+        NOR = {
+            has_modifier = resort_colony
+            has_modifier = slave_colony
+            has_modifier = penal_colony
+        }
+    }
+
+    allow = {
+        custom_tooltip = {
+            fail_text = ancrel.10004.failtext
+            exists = owner
+            owner = {
+                OR = {
+                    check_variable = { which = fe_lab_1_build_count value >= 1 }
+                    is_fallen_empire = yes
+                    has_technology = tech_fe_lab_1
+                }
+            }
+        }
+    }
+
+    destroy_trigger = {
+        always = no
+    }
+
+    resources = {
+        category = planet_buildings
+        cost = {
+            alloys = @b3_minerals
+            exotic_gases = @fe_sr_cost
+        }
+        upkeep = {
+            exotic_gases = 2
+            alloys = @b3_alloy_upkeep
+            energy = 30
+        }
+        cost = {
+            trigger = {
+                owner = { is_wilderness_empire = yes }
+            }
+            biomass = @b3_biomass
+        }
+        produces = {
+            physics_research = 25
+            society_research = 25
+            engineering_research = 25
+        }
+    }
+
+    triggered_planet_modifier = {
+        potential = {
+            exists = owner
+            owner = {
+                is_wilderness_empire = yes
+                has_tradition = tr_purity_finish
+            }
+        }
+        planet_building_build_speed_mult = 0.03
+        planet_decision_enact_speed_mult = 0.03
+    }
+
+    inline_script = {
+        script = jobs/researchers_add
+        AMOUNT = 300
+    }
+
+    triggered_planet_modifier = {
+        potential = {
+            exists = owner
+            owner = {
+                is_regular_empire = yes
+                is_galactic_community_member = yes
+            }
+            is_active_resolution = "resolution_galacticstudies_extradimensional_experimentation"
+            has_modifier = pm_extradimensional_experimentation
+        }
+        modifier = {
+            job_physicist_add = 100
+        }
+    }
+
+    triggered_planet_modifier = {
+        potential = {
+            exists = owner
+            owner = {
+                is_gestalt = yes
+                is_galactic_community_member = yes
+            }
+            is_active_resolution = "resolution_galacticstudies_extradimensional_experimentation"
+            has_modifier = pm_extradimensional_experimentation
+        }
+        modifier = {
+            job_calculator_physicist_add = 100
+        }
+    }
+
+    triggered_planet_modifier = {
+        potential = {
+            exists = owner
+            owner = { has_origin = Start_As_Fallen_Empire_Holy_Guardians }
+        }
+        pop_safe_fe_physicist_bonus_workforce_mult = 0.10
+        pop_safe_fe_biologist_bonus_workforce_mult = 0.10
+        pop_safe_fe_engineer_bonus_workforce_mult = 0.10
+    }
+
+    upgrades = {
+        building_fe_lab_2
+    }
+
+    on_queued = {
+        if = { # kill on the same planet
+            limit = {
+                is_variable_set = local_spent_biomass
+                any_owned_pop_group = {
+                    has_trait = trait_wilderness
+                    pop_group_size > local_spent_biomass
+                }
+            }
+            random_owned_pop_group = {
+                limit = {
+                    has_trait = trait_wilderness
+                    pop_group_size > local_spent_biomass
+                }
+                kill_pop_group = {
+                    pop_group = this
+                    amount = local_spent_biomass
+                }
+            }
+        }
+        else_if = {
+            limit = { is_variable_set = local_spent_biomass }
+            owner = {
+                global_biomass_spender = yes
+            }
+        }
+        owner = {
+            subtract_variable = { which = fe_lab_1_build_count value = 1 }
+        }
+    }
+
+    on_unqueued = {
+        unqueue_biomass_effect = yes
+        owner = {
+            change_variable = { which = fe_lab_1_build_count value = 1 }
+        }
+    }
+
+    show_in_tech = tech_fe_lab_1
+}
+
+building_fe_lab_2 = {
+    base_buildtime = @b2_time
+    can_build = no
+
+    category = research
+
+    building_sets = {
+        fallen_empire
+        research
+        physics
+        society
+        engineering
+    }
+
+    potential = {
+        exists = owner
+        owner = {
+            OR = {
+                is_fallen_empire = yes
+                has_technology = tech_fe_lab_2
+                has_country_flag = fe_lab_1_can_build
+            }
+        }
+        NOR = {
+            has_modifier = resort_colony
+            has_modifier = slave_colony
+            has_modifier = penal_colony
+        }
+    }
+
+    allow = {
+        custom_tooltip = {
+            fail_text = ancrel.10004.failtext
+            exists = owner
+            owner = {
+                OR = {
+                    check_variable = { which = fe_lab_1_upgrade_count value >= 1 }
+                    is_fallen_empire = yes
+                    has_technology = tech_fe_lab_2
+                }
+            }
+        }
+    }
+
+    destroy_trigger = {
+        always = no
+    }
+
+    resources = {
+        category = planet_buildings
+        cost = {
+            alloys = @b3_minerals
+        }
+        upkeep = {
+            exotic_gases = 3
+            alloys = 8
+            energy = 40
+        }
+        cost = {
+            trigger = {
+                owner = { is_wilderness_empire = yes }
+            }
+            biomass = @b3_biomass
+        }
+        produces = {
+            physics_research = 50
+            society_research = 50
+            engineering_research = 50
+        }
+    }
+
+    triggered_planet_modifier = {
+        potential = {
+            exists = owner
+            owner = {
+                is_wilderness_empire = yes
+                has_tradition = tr_purity_finish
+            }
+        }
+        planet_building_build_speed_mult = 0.03
+        planet_decision_enact_speed_mult = 0.03
+    }
+    inline_script = {
+        script = jobs/researchers_add
+        AMOUNT = 600
+    }
+
+    triggered_planet_modifier = {
+        potential = {
+            exists = owner
+            owner = {
+                is_regular_empire = yes
+                is_galactic_community_member = yes
+            }
+            is_active_resolution = "resolution_galacticstudies_extradimensional_experimentation"
+            has_modifier = pm_extradimensional_experimentation
+        }
+        modifier = {
+            job_physicist_add = 200
+        }
+    }
+
+    triggered_planet_modifier = {
+        potential = {
+            exists = owner
+            owner = {
+                is_gestalt = yes
+                is_galactic_community_member = yes
+            }
+            is_active_resolution = "resolution_galacticstudies_extradimensional_experimentation"
+            has_modifier = pm_extradimensional_experimentation
+        }
+        modifier = {
+            job_calculator_physicist_add = 200
+        }
+    }
+
+    triggered_planet_modifier = {
+        potential = {
+            exists = owner
+            owner = { has_origin = Start_As_Fallen_Empire_Holy_Guardians }
+        }
+        pop_safe_fe_physicist_bonus_workforce_mult = 0.20
+        pop_safe_fe_biologist_bonus_workforce_mult = 0.20
+        pop_safe_fe_engineer_bonus_workforce_mult = 0.20
+    }
+
+    on_queued = {
+        if = { # kill on the same planet
+            limit = {
+                is_variable_set = local_spent_biomass
+                any_owned_pop_group = {
+                    has_trait = trait_wilderness
+                    pop_group_size > local_spent_biomass
+                }
+            }
+            random_owned_pop_group = {
+                limit = {
+                    has_trait = trait_wilderness
+                    pop_group_size > local_spent_biomass
+                }
+                kill_pop_group = {
+                    pop_group = this
+                    amount = local_spent_biomass
+                }
+            }
+        }
+        else_if = {
+            limit = { is_variable_set = local_spent_biomass }
+            owner = {
+                global_biomass_spender = yes
+            }
+        }
+        owner = {
+            subtract_variable = { which = fe_lab_1_upgrade_count value = 1 }
+        }
+    }
+
+    on_unqueued = {
+        unqueue_biomass_effect = yes
+        owner = {
+            change_variable = { which = fe_lab_1_upgrade_count value = 1 }
+        }
+    }
+
+    show_in_tech = tech_fe_lab_2
+}
+
+##########################
+# manufacturing buildings#
+##########################
 building_affluence_emporium = {
     base_buildtime = @b2_time
     can_build = yes
@@ -246,13 +908,10 @@ building_affluence_emporium = {
             alloys = @b3_minerals
             rare_crystals = @fe_sr_cost
         }
-        produces = {
-            consumer_goods = 50
-            trade = 10
-        }
         upkeep = {
             rare_crystals = 2
             alloys = 5
+            minerals = 20
             energy = 20
         }
         cost = {
@@ -260,6 +919,9 @@ building_affluence_emporium = {
                 owner = { is_wilderness_empire = yes }
             }
             biomass = @b3_biomass
+        }
+        produces = {
+            consumer_goods = 100
         }
     }
 
@@ -278,12 +940,9 @@ building_affluence_emporium = {
     triggered_planet_modifier = {
         potential = {
             exists = owner
-            owner = {
-                is_fallen_empire_spiritualist = yes
-                is_ai = no
-            }
+            owner = { has_origin = Start_As_Fallen_Empire_Holy_Guardians }
         }
-        job_safe_fe_acolyte_artisan_max_workforce_mult = 0.05
+        pop_safe_fe_acolyte_artisan_bonus_workforce_mult = 0.10
     }
 
     inline_script = {
@@ -293,7 +952,6 @@ building_affluence_emporium = {
 
     planet_modifier = {
         planet_amenities_add = 1000
-        pop_happiness = 0.25
     }
 
     on_queued = {
@@ -390,10 +1048,6 @@ building_affluence_center = {
 
     resources = {
         category = planet_buildings
-        produces = {
-            consumer_goods = 100
-            trade = 20
-        }
         cost = {
             alloys = @b3_minerals
         }
@@ -401,13 +1055,16 @@ building_affluence_center = {
             rare_crystals = 3
             alloys = 8
             minerals = 50
-            energy = 20
+            energy = 30
         }
         cost = {
             trigger = {
                 owner = { is_wilderness_empire = yes }
             }
             biomass = @b3_biomass
+        }
+        produces = {
+            consumer_goods = 200
         }
     }
 
@@ -426,18 +1083,14 @@ building_affluence_center = {
     triggered_planet_modifier = {
         potential = {
             exists = owner
-            owner = {
-                is_fallen_empire_spiritualist = yes
-                is_ai = no
-            }
+            owner = { has_origin = Start_As_Fallen_Empire_Holy_Guardians }
         }
-        job_safe_fe_acolyte_artisan_max_workforce_mult = 0.10
-        job_safe_fe_acolyte_artisan_max_workforce_add = 1
+        pop_safe_fe_acolyte_artisan_bonus_workforce_mult = 0.20
     }
 
     planet_modifier = {
         planet_amenities_add = 2000
-        pop_happiness = 0.5
+        pop_happiness = 0.25
     }
 
     inline_script = {
@@ -486,6 +1139,282 @@ building_affluence_center = {
     show_in_tech = tech_fe_affluence_2
 }
 
+building_micro_forge = {
+    base_buildtime = @b2_time
+    can_build = yes
+    can_demolish = yes
+
+    category = manufacturing
+
+    building_sets = {
+        fallen_empire
+        industrial
+        foundry
+    }
+
+    potential = {
+        exists = owner
+        owner = {
+            OR = {
+                is_fallen_empire = yes
+                has_technology = tech_fe_forge_1
+                has_country_flag = micro_forge_can_build
+            }
+        }
+        NOR = {
+            has_modifier = resort_colony
+            has_modifier = slave_colony
+            has_modifier = penal_colony
+        }
+    }
+
+    allow = {
+        custom_tooltip = {
+            fail_text = ancrel.10004.failtext
+            owner = {
+                OR = {
+                    check_variable = { which = micro_forge_build_count value >= 1 }
+                    is_fallen_empire = yes
+                    has_technology = tech_fe_forge_1
+                }
+            }
+        }
+    }
+
+    destroy_trigger = {
+        always = no
+    }
+
+    inline_script = {
+        script = jobs/foundry_add
+        AMOUNT = @fe_jobs
+    }
+
+    resources = {
+        category = planet_buildings
+        cost = {
+            alloys = @b3_minerals
+            volatile_motes = @fe_sr_cost
+        }
+        upkeep = {
+            volatile_motes = 2
+            energy = 30
+        }
+        cost = {
+            trigger = {
+                owner = { is_wilderness_empire = yes }
+            }
+            biomass = @b3_biomass
+        }
+        produces = {
+            alloys = 50
+        }
+    }
+
+    triggered_planet_modifier = {
+        potential = {
+            exists = owner
+            owner = {
+                is_wilderness_empire = yes
+                has_tradition = tr_purity_finish
+            }
+        }
+        planet_building_build_speed_mult = 0.03
+        planet_decision_enact_speed_mult = 0.03
+    }
+
+    triggered_planet_modifier = {
+        potential = {
+            exists = owner
+            owner = { has_origin = Start_As_Fallen_Empire_Holy_Guardians }
+        }
+        pop_safe_fe_foundry_bonus_workforce_mult = 0.10
+    }
+
+    upgrades = {
+        building_nano_forge
+    }
+
+    on_queued = {
+        if = { # kill on the same planet
+            limit = {
+                is_variable_set = local_spent_biomass
+                any_owned_pop_group = {
+                    has_trait = trait_wilderness
+                    pop_group_size > local_spent_biomass
+                }
+            }
+            random_owned_pop_group = {
+                limit = {
+                    has_trait = trait_wilderness
+                    pop_group_size > local_spent_biomass
+                }
+                kill_pop_group = {
+                    pop_group = this
+                    amount = local_spent_biomass
+                }
+            }
+        }
+        else_if = {
+            limit = { is_variable_set = local_spent_biomass }
+            owner = {
+                global_biomass_spender = yes
+            }
+        }
+        owner = {
+            subtract_variable = { which = micro_forge_build_count value = 1 }
+        }
+    }
+
+    on_unqueued = {
+        unqueue_biomass_effect = yes
+        owner = {
+            change_variable = { which = micro_forge_build_count value = 1 }
+        }
+    }
+
+    show_in_tech = tech_fe_forge_1
+}
+
+building_nano_forge = {
+    base_buildtime = @b2_time
+    can_build = no
+
+    category = manufacturing
+
+    building_sets = {
+        fallen_empire
+        industrial
+        foundry
+    }
+
+    potential = {
+        exists = owner
+        owner = {
+            OR = {
+                is_fallen_empire = yes
+                has_technology = tech_fe_forge_2
+                has_country_flag = micro_forge_can_build
+            }
+        }
+        NOR = {
+            has_modifier = resort_colony
+            has_modifier = slave_colony
+            has_modifier = penal_colony
+        }
+    }
+
+    allow = {
+        custom_tooltip = {
+            fail_text = ancrel.10004.failtext
+            exists = owner
+            owner = {
+                OR = {
+                    check_variable = { which = micro_forge_upgrade_count value >= 1 }
+                    is_fallen_empire = yes
+                    has_technology = tech_fe_forge_2
+                }
+            }
+        }
+    }
+
+    destroy_trigger = {
+        always = no
+    }
+
+    planet_modifier = {
+        planet_structures_upkeep_mult = -0.05
+    }
+
+    inline_script = {
+        script = jobs/foundry_add
+        AMOUNT = 800
+    }
+
+    resources = {
+        category = planet_buildings
+        cost = {
+            alloys = @b3_minerals
+        }
+        upkeep = {
+            volatile_motes = 3
+            energy = 40
+        }
+        cost = {
+            trigger = {
+                owner = { is_wilderness_empire = yes }
+            }
+            biomass = @b3_biomass
+        }
+        produces = {
+            alloys = 100
+        }
+    }
+
+    triggered_planet_modifier = {
+        potential = {
+            exists = owner
+            owner = {
+                is_wilderness_empire = yes
+                has_tradition = tr_purity_finish
+            }
+        }
+        planet_building_build_speed_mult = 0.03
+        planet_decision_enact_speed_mult = 0.03
+    }
+
+    triggered_planet_modifier = {
+        potential = {
+            exists = owner
+            owner = { has_origin = Start_As_Fallen_Empire_Holy_Guardians }
+        }
+        pop_safe_fe_foundry_bonus_workforce_mult = 0.20
+    }
+
+    on_queued = {
+        if = { # kill on the same planet
+            limit = {
+                is_variable_set = local_spent_biomass
+                any_owned_pop_group = {
+                    has_trait = trait_wilderness
+                    pop_group_size > local_spent_biomass
+                }
+            }
+            random_owned_pop_group = {
+                limit = {
+                    has_trait = trait_wilderness
+                    pop_group_size > local_spent_biomass
+                }
+                kill_pop_group = {
+                    pop_group = this
+                    amount = local_spent_biomass
+                }
+            }
+        }
+        else_if = {
+            limit = { is_variable_set = local_spent_biomass }
+            owner = {
+                global_biomass_spender = yes
+            }
+        }
+        owner = {
+            subtract_variable = { which = micro_forge_upgrade_count value = 1 }
+        }
+    }
+
+    on_unqueued = {
+        unqueue_biomass_effect = yes
+        owner = {
+            change_variable = { which = micro_forge_upgrade_count value = 1 }
+        }
+    }
+
+    show_in_tech = tech_fe_forge_2
+}
+
+######################
+# Resource buildings #
+######################
 building_class_3_singularity = {
     base_buildtime = @b2_time
     can_build = yes
@@ -542,19 +1471,19 @@ building_class_3_singularity = {
             alloys = 900
             sr_dark_matter = 350
         }
-        produces = {
-            energy = 200
-            trade = 30
-        }
         upkeep = {
             alloys = @b3_alloy_upkeep
-            sr_dark_matter = 2
+            rare_crystals = 2
         }
         cost = {
             trigger = {
                 owner = { is_wilderness_empire = yes }
             }
             biomass = @b3_biomass
+        }
+        produces = {
+            energy = 200
+            trade = 20
         }
     }
 
@@ -573,12 +1502,9 @@ building_class_3_singularity = {
     triggered_planet_modifier = {
         potential = {
             exists = owner
-            owner = {
-                is_fallen_empire_spiritualist = yes
-                is_ai = no
-            }
+            owner = { has_origin = Start_As_Fallen_Empire_Holy_Guardians }
         }
-        job_safe_fe_acolyte_generator_max_workforce_mult = 0.05
+        pop_safe_fe_acolyte_generator_bonus_workforce_mult = 0.10
     }
 
     on_queued = {
@@ -683,19 +1609,19 @@ building_class_4_singularity = {
             alloys = 1200
             sr_dark_matter = 50
         }
-        produces = {
-            energy = 350
-            trade = 75
-        }
         upkeep = {
-            alloys = 10
-            sr_dark_matter = 3
+            alloys = 8
+            rare_crystals = 3
         }
         cost = {
             trigger = {
                 owner = { is_wilderness_empire = yes }
             }
             biomass = @b3_biomass
+        }
+        produces = {
+            energy = 300
+            trade = 50
         }
     }
 
@@ -714,13 +1640,9 @@ building_class_4_singularity = {
     triggered_planet_modifier = {
         potential = {
             exists = owner
-            owner = {
-                is_fallen_empire_spiritualist = yes
-                is_ai = no
-            }
+            owner = { has_origin = Start_As_Fallen_Empire_Holy_Guardians }
         }
-        job_safe_fe_acolyte_generator_max_workforce_mult = 0.10
-        job_safe_fe_acolyte_generator_max_workforce_add = 1
+        pop_safe_fe_acolyte_generator_bonus_workforce_mult = 0.20
     }
 
     on_queued = {
@@ -818,10 +1740,6 @@ building_fe_mine_1 = {
 
     resources = {
         category = planet_buildings
-        produces = {
-            minerals = 200
-            trade = 25
-        }
         cost = {
             alloys = @b3_minerals
             volatile_motes = @fe_sr_cost
@@ -829,13 +1747,17 @@ building_fe_mine_1 = {
         upkeep = {
             alloys = @b3_alloy_upkeep
             volatile_motes = 2
-            energy = 15
+            energy = 20
         }
         cost = {
             trigger = {
                 owner = { is_wilderness_empire = yes }
             }
             biomass = @b3_biomass
+        }
+        produces = {
+            minerals = 200
+            trade = 25
         }
     }
 
@@ -854,12 +1776,9 @@ building_fe_mine_1 = {
     triggered_planet_modifier = {
         potential = {
             exists = owner
-            owner = {
-                is_fallen_empire_spiritualist = yes
-                is_ai = no
-            }
+            owner = { has_origin = Start_As_Fallen_Empire_Holy_Guardians }
         }
-        job_safe_fe_acolyte_mine_max_workforce_mult = 0.05
+        pop_safe_fe_acolyte_mine_bonus_workforce_mult = 0.1
     }
 
     upgrades = {
@@ -964,12 +1883,8 @@ building_fe_mine_2 = {
         cost = {
             alloys = @b3_minerals
         }
-        produces = {
-            minerals = 400
-            trade = 50
-        }
         upkeep = {
-            alloys = 10
+            alloys = 8
             volatile_motes = 3
             energy = 30
         }
@@ -979,7 +1894,10 @@ building_fe_mine_2 = {
             }
             biomass = @b3_biomass
         }
-
+        produces = {
+            minerals = 400
+            trade = 50
+        }
     }
 
     triggered_planet_modifier = {
@@ -997,13 +1915,9 @@ building_fe_mine_2 = {
     triggered_planet_modifier = {
         potential = {
             exists = owner
-            owner = {
-                is_fallen_empire_spiritualist = yes
-                is_ai = no
-            }
+            owner = { has_origin = Start_As_Fallen_Empire_Holy_Guardians }
         }
-        job_safe_fe_acolyte_mine_max_workforce_mult = 0.10
-        job_safe_fe_acolyte_mine_max_workforce_add = 1
+        pop_safe_fe_acolyte_mine_bonus_workforce_mult = 0.2
     }
 
     on_queued = {
@@ -1099,15 +2013,11 @@ building_nourishment_complex = {
 
     resources = {
         category = planet_buildings
-        produces = {
-            food = 100
-            trade = 25
-        }
         cost = {
             alloys = @b3_minerals
         }
         upkeep = {
-            alloys = @b2_alloy_upkeep
+            alloys = 5
             exotic_gases = 2
             energy = 20
         }
@@ -1116,6 +2026,10 @@ building_nourishment_complex = {
                 owner = { is_wilderness_empire = yes }
             }
             biomass = @b3_biomass
+        }
+        produces = {
+            food = 125
+            trade = 25
         }
     }
 
@@ -1134,12 +2048,9 @@ building_nourishment_complex = {
     triggered_planet_modifier = {
         potential = {
             exists = owner
-            owner = {
-                is_fallen_empire_spiritualist = yes
-                is_ai = no
-            }
+            owner = { has_origin = Start_As_Fallen_Empire_Holy_Guardians }
         }
-        job_safe_fe_acolyte_farm_max_workforce_mult = 0.05
+        pop_safe_fe_acolyte_farm_bonus_workforce_mult = 0.10
     }
 
     on_queued = {
@@ -1244,15 +2155,11 @@ building_nourishment_center = {
 
     resources = {
         category = planet_buildings
-        produces = {
-            food = 200
-            trade = 50
-        }
         cost = {
             alloys = @b3_minerals
         }
         upkeep = {
-            alloys = 10
+            alloys = 8
             exotic_gases = 3
             energy = 30
         }
@@ -1261,6 +2168,10 @@ building_nourishment_center = {
                 owner = { is_wilderness_empire = yes }
             }
             biomass = @b3_biomass
+        }
+        produces = {
+            food = 200
+            trade = 50
         }
     }
 
@@ -1279,13 +2190,9 @@ building_nourishment_center = {
     triggered_planet_modifier = {
         potential = {
             exists = owner
-            owner = {
-                is_fallen_empire_spiritualist = yes
-                is_ai = no
-            }
+            owner = { has_origin = Start_As_Fallen_Empire_Holy_Guardians }
         }
-        job_safe_fe_acolyte_farm_max_workforce_mult = 0.1
-        job_safe_fe_acolyte_farm_max_workforce_add = 1
+        pop_safe_fe_acolyte_farm_bonus_workforce_mult = 0.20
     }
 
     on_queued = {
@@ -1327,4 +2234,260 @@ building_nourishment_center = {
     }
 
     show_in_tech = tech_fe_nourishment_2
+}
+
+##################
+# Army buildings #
+##################
+building_fe_fortress = {
+    base_buildtime = @b2_time
+    can_build = yes
+    can_demolish = yes
+
+    category = army
+
+    building_sets = {
+        fallen_empire
+        fortress
+    }
+
+    potential = {
+        exists = owner
+        owner = {
+            OR = {
+                is_fallen_empire = yes
+                has_technology = tech_fe_fortress_1
+                has_country_flag = fe_fortress_can_build
+            }
+        }
+        NOR = {
+            has_modifier = resort_colony
+            has_modifier = slave_colony
+            has_modifier = penal_colony
+        }
+    }
+
+    allow = {
+        custom_tooltip = {
+            fail_text = ancrel.10004.failtext
+            owner = {
+                OR = {
+                    check_variable = { which = fe_fortress_build_count value >= 1 }
+                    is_fallen_empire = yes
+                    has_technology = tech_fe_fortress_1
+                }
+            }
+        }
+    }
+
+    destroy_trigger = {
+        always = no
+    }
+
+    inline_script = {
+        script = jobs/soldiers_add
+        AMOUNT = @fe_jobs
+    }
+
+    resources = {
+        category = planet_buildings
+        cost = {
+            alloys = @b2_minerals
+            volatile_motes = @fe_sr_cost
+        }
+        upkeep = {
+            alloys = @b2_alloy_upkeep
+            volatile_motes = 2
+            energy = 20
+        }
+        cost = {
+            trigger = {
+                owner = { is_wilderness_empire = yes }
+            }
+            biomass = @b3_biomass
+        }
+    }
+
+    triggered_planet_modifier = {
+        potential = {
+            exists = owner
+            owner = {
+                is_wilderness_empire = yes
+                has_tradition = tr_purity_finish
+            }
+        }
+        planet_building_build_speed_mult = 0.03
+        planet_decision_enact_speed_mult = 0.03
+    }
+
+    upgrades = {
+        building_fe_stronghold
+    }
+
+    on_queued = {
+        if = { # kill on the same planet
+            limit = {
+                is_variable_set = local_spent_biomass
+                any_owned_pop_group = {
+                    has_trait = trait_wilderness
+                    pop_group_size > local_spent_biomass
+                }
+            }
+            random_owned_pop_group = {
+                limit = {
+                    has_trait = trait_wilderness
+                    pop_group_size > local_spent_biomass
+                }
+                kill_pop_group = {
+                    pop_group = this
+                    amount = local_spent_biomass
+                }
+            }
+        }
+        else_if = {
+            limit = { is_variable_set = local_spent_biomass }
+            owner = {
+                global_biomass_spender = yes
+            }
+        }
+        owner = {
+            subtract_variable = { which = fe_fortress_build_count value = 1 }
+        }
+    }
+
+    on_unqueued = {
+        unqueue_biomass_effect = yes
+        owner = {
+            change_variable = { which = fe_fortress_build_count value = 1 }
+        }
+    }
+
+    show_in_tech = tech_fe_fortress_1
+}
+
+building_fe_stronghold = {
+    base_buildtime = @b2_time
+    can_build = no
+
+    category = army
+
+    building_sets = {
+        fallen_empire
+        fortress
+    }
+
+    potential = {
+        exists = owner
+        owner = {
+            OR = {
+                is_fallen_empire = yes
+                has_technology = tech_fe_fortress_2
+                has_country_flag = fe_fortress_can_build
+            }
+        }
+        NOR = {
+            has_modifier = resort_colony
+            has_modifier = slave_colony
+            has_modifier = penal_colony
+        }
+    }
+
+    allow = {
+        custom_tooltip = {
+            fail_text = ancrel.10004.failtext
+            exists = owner
+            owner = {
+                OR = {
+                    check_variable = { which = fe_fortress_upgrade_count value >= 1 }
+                    is_fallen_empire = yes
+                    has_technology = tech_fe_fortress_2
+                }
+            }
+        }
+    }
+
+    destroy_trigger = {
+        always = no
+    }
+
+    planetary_ftl_inhibitor = yes
+
+    inline_script = {
+        script = jobs/soldiers_add
+        AMOUNT = 800
+    }
+
+    planet_modifier = {
+        planet_orbital_bombardment_damage = -0.25
+    }
+
+    resources = {
+        category = planet_buildings
+        cost = {
+            alloys = @b2_minerals
+        }
+        upkeep = {
+            alloys = @b2_alloy_upkeep
+            volatile_motes = 3
+            energy = 30
+        }
+        cost = {
+            trigger = {
+                owner = { is_wilderness_empire = yes }
+            }
+            biomass = @b3_biomass
+        }
+    }
+
+    triggered_planet_modifier = {
+        potential = {
+            exists = owner
+            owner = {
+                is_wilderness_empire = yes
+                has_tradition = tr_purity_finish
+            }
+        }
+        planet_building_build_speed_mult = 0.03
+        planet_decision_enact_speed_mult = 0.03
+    }
+
+    on_queued = {
+        if = { # kill on the same planet
+            limit = {
+                is_variable_set = local_spent_biomass
+                any_owned_pop_group = {
+                    has_trait = trait_wilderness
+                    pop_group_size > local_spent_biomass
+                }
+            }
+            random_owned_pop_group = {
+                limit = {
+                    has_trait = trait_wilderness
+                    pop_group_size > local_spent_biomass
+                }
+                kill_pop_group = {
+                    pop_group = this
+                    amount = local_spent_biomass
+                }
+            }
+        }
+        else_if = {
+            limit = { is_variable_set = local_spent_biomass }
+            owner = {
+                global_biomass_spender = yes
+            }
+        }
+        owner = {
+            subtract_variable = { which = fe_fortress_upgrade_count value = 1 }
+        }
+    }
+
+    on_unqueued = {
+        unqueue_biomass_effect = yes
+        owner = {
+            change_variable = { which = fe_fortress_upgrade_count value = 1 }
+        }
+    }
+
+    show_in_tech = tech_fe_fortress_2
 }

@@ -85,9 +85,9 @@ country_event = {
                     district = district_farming
                     zone = zone_food
                 }
-                # 循环添加125个堕落帝国原生物种人口组（12.5K）
+                # 循环添加105个堕落帝国原生物种人口组（10.5K）
                 while = {
-                    count = 125
+                    count = 105
                     create_pop_group = {
                         species = owner_main_species
                     }
@@ -107,8 +107,8 @@ country_event = {
                 # 为城市核心添加建筑
                 add_building = building_ancient_palace
                 add_building = building_fe_dome
-                add_building = building_fe_dome
                 add_building = building_fe_temple_2
+                add_building = building_empyrean_shrine
                 add_building = building_fe_temple_2
                 add_building = building_fe_mine_2
                 add_building = building_fe_stronghold
@@ -199,6 +199,7 @@ country_event = {
                 add_building = building_fe_dome
                 add_building = building_dimensional_fabricator
                 add_building = building_dimensional_fabricator
+                add_building = building_fe_stronghold
                 add_building = building_fe_stronghold
                 add_building = building_nano_forge
                 add_building = building_nano_forge

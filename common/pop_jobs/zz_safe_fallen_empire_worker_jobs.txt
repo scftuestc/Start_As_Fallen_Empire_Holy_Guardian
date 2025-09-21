@@ -1,0 +1,701 @@
+## 原版堕落的岗位不做改动，加前缀safe重写
+## possible 中均做了限制，只有初始物种才能从事，符合条件的可以按权重转职
+
+#-----------------WORKER------------------#
+# 对应普通帝国的技工
+safe_fe_acolyte_generator = {
+    category = precursor_warden
+    is_capped_by_modifier = yes
+
+    swappable_data = {
+        default = {
+            condition_string = WORKER_JOB_TRIGGER
+            building_icon = building_power_plant
+            icon = technician
+        }
+        swap_type = {
+            trigger = {
+                technician_is_mote_harvester_trigger = yes
+            }
+            icon = mote_harvester
+            name = mote_harvester
+            desc = mote_harvester
+            building_icon = building_mote_harvesting_traps
+            weight = 20
+        }
+    }
+
+    tags = { energy }
+
+    possible_pre_triggers = {
+        has_owner = yes
+        is_being_purged = no
+        is_being_assimilated = no
+        is_sapient = yes
+    }
+
+    possible_precalc = can_fill_worker_job
+
+    possible = {
+        exists = owner
+        owner = { has_origin = Start_As_Fallen_Empire_Holy_Guardians }
+        is_same_species = owner
+    }
+
+    resources = {
+        category = planet_safe_fe_acolyte_generator
+        produces = {
+            energy = 15
+            sr_dark_matter = 0.5
+        }
+        produces = {
+            trigger = {
+                planet = {
+                    has_planet_flag = has_energy_requisitorium
+                }
+            }
+            energy = @requisitorium_energy_reduction
+        }
+    }
+
+    overlord_resources = {
+        category = planet_requisitioned_energy
+        produces = {
+            trigger = {
+                planet = {
+                    has_planet_flag = has_energy_requisitorium
+                }
+            }
+            energy = @requisitorium_energy_overlord
+        }
+    }
+
+    weight = {
+        weight = @worker_job_weight
+
+        mult = value:job_weights_modifier|JOB|safe_fe_acolyte_generator|RESOURCE|energy|
+
+        # No AI
+        modifier = {
+            factor = 0
+            exists = owner
+            owner = {
+                OR = {
+                    NOT = { has_origin = Start_As_Fallen_Empire_Holy_Guardians }
+                    is_ai = yes
+                }
+            }
+        }
+        # low income modifier
+        modifier = {
+            factor = 3
+            exists = planet
+            planet = {
+                has_available_jobs = safe_fe_acolyte_generator
+            }
+            exists = owner
+            owner = {
+                has_monthly_income = {
+                    resource = energy
+                    value < 10
+                }
+            }
+        }
+        # crisis purge
+        modifier = {
+            factor = 0.01
+            exists = planet
+            exists = planet.controller
+            planet.controller = {
+                OR = {
+                    is_country_type = swarm
+                    is_country_type = ai_empire
+                }
+            }
+        }
+    }
+
+    inline_script = "jobs/automodding_priority_energy"
+
+    promotion = {
+        time = @standard_promotion_time
+        effect = {
+            pop_amount_change_category = {
+                CATEGORY = precursor_warden
+                AMOUNT = local_pop_amount
+            }
+        }
+    }
+}
+
+# 对应普通帝国的矿工
+safe_fe_acolyte_mine = {
+    category = precursor_warden
+    is_capped_by_modifier = yes
+
+    swappable_data = {
+        default = {
+            condition_string = WORKER_JOB_TRIGGER
+            building_icon = building_fe_mine_2
+            icon = miner
+        }
+        # 转职
+        swap_type = {
+            trigger = {
+                miner_is_scrap_miner_trigger = yes
+            }
+            name = scrap_miner
+            desc = scrap_miner
+            weight = 5
+        }
+        swap_type = {
+            trigger = {
+                miner_is_cave_cleaner_trigger = yes
+            }
+            name = cave_cleaner
+            desc = cave_cleaner
+            weight = 10
+        }
+        swap_type = {
+            trigger = {
+                miner_is_mineral_diver_trigger = yes
+            }
+            name = mineral_diver
+            desc = mineral_diver
+            weight = 15
+        }
+        swap_type = {
+            trigger = {
+                miner_is_turtle_miner_trigger = yes
+            }
+            name = turtle_miner
+            desc = turtle_miner
+            weight = 20
+        }
+        swap_type = {
+            trigger = {
+                miner_is_crystal_miner_trigger = yes
+            }
+            icon = crystal_miner
+            name = crystal_miner
+            desc = crystal_miner
+            building_icon = building_crystal_mines
+            weight = 20
+        }
+    }
+
+    tags = { minerals strategic_resource }
+
+    possible_pre_triggers = {
+        has_owner = yes
+        is_being_purged = no
+        is_being_assimilated = no
+        is_sapient = yes
+    }
+
+    possible_precalc = can_fill_worker_job
+
+    possible = {
+        exists = owner
+        owner = { has_origin = Start_As_Fallen_Empire_Holy_Guardians }
+        is_same_species = owner
+    }
+
+    resources = {
+        category = planet_safe_fe_acolyte_mine
+        produces = {
+            minerals = 15
+            rare_crystals = 0.5
+        }
+        produces = {
+            trigger = {
+                planet = {
+                    has_planet_flag = has_material_requisitorium
+                }
+            }
+            minerals = @requisitorium_minerals_reduction
+        }
+        # 转职为拆解矿工的产出
+        produces = {
+            trigger = {
+                exists = planet
+                planet = {
+                    miner_is_scrap_miner_trigger = yes
+                }
+            }
+            minerals = -2
+            alloys = 1
+        }
+        # 转职为洞穴清理者的产出
+        produces = {
+            trigger = {
+                exists = planet
+                planet = {
+                    miner_is_cave_cleaner_trigger = yes
+                }
+            }
+            minerals = 2
+        }
+        # 转职为深海潜水员的产出
+        produces = {
+            trigger = {
+                exists = planet
+                planet = {
+                    miner_is_mineral_diver_trigger = yes
+                }
+            }
+            minerals = -1
+            alloys = 1
+        }
+        # 转职为尼玛矿工的产出
+        produces = {
+            trigger = {
+                exists = planet
+                planet = {
+                    miner_is_turtle_miner_trigger = yes
+                }
+            }
+            minerals = -1
+            food = 3
+        }
+        produces = {
+            trigger = {
+                planet = {
+                    has_planet_flag = has_material_requisitorium
+                }
+            }
+            minerals = @requisitorium_minerals_reduction
+        }
+    }
+
+    triggered_planet_modifier = {
+        # Gives some Stability per "Mining Guild" Councilor level.
+        potential = {
+            has_councilor = { COUNCILOR = "councilor_mining_guilds" }
+        }
+        planet_stability_add = @councilor_mining_guilds_miner_stability
+        mult = value:councilor_level|TYPE|councilor_mining_guilds|
+    }
+
+    overlord_resources = {
+        category = planet_requisitioned_minerals
+        produces = {
+            trigger = {
+                planet = {
+                    has_planet_flag = has_material_requisitorium
+                }
+            }
+            minerals = @requisitorium_minerals_overlord
+        }
+    }
+
+    weight = {
+        weight = @worker_job_weight
+        mult = value:job_weights_modifier|JOB|safe_fe_acolyte_mine|RESOURCE|minerals|
+
+        # No AI
+        modifier = {
+            factor = 0
+            exists = owner
+            owner = {
+                OR = {
+                    NOT = { has_origin = Start_As_Fallen_Empire_Holy_Guardians }
+                    is_ai = yes
+                }
+            }
+        }
+        # low income modifier
+        modifier = {
+            factor = 3
+            exists = planet
+            planet = {
+                has_available_jobs = miner
+            }
+            exists = owner
+            owner = {
+                has_monthly_income = {
+                    resource = minerals
+                    value < 10
+                }
+            }
+        }
+        # crisis purge
+        modifier = {
+            factor = 0.01
+            exists = planet
+            exists = planet.controller
+            planet.controller = {
+                OR = {
+                    is_country_type = swarm
+                    is_country_type = ai_empire
+                }
+            }
+        }
+    }
+
+    inline_script = "jobs/automodding_priority_minerals"
+
+    promotion = {
+        time = @standard_promotion_time
+        effect = {
+            pop_amount_change_category = {
+                CATEGORY = precursor_warden
+                AMOUNT = local_pop_amount
+            }
+        }
+    }
+}
+
+# 对应普通帝国的农夫
+safe_fe_acolyte_farm = {
+    category = precursor_warden
+    is_capped_by_modifier = yes
+
+    swappable_data = {
+        default = {
+            condition_string = WORKER_JOB_TRIGGER
+            building_icon = building_nourishment_center
+            icon = farmer
+        }
+        # 转职
+        swap_type = {
+            trigger = {
+                farmer_is_titan_hunter_trigger = yes
+            }
+            name = titan_hunter
+            desc = titan_hunter
+            icon = hunter_gatherer
+            weight = 10
+        }
+        swap_type = {
+            trigger = {
+                farmer_is_puddle_technician_trigger = yes
+            }
+            name = puddle_technician
+            desc = puddle_technician
+            icon = puddle_technician
+            weight = 15
+        }
+        swap_type = {
+            trigger = {
+                farmer_is_gas_extractor_trigger = yes
+            }
+            name = gas_extractor
+            desc = gas_extractor
+            icon = gas_extractor
+            building_icon = building_gas_extractors
+            weight = 20
+        }
+        swap_type = {
+            trigger = {
+                farmer_is_angler_trigger = yes
+            }
+            name = angler
+            desc = angler
+            icon = angler
+            weight = 50
+        }
+    }
+
+    tags = { food }
+
+    possible_pre_triggers = {
+        has_owner = yes
+        is_being_purged = no
+        is_being_assimilated = no
+        is_sapient = yes
+    }
+
+    possible_precalc = can_fill_worker_job
+
+    possible = {
+        exists = owner
+        owner = { has_origin = Start_As_Fallen_Empire_Holy_Guardians }
+        is_same_species = owner
+    }
+
+    resources = {
+        category = planet_safe_fe_acolyte_farm
+        produces = {
+            food = 15
+            exotic_gases = 0.5
+        }
+        # 转职成巨兽猎手后的产出
+        produces = {
+            trigger = {
+                farmer_is_titan_hunter_trigger = yes
+            }
+            food = 2
+            trade = 8
+        }
+        # 转职成泥潭技工后的产出
+        produces = {
+            trigger = {
+                farmer_is_puddle_technician_trigger = yes
+            }
+            alloys = 1
+        }
+        # 转职成渔夫后的产出
+        produces = {
+            trigger = {
+                exists = planet
+                planet = {
+                    farmer_is_angler_trigger = yes
+                }
+            }
+            food = 2
+            trade = 2
+        }
+        produces = {
+            trigger = {
+                exists = planet
+                planet = {
+                    farmer_is_angler_trigger = yes
+                }
+                has_councilor = { COUNCILOR = "councilor_anglers" }
+            }
+            food = @councilor_anglers_angler_food_bonus
+            mult = value:councilor_level|TYPE|councilor_anglers|
+        }
+        produces = {
+            trigger = {
+                planet = {
+                    has_planet_flag = has_produce_requisitorium
+                }
+            }
+            food = @requisitorium_food_reduction
+        }
+    }
+
+    overlord_resources = {
+        category = planet_requisitioned_food
+        produces = {
+            trigger = {
+                planet = {
+                    has_planet_flag = has_produce_requisitorium
+                }
+            }
+            food = @requisitorium_food_overlord
+        }
+    }
+
+    triggered_planet_modifier = {
+        potential = {
+            exists = owner
+            owner = { has_valid_civic = civic_agrarian_idyll }
+        }
+        planet_amenities_add = 200
+        mult = value:scripted_modifier_mult|MODIFIER|pop_job_amenities_mult|
+    }
+
+    weight = {
+        weight = @worker_job_weight
+        mult = value:job_weights_modifier|JOB|safe_fe_acolyte_farm|RESOURCE|food|
+
+        # No AI
+        modifier = {
+            factor = 0
+            exists = owner
+            owner = {
+                OR = {
+                    NOT = { has_origin = Start_As_Fallen_Empire_Holy_Guardians }
+                    is_ai = yes
+                }
+            }
+        }
+        modifier = {
+            factor = 1.1
+            owner = { has_valid_civic = civic_agrarian_idyll }
+        }
+        modifier = {
+            factor = value:scripted_modifier_job_weight_mult|MODIFIER|pop_job_amenities_mult|
+            owner = { has_valid_civic = civic_agrarian_idyll }
+        }
+        # low income modifier
+        modifier = {
+            factor = 3
+            exists = planet
+            planet = {
+                has_available_jobs = safe_fe_acolyte_farm
+            }
+            exists = owner
+            owner = {
+                has_monthly_income = {
+                    resource = food
+                    value < 10
+                }
+            }
+        }
+        # crisis purge
+        modifier = {
+            factor = 0.01
+            exists = planet
+            exists = planet.controller
+            planet.controller = {
+                OR = {
+                    is_country_type = swarm
+                    is_country_type = ai_empire
+                }
+            }
+        }
+    }
+
+    inline_script = "jobs/automodding_priority_food"
+
+    promotion = {
+        time = @standard_promotion_time
+        effect = {
+            pop_amount_change_category = {
+                CATEGORY = precursor_warden
+                AMOUNT = local_pop_amount
+            }
+        }
+    }
+}
+
+# 对应原版普通帝国士兵
+safe_fe_soldier = {
+    category = precursor_warden
+    is_capped_by_modifier = yes
+
+    swappable_data = {
+        default = {
+            condition_string = SOLDIER_JOB_TRIGGER
+            building_icon = building_fe_stronghold
+            icon = soldier
+        }
+        # 转职
+        swap_type = {
+            trigger = {
+                soldier_is_necromancer = yes
+            }
+            name = necromancer
+            desc = necromancer
+            icon = necromancer
+            building_icon = building_dread_encampment
+            weight = 50
+        }
+    }
+
+    tags = { soldier }
+
+    possible_precalc = can_fill_worker_job
+
+    possible_pre_triggers = {
+        has_owner = yes
+        is_being_purged = no
+        is_being_assimilated = no
+        is_sapient = yes
+    }
+
+    possible = {
+        exists = owner
+        owner = { has_origin = Start_As_Fallen_Empire_Holy_Guardians }
+        is_same_species = owner
+        soldier_job_check_trigger = yes
+    }
+
+    country_modifier = {
+        country_naval_cap_add = 10
+    }
+
+    triggered_planet_modifier = {
+        potential = {
+            always = yes
+        }
+        planet_defense_armies_add = 5
+    }
+
+    resources = {
+        category = planet_safe_fe_soldiers
+        produces = {
+            unity = 5
+        }
+        # 转职为死灵法师后的产出
+        produces = {
+            trigger = {
+                soldier_is_necromancer = yes
+            }
+            physics_research = 2
+            society_research = 2
+        }
+        upkeep = {
+            trigger = {
+                soldier_is_necromancer = yes
+            }
+            consumer_goods = 1
+        }
+        # inline_script = "output/soldier_output"
+    }
+
+    inline_script = "output/soldier_triggered_modifiers"
+
+    weight = {
+        weight = @soldier_job_weight
+
+        # No AI
+        modifier = {
+            factor = 0
+            exists = owner
+            owner = {
+                OR = {
+                    NOT = { has_origin = Start_As_Fallen_Empire_Holy_Guardians }
+                    is_ai = yes
+                }
+            }
+        }
+        modifier = {
+            factor = 10
+            exists = planet
+            planet = {
+                exists = leader
+                leader = {
+                    leader_class = commander
+                }
+            }
+        }
+        modifier = {
+            factor = 2
+            has_trait = trait_resilient
+        }
+        modifier = {
+            factor = 2
+            has_trait = trait_very_strong
+        }
+        modifier = {
+            factor = 1.5
+            has_trait = trait_strong
+        }
+        modifier = {
+            factor = 0.5
+            has_trait = trait_weak
+        }
+        modifier = {
+            factor = 2
+            has_trait = trait_presapient_earthbound
+        }
+        modifier = {
+            factor = 1.1
+            has_trait = trait_limited_regeneration
+        }
+        modifier = {
+            factor = 0
+            species = { can_be_soldier = no }
+        }
+        modifier = {
+            factor = 5
+            has_trait = trait_cyborg_creed_of_war
+        }
+    }
+
+    promotion = {
+        time = @standard_promotion_time
+        effect = {
+            pop_amount_change_category = {
+                CATEGORY = precursor_warden
+                AMOUNT = local_pop_amount
+            }
+        }
+    }
+}
+

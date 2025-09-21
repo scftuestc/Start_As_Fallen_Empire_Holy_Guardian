@@ -4,15 +4,14 @@ triggered_district_planet_modifier = {
 	potential = {
 		exists = owner
 		owner = {
-			is_regular_empire = yes
-			is_fallen_empire_spiritualist = no
+			is_gestalt = no
 			NOT = { has_origin = Start_As_Fallen_Empire_Holy_Guardians }
 		}
 		planet_is_habitat_equivalent = no
 		planet_is_ecu_equivalent = no
 		planet_is_ring_world_equivalent = no
 	}
-	job_farmer_add = $AMOUNT$
+	job_foundry_add = $AMOUNT$
 }
 
 # Habitats
@@ -20,43 +19,40 @@ triggered_district_planet_modifier = {
 	potential = {
 		exists = owner
 		owner = {
-			is_regular_empire = yes
-			is_fallen_empire_spiritualist = no
+			is_gestalt = no
 			NOT = { has_origin = Start_As_Fallen_Empire_Holy_Guardians }
 		}
 		planet_is_habitat_equivalent = yes
 	}
-	job_farmer_add = $AMOUNT$
+	job_foundry_add = $AMOUNT$
 	mult = owner.value:hab_void_dweller_jobs
 }
 
-# Machine/Hive Worlds
+# Ecus
 triggered_district_planet_modifier = {
 	potential = {
 		exists = owner
 		owner = {
 			is_regular_empire = yes
-			is_fallen_empire_spiritualist = no
 			NOT = { has_origin = Start_As_Fallen_Empire_Holy_Guardians }
 		}
 		planet_is_ecu_equivalent = yes
 	}
-	job_farmer_add = $AMOUNT$
+	job_foundry_add = $AMOUNT$
 	mult = 3
 }
 
-# Ringworlds
+# Ringworld
 triggered_district_planet_modifier = {
 	potential = {
 		exists = owner
 		owner = {
 			is_regular_empire = yes
-			is_fallen_empire_spiritualist = no
 			NOT = { has_origin = Start_As_Fallen_Empire_Holy_Guardians }
 		}
 		planet_is_ring_world_equivalent = yes
 	}
-	job_farmer_add = $AMOUNT$
+	job_foundry_add = $AMOUNT$
 	mult = 5
 }
 
@@ -67,20 +63,6 @@ triggered_district_planet_modifier = {
 		exists = owner
 		owner = {
 			is_fallen_empire_spiritualist = yes
-			NOT = { has_origin = Start_As_Fallen_Empire_Holy_Guardians }
-		}
-		planet_is_habitat_equivalent = no
-		planet_is_ecu_equivalent = no
-		planet_is_ring_world_equivalent = no
-	}
-	job_fe_acolyte_farm_add = $AMOUNT$
-}
-# 自定义岗位
-triggered_district_planet_modifier = {
-	potential = {
-		exists = owner
-		owner = {
-			is_fallen_empire_spiritualist = yes
 			has_origin = Start_As_Fallen_Empire_Holy_Guardians
 		}
 		planet_is_habitat_equivalent = no
@@ -88,7 +70,7 @@ triggered_district_planet_modifier = {
 		planet_is_ring_world_equivalent = no
 	}
 	# 自定义岗位
-	job_safe_fe_acolyte_farm_add = $AMOUNT$
+	job_safe_fe_foundry_add = $AMOUNT$
 }
 
 # Habitats
@@ -97,42 +79,16 @@ triggered_district_planet_modifier = {
 		exists = owner
 		owner = {
 			is_fallen_empire_spiritualist = yes
-			NOT = { has_origin = Start_As_Fallen_Empire_Holy_Guardians }
-		}
-		planet_is_habitat_equivalent = yes
-	}
-	job_fe_acolyte_farm_add = $AMOUNT$
-	mult = owner.value:hab_void_dweller_jobs
-}
-# 自定义岗位
-triggered_district_planet_modifier = {
-	potential = {
-		exists = owner
-		owner = {
-			is_fallen_empire_spiritualist = yes
 			has_origin = Start_As_Fallen_Empire_Holy_Guardians
 		}
 		planet_is_habitat_equivalent = yes
 	}
 	# 自定义岗位
-	job_safe_fe_acolyte_farm_add = $AMOUNT$
+	job_safe_fe_foundry_add = $AMOUNT$
 	mult = owner.value:hab_void_dweller_jobs
 }
 
-# Machine/Hive Worlds
-triggered_district_planet_modifier = {
-	potential = {
-		exists = owner
-		owner = {
-			is_fallen_empire_spiritualist = yes
-			NOT = { has_origin = Start_As_Fallen_Empire_Holy_Guardians }
-		}
-		planet_is_ecu_equivalent = yes
-	}
-	job_fe_acolyte_farm_add = $AMOUNT$
-	mult = 3
-}
-# 自定义岗位
+# Ecus
 triggered_district_planet_modifier = {
 	potential = {
 		exists = owner
@@ -143,24 +99,11 @@ triggered_district_planet_modifier = {
 		planet_is_ecu_equivalent = yes
 	}
 	# 自定义岗位
-	job_safe_fe_acolyte_farm_add = $AMOUNT$
+	job_safe_fe_foundry_add = $AMOUNT$
 	mult = 3
 }
 
-# Ringworlds
-triggered_district_planet_modifier = {
-	potential = {
-		exists = owner
-		owner = {
-			is_fallen_empire_spiritualist = yes
-			NOT = { has_origin = Start_As_Fallen_Empire_Holy_Guardians }
-		}
-		planet_is_ring_world_equivalent = yes
-	}
-	job_fe_acolyte_farm_add = $AMOUNT$
-	mult = 5
-}
-# 自定义岗位
+# Ringworld
 triggered_district_planet_modifier = {
 	potential = {
 		exists = owner
@@ -171,7 +114,7 @@ triggered_district_planet_modifier = {
 		planet_is_ring_world_equivalent = yes
 	}
 	# 自定义岗位
-	job_safe_fe_acolyte_farm_add = $AMOUNT$
+	job_safe_fe_foundry_add = $AMOUNT$
 	mult = 5
 }
 
@@ -187,7 +130,7 @@ triggered_district_planet_modifier = {
 		planet_is_ecu_equivalent = no
 		planet_is_ring_world_equivalent = no
 	}
-	job_agri_drone_add = $AMOUNT$
+	job_fabricator_add = $AMOUNT$
 }
 
 # Habitats
@@ -199,11 +142,11 @@ triggered_district_planet_modifier = {
 		}
 		planet_is_habitat_equivalent = yes
 	}
-	job_agri_drone_add = $AMOUNT$
+	job_fabricator_add = $AMOUNT$
 	mult = owner.value:hab_void_dweller_jobs
 }
 
-# Machine/Hive Worlds
+# Ecus
 triggered_district_planet_modifier = {
 	potential = {
 		exists = owner
@@ -212,11 +155,11 @@ triggered_district_planet_modifier = {
 		}
 		planet_is_ecu_equivalent = yes
 	}
-	job_agri_drone_add = $AMOUNT$
+	job_fabricator_add = $AMOUNT$
 	mult = 3
 }
 
-# Ringworlds
+# Ringworld
 triggered_district_planet_modifier = {
 	potential = {
 		exists = owner
@@ -225,6 +168,6 @@ triggered_district_planet_modifier = {
 		}
 		planet_is_ring_world_equivalent = yes
 	}
-	job_agri_drone_add = $AMOUNT$
+	job_fabricator_add = $AMOUNT$
 	mult = 5
 }

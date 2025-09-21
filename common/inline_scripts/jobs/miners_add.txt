@@ -4,21 +4,8 @@ triggered_planet_modifier = {
 		exists = owner
 		owner = {
 			is_regular_empire = yes
-			is_ai = yes
-		}
-	}
-	modifier = {
-		job_miner_add = $AMOUNT$
-	}
-}
-
-triggered_planet_modifier = {
-	potential = {
-		exists = owner
-		owner = {
-			is_regular_empire = yes
-			is_ai = no
 			is_fallen_empire_spiritualist = no
+			NOT = { has_origin = Start_As_Fallen_Empire_Holy_Guardians }
 		}
 	}
 	modifier = {
@@ -33,7 +20,7 @@ triggered_planet_modifier = {
 		exists = owner
 		owner = {
 			is_fallen_empire_spiritualist = yes
-			is_ai = yes
+			NOT = { has_origin = Start_As_Fallen_Empire_Holy_Guardians }
 		}
 	}
 	modifier = {
@@ -47,7 +34,7 @@ triggered_planet_modifier = {
 		exists = owner
 		owner = {
 			is_fallen_empire_spiritualist = yes
-			is_ai = no
+			has_origin = Start_As_Fallen_Empire_Holy_Guardians
 		}
 	}
 	# 自定义岗位

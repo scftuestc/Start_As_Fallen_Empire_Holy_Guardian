@@ -1,5 +1,4 @@
 #root = planet
-
 @stickiness = 10
 @stickiness_low = 5
 @zone_urban = 100
@@ -21,7 +20,7 @@ col_fe_capital = {
     planet_modifier = {
         planet_stability_add = 20
         planet_amenities_add = 2000
-        planet_structures_upkeep_mult = -0.50
+        planet_structures_upkeep_mult = -0.25
     }
 
     weight_modifier = {
@@ -42,7 +41,7 @@ col_fe_colony = {
     planet_modifier = {
         planet_stability_add = 10
         planet_amenities_add = 1000
-        planet_structures_upkeep_mult = -0.25
+        planet_structures_upkeep_mult = -0.10
     }
 
     weight_modifier = {
@@ -62,8 +61,8 @@ col_ae_capital = {
     planet_modifier = {
         planet_stability_add = 30
         planet_amenities_add = 5000
-        planet_structures_upkeep_mult = -0.75
-        pop_bonus_workforce_mult = 0.75
+        planet_structures_upkeep_mult = -0.50
+        pop_bonus_workforce_mult = 0.50
 
     }
 
@@ -84,8 +83,8 @@ col_ae_colony = {
     planet_modifier = {
         planet_stability_add = 15
         planet_amenities_add = 2000
-        planet_structures_upkeep_mult = -0.50
-        pop_bonus_workforce_mult = 0.66
+        planet_structures_upkeep_mult = -0.25
+        pop_bonus_workforce_mult = 0.25
     }
 
     weight_modifier = {

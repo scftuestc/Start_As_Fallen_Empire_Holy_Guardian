@@ -1,0 +1,1495 @@
+## 原版堕落的岗位不做改动，加前缀safe重写
+## possible 中均做了限制，只有初始物种才能从事，符合条件的可以按权重转职
+
+#-----------------SPECIALIST------------------#
+# 对应于普通帝国的灵能使
+safe_fe_augur = {
+    category = precursor_artisan
+    is_capped_by_modifier = yes
+
+    swappable_data = {
+        default = {
+            condition_string = SPECIALIST_JOB_TRIGGER
+            building_icon = building_empyrean_shrine
+            icon = telepath
+        }
+        # 转职
+        swap_type = {
+            trigger = {
+                enforcer_is_educator_trigger = yes
+            }
+            name = educator_telepath
+            desc = educator_telepath
+            icon = telepath
+            building_icon = building_psi_corps
+            condition_string = SPECIALIST_JOB_TRIGGER
+            weight = 10
+        }
+    }
+
+    tags = { crime enforcer unity telepath }
+
+    possible_pre_triggers = {
+        has_owner = yes
+        is_being_purged = no
+        is_being_assimilated = no
+        is_sapient = yes
+    }
+
+    possible_precalc = can_fill_specialist_job
+
+    possible = {
+        exists = owner
+        owner = { has_origin = Start_As_Fallen_Empire_Holy_Guardians }
+        is_same_species = owner
+        OR = {
+            has_trait = trait_latent_psionic
+            has_trait = trait_psionic
+        }
+    }
+
+    triggered_planet_modifier = {
+        potential = { always = yes }
+        planet_crime_add = -10
+        planet_defense_armies_add = 4
+    }
+
+    resources = {
+        category = planet_safe_fe_augur
+        produces = {
+            unity = 10
+            society_research = 2
+        }
+        produces = {
+            trigger = {
+                exists = owner
+                owner = { has_active_tradition = tr_domination_judgment_corps }
+            }
+            unity = 1
+        }
+        # 与虚境通信签订契约后的加成
+        produces = {
+            trigger = {
+                exists = owner
+                owner = { has_country_flag = whisperers_covenant_confirmed }
+            }
+            physics_research = 5
+            engineering_research = 5
+            society_research = 5
+        }
+        produces = {
+            trigger = {
+                exists = owner
+                owner = { has_country_flag = whisperers_covenant_rank_1 }
+            }
+            physics_research = 5
+            engineering_research = 5
+            society_research = 5
+        }
+        upkeep = {
+            sr_zro = 0.5
+        }
+        upkeep = {
+            trigger = {
+                exists = planet
+                planet = { has_modifier = anticrime_campaign }
+            }
+            energy = 2
+        }
+    }
+
+    inline_script = "jobs/job_enforcer_additional_modifiers"
+    inline_script = "jobs/job_telepath_additional_modifiers"
+
+    weight = {
+        weight = @specialist_job_weight
+
+        mult = 2
+        mult = value:job_weights_modifier|JOB|safe_fe_augur|RESOURCE|unity|
+
+        # No AI
+        modifier = {
+            factor = 0
+            exists = owner
+            owner = {
+                OR = {
+                    NOT = { has_origin = Start_As_Fallen_Empire_Holy_Guardians }
+                    is_ai = yes
+                }
+            }
+        }
+        # crisis purge
+        modifier = {
+            factor = 0.01
+            exists = planet
+            exists = planet.controller
+            planet.controller = {
+                OR = {
+                    is_country_type = swarm
+                    is_country_type = ai_empire
+                }
+            }
+        }
+    }
+
+    inline_script = "jobs/automodding_priority_unity"
+}
+
+# 对应于普通帝国的官僚，对于圣卫将转职为祭司
+safe_fe_bureaucrat = {
+    category = precursor_artisan
+    is_capped_by_modifier = yes
+
+    swappable_data = {
+        default = {
+            icon = bureaucrat
+            condition_string = SPECIALIST_JOB_TRIGGER
+            building_icon = building_fe_administration_2
+        }
+        # 转职
+        swap_type = {
+            trigger = {
+                bureaucrat_is_priest = yes
+            }
+            name = safe_fe_priest
+            desc = safe_fe_priest
+            icon = priest
+            building_icon = building_fe_temple_2
+            condition_string = SPECIALIST_JOB_TRIGGER
+            weight = 5
+        }
+        swap_type = {
+            trigger = {
+                bureaucrat_is_numistic_priest = yes
+            }
+            name = numistic_priest
+            desc = numistic_priest
+            icon = numistic_priest
+            building_icon = building_nuumismatic_shrine
+            condition_string = SPECIALIST_JOB_TRIGGER
+            weight = 20
+        }
+        swap_type = {
+            trigger = {
+                bureaucrat_is_unifier = yes
+            }
+            name = unifier
+            desc = unifier
+            icon = overlord_propagandist
+            building_icon = building_capital
+            condition_string = SPECIALIST_JOB_TRIGGER
+            weight = 25
+        }
+        swap_type = {
+            trigger = {
+                bureaucrat_is_culture_worker = yes
+            }
+            name = culture_worker
+            desc = culture_worker
+            icon = culture_worker
+            building_icon = building_artist_patron
+            condition_string = SPECIALIST_JOB_TRIGGER
+            weight = 30
+        }
+        swap_type = {
+            trigger = {
+                bureaucrat_is_death_priest = yes
+            }
+            name = death_priest
+            desc = death_priest
+            icon = death_priest
+            building_icon = building_sacrificial_temple_1
+            condition_string = SPECIALIST_JOB_TRIGGER
+            weight = 35
+        }
+        swap_type = {
+            trigger = {
+                bureaucrat_is_memorialist = yes
+            }
+            name = memorialist
+            desc = memorialist
+            icon = death_chronicler
+            building_icon = building_galactic_memorial_1
+            condition_string = SPECIALIST_JOB_TRIGGER
+            weight = 200
+        }
+    }
+
+    tags = { unity }
+
+    possible_pre_triggers = {
+        has_owner = yes
+        is_being_purged = no
+        is_being_assimilated = no
+        is_sapient = yes
+    }
+
+    possible_precalc = can_fill_specialist_job
+
+    possible = {
+        exists = owner
+        owner = {
+            is_fallen_empire_spiritualist = yes
+            has_origin = Start_As_Fallen_Empire_Holy_Guardians
+        }
+        complex_specialist_job_check_trigger = yes
+        is_same_species = owner
+    }
+
+    resources = {
+        category = planet_safe_fe_bureaucrats
+        # PRODUCES
+        produces = {
+            unity = 10
+        }
+        upkeep = {
+            consumer_goods = 2
+        }
+        ## Government Swaps
+        produces = {
+            trigger = {
+                bureaucrat_is_death_priest = yes
+            }
+            unity = -1
+            society_research = 1
+        }
+        produces = {
+            trigger = {
+                bureaucrat_is_death_priest = yes
+                exists = owner
+                owner = { has_sacrificial_edict = yes }
+            }
+            unity = 3
+        }
+        ## Event Swaps
+        upkeep = {
+            trigger = {
+                bureaucrat_is_unifier = yes
+            }
+            consumer_goods = -1
+        }
+        # 转职为拜金教祭司后的产出
+        produces = {
+            trigger = {
+                exists = planet
+                planet = {
+                    bureaucrat_is_numistic_priest = yes
+                }
+            }
+            unity = -2
+            trade = 6
+        }
+        inline_script = "jobs/ethic_job_resources_memorialist"
+    }
+
+    ## 舒适度产出
+    triggered_planet_modifier = {
+        potential = {
+            bureaucrat_is_priest = yes
+        }
+        planet_amenities_add = 200
+        mult = value:scripted_modifier_mult|MODIFIER|pop_job_amenities_mult|
+    }
+    triggered_planet_modifier = {
+        potential = {
+            bureaucrat_is_death_priest = yes
+        }
+        planet_amenities_add = 200
+        mult = value:scripted_modifier_mult|MODIFIER|pop_job_amenities_mult|
+    }
+    triggered_planet_modifier = {
+        potential = {
+            bureaucrat_is_unifier = yes
+        }
+        planet_amenities_add = 300
+        mult = value:scripted_modifier_mult|MODIFIER|pop_job_amenities_mult|
+    }
+    triggered_planet_modifier = {
+        potential = {
+            bureaucrat_is_numistic_priest = yes
+        }
+        planet_amenities_add = 200
+        mult = value:scripted_modifier_mult|MODIFIER|pop_job_amenities_mult|
+    }
+    triggered_planet_modifier = {
+        potential = {
+            bureaucrat_is_culture_worker = yes
+        }
+        planet_amenities_add = 300
+        mult = value:scripted_modifier_mult|MODIFIER|pop_job_amenities_mult|
+    }
+
+    inline_script = "jobs/ethic_job_modifiers_memorialist"
+
+    ## 稳定度产出
+    triggered_planet_modifier = {
+        potential = {
+            bureaucrat_is_memorialist = yes
+        }
+        planet_stability_add = 0.5
+    }
+
+    triggered_planet_modifier = {
+        potential = {
+            exists = planet
+            planet = {
+                check_modifier_value = {
+                    modifier = planet_bureaucrats_stability_produces_add
+                    value > 0
+                }
+            }
+        }
+        planet_stability_add = 1
+        mult = planet.modifier:planet_bureaucrats_stability_produces_add
+    }
+
+    ## 主流思潮吸引力
+    triggered_planet_modifier = {
+        potential = {
+            bureaucrat_is_culture_worker = yes
+        }
+        pop_government_ethic_attraction = 0.10
+    }
+
+    triggered_planet_modifier = {
+        potential = {
+            planet = {
+                has_active_building = building_league_offices
+            }
+        }
+        planet_amenities_add = 100
+        mult = value:scripted_modifier_mult|MODIFIER|pop_job_amenities_mult|
+    }
+
+    triggered_country_modifier = {
+        potential = {
+            exists = owner
+            owner = { has_valid_civic = civic_efficient_bureaucracy }
+        }
+        country_edict_fund_add = 2
+        mult = value:job_total_output_modifier|JOB|safe_fe_bureaucrat|RESOURCE|unity|
+    }
+
+    weight = {
+        weight = @specialist_job_weight
+
+        mult = value:job_weights_modifier|JOB|safe_fe_bureaucrat|RESOURCE|unity|
+        mult = value:scripted_modifier_job_weight_mult|MODIFIER|pop_job_amenities_mult|
+
+        # No AI
+        modifier = {
+            factor = 0
+            exists = owner
+            owner = {
+                OR = {
+                    NOT = { has_origin = Start_As_Fallen_Empire_Holy_Guardians }
+                    is_ai = yes
+                }
+            }
+        }
+        # crisis purge
+        modifier = {
+            factor = 0.01
+            exists = planet
+            exists = planet.controller
+            planet.controller = {
+                OR = {
+                    is_country_type = swarm
+                    is_country_type = ai_empire
+                }
+            }
+        }
+    }
+
+    inline_script = "jobs/automodding_priority_unity"
+
+    promotion = {
+        time = @standard_promotion_time
+        effect = {
+            pop_amount_change_category = {
+                CATEGORY = precursor_artisan
+                AMOUNT = local_pop_amount
+            }
+        }
+    }
+}
+
+# 对应普通帝国的祭司
+
+
+# 圣卫中用于替换平民的阶层，设置为只有AI能用
+fe_acolyte_artisan = {
+    category = precursor
+    is_capped_by_modifier = no
+
+    swappable_data = {
+        default = {
+            building_icon = building_empyrean_shrine
+            icon = artisan
+        }
+    }
+
+    tags = { consumer_goods }
+
+    possible_pre_triggers = {
+        has_owner = yes
+        is_sapient = yes
+    }
+
+    possible_precalc = can_fill_specialist_job
+
+    possible = {
+        owner = { has_ethic = ethic_fanatic_spiritualist }
+        is_same_species = owner
+    }
+
+    triggered_planet_modifier = {
+        potential = {
+            always = yes
+        }
+        planet_amenities_add = 300
+        mult = value:scripted_modifier_mult|MODIFIER|pop_job_amenities_mult|
+    }
+
+    resources = {
+        category = planet_jobs
+        produces = {
+            consumer_goods = 6
+        }
+        produces = {
+            trigger = {
+                planet = { has_active_building = building_factory_2 }
+            }
+            consumer_goods = 1
+        }
+        produces = {
+            trigger = {
+                planet = { has_active_building = building_factory_3 }
+            }
+            consumer_goods = 2
+        }
+    }
+
+    weight = {
+        weight = @worker_job_weight
+
+        # No Player
+        modifier = {
+            factor = 0
+            exists = owner
+            owner = {
+                OR = {
+                    has_origin = Start_As_Fallen_Empire_Holy_Guardians
+                    is_ai = no
+                }
+            }
+        }
+        # crisis purge
+        modifier = {
+            factor = 0.01
+            exists = planet
+            exists = planet.controller
+            planet.controller = {
+                OR = {
+                    is_country_type = swarm
+                    is_country_type = ai_empire
+                }
+            }
+        }
+    }
+}
+
+# 对应于普通帝国的工匠
+safe_fe_acolyte_artisan = {
+    category = precursor_artisan
+    is_capped_by_modifier = yes
+
+    swappable_data = {
+        default = {
+            condition_string = SPECIALIST_JOB_TRIGGER
+            building_icon = building_affluence_center
+            icon = artisan
+        }
+        # 转职
+        swap_type = {
+            trigger = {
+                artisan_is_artificer_trigger = yes
+            }
+            name = artificer
+            desc = artificer
+            icon = artificer
+            weight = 5
+        }
+        swap_type = {
+            trigger = {
+                artisan_is_pearl_diver_trigger = yes
+            }
+            name = pearl_diver
+            desc = pearl_diver
+            icon = pearl_diver
+            building_icon = building_food_processing_facility
+            weight = 5
+        }
+        swap_type = {
+            trigger = {
+                artisan_is_artificer_trigger = yes
+                artisan_is_pearl_diver_trigger = yes
+            }
+            name = pearl_crafter
+            desc = pearl_crafter
+            icon = pearl_diver
+            building_icon = building_food_processing_facility
+            weight = 10
+        }
+    }
+
+    tags = { consumer_goods }
+
+    possible_pre_triggers = {
+        has_owner = yes
+        is_being_purged = no
+        is_being_assimilated = no
+        is_sapient = yes
+    }
+
+    possible_precalc = can_fill_specialist_job
+
+    possible = {
+        exists = owner
+        owner = { has_origin = Start_As_Fallen_Empire_Holy_Guardians }
+        is_same_species = owner
+    }
+
+    triggered_planet_modifier = {
+        potential = {
+            always = yes
+        }
+        planet_amenities_add = 300
+        mult = value:scripted_modifier_mult|MODIFIER|pop_job_amenities_mult|
+    }
+
+    resources = {
+        category = planet_safe_fe_acolyte_artisan
+        produces = {
+            consumer_goods = 10
+            trade = 2
+        }
+        produces = {
+            trigger = {
+                planet = { has_active_building = building_factory_2 }
+            }
+            consumer_goods = 1
+        }
+        produces = {
+            trigger = {
+                planet = { has_active_building = building_factory_3 }
+            }
+            consumer_goods = 2
+        }
+        # 转职为熟练技工后的产出
+        produces = {
+            trigger = {
+                artisan_is_artificer_trigger = yes
+            }
+            consumer_goods = 2
+            trade = 2
+        }
+        # 转职为珍珠潜水员后的产出（受到有无行星总督的修正影响）
+        produces = {
+            trigger = {
+                exists = planet
+                planet = {
+                    artisan_is_pearl_diver_trigger = yes
+                }
+            }
+            trade = 2
+        }
+        produces = {
+            trigger = {
+                exists = planet
+                planet = {
+                    artisan_is_pearl_diver_trigger = yes
+                }
+                has_councilor = { COUNCILOR = "councilor_anglers" }
+            }
+            consumer_goods = @councilor_anglers_pearl_diver_consumer_goods_bonus
+            mult = value:councilor_level|TYPE|councilor_anglers|
+        }
+        produces = {
+            trigger = {
+                exists = planet
+                planet = {
+                    artisan_is_pearl_diver_trigger = yes
+                }
+                has_councilor = { COUNCILOR = "councilor_machine_anglers" }
+            }
+            consumer_goods = @councilor_machine_anglers_pearl_diver_consumer_goods_bonus
+            mult = value:councilor_level|TYPE|councilor_machine_anglers|
+        }
+        produces = {
+            trigger = {
+                exists = planet
+                planet = {
+                    artisan_is_pearl_diver_trigger = yes
+                }
+                has_councilor = { COUNCILOR = "councilor_machine_anglers" }
+            }
+            consumer_goods = @councilor_machine_anglers_pearl_diver_consumer_goods_bonus
+            mult = value:councilor_level|TYPE|councilor_machine_anglers|
+        }
+        # 采用催化加工国策后的产出
+        produces = {
+            trigger = {
+                industrial_jobs_are_catalytic_trigger = yes
+            }
+            consumer_goods = 1.5
+        }
+        upkeep = {
+            trigger = {
+                industrial_jobs_are_catalytic_trigger = no
+            }
+            minerals = 5
+        }
+        upkeep = {
+            trigger = {
+                industrial_jobs_are_catalytic_trigger = yes
+            }
+            food = 8
+        }
+        upkeep = {
+            trigger = {
+                industrial_jobs_are_catalytic_trigger = yes
+                exists = planet
+                planet = {
+                    artisan_is_pearl_diver_trigger = yes
+                }
+            }
+            minerals = 2
+            food = -3
+        }
+        # 附庸状态下的产出？
+        produces = {
+            trigger = {
+                planet = {
+                    has_planet_flag = has_produce_requisitorium
+                    exists = owner.overlord
+                    owner.overlord = { country_uses_consumer_goods = yes }
+                }
+            }
+            consumer_goods = @requisitorium_consumer_goods_reduction
+        }
+        upkeep = {
+            trigger = {
+                planet = {
+                    has_planet_flag = has_produce_requisitorium
+                    exists = owner.overlord
+                    owner.overlord = { country_uses_consumer_goods = yes }
+                }
+            }
+            minerals = 1
+        }
+        upkeep = {
+            trigger = {
+                industrial_jobs_are_catalytic_trigger = yes
+                planet = {
+                    has_planet_flag = has_produce_requisitorium
+                    exists = owner.overlord
+                    owner.overlord = { country_uses_consumer_goods = yes }
+                }
+            }
+            food = 1.5
+        }
+        # inline_script = "output/factory_output"
+    }
+
+    overlord_resources = {
+        category = planet_requisitioned_consumer_goods
+        produces = {
+            trigger = {
+                planet = {
+                    has_planet_flag = has_produce_requisitorium
+                    exists = owner.overlord
+                    owner.overlord = { country_uses_consumer_goods = yes }
+                }
+            }
+            consumer_goods = @requisitorium_consumer_goods_overlord
+        }
+    }
+
+    triggered_planet_modifier = {
+        potential = {
+            artisan_is_pearl_diver_trigger = yes
+            exists = owner
+            owner = { has_valid_civic = civic_agrarian_idyll }
+        }
+        planet_amenities_add = 200
+        mult = value:scripted_modifier_mult|MODIFIER|pop_job_amenities_mult|
+    }
+
+    weight = {
+        weight = @specialist_job_weight
+        mult = value:job_weights_modifier|JOB|safe_fe_acolyte_artisan|RESOURCE|consumer_goods|
+
+        # No AI
+        modifier = {
+            factor = 0
+            exists = owner
+            owner = {
+                OR = {
+                    NOT = { has_origin = Start_As_Fallen_Empire_Holy_Guardians }
+                    is_ai = yes
+                }
+            }
+        }
+        # low income modifier
+        modifier = {
+            factor = 1.2
+            exists = planet
+            planet = {
+                has_available_jobs = "artisan"
+            }
+            exists = owner
+            owner = {
+                is_ai = yes
+                has_monthly_income = {
+                    resource = consumer_goods
+                    value < 5
+                }
+            }
+        }
+        # crisis purge
+        modifier = {
+            factor = 0.01
+            exists = planet
+            exists = planet.controller
+            planet.controller = {
+                OR = {
+                    is_country_type = swarm
+                    is_country_type = ai_empire
+                }
+            }
+        }
+    }
+
+    inline_script = "jobs/automodding_priority_consumer_goods"
+
+    promotion = {
+        time = @standard_promotion_time
+        effect = {
+            pop_amount_change_category = {
+                CATEGORY = precursor_artisan
+                AMOUNT = local_pop_amount
+            }
+        }
+    }
+}
+
+# 对应于普通帝国的冶金师
+safe_fe_foundry = {
+    category = precursor_artisan
+    is_capped_by_modifier = yes
+
+    swappable_data = {
+        default = {
+            condition_string = SPECIALIST_JOB_TRIGGER
+            icon = foundry
+            building_icon = building_nano_forge
+        }
+        # 转职
+        swap_type = {
+            trigger = {
+                industrial_jobs_are_catalytic_trigger = yes
+            }
+            name = catalytic_technician
+            desc = job_catalytic_technician_desc
+            weight = 5
+        }
+    }
+
+    tags = { alloys }
+
+    possible_pre_triggers = {
+        has_owner = yes
+        is_being_purged = no
+        is_being_assimilated = no
+    }
+
+    possible_precalc = can_fill_specialist_job
+
+    possible = {
+        exists = owner
+        owner = { has_origin = Start_As_Fallen_Empire_Holy_Guardians }
+        is_same_species = owner
+    }
+
+    resources = {
+        category = planet_safe_fe_foundry
+        produces = {
+            alloys = 10
+        }
+        # 采用催化加工后的产出
+        produces = {
+            trigger = {
+                industrial_jobs_are_catalytic_trigger = yes
+            }
+            alloys = 1
+        }
+        upkeep = {
+            trigger = {
+                industrial_jobs_are_catalytic_trigger = no
+            }
+            minerals = 5
+        }
+        upkeep = {
+            trigger = {
+                industrial_jobs_are_catalytic_trigger = yes
+            }
+            food = 8
+        }
+        produces = {
+            trigger = {
+                planet = {
+                    has_planet_flag = has_material_requisitorium
+                }
+            }
+            alloys = @requisitorium_alloys_reduction
+        }
+        upkeep = {
+            trigger = {
+                industrial_jobs_are_catalytic_trigger = no
+                planet = {
+                    has_planet_flag = has_material_requisitorium
+                }
+            }
+            minerals = 1
+        }
+        upkeep = {
+            trigger = {
+                industrial_jobs_are_catalytic_trigger = yes
+                planet = {
+                    has_planet_flag = has_material_requisitorium
+                    has_building = building_ministry_production
+                }
+            }
+            food = 2
+        }
+        # inline_script = "output/foundry_output"
+    }
+
+    overlord_resources = {
+        category = planet_requisitioned_alloys
+        produces = {
+            trigger = {
+                planet = {
+                    has_planet_flag = has_material_requisitorium
+                }
+            }
+            alloys = @requisitorium_alloys_overlord
+        }
+    }
+
+    weight = {
+        weight = @specialist_job_weight # Fairly important job
+        mult = value:job_weights_modifier|JOB|safe_fe_foundry|RESOURCE|alloys|
+
+        # No AI
+        modifier = {
+            factor = 0
+            exists = owner
+            owner = {
+                OR = {
+                    NOT = { has_origin = Start_As_Fallen_Empire_Holy_Guardians }
+                    is_ai = yes
+                }
+            }
+        }
+        # crisis purge
+        modifier = {
+            factor = 0.01
+            exists = planet
+            exists = planet.controller
+            planet.controller = {
+                OR = {
+                    is_country_type = swarm
+                    is_country_type = ai_empire
+                }
+            }
+        }
+    }
+
+    inline_script = "jobs/automodding_priority_alloys"
+
+    promotion = {
+        time = @standard_promotion_time
+        effect = {
+            pop_amount_change_category = {
+                CATEGORY = precursor_artisan
+                AMOUNT = local_pop_amount
+            }
+        }
+    }
+}
+
+# 对应于普通帝国的物理学家
+safe_fe_physicist = {
+    category = precursor_artisan
+    is_capped_by_modifier = yes
+
+    swappable_data = {
+        default = {
+            condition_string = SPECIALIST_JOB_TRIGGER
+            building_icon = building_fe_lab_2
+            icon = physicist
+        }
+        # 转职
+        swap_type = {
+            trigger = {
+                physicist_is_astrometeorologist_trigger = yes
+            }
+            name = astrometeorologist
+            desc = astrometeorologist
+            icon = astrometeorologist
+            building_icon = building_astrometeorology_observation_center
+            condition_string = SPECIALIST_JOB_TRIGGER
+            weight = 5
+        }
+        swap_type = {
+            trigger = {
+                physicist_is_astral_researcher_trigger = yes
+            }
+            name = astral_researcher
+            desc = astral_researcher
+            icon = astral_researcher
+            building_icon = building_astral_siphon_1
+            weight = 5
+        }
+        swap_type = {
+            trigger = {
+                physicist_is_space_time_researcher_trigger = yes
+            }
+            name = space_time_anomaly_researcher
+            desc = space_time_anomaly_researcher
+            weight = 10
+        }
+        swap_type = {
+            trigger = {
+                physicist_is_dimensional_portal_researcher_trigger = yes
+            }
+            name = dimensional_portal_researcher
+            desc = dimensional_portal_researcher
+            weight = 15
+        }
+        swap_type = {
+            trigger = {
+                physicist_is_astral_researcher_trigger = yes
+                physicist_is_astrometeorologist_trigger = yes
+            }
+            name = astral_meteorologist
+            desc = astral_meteorologist
+            icon = astrometeorologist
+            building_icon = building_astral_siphon_1
+            weight = 20
+        }
+    }
+
+    tags = { research }
+
+    possible_pre_triggers = {
+        has_owner = yes
+        is_being_purged = no
+        is_being_assimilated = no
+        is_sapient = yes
+    }
+
+    possible_precalc = can_fill_specialist_job
+
+    possible = {
+        exists = owner
+        owner = { has_origin = Start_As_Fallen_Empire_Holy_Guardians }
+        is_same_species = owner
+        complex_specialist_job_check_trigger = yes
+    }
+
+    triggered_country_modifier = {
+        potential = {
+            local_or_sector_governor_has_trait = {
+                TRAIT = leader_trait_academia_recruiter
+            }
+        }
+        country_naval_cap_add = 2
+        mult = planet.modifier:job_researcher_naval_cap_add
+    }
+
+    resources = {
+        category = planet_safe_fe_physicists
+
+        produces = {
+            physics_research = 15
+        }
+        upkeep = {
+            consumer_goods = 1.5
+        }
+        # 转自为星际气象学家的产出
+        produces = {
+            trigger = {
+                exists = planet
+                planet = {
+                    physicist_is_astrometeorologist_trigger = yes
+                    solar_system = {
+                        OR = {
+                            has_environmental_effects = yes
+                            has_star_flag = storm_system
+                        }
+                    }
+                }
+            }
+            physics_research = 4
+        }
+        # 转职为时空异象研究员的产出
+        produces = {
+            trigger = {
+                physicist_is_space_time_researcher_trigger = yes
+            }
+            physics_research = 2
+            sr_dark_matter = 0.2
+        }
+        upkeep = {
+            trigger = {
+                physicist_is_space_time_researcher_trigger = yes
+            }
+            consumer_goods = 1.5
+        }
+        # 这个内联脚本为什么是空的？
+        # inline_script = "output/researcher_output"
+    }
+
+    overlord_resources = {
+        category = planet_requisitioned_research
+        produces = {
+            trigger = {
+                planet = {
+                    has_planet_flag = has_science_ministry
+                }
+            }
+            physics_research = 1.5
+        }
+        produces = {
+            trigger = {
+                planet = {
+                    has_planet_flag = has_science_ministry
+                    physicist_is_astrometeorologist_trigger = yes
+                    solar_system = {
+                        OR = {
+                            has_environmental_effects = yes
+                            has_star_flag = storm_system
+                        }
+                    }
+                }
+            }
+            physics_research = 2
+        }
+    }
+
+    # Dimensional Portal Amenities
+    triggered_planet_modifier = {
+        potential = {
+            planet = {
+                has_modifier = dportal_trade_normal
+            }
+        }
+        planet_amenities_add = 600
+        mult = value:scripted_modifier_mult|MODIFIER|pop_job_amenities_mult|
+    }
+    triggered_planet_modifier = {
+        potential = {
+            planet = {
+                has_modifier = dportal_trade_high
+            }
+        }
+        planet_amenities_add = 1200
+        mult = value:scripted_modifier_mult|MODIFIER|pop_job_amenities_mult|
+    }
+    triggered_planet_modifier = {
+        potential = {
+            planet = {
+                has_modifier = dportal_trade_low
+            }
+        }
+        planet_amenities_add = 300
+        mult = value:scripted_modifier_mult|MODIFIER|pop_job_amenities_mult|
+    }
+    triggered_planet_modifier = {
+        potential = {
+            planet = {
+                has_modifier = dportal_trade_crisis
+            }
+        }
+        planet_amenities_add = 200
+        mult = value:scripted_modifier_mult|MODIFIER|pop_job_amenities_mult|
+    }
+
+    weight = {
+        weight = @specialist_job_weight
+        mult = value:job_weights_modifier|JOB|safe_fe_physicist|RESOURCE|physics_research|
+
+        # No AI
+        modifier = {
+            factor = 0
+            exists = owner
+            owner = {
+                OR = {
+                    NOT = { has_origin = Start_As_Fallen_Empire_Holy_Guardians }
+                    is_ai = yes
+                }
+            }
+        }
+        modifier = {
+            factor = 2
+            has_living_standard = { type = living_standard_academic_privilege }
+        }
+        modifier = {
+            factor = 5
+            has_trait = trait_cyborg_creed_of_research
+        }
+    }
+
+    inline_script = "jobs/automodding_priority_research"
+
+    promotion = {
+        time = @standard_promotion_time
+        effect = {
+            pop_amount_change_category = {
+                CATEGORY = precursor_artisan
+                AMOUNT = local_pop_amount
+            }
+        }
+    }
+}
+
+# 对应于普通帝国的生物学家
+safe_fe_biologist = {
+    category = precursor_artisan
+    is_capped_by_modifier = yes
+
+    swappable_data = {
+        default = {
+            condition_string = SPECIALIST_JOB_TRIGGER
+            building_icon =  building_fe_lab_2
+            icon = biologist
+        }
+        # 转职
+        swap_type = {
+            trigger = {
+                biologist_is_ranger_trigger = yes
+            }
+            name = ranger
+            desc = ranger
+            icon = ranger
+            building_icon = holding_park_ranger_lodge
+            weight = 5
+        }
+        swap_type = {
+            trigger = {
+                biologist_is_vent_researcher_trigger = yes
+            }
+            name = stratovent_researcher
+            desc = stratovent_researcher
+            icon = xeno_zoo_keeper
+            building_icon = building_nanolab_1
+            weight = 10
+        }
+        swap_type = {
+            trigger = {
+                biologist_is_zookeeper_trigger = yes
+            }
+            name = xeno_zoo_keeper
+            desc = xeno_zoo_keeper
+            icon = xeno_zoo_keeper
+            building_icon = building_xeno_zoo
+            weight = 15
+        }
+        swap_type = {
+            trigger = {
+                biologist_is_archaeo_engineer_trigger = yes
+            }
+            name = archaeoengineers
+            desc = archaeoengineers
+            icon = archaeoengineers
+            building_icon = building_archaeostudies_faculty
+            weight = 20
+        }
+    }
+
+    possible_pre_triggers = {
+        has_owner = yes
+        is_being_purged = no
+        is_being_assimilated = no
+        is_sapient = yes
+    }
+
+    possible_precalc = can_fill_specialist_job
+
+    possible = {
+        exists = owner
+        owner = { has_origin = Start_As_Fallen_Empire_Holy_Guardians }
+        is_same_species = owner
+        complex_specialist_job_check_trigger = yes
+    }
+
+    triggered_country_modifier = {
+        potential = {
+            local_or_sector_governor_has_trait = {
+                TRAIT = leader_trait_academia_recruiter
+            }
+        }
+        country_naval_cap_add = 2
+        mult = planet.modifier:job_researcher_naval_cap_add
+    }
+
+    resources = {
+        category = planet_safe_fe_biologists
+
+        produces = {
+            society_research = 15
+        }
+        upkeep = {
+            consumer_goods = 1.5
+        }
+        # 转职为动物饲养员的产出
+        produces = {
+            trigger = {
+                biologist_is_zookeeper_trigger = yes
+            }
+            society_research = 2
+        }
+        upkeep = {
+            trigger = {
+                biologist_is_zookeeper_trigger = yes
+            }
+            consumer_goods = 0.5
+        }
+
+        # inline_script = "output/researcher_output"
+    }
+
+    overlord_resources = {
+        category = planet_requisitioned_research
+        produces = {
+            trigger = {
+                planet = {
+                    has_planet_flag = has_science_ministry
+                }
+            }
+            society_research = 1.5
+        }
+    }
+
+    # 转职为护林员的舒适度产出
+    triggered_planet_modifier = {
+        potential = {
+            biologist_is_ranger_trigger = yes
+        }
+        planet_amenities_add = 500
+        mult = value:scripted_modifier_mult|MODIFIER|pop_job_amenities_mult|
+    }
+
+    # 转职为喷口研究员的舒适度产出
+    triggered_planet_modifier = {
+        potential = {
+            biologist_is_vent_researcher_trigger = yes
+        }
+        planet_amenities_add = 500
+        mult = value:scripted_modifier_mult|MODIFIER|pop_job_amenities_mult|
+    }
+
+    # 转职为动物饲养员的舒适度产出
+    triggered_planet_modifier = {
+        potential = {
+            biologist_is_zookeeper_trigger = yes
+        }
+        planet_amenities_add = 300
+        mult = value:zoo_keeper_amenity_output
+    }
+
+    weight = {
+        weight = @specialist_job_weight
+        mult = value:job_weights_modifier|JOB|safe_fe_biologist|RESOURCE|society_research|
+
+        # No AI
+        modifier = {
+            factor = 0
+            exists = owner
+            owner = {
+                OR = {
+                    NOT = { has_origin = Start_As_Fallen_Empire_Holy_Guardians }
+                    is_ai = yes
+                }
+            }
+        }
+        modifier = {
+            factor = 2
+            has_living_standard = { type = living_standard_academic_privilege }
+        }
+        modifier = {
+            factor = 5
+            has_trait = trait_cyborg_creed_of_research
+        }
+    }
+
+    inline_script = "jobs/automodding_priority_research"
+
+    promotion = {
+        time = @standard_promotion_time
+        effect = {
+            pop_amount_change_category = {
+                CATEGORY = precursor_artisan
+                AMOUNT = local_pop_amount
+            }
+        }
+    }
+}
+
+# 对应于普通帝国的工程学家
+safe_fe_engineer = {
+    category = precursor_artisan
+    is_capped_by_modifier = yes
+
+    swappable_data = {
+        default = {
+            condition_string = SPECIALIST_JOB_TRIGGER
+            building_icon = building_fe_lab_2
+            icon = engineer
+        }
+        # 转职
+        swap_type = {
+            trigger = {
+                engineer_is_manufactorium_scraper_trigger = yes
+            }
+            name = manufactorium_scraper
+            desc = manufactorium_scraper
+            icon = broken_shackles_scavenger
+            building_icon = building_research_lab_1
+            weight = 5
+        }
+        swap_type = {
+            trigger = {
+                engineer_is_munitions_decommissioner_trigger = yes
+            }
+            name = munitions_decommissioner
+            desc = munitions_decommissioner
+            icon = munitions_decommissioner
+            building_icon = building_research_lab_1
+            weight = 10
+        }
+        swap_type = {
+            trigger = {
+                engineer_is_nanotech_researcher_trigger = yes
+            }
+            name = nanotech_researcher
+            desc = nanotech_researcher
+            building_icon = building_nanolab_1
+            weight = 15
+        }
+    }
+
+    possible_pre_triggers = {
+        has_owner = yes
+        is_being_purged = no
+        is_being_assimilated = no
+        is_sapient = yes
+    }
+
+    possible_precalc = can_fill_specialist_job
+
+    possible = {
+        exists = owner
+        owner = { has_origin = Start_As_Fallen_Empire_Holy_Guardians }
+        is_same_species = owner
+        complex_specialist_job_check_trigger = yes
+    }
+
+    triggered_country_modifier = {
+        potential = {
+            local_or_sector_governor_has_trait = {
+                TRAIT = leader_trait_academia_recruiter
+            }
+        }
+        country_naval_cap_add = 2
+        mult = planet.modifier:job_researcher_naval_cap_add
+    }
+
+    resources = {
+        category = planet_safe_fe_engineers
+
+        produces = {
+            engineering_research = 15
+        }
+        upkeep = {
+            consumer_goods = 1.5
+        }
+        # 转职为纳米研究者的产出
+        produces = {
+            trigger = {
+                engineer_is_nanotech_researcher_trigger = yes
+            }
+            engineering_research = 3
+        }
+        upkeep = {
+            trigger = {
+                engineer_is_nanotech_researcher_trigger = yes
+            }
+            nanites = 1
+        }
+
+        #inline_script = "output/researcher_output"
+    }
+
+    overlord_resources = {
+        category = planet_requisitioned_research
+        produces = {
+            trigger = {
+                planet = {
+                    has_planet_flag = has_science_ministry
+                }
+            }
+            engineering_research = 1
+        }
+    }
+
+    weight = {
+        weight = @specialist_job_weight
+        mult = value:job_weights_modifier|JOB|safe_fe_engineer|RESOURCE|engineering_research|
+
+        # No AI
+        modifier = {
+            factor = 0
+            exists = owner
+            owner = {
+                OR = {
+                    NOT = { has_origin = Start_As_Fallen_Empire_Holy_Guardians }
+                    is_ai = yes
+                }
+            }
+        }
+        modifier = {
+            factor = 2
+            has_living_standard = { type = living_standard_academic_privilege }
+        }
+        modifier = {
+            factor = 5
+            has_trait = trait_cyborg_creed_of_research
+        }
+    }
+
+    inline_script = "jobs/automodding_priority_research"
+
+    promotion = {
+        time = @standard_promotion_time
+        effect = {
+            pop_amount_change_category = {
+                CATEGORY = precursor_artisan
+                AMOUNT = local_pop_amount
+            }
+        }
+    }
+}

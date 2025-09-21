@@ -1,0 +1,56 @@
+triggered_planet_modifier = {
+	potential = {
+		exists = owner
+		owner = {
+			is_gestalt = no
+			NOT = { has_origin = Start_As_Fallen_Empire_Holy_Guardians }
+		}
+		NOT = {
+			has_zone = {
+				zone = zone_habitat_knights
+			}
+		}
+	}
+	job_soldier_add = $AMOUNT$
+}
+
+triggered_planet_modifier = {
+	potential = {
+		exists = owner
+		owner = {
+			is_gestalt = no
+			NOT = { has_origin = Start_As_Fallen_Empire_Holy_Guardians }
+		}
+		has_zone = {
+			zone = zone_habitat_knights
+		}
+	}
+	job_knight_add = $AMOUNT$
+	mult = 0.5
+}
+
+triggered_planet_modifier = {
+	potential = {
+		exists = owner
+		owner = { is_gestalt = yes }
+	}
+	job_warrior_drone_add = $AMOUNT$
+}
+
+### Spiritualist FE
+triggered_planet_modifier = {
+	potential = {
+		exists = owner
+		owner = {
+			is_gestalt = no
+			is_fallen_empire_spiritualist = yes
+			has_origin = Start_As_Fallen_Empire_Holy_Guardians
+		}
+		NOT = {
+			has_zone = {
+				zone = zone_habitat_knights
+			}
+		}
+	}
+	job_safe_fe_soldier_add = $AMOUNT$
+}

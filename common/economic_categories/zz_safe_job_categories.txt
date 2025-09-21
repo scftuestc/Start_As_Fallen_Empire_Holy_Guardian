@@ -1,0 +1,215 @@
+#-----------------RULER------------------#
+# 天空教主
+planet_safe_fe_sky_cardinal = {
+    icon = job_politician
+    use_for_ai_budget = no
+    # 继承自politicians
+    parent = planet_politicians
+
+    generate_add_modifiers = {
+        produces
+    }
+    modifier_category = pop_job
+}
+# 保护者
+planet_safe_fe_protector = {
+    icon = job_enforcer
+    use_for_ai_budget = no
+    # 继承自enforcer
+    parent = planet_enforcers
+
+    generate_add_modifiers = {
+        produces
+        upkeep
+    }
+    generate_mult_modifiers = {
+        produces
+        upkeep
+    }
+    modifier_category = pop_job
+}
+
+#-----------------SPECIALIST------------------#
+# 虚境灵使
+planet_safe_fe_augur = {
+    icon = job_telepath
+    use_for_ai_budget = no
+    # 继承自灵能使
+    parent = planet_telepaths
+
+    generate_add_modifiers = {
+        produces
+        upkeep
+    }
+    generate_mult_modifiers = {
+        produces
+        upkeep
+    }
+    modifier_category = pop_job
+}
+# 官僚
+planet_safe_fe_bureaucrats = {
+    icon = "job_bureaucrat"
+    use_for_ai_budget = no
+    # 继承自官僚
+    parent = planet_bureaucrats
+
+    generate_mult_modifiers = {
+        produces
+        upkeep
+    }
+    generate_add_modifiers = {
+        produces
+        upkeep
+    }
+    modifier_category = pop_job
+}
+# 圣坊侍者
+planet_safe_fe_acolyte_artisan = {
+    icon = "job_artisan"
+    use_for_ai_budget = no
+    # 继承自工匠
+    parent = planet_artisans
+
+    generate_mult_modifiers = {
+        produces
+        upkeep
+    }
+    generate_add_modifiers = {
+        produces
+        upkeep
+    }
+    modifier_category = pop_job
+}
+# 熔炉侍者
+planet_safe_fe_foundry = {
+    icon = "job_foundry"
+    use_for_ai_budget = no
+    # 继承自冶金学家
+    parent = planet_metallurgists
+
+    generate_mult_modifiers = {
+        produces
+        upkeep
+    }
+    generate_add_modifiers = {
+        produces
+        upkeep
+    }
+    modifier_category = pop_job
+}
+# 星律使徒
+planet_safe_fe_physicists = {
+    icon = job_physicist
+    # 继承自物理学家
+    parent = planet_physicists
+    generate_add_modifiers = {
+        produces
+        upkeep
+    }
+    generate_mult_modifiers = {
+        produces
+        upkeep
+    }
+    modifier_category = pop_job
+}
+# 生命织匠
+planet_safe_fe_biologists = {
+    icon = job_biologist
+    # 继承自生物学家
+    parent = planet_biologists
+    generate_add_modifiers = {
+        produces
+        upkeep
+    }
+    generate_mult_modifiers = {
+        produces
+        upkeep
+    }
+    modifier_category = pop_job
+}
+# 万械颂者
+planet_safe_fe_engineers = {
+    icon = job_engineer
+    # 继承自工程学家
+    parent = planet_engineers
+    generate_add_modifiers = {
+        produces
+        upkeep
+    }
+    generate_mult_modifiers = {
+        produces
+        upkeep
+    }
+    modifier_category = pop_job
+}
+
+#-----------------WORKER------------------#
+# 圣钳侍者
+planet_safe_fe_acolyte_generator = {
+    icon = "job_technician"
+    use_for_ai_budget = no
+    # 继承自技工
+    parent = planet_technician
+
+    generate_add_modifiers = {
+        produces
+        upkeep
+    }
+    generate_mult_modifiers = {
+        produces
+        upkeep
+    }
+    modifier_category = pop_job
+}
+# 焰锤侍者
+planet_safe_fe_acolyte_mine = {
+    icon = "job_miner"
+    use_for_ai_budget = no
+    # 继承自矿工
+    parent = planet_miners
+
+    generate_mult_modifiers = {
+        produces
+        upkeep
+    }
+    generate_add_modifiers = {
+        produces
+        upkeep
+    }
+    modifier_category = pop_job
+}
+# 犁耕侍者
+planet_safe_fe_acolyte_farm = {
+    icon = "job_farmer"
+    use_for_ai_budget = no
+    # 继承自农夫
+    parent = planet_farmers
+
+    generate_mult_modifiers = {
+        produces
+        upkeep
+    }
+    generate_add_modifiers = {
+        produces
+        upkeep
+    }
+    modifier_category = pop_job
+}
+
+# 晶盾卫戍
+planet_safe_fe_soldiers = {
+    icon = job_soldier
+    # 继承自士兵
+    parent = planet_soldiers
+
+    generate_mult_modifiers = {
+        produces
+        upkeep
+    }
+    generate_add_modifiers = {
+        produces
+        upkeep
+    }
+    modifier_category = pop_job
+}

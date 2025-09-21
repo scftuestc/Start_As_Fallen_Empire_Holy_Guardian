@@ -10,7 +10,7 @@
  Start_As_Fallen_Empire_Holy_Guardians:"$origin_fallen_empire$"
  Start_As_Fallen_Empire_Holy_Guardians_desc:"$NO_CHALLENGING_ORIGIN$\n$origin_fallen_empire_desc$"
  Start_As_Fallen_Empire_Holy_Guardians_effect:"—母星系：必定生成§Y$NAME_Celestial_Throne$§!与§Y$NAME_Sky_Temple$§!\n—规模：§Y$NAME_Celestial_Throne$§!£planetsize£30 | §Y$NAME_Sky_Temple$§! £planetsize£25\n—存在其他多个规模为£planetsize£21的['concept_pc_gaia']殖民地\n—初始['concept_planetary_ascension']：§Y10级§!\n—$SPECIES_TRAITS$['concept_psionic']\n—$TECH_STARTING$：['concept_all_technology']"
- Start_As_Fallen_Empire_Holy_Guardians_negative_effect:"—觉醒前无法扩张领土\n—£pop£§H人口§!：停止增长\n—宜居星球偏好：['concept_gaia_preference']\n"
+ Start_As_Fallen_Empire_Holy_Guardians_negative_effect:"—成为['concept_awakened_empire']前无法扩张领土\n—成为['concept_awakened_empire']前£pop£§R人口停止增长§!\n—不再获得虚空补助\n—宜居星球偏好：['concept_gaia_preference']\n"
  # 国名理念
  safe_civic_lethargic_leadership: "$civic_lethargic_leadership$"
  safe_civic_lethargic_leadership_desc: "千年智慧给他们带来了深邃的远见，但也带来了对变革的深深倦怠。"
@@ -25,7 +25,6 @@
  safe_fallen_2_NAME:"$HOME_SYSTEM$$personality_fallen_empire_spiritualist$"
  # 给圣地守卫者用的物种舰船组
  SAFE_Spiritualist:"$personality_fallen_empire_spiritualist$"
-
  # 开局说明
  START_SCREEN_MESSAGE_SAFE_FALLEN_EMPIRE_SPIRITUALIST:"我们的文明曾追寻着先驱者扎克兰的脚步，在群星间建立了繁荣的圣地网络。作为守护者，我们见证了银河的无数兴衰变迁。\n\n随着时间流逝，我们逐渐退隐至核心星域，专注于守护古老的知识与传统。漫长的岁月让我们变得保守而内省，科技发展陷入停滞，帝国的疆域也不再扩张。我们在静默中观察着银河，守护着那些被遗忘的秘密。\n\n如今，新的动荡时代即将来临。古老的预警系统若被激活，将使我们从千年的沉寂中苏醒。我们必须在变化的银河中重新寻找属于自己的道路。"
  # 殖民地类型说明

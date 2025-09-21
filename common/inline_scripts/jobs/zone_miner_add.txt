@@ -6,6 +6,7 @@ triggered_district_planet_modifier = {
 		owner = {
 			is_gestalt = no
 			is_fallen_empire_spiritualist = no
+			NOT = { has_origin = Start_As_Fallen_Empire_Holy_Guardians }
 		}
 		planet_is_habitat_equivalent = no
 		planet_is_ecu_equivalent = no
@@ -21,6 +22,7 @@ triggered_district_planet_modifier = {
 		owner = {
 			is_regular_empire = yes
 			is_fallen_empire_spiritualist = no
+			NOT = { has_origin = Start_As_Fallen_Empire_Holy_Guardians }
 		}
 		planet_is_habitat_equivalent = yes
 	}
@@ -35,6 +37,7 @@ triggered_district_planet_modifier = {
 		owner = {
 			is_regular_empire = yes
 			is_fallen_empire_spiritualist = no
+			NOT = { has_origin = Start_As_Fallen_Empire_Holy_Guardians }
 		}
 		planet_is_ecu_equivalent = yes
 	}
@@ -49,6 +52,7 @@ triggered_district_planet_modifier = {
 		owner = {
 			is_regular_empire = yes
 			is_fallen_empire_spiritualist = no
+			NOT = { has_origin = Start_As_Fallen_Empire_Holy_Guardians }
 		}
 		planet_is_ring_world_equivalent = yes
 	}
@@ -63,7 +67,7 @@ triggered_district_planet_modifier = {
 		exists = owner
 		owner = {
 			is_fallen_empire_spiritualist = yes
-			is_ai = yes
+			NOT = { has_origin = Start_As_Fallen_Empire_Holy_Guardians }
 		}
 		planet_is_habitat_equivalent = no
 		planet_is_ecu_equivalent = no
@@ -77,7 +81,7 @@ triggered_district_planet_modifier = {
 		exists = owner
 		owner = {
 			is_fallen_empire_spiritualist = yes
-			is_ai = no
+			has_origin = Start_As_Fallen_Empire_Holy_Guardians
 		}
 		planet_is_habitat_equivalent = no
 		planet_is_ecu_equivalent = no
@@ -93,7 +97,7 @@ triggered_district_planet_modifier = {
 		exists = owner
 		owner = {
 			is_fallen_empire_spiritualist = yes
-			is_ai = yes
+			NOT = { has_origin = Start_As_Fallen_Empire_Holy_Guardians }
 		}
 		planet_is_habitat_equivalent = yes
 	}
@@ -106,7 +110,7 @@ triggered_district_planet_modifier = {
 		exists = owner
 		owner = {
 			is_fallen_empire_spiritualist = yes
-			is_ai = no
+			has_origin = Start_As_Fallen_Empire_Holy_Guardians
 		}
 		planet_is_habitat_equivalent = yes
 	}
@@ -121,7 +125,7 @@ triggered_district_planet_modifier = {
 		exists = owner
 		owner = {
 			is_fallen_empire_spiritualist = yes
-			is_ai = yes
+			NOT = { has_origin = Start_As_Fallen_Empire_Holy_Guardians }
 		}
 		planet_is_ecu_equivalent = yes
 	}
@@ -134,7 +138,7 @@ triggered_district_planet_modifier = {
 		exists = owner
 		owner = {
 			is_fallen_empire_spiritualist = yes
-			is_ai = no
+			has_origin = Start_As_Fallen_Empire_Holy_Guardians
 		}
 		planet_is_ecu_equivalent = yes
 	}
@@ -149,7 +153,7 @@ triggered_district_planet_modifier = {
 		exists = owner
 		owner = {
 			is_fallen_empire_spiritualist = yes
-			is_ai = yes
+			NOT = { has_origin = Start_As_Fallen_Empire_Holy_Guardians }
 		}
 		planet_is_ring_world_equivalent = yes
 	}
@@ -162,7 +166,7 @@ triggered_district_planet_modifier = {
 		exists = owner
 		owner = {
 			is_fallen_empire_spiritualist = yes
-			is_ai = no
+			has_origin = Start_As_Fallen_Empire_Holy_Guardians
 		}
 		planet_is_ring_world_equivalent = yes
 	}

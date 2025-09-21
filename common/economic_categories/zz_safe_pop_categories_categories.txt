@@ -130,10 +130,11 @@
 # 乘法修饰符（_mult）：会从父类别继承给子类别。子类实体同时享受父类和子类的乘法加成。
 # 加法修饰符（_add）：不会继承。只影响自身类别的实体。这是为了防止数值叠加出现混乱。
 
+# 精英先驱者
 pop_category_precursor_archon = {
+    # 继承自普通帝国的精英阶层
     parent = pop_category_rulers
-
-    modifier_category = pop_job
+    use_for_ai_budget = no
 
     generate_mult_modifiers = {
         upkeep
@@ -146,10 +147,11 @@ pop_category_precursor_archon = {
     modifier_category = pop_group
 }
 
+# 匠师先驱者
 pop_category_precursor_artisan = {
+    # 继承自普通帝国的专家阶层
     parent = pop_category_specialists
-
-    modifier_category = pop_job
+    use_for_ai_budget = no
 
     generate_mult_modifiers = {
         upkeep
@@ -162,11 +164,11 @@ pop_category_precursor_artisan = {
     modifier_category = pop_group
 }
 
+# 守望先驱者
 pop_category_precursor_warden = {
-
+    # 继承自普通帝国工人阶层
     parent = pop_category_workers
-
-    modifier_category = pop_job
+    use_for_ai_budget = no
 
     generate_mult_modifiers = {
         upkeep

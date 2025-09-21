@@ -100,7 +100,7 @@ civic_empire_in_decline = {
 
     description = FALLEN_EMPIRE_LETHARGY_2
     modifier = {
-        planet_pops_upkeep_mult = 0.5
+        planet_pops_upkeep_mult = 0.25
         shipsize_starbase_outpost_build_speed_mult = -10
         shipclass_colonizer_build_speed_mult = -10
     }
@@ -122,7 +122,7 @@ safe_civic_lethargic_leadership = {
 
     description = FALLEN_EMPIRE_LETHARGY_1
     modifier = {
-        leaders_upkeep_mult = 0.5
+        leaders_upkeep_mult = 0.25
         starbase_shipyard_build_speed_mult = -10
     }
 }
@@ -142,7 +142,7 @@ safe_civic_empire_in_decline = {
 
     description = FALLEN_EMPIRE_LETHARGY_2
     modifier = {
-        planet_pops_upkeep_mult = 0.5
+        planet_pops_upkeep_mult = 0.25
         shipsize_starbase_outpost_build_speed_mult = -10
         shipclass_colonizer_build_speed_mult = -10
     }
@@ -164,8 +164,8 @@ safe_civic_revanchist_fervor = {
     random_weight = { base = 0 }
 
     modifier = {
-        logistic_growth_mult = 0.66
-        ship_weapon_damage = 0.66
+        logistic_growth_mult = 0.50
+        ship_weapon_damage = 0.50
     }
 }
 
@@ -183,7 +183,7 @@ safe_civic_ancient_caches_of_technology = {
     ai_weight = { base = 0 }
 
     modifier = {
-        planet_jobs_produces_mult = 0.66
-        all_technology_research_speed = 0.66
+        planet_jobs_produces_mult = 0.50
+        all_technology_research_speed = 0.50
     }
 }

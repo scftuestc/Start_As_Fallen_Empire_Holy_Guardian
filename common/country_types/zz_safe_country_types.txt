@@ -79,10 +79,18 @@ fallen_empire = {
             }
         }
     }
-
+    # 虚空经济补助
     resources = {
         category = country_base
         produces = {
+            trigger = {
+                OR = {
+                    is_ai = yes
+                    NOT = {
+                        has_origin = Start_As_Fallen_Empire_Holy_Guardians
+                    }
+                }
+            }
             energy = 2000
             minerals = 2000
             food = 2000
@@ -194,6 +202,14 @@ awakened_fallen_empire = {
     resources = {
         category = country_base
         produces = {
+            trigger = {
+                OR = {
+                    is_ai = yes
+                    NOT = {
+                        has_origin = Start_As_Fallen_Empire_Holy_Guardians
+                    }
+                }
+            }
             energy = 2000
             minerals = 2000
             food = 2000
