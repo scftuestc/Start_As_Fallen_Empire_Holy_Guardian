@@ -83,7 +83,7 @@ civic_lethargic_leadership = {
 
     description = FALLEN_EMPIRE_LETHARGY_1
     modifier = {
-        leaders_upkeep_mult = 0.5
+        leaders_upkeep_mult = -0.25
         starbase_shipyard_build_speed_mult = -10
     }
 }
@@ -100,11 +100,13 @@ civic_empire_in_decline = {
 
     description = FALLEN_EMPIRE_LETHARGY_2
     modifier = {
-        planet_pops_upkeep_mult = 0.25
+        planet_pops_upkeep_mult = -0.25
+        empire_size_penalty_mult = -0.25
         shipsize_starbase_outpost_build_speed_mult = -10
         shipclass_colonizer_build_speed_mult = -10
     }
 }
+
 # 玩家
 safe_civic_lethargic_leadership = {
     modification = no
@@ -122,13 +124,14 @@ safe_civic_lethargic_leadership = {
 
     description = FALLEN_EMPIRE_LETHARGY_1
     modifier = {
-        leaders_upkeep_mult = 0.25
+        leaders_upkeep_mult = -0.25
         starbase_shipyard_build_speed_mult = -10
     }
 }
 
 safe_civic_empire_in_decline = {
     modification = no
+    ai_playable = { always = no }
     icon = "gfx/interface/icons/governments/civics/civic_empire_in_decline.dds"
 
     potential = {
@@ -142,13 +145,51 @@ safe_civic_empire_in_decline = {
 
     description = FALLEN_EMPIRE_LETHARGY_2
     modifier = {
-        planet_pops_upkeep_mult = 0.25
+        planet_pops_upkeep_mult = -0.25
+        empire_size_penalty_mult = -0.25
         shipsize_starbase_outpost_build_speed_mult = -10
         shipclass_colonizer_build_speed_mult = -10
     }
 }
 
 ## 觉醒帝国国民理念增强
+# AI
+civic_revanchist_fervor = {
+    modification = no
+    icon = "gfx/interface/icons/governments/civics/civic_revanchist_fervor.dds"
+
+    potential = {
+        origin = { NOT = { value = Start_As_Fallen_Empire_Holy_Guardians } }
+        country_type = { value = awakened_fallen_empire }
+        ethics = { NOT = { value = ethic_gestalt_consciousness } }
+    }
+    random_weight = { base = @civic_default_random_weight }
+
+    modifier = {
+        country_civics_influence_produces_add = 3
+        logistic_growth_mult = 0.5
+        ship_weapon_damage = 0.5
+        planetary_ascension_effect_mult = 0.5
+    }
+}
+
+civic_ancient_caches_of_technology = {
+    modification = no
+    icon = "gfx/interface/icons/governments/civics/civic_ancient_caches_of_technology.dds"
+
+    potential = {
+        origin = { NOT = { value = Start_As_Fallen_Empire_Holy_Guardians } }
+        country_type = { value = awakened_fallen_empire }
+        ethics = { NOT = { value = ethic_gestalt_consciousness } }
+    }
+    random_weight = { base = @civic_default_random_weight }
+
+    modifier = {
+        planet_jobs_produces_mult = 0.75
+        all_technology_research_speed = 0.75
+    }
+}
+
 # 玩家
 safe_civic_revanchist_fervor = {
     modification = no
@@ -156,6 +197,7 @@ safe_civic_revanchist_fervor = {
     icon = "gfx/interface/icons/governments/civics/civic_revanchist_fervor.dds"
 
     potential = {
+        origin = { value = Start_As_Fallen_Empire_Holy_Guardians }
         country_type = { value = awakened_fallen_empire }
         ethics = { NOT = { value = ethic_gestalt_consciousness } }
     }
@@ -164,8 +206,10 @@ safe_civic_revanchist_fervor = {
     random_weight = { base = 0 }
 
     modifier = {
-        logistic_growth_mult = 0.50
-        ship_weapon_damage = 0.50
+        country_civics_influence_produces_add = 3
+        logistic_growth_mult = 0.5
+        ship_weapon_damage = 0.5
+        planetary_ascension_effect_mult = 0.5
     }
 }
 
@@ -175,6 +219,7 @@ safe_civic_ancient_caches_of_technology = {
     ai_playable = { always = no }
 
     potential = {
+        origin = { value = Start_As_Fallen_Empire_Holy_Guardians }
         country_type = { value = awakened_fallen_empire }
         ethics = { NOT = { value = ethic_gestalt_consciousness } }
     }
@@ -183,7 +228,7 @@ safe_civic_ancient_caches_of_technology = {
     ai_weight = { base = 0 }
 
     modifier = {
-        planet_jobs_produces_mult = 0.50
-        all_technology_research_speed = 0.50
+        planet_jobs_produces_mult = 0.75
+        all_technology_research_speed = 0.75
     }
 }

@@ -5,27 +5,26 @@
 
 ## 让堕落/觉醒帝国可加入贸易泛星系贸易市场
 can_use_galactic_market = {
+    OR = {
+        is_country_type = default
+        is_country_type = fallen_empire
+        is_country_type = awakened_fallen_empire
+    }
     NOR = {
         has_civic = civic_fanatic_purifiers
         has_civic = civic_hive_devouring_swarm
         has_civic = civic_machine_terminator
-        # 添加永恒饥饿
-        has_menace_perk = menp_behemoth_ever_hungry
     }
 }
+
 ## 堕落/觉醒帝国可加入星海共同体
 can_be_part_of_galactic_community = {
     custom_tooltip = {
         fail_text = "community_default_failtext"
         OR = {
             is_country_type = default
-            # 添加堕落/觉醒帝国
             is_country_type = fallen_empire
             is_country_type = awakened_fallen_empire
-            AND = {
-                is_country_type = awakened_fallen_empire
-                has_country_flag = fallen_empire_hive_control
-            }
         }
     }
     custom_tooltip = {
@@ -40,6 +39,7 @@ can_be_part_of_galactic_community = {
     custom_tooltip = {
         fail_text = "community_declared_crisis_failtext"
         has_been_declared_crisis = no
+        NOT = { has_country_flag = malevolent_aura_empire }
     }
     custom_tooltip = {
         fail_text = "community_declared_crisis_failtext"
@@ -47,24 +47,23 @@ can_be_part_of_galactic_community = {
         OR = {
             NOT = { exists = overlord }
             overlord = { has_been_declared_crisis = no }
+            overlord = {
+                has_been_declared_crisis = no
+                NOT = { has_country_flag = malevolent_aura_empire }
+            }
         }
     }
 }
-## 堕落/觉醒帝国可加入银河帝国
+
+## 觉醒帝国可加入银河帝国
 can_be_part_of_galactic_empire = {
     custom_tooltip = {
         fail_text = "community_default_failtext"
         OR = {
             is_country_type = default
-            # 添加堕落/觉醒帝国
-            is_country_type = fallen_empire
             is_country_type = awakened_fallen_empire
-            AND = {
-                is_country_type = awakened_fallen_empire
-                has_country_flag = fallen_empire_hive_control
             }
         }
-    }
     custom_tooltip = {
         fail_text = "community_homicidal_failtext"
         NOR = {
@@ -86,17 +85,13 @@ can_be_part_of_galactic_empire = {
         }
     }
 }
+
 ## 堕落/觉醒帝国可以加入星海委员会
 can_be_part_of_galactic_council = {
     OR = {
         is_country_type = default
-        # 添加堕落/觉醒帝国
         is_country_type = fallen_empire
         is_country_type = awakened_fallen_empire
-        AND = {
-            is_country_type = awakened_fallen_empire
-            has_country_flag = fallen_empire_hive_control
-        }
     }
     NOR = {
         has_civic = civic_fanatic_purifiers

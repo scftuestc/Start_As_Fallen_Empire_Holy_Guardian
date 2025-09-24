@@ -616,16 +616,16 @@ safe_fe_soldier = {
             trigger = {
                 soldier_is_necromancer = yes
             }
-            physics_research = 2
-            society_research = 2
+            society_research = 1
+            engineering_research = 1
         }
         upkeep = {
             trigger = {
                 soldier_is_necromancer = yes
             }
-            consumer_goods = 1
+            consumer_goods = 0.5
         }
-        # inline_script = "output/soldier_output"
+        inline_script = "output/soldier_output"
     }
 
     inline_script = "output/soldier_triggered_modifiers"

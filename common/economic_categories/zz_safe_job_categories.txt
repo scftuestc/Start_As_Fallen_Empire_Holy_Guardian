@@ -45,6 +45,26 @@ planet_safe_fe_augur = {
         produces
         upkeep
     }
+    triggered_produces_modifier = {
+        key = planet_enforcers
+        modifier_types = {
+            add
+        }
+        trigger = {
+            always = yes
+        }
+        use_parent_icon = yes
+    }
+    triggered_upkeep_modifier = {
+        key = planet_enforcers
+        modifier_types = {
+            add
+        }
+        trigger = {
+            always = yes
+        }
+        use_parent_icon = yes
+    }
     modifier_category = pop_job
 }
 # 官僚
@@ -112,6 +132,16 @@ planet_safe_fe_physicists = {
         upkeep
     }
     modifier_category = pop_job
+    triggered_upkeep_modifier = {
+        key = planet_researchers
+        modifier_types = {
+            add
+        }
+        trigger = {
+            always = yes
+        }
+        use_parent_icon = yes
+    }
 }
 # 生命织匠
 planet_safe_fe_biologists = {
@@ -127,6 +157,16 @@ planet_safe_fe_biologists = {
         upkeep
     }
     modifier_category = pop_job
+    triggered_upkeep_modifier = {
+        key = planet_researchers
+        modifier_types = {
+            add
+        }
+        trigger = {
+            always = yes
+        }
+        use_parent_icon = yes
+    }
 }
 # 万械颂者
 planet_safe_fe_engineers = {
@@ -142,6 +182,16 @@ planet_safe_fe_engineers = {
         upkeep
     }
     modifier_category = pop_job
+    triggered_upkeep_modifier = {
+        key = planet_researchers
+        modifier_types = {
+            add
+        }
+        trigger = {
+            always = yes
+        }
+        use_parent_icon = yes
+    }
 }
 
 #-----------------WORKER------------------#

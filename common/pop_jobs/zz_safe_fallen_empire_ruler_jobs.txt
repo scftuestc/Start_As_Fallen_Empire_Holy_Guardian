@@ -41,10 +41,25 @@ safe_fe_sky_cardinal = {
             desc = job_warden_desc
             weight = 15
         }
+        swap_type = {
+            trigger = {
+                politician_is_superstitious_beliefs_high_priest = yes
+            }
+            name = superstitious_beliefs_high_priest
+            desc = superstitious_beliefs_high_priest
+            icon = superstitious_beliefs_priest
+            weight = 20
+        }
     }
 
 
     tags = { amenities unity}
+
+    triggered_tags = {
+        trigger = { politician_is_superstitious_beliefs_high_priest = yes }
+        tags = { psionic_aura }
+    }
+
 
     possible_pre_triggers = {
         has_owner = yes
@@ -83,6 +98,16 @@ safe_fe_sky_cardinal = {
             }
             unity = -5
             trade = 7
+        }
+        # 转职为大占星师后的产出
+        produces = {
+            trigger = {
+                exists = planet
+                planet = {
+                    politician_is_superstitious_beliefs_high_priest = yes
+                }
+            }
+            unity = 2
         }
 
         upkeep = {

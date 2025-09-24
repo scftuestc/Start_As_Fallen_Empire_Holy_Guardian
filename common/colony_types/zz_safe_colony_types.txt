@@ -13,8 +13,8 @@ col_fe_capital = {
 
     potential = {
         is_capital = yes
-        exists = space_owner
-        space_owner = { is_fallen_empire = yes }
+        exists = owner_or_space_owner
+        owner_or_space_owner = { is_country_type = fallen_empire }
     }
 
     planet_modifier = {
@@ -34,8 +34,8 @@ col_fe_colony = {
 
     potential = {
         is_capital = no
-        exists = space_owner
-        space_owner = { is_fallen_empire = yes }
+        exists = owner_or_space_owner
+        owner_or_space_owner = { is_country_type = fallen_empire }
     }
 
     planet_modifier = {
@@ -48,14 +48,15 @@ col_fe_colony = {
         base = 3000
     }
 }
+
 # Awaken Empire Capital
 col_ae_capital = {
     icon = GFX_colony_type_capital
 
     potential = {
         is_capital = yes
-        exists = space_owner
-        space_owner = { is_country_type = awakened_fallen_empire }
+        exists = owner_or_space_owner
+        owner_or_space_owner = { is_country_type = awakened_fallen_empire }
     }
 
     planet_modifier = {
@@ -76,8 +77,8 @@ col_ae_colony = {
 
     potential = {
         is_capital = no
-        exists = space_owner
-        space_owner = { is_country_type = awakened_fallen_empire }
+        exists = owner_or_space_owner
+        owner_or_space_owner = { is_country_type = awakened_fallen_empire }
     }
 
     planet_modifier = {

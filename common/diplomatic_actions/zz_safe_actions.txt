@@ -48,6 +48,7 @@ action_build_spy_network = {
                 is_country_type = fallen_empire
                 is_country_type = awakened_fallen_empire
             }
+            # 目标国家不能是堕落/觉醒国家
             from = {
                 OR = {
                     is_country_type = default
@@ -60,20 +61,13 @@ action_build_spy_network = {
                         has_country_flag = fallen_empire_hive_control
                         root = { is_galactic_community_member = yes }
                     }
+                    is_country_type = exiled
                 }
                 NOR = {
                     has_country_flag = fotd_seperatist_country
                     AND = {
                         has_country_flag = solarpunk_country
                         is_country_type = primitive
-                    }
-                    #  如果发起者是普通帝国，则目标不能是堕落帝国或觉醒帝国
-                    AND = {
-                        ROOT = { is_country_type = default }
-                        OR = {
-                            is_country_type = fallen_empire
-                            is_country_type = awakened_fallen_empire
-                        }
                     }
                 }
             }
@@ -85,6 +79,7 @@ action_build_spy_network = {
             fail_text = "diplomacy_wrong_interference_policy"
             OR = {
                 from = { is_country_type = default }
+                from = { is_country_type = exiled }
                 from = { is_fallen_empire = yes }
                 AND = {
                     from = { is_country_type = primitive }
@@ -139,6 +134,7 @@ action_manage_spy_network = {
                         has_country_flag = fallen_empire_hive_control
                         root = { is_galactic_community_member = yes }
                     }
+                    is_country_type = exiled
                 }
             }
         }
