@@ -23,94 +23,197 @@
  mod_pop_cat_precursor_warden_happiness: "$pop_cat_precursor_warden$幸福度"
 
  ## pop_jobs 岗位
- #-----------------RULER------------------#
- # 天空主教（政客）
- planet_safe_fe_sky_cardinal:"$job_safe_fe_sky_cardinal$岗位"
+ #############################
+ ##--------- RULER ---------##
+ #############################
+ ###------------- 天空主教（政客）--------------###
+ ## 基本岗位描述
+ planet_safe_fe_sky_cardinal:"[safe_fe_sky_cardinal.GetName]岗位"
  job_safe_fe_sky_cardinal:"$job_fe_sky_cardinal$"
+ job_safe_fe_sky_cardinal_icon:"[safe_fe_sky_cardinal.GetIcon]"
  job_safe_fe_sky_cardinal_plural:"$job_fe_sky_cardinal_plural$"
- job_safe_fe_sky_cardinal_plural_with_icon:"£job_safe_fe_sky_cardinal£$job_safe_fe_sky_cardinal_plural$"
+ job_safe_fe_sky_cardinal_plural_with_icon:"[safe_fe_sky_cardinal.GetIcon][safe_fe_sky_cardinal.GetNamePlural]"
  job_safe_fe_sky_cardinal_desc:"$job_fe_sky_cardinal_desc$"
- mod_job_safe_fe_sky_cardinal_add:"$job_safe_fe_sky_cardinal$岗位"
- # 保护者（执法者）
+ ## 修正描述
+ mod_job_safe_fe_sky_cardinal_add:"[safe_fe_sky_cardinal.GetName]岗位"
+ ## 转职岗位描述
+ # 圣裔贵族（贵族）
+ planet_safe_fe_nobles:"$job_safe_fe_noble$岗位"
+ safe_fe_noble:"$job_safe_fe_noble$"
+ job_safe_fe_noble:"圣裔贵族"
+ job_safe_fe_noble_plural: "圣裔贵族"
+ job_safe_fe_noble_desc:"血脉中流淌着古老的责任，贵族们视引领众生为与生俱来的职责。漫长的岁月并未消磨其使命，反而使其统治艺术臻至化境。"
+ # 天赐商宗（商人）
+ planet_safe_fe_merchants:"$job_safe_fe_merchant$岗位"
+ safe_fe_merchant:"$job_safe_fe_merchant$"
+ job_safe_fe_merchant: "天赐商宗"
+ job_safe_fe_merchant_plural: "天赐商宗"
+ job_safe_fe_merchant_desc: "他们分配恩赐，他们流转祝福；他们掌管圣库，他们调度天惠。凡有神意流通之处，便有他们的身影。"
+ # 寂灭镇守（行星狱长）
+ safe_fe_warden:"寂灭镇守"
+ job_safe_fe_warden: "寂灭镇守"
+ job_safe_fe_warden_plural: "寂灭镇守"
+ job_safe_fe_warden_desc: "镇守一方寂灭之境，需以近乎永恒的耐心与绝对的公正，执行经年不变的规条。"
+
+ ###------------- 保护者（执法者）--------------###
+ ## 基本岗位描述
  planet_safe_fe_protector:"$job_safe_fe_protector$岗位"
  job_safe_fe_protector:"$job_fe_protector$"
+ job_safe_fe_protector_icon:"[safe_fe_protector.GetIcon]"
  job_safe_fe_protector_plural:"$job_fe_protector_plural$"
- job_safe_fe_protector_plural_with_icon:"£job_safe_fe_protector£$job_safe_fe_protector_plural$"
+ job_safe_fe_protector_plural_with_icon:"[safe_fe_protector.GetIcon][safe_fe_protector.GetNamePlural]"
  job_safe_fe_protector_desc:"$job_fe_protector_desc$"
- mod_job_safe_fe_protector_add:"$job_safe_fe_protector$岗位"
+ ## 修正描述
+ mod_job_safe_fe_protector_add:"[safe_fe_protector.GetName]岗位"
 
- #-----------------SPECIALIST------------------#
- # 虚境灵者（灵能使）
+ ##################################
+ ##--------- SPECIALIST ---------##
+ ##################################
+ ###------------- 虚境灵者（灵能使）--------------###
+ ## 基本岗位描述
  planet_safe_fe_augur:"$job_safe_fe_augur$岗位"
  job_safe_fe_augur:"$job_fe_augur$"
+ job_safe_fe_augur_icon:"[safe_fe_augur.GetIcon]"
  job_safe_fe_augur_plural:"$job_fe_augur_plural$"
- job_safe_fe_augur_plural_with_icon:"£job_safe_fe_augur£$job_safe_fe_augur$"
+ job_safe_fe_augur_plural_with_icon:"[safe_fe_augur.GetIcon][safe_fe_augur.GetNamePlural]"
  job_safe_fe_augur_desc:"$job_fe_augur_desc$"
- mod_job_safe_fe_augur_add:"$job_safe_fe_augur$岗位"
+ ## 修正描述
+ mod_job_safe_fe_augur_add:"[safe_fe_augur.GetName]岗位"
  mod_job_safe_fe_augur_max_workforce_mult:"$job_safe_fe_augur$$MOD_JOB_MAX_WORKFORCE_MULT$"
  mod_pop_safe_fe_augur_bonus_workforce_mult:"$job_safe_fe_augur$的$MOD_POP_BONUS_WORKFORCE_MULT$"
- # 官僚
+ ## 转职岗位描述
+
+ ###------------- 卷宗圣吏（官僚）--------------###
+ ## 基本岗位描述
  planet_safe_fe_bureaucrats:"$job_safe_fe_bureaucrat$岗位"
- job_safe_fe_bureaucrat: "卷宗圣吏"
- job_safe_fe_bureaucrat_plural: "卷宗圣吏"
- job_safe_fe_bureaucrat_plural_with_icon: "£job_safe_fe_bureaucrat£$job_safe_fe_bureaucrat_plural$"
+ job_safe_fe_bureaucrat:"卷宗圣吏"
+ job_safe_fe_bureaucrat_icon:"[safe_fe_bureaucrat.GetIcon]"
+ job_safe_fe_bureaucrat_plural:"卷宗圣吏"
+ job_safe_fe_bureaucrat_plural_with_icon:"[safe_fe_bureaucrat.GetIcon][safe_fe_bureaucrat.GetNamePlural]"
  job_safe_fe_bureaucrat_desc: "“律法乃凝固的祷言”，初代圣吏长如是说。卷宗圣吏守护着以星尘为墨、以超膜为卷轴写就的神圣契约，维系着庞大帝国的行政脉络。"
- #job_safe_fe_bureaucrat_effect_desc: "£job_safe_fe_bureaucrat£$job_safe_fe_bureaucrat_plural$产出£unity£§Y$unity$§!"
- mod_job_safe_fe_bureaucrat_add: "$job_safe_fe_bureaucrat$岗位"
+ ## 修正描述
+ mod_job_safe_fe_bureaucrat_add: "[safe_fe_bureaucrat.GetName]岗位"
+ ## 转职岗位描述
+ # 圣咏者（祭司）
+ safe_fe_priest:"$job_safe_fe_priest$"
  job_safe_fe_priest:"圣咏者"
+ job_safe_fe_priest_icon:"£job_priest£"
  job_safe_fe_priest_plural:"圣咏者"
  job_safe_fe_priest_desc:"他们的颂歌并非仅存于空气，而是编织现实的底层代码；他们的祈祷并非渴求恩赐，而是校准灵性经纬的神圣仪式。"
- # 熔炉侍者（冶金师）
+ # 金律神官（拜金教祭司）
+ safe_fe_numistic_priest:"$job_safe_fe_numistic_priest$"
+ job_safe_fe_numistic_priest: "金律神官"
+ job_safe_fe_numistic_priest_with_icon: "£job_safe_fe_numistic_priest£$job_safe_fe_numistic_priest$"
+ job_safe_fe_numistic_priest_plural: "金律神官"
+ job_safe_fe_numistic_priest_plural_with_icon: "£job_safe_fe_numistic_priest£$job_safe_fe_numistic_priest_plural$"
+ job_safe_fe_numistic_priest_desc: "$job_numistic_priest_desc$"
+ # 文化工作者
+ planet_safe_fe_culture_workers:"$job_safe_fe_culture_worker$岗位"
+ safe_fe_culture_worker:"$job_safe_fe_culture_worker$"
+ job_safe_fe_culture_worker:"$job_culture_worker$"
+ job_safe_fe_culture_worker_plural:"$job_culture_worker_plural$"
+ job_safe_fe_culture_worker_name_plural_with_icon: "£job_safe_fe_culture_worker£$job_safe_fe_culture_worker_plural$"
+ job_safe_fe_culture_worker_desc:"$job_culture_worker_desc$"
+ # 死亡录书官
+ safe_fe_death_chronicler:"$job_safe_fe_death_chronicler$"
+ job_safe_fe_death_chronicler:"$job_death_chronicler$"
+ job_safe_fe_death_chronicler_plural:"$job_death_chronicler_plural$"
+ job_safe_fe_death_chronicler_desc:"$job_death_chronicler_desc$"
+ job_safe_fe_death_chronicler_effect_desc:"$job_death_chronicler_effect_desc$"
+ job_safe_fe_death_chronicler_simple_effect_desc:"$job_death_chronicler_simple_effect_desc$"
+
+ ###------------- 熔炉侍者（冶金师）--------------###
+ ## 基本岗位描述
  planet_safe_fe_foundry:"$job_safe_fe_foundry$岗位"
  job_safe_fe_foundry:"熔炉侍者"
+ job_safe_fe_foundry_icon:"[safe_fe_foundry.GetIcon]"
  job_safe_fe_foundry_plural:"熔炉侍者"
- job_safe_fe_foundry_plural_with_icon: "£job_safe_fe_foundry£$job_safe_fe_foundry_plural$"
+ job_safe_fe_foundry_plural_with_icon: "[safe_fe_foundry.GetIcon][safe_fe_foundry.GetNamePlural]"
  job_safe_fe_foundry_desc:"当圣火舔舐矿石，杂质化为青烟，唯有纯净的金属流淌如溪，以炽热信仰献上仪式。"
- #job_safe_fe_foundry_effect_desc: "£job_safe_fe_foundry£$job_safe_fe_foundry_plural$产出£alloys£§Y$alloys$§!"
- mod_job_safe_fe_foundry_add:"$job_safe_fe_foundry$岗位"
+ ## 修正描述
+ mod_job_safe_fe_foundry_add:"[safe_fe_foundry.GetName]岗位"
  mod_job_safe_fe_foundry_max_workforce_mult:"$job_safe_fe_foundry$$MOD_JOB_MAX_WORKFORCE_MULT$"
  mod_pop_safe_fe_foundry_workforce_mult:"$job_safe_fe_foundry$$MOD_POP_WORKFORCE_MULT$"
  mod_pop_safe_fe_foundry_bonus_workforce_mult:"$job_safe_fe_foundry$的$MOD_POP_BONUS_WORKFORCE_MULT$"
- # 圣坊侍者（工匠）
+ ## 转职岗位描述
+ # 催化技师
+ safe_fe_catalytic_technician:"$job_safe_fe_catalytic_technician$"
+ job_safe_fe_catalytic_technician:"$job_catalytic_technician$"
+ job_safe_fe_catalytic_technician_plural:"$job_catalytic_technician_plural$"
+ job_safe_fe_catalytic_technician_plural_with_icon:"£job_safe_fe_catalytic_technician£$job_safe_fe_catalytic_technician_plural$"
+ job_safe_fe_catalytic_technician_desc:"$job_catalytic_technician_desc$"
+
+ ###------------- 圣坊侍者（工匠）--------------###
+ ## 基本岗位描述
  planet_safe_fe_acolyte_artisan:"$job_safe_fe_acolyte_artisan$岗位"
  job_safe_fe_acolyte_artisan:"$job_fe_acolyte_artisan$"
+ job_safe_fe_acolyte_artisan_icon:"[safe_fe_acolyte_artisan.GetIcon]"
  job_safe_fe_acolyte_artisan_plural:"$job_fe_acolyte_artisan_plural$"
- job_safe_fe_acolyte_artisan_plural_with_icon:"£job_safe_fe_acolyte_artisan£$job_safe_fe_acolyte_artisan_plural$"
+ job_safe_fe_acolyte_artisan_plural_with_icon:"[safe_fe_acolyte_artisan.GetIcon][safe_fe_acolyte_artisan.GetNamePlural]"
  job_safe_fe_acolyte_artisan_desc:"$job_fe_acolyte_artisan_desc$"
- #job_safe_fe_acolyte_artisan_effect_desc:"$job_fe_acolyte_artisan_effect_desc$"
- mod_job_safe_fe_acolyte_artisan_add:"$job_safe_fe_acolyte_artisan$岗位"
+ ## 修正描述
+ mod_job_safe_fe_acolyte_artisan_add:"[safe_fe_acolyte_artisan.GetName]岗位"
  mod_job_safe_fe_acolyte_artisan_max_workforce_mult:"$job_safe_fe_acolyte_artisan$$MOD_JOB_MAX_WORKFORCE_MULT$"
  mod_pop_safe_fe_acolyte_artisan_workforce_mult:"$job_safe_fe_acolyte_artisan$$MOD_POP_WORKFORCE_MULT$"
  mod_pop_safe_fe_acolyte_artisan_bonus_workforce_mult:"$job_safe_fe_acolyte_artisan$的$MOD_POP_BONUS_WORKFORCE_MULT$"
- # 星律使徒（物理学家）
+ ## 转职岗位描述
+ # 天工造物师（熟练技工）
+ safe_fe_artificer: "$job_safe_fe_artificer$"
+ job_safe_fe_artificer: "天工造物师"
+ job_safe_fe_artificer_icon: "£job_artificer£"
+ job_safe_fe_artificer_plural: "天工造物师"
+ job_safe_fe_artificer_desc: "这些匠人秉承着失落年代的工艺秘传，他们手中诞生的并非凡俗器物，而是承载着帝国美学与灵思的物质结晶。"
+
+ ###------------- 星律使徒（物理学家）--------------###
+ ## 基本岗位描述
  planet_safe_fe_physicists:"$job_safe_fe_physicist$岗位"
  job_safe_fe_physicist:"星律使徒"
  job_safe_fe_physicist_icon:"[safe_fe_physicist.GetIcon]"
  job_safe_fe_physicist_plural:"星律使徒"
- job_safe_fe_physicist_plural_with_icon: "£job_safe_fe_physicist£$job_safe_fe_physicist_plural$"
+ job_safe_fe_physicist_plural_with_icon: "[safe_fe_physicist.GetIcon][safe_fe_physicist.GetNamePlural]"
  job_safe_fe_physicist_desc:"以数学为祷文，以引力为圣约，在黑洞的视界边缘勾勒宇宙的呼吸节律。"
- #job_safe_fe_physicist_effect_desc:"£job_safe_fe_physicist£$job_safe_fe_physicist_plural$产出£physics_research£§Y$physics_research$§!"
- mod_job_safe_fe_physicist_add:"$job_safe_fe_physicist$岗位"
+ ## 修正描述
+ mod_job_safe_fe_physicist_add:"[safe_fe_physicist.GetName]岗位"
  mod_pop_safe_fe_physicist_workforce_mult:"$job_safe_fe_physicist$$MOD_POP_WORKFORCE_MULT$"
  mod_pop_safe_fe_physicist_bonus_workforce_mult:"$job_safe_fe_physicist$的$MOD_POP_BONUS_WORKFORCE_MULT$"
- # 生命织匠（生物学家）
+
+ ###------------- 生命织匠（生物学家）--------------###
+ ## 基本岗位描述
  planet_safe_fe_biologists:"$job_safe_fe_biologist$岗位"
  job_safe_fe_biologist:"生命织匠"
+ job_safe_fe_biologist_icon:"[safe_fe_biologist.GetIcon]"
  job_safe_fe_biologist_plural:"生命织匠"
- job_safe_fe_biologist_plural_with_icon:"£job_safe_fe_biologist£$job_safe_fe_biologist_plural$"
+ job_safe_fe_biologist_plural_with_icon:"[safe_fe_biologist.GetIcon][safe_fe_biologist.GetNamePlural]"
  job_safe_fe_biologist_desc:"基因乃神写就的史诗，以碱基为墨，续写血肉与灵魂的永恒诗篇。"
- #job_safe_fe_biologist_effect_desc: "£job_safe_fe_biologist£$job_safe_fe_biologist_plural$产出£society_research£§Y$society_research$§!"
- mod_job_safe_fe_biologist_add:"$job_safe_fe_biologist$岗位"
+ ## 修正描述
+ mod_job_safe_fe_biologist_add:"[safe_fe_biologist.GetName]岗位"
  mod_pop_safe_fe_biologist_workforce_mult:"$job_safe_fe_biologist$$MOD_POP_WORKFORCE_MULT$"
  mod_pop_safe_fe_biologist_bonus_workforce_mult:"$job_safe_fe_biologist$的$MOD_POP_BONUS_WORKFORCE_MULT$"
- # 万械颂者（工程学家）
+ ## 转职岗位描述
+ # 异兽典牧官（动物饲养员）
+ safe_fe_xeno_zoo_keeper:"$job_safe_fe_xeno_zoo_keeper$"
+ job_safe_fe_xeno_zoo_keeper:"异兽典牧官"
+ job_safe_fe_xeno_zoo_keeper_plural:"异兽典牧官"
+ job_safe_fe_xeno_zoo_keeper_plural_with_icon:"£job_safe_fe_xeno_zoo_keeper£$job_safe_fe_xeno_zoo_keeper_plural$"
+ job_safe_fe_xeno_zoo_keeper_desc:"这些典牧官守护着来自万千世界的珍奇生命，他们不仅提供照料，更维系着帝国生物圣所中那份古老的生态平衡。"
+ # 考古工程师
+ safe_fe_archaeoengineers:"$job_safe_fe_archaeoengineers$"
+ job_safe_fe_archaeoengineers:"$archaeoengineers$"
+ job_safe_fe_archaeoengineers_with_icon: "£job_safe_fe_archaeoengineers£$job_safe_fe_archaeoengineers$"
+ job_safe_fe_archaeoengineers_plural:"$job_archaeoengineers_plural$"
+ job_safe_fe_archaeoengineers_plural_with_icon:"£job_safe_fe_archaeoengineers£$job_safe_fe_archaeoengineers_plural$"
+ job_safe_fe_archaeoengineers_desc:"$job_archaeoengineers_desc$"
+
+ ###------------- 万械颂者（工程学家）--------------###
+ ## 基本岗位描述
  planet_safe_fe_engineers:"$job_safe_fe_engineer$岗位"
  job_safe_fe_engineer:"万械颂者"
+ job_safe_fe_engineer_icon:"[safe_fe_engineer.GetIcon]"
  job_safe_fe_engineer_plural:"万械颂者"
- job_safe_fe_engineer_plural_with_icon:"£job_safe_fe_engineer£$job_safe_fe_engineer_plural$"
+ job_safe_fe_engineer_plural_with_icon:"[safe_fe_engineer.GetIcon][safe_fe_engineer.GetNamePlural]"
  job_safe_fe_engineer_desc:"齿轮咬合之声即是对造物的礼赞，令钢铁吟唱圣歌，让机械绽放光尘。"
- #job_safe_fe_engineer_effect_desc: "£job_safe_fe_engineer£$job_safe_fe_engineer_plural$产出£engineering_research£§Y$engineering_research$§!"
- mod_job_safe_fe_engineer_add:"$job_safe_fe_engineer$岗位"
+ ## 修正描述
+ mod_job_safe_fe_engineer_add:"[safe_fe_engineer.GetName]岗位"
  mod_pop_safe_fe_engineer_workforce_mult:"$job_safe_fe_engineer$$MOD_POP_WORKFORCE_MULT$"
  mod_pop_safe_fe_engineer_bonus_workforce_mult:"$job_safe_fe_engineer$的$MOD_POP_BONUS_WORKFORCE_MULT$"
 
@@ -121,7 +224,7 @@
  ## 基本岗位描述
  planet_safe_fe_acolyte_generator:"$job_safe_fe_acolyte_generator$岗位"
  job_safe_fe_acolyte_generator:"圣钳侍者"
- job_safe_fe_acolyte_generator_with_icon:"[safe_fe_acolyte_generator.GetIcon]"
+ job_safe_fe_acolyte_generator_icon:"[safe_fe_acolyte_generator.GetIcon]"
  job_safe_fe_acolyte_generator_plural:"圣钳侍者"
  job_safe_fe_acolyte_generator_plural_with_icon:"[safe_fe_acolyte_generator.GetIcon][safe_fe_acolyte_generator.GetNamePlural]"
  job_safe_fe_acolyte_generator_desc:"$job_fe_acolyte_generator_desc$"
@@ -136,7 +239,7 @@
  ## 基本岗位描述
  planet_safe_fe_acolyte_mine:"$job_safe_fe_acolyte_mine$岗位"
  job_safe_fe_acolyte_mine:"焰锤侍者"
- job_safe_fe_acolyte_mine_with_icon:"[safe_fe_acolyte_mine.GetIcon]"
+ job_safe_fe_acolyte_mine_icon:"[safe_fe_acolyte_mine.GetIcon]"
  job_safe_fe_acolyte_mine_plural:"焰锤侍者"
  job_safe_fe_acolyte_mine_plural_with_icon:"[safe_fe_acolyte_mine.GetIcon][safe_fe_acolyte_mine.GetNamePlural]"
  job_safe_fe_acolyte_mine_desc:"$job_fe_acolyte_mine_desc$"
@@ -146,11 +249,11 @@
  mod_pop_safe_fe_acolyte_mine_bonus_workforce_mult:"$job_safe_fe_acolyte_mine$的$MOD_POP_BONUS_WORKFORCE_MULT$"
  mod_planet_safe_fe_acolyte_mine_rare_crystals_produces_add:"每$pop_group_unit$$job_safe_fe_acolyte_mine_plural_with_icon$产出的£rare_crystals£$rare_crystals$"
 
- ### -------------犁耕侍者（农夫）-----------------###
+ ### ----------------犁耕侍者（农夫）-----------------###
  ## 基本岗位描述
  planet_safe_fe_acolyte_farm:"$job_safe_fe_acolyte_farm$岗位"
  job_safe_fe_acolyte_farm:"犁耕侍者"
- job_safe_fe_acolyte_farm_with_icon:"[safe_fe_acolyte_farm.GetIcon]"
+ job_safe_fe_acolyte_farm_icon:"[safe_fe_acolyte_farm.GetIcon]"
  job_safe_fe_acolyte_farm_plural:"犁耕侍者"
  job_safe_fe_acolyte_farm_plural_with_icon:"[safe_fe_acolyte_farm.GetIcon][safe_fe_acolyte_farm.GetNamePlural]"
  job_safe_fe_acolyte_farm_desc:"$job_fe_acolyte_farm_desc$"
@@ -161,15 +264,16 @@
  mod_pop_safe_fe_acolyte_farm_bonus_workforce_mult:"$job_safe_fe_acolyte_farm$的$MOD_POP_BONUS_WORKFORCE_MULT$"
  mod_planet_safe_fe_acolyte_farm_exotic_gases_produces_add:"每$pop_group_unit$$job_safe_fe_acolyte_farm_plural_with_icon$产出的£exotic_gases£$exotic_gases$"
 
-
- # 士兵
+ ### ----------------晶盾卫戍（士兵）-----------------###
+ ## 基本岗位描述
  planet_safe_fe_soldiers:"$job_safe_fe_soldier$岗位"
  job_safe_fe_soldier: "晶盾卫戍"
+ job_safe_fe_soldier_icon:"[safe_fe_soldier.GetIcon]"
  job_safe_fe_soldier_plural: "晶盾卫戍"
- job_safe_fe_soldier_plural_with_icon: "£job_safe_fe_soldier£$job_safe_fe_soldier_plural$"
- job_safe_fe_soldier_desc: "其身如星穹合金般坚不可摧，其志如脉冲星般恒定，以血肉筑成圣域边界。"
- #job_safe_fe_soldier_effect_desc: "£job_safe_fe_soldier£$job_safe_fe_soldier_plural$提升£army_damage£§Y$army_damage$§与£defensive_army_strength£§Y$defensive_army_strength$§!"
- mod_job_safe_fe_soldier_add: "$job_safe_fe_soldier$岗位"
+ job_safe_fe_soldier_plural_with_icon: "[safe_fe_soldier.GetIcon][safe_fe_soldier.GetNamePlural]"
+ job_safe_fe_soldier_desc: "其身如星穹合金般坚不可摧，意志如脉冲星般恒定，以血肉筑成圣域边界。"
+ ## 修正描述
+ mod_job_safe_fe_soldier_add: "[safe_fe_soldier.GetName]岗位"
 
 
 

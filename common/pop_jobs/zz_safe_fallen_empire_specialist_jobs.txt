@@ -2,7 +2,7 @@
 ## possible 中均做了限制，只有初始物种才能从事，符合条件的可以按权重转职
 
 #-----------------SPECIALIST------------------#
-# 对应于普通帝国的灵能使
+## 对应于普通帝国的灵能使
 safe_fe_augur = {
     category = precursor_artisan
     is_capped_by_modifier = yes
@@ -85,7 +85,7 @@ safe_fe_augur = {
             society_research = 5
         }
         upkeep = {
-            sr_zro = 0.5
+            sr_zro = 0.25
         }
         upkeep = {
             trigger = {
@@ -133,7 +133,7 @@ safe_fe_augur = {
     inline_script = "jobs/automodding_priority_unity"
 }
 
-# 对应于普通帝国的官僚，对于圣卫将转职为祭司
+## 对应于普通帝国的官僚，对于圣卫将转职为祭司
 safe_fe_bureaucrat = {
     category = precursor_artisan
     is_capped_by_modifier = yes
@@ -160,31 +160,20 @@ safe_fe_bureaucrat = {
             trigger = {
                 bureaucrat_is_numistic_priest = yes
             }
-            name = numistic_priest
-            desc = numistic_priest
-            icon = numistic_priest
+            name = safe_fe_numistic_priest
+            desc = job_safe_fe_numistic_priest_desc
+            icon = safe_fe_numistic_priest
             building_icon = building_nuumismatic_shrine
             condition_string = SPECIALIST_JOB_TRIGGER
             weight = 20
         }
         swap_type = {
             trigger = {
-                bureaucrat_is_unifier = yes
-            }
-            name = unifier
-            desc = unifier
-            icon = overlord_propagandist
-            building_icon = building_capital
-            condition_string = SPECIALIST_JOB_TRIGGER
-            weight = 25
-        }
-        swap_type = {
-            trigger = {
                 bureaucrat_is_culture_worker = yes
             }
-            name = culture_worker
-            desc = culture_worker
-            icon = culture_worker
+            name = safe_fe_culture_worker
+            desc = job_safe_fe_culture_worker_desc
+            icon = safe_fe_culture_worker
             building_icon = building_artist_patron
             condition_string = SPECIALIST_JOB_TRIGGER
             weight = 30
@@ -204,9 +193,9 @@ safe_fe_bureaucrat = {
             trigger = {
                 bureaucrat_is_memorialist = yes
             }
-            name = memorialist
-            desc = memorialist
-            icon = death_chronicler
+            name = safe_fe_death_chronicler
+            desc = job_safe_fe_death_chronicler_desc
+            icon = safe_fe_death_chronicler
             building_icon = building_galactic_memorial_1
             condition_string = SPECIALIST_JOB_TRIGGER
             weight = 200
@@ -283,13 +272,6 @@ safe_fe_bureaucrat = {
             }
             unity = 3
         }
-        # 转职为统一干事后的产出
-        upkeep = {
-            trigger = {
-                bureaucrat_is_unifier = yes
-            }
-            consumer_goods = -1
-        }
         # 转职为拜金教祭司后的产出
         produces = {
             trigger = {
@@ -313,7 +295,7 @@ safe_fe_bureaucrat = {
         inline_script = "jobs/ethic_job_resources_memorialist"
     }
 
-    ## 舒适度产出
+    # 舒适度产出
     triggered_planet_modifier = {
         potential = {
             bureaucrat_is_priest = yes
@@ -326,13 +308,6 @@ safe_fe_bureaucrat = {
             bureaucrat_is_death_priest = yes
         }
         planet_amenities_add = 200
-        mult = value:scripted_modifier_mult|MODIFIER|pop_job_amenities_mult|
-    }
-    triggered_planet_modifier = {
-        potential = {
-            bureaucrat_is_unifier = yes
-        }
-        planet_amenities_add = 300
         mult = value:scripted_modifier_mult|MODIFIER|pop_job_amenities_mult|
     }
     triggered_planet_modifier = {
@@ -352,7 +327,7 @@ safe_fe_bureaucrat = {
 
     inline_script = "jobs/ethic_job_modifiers_memorialist"
 
-    ## 稳定度产出
+    # 稳定度产出
     triggered_planet_modifier = {
         potential = { bureaucrat_is_memorialist = yes }
         planet_stability_add = 0.5
@@ -361,7 +336,6 @@ safe_fe_bureaucrat = {
         potential = { bureaucrat_is_superstitious_beliefs_priest = yes }
         planet_stability_add = 1
     }
-
     triggered_planet_modifier = {
         potential = {
             exists = planet
@@ -376,7 +350,7 @@ safe_fe_bureaucrat = {
         mult = planet.modifier:planet_bureaucrats_stability_produces_add
     }
 
-    ## 主流思潮吸引力
+    # 转职为文化工作者后的主流思潮吸引力效果
     triggered_planet_modifier = {
         potential = {
             bureaucrat_is_culture_worker = yes
@@ -447,10 +421,62 @@ safe_fe_bureaucrat = {
     }
 }
 
-# 对应普通帝国的祭司
+# 转职（拜金教祭司）
+safe_fe_numistic_priest = {
+    category = precursor_artisan
+    is_capped_by_modifier = yes
 
+    swappable_data = {
+        default = {
+            condition_string = SPECIALIST_JOB_TRIGGER
+            building_icon = building_nuumismatic_shrine
+            icon = numistic_priest
+        }
+    }
 
-# 圣卫中用于替换平民的阶层，设置为只有AI能用
+    possible = { always = no }
+}
+# 转职（文化工作者）
+safe_fe_culture_worker = {
+    category = precursor_artisan
+    is_capped_by_modifier = yes
+
+    swappable_data = {
+        default = {
+            condition_string = SPECIALIST_JOB_TRIGGER
+            building_icon = building_autochthon_monument
+            icon = culture_worker
+        }
+    }
+    possible = { always = no }
+}
+# 转职（死亡录书官）
+safe_fe_death_chronicler = {
+    category = precursor_artisan
+    is_capped_by_modifier = yes
+
+    swappable_data = {
+        default = {
+            condition_string = SPECIALIST_JOB_TRIGGER
+            building_icon = building_galactic_memorial_1
+            icon = death_chronicler
+        }
+    }
+
+    possible = { always = no }
+
+    promotion = {
+        time = @standard_promotion_time
+        effect = {
+            pop_amount_change_category = {
+                CATEGORY = precursor_artisan
+                AMOUNT = local_pop_amount
+            }
+        }
+    }
+}
+
+## 圣卫中用于替换平民的阶层，设置为只有AI能用
 fe_acolyte_artisan = {
     category = precursor
     is_capped_by_modifier = no
@@ -535,7 +561,7 @@ fe_acolyte_artisan = {
     }
 }
 
-# 对应于普通帝国的工匠
+## 对应于普通帝国的工匠
 safe_fe_acolyte_artisan = {
     category = precursor_artisan
     is_capped_by_modifier = yes
@@ -551,9 +577,9 @@ safe_fe_acolyte_artisan = {
             trigger = {
                 artisan_is_artificer_trigger = yes
             }
-            name = artificer
-            desc = artificer
-            icon = artificer
+            name = safe_fe_artificer
+            desc = job_safe_fe_artificer_desc
+            icon = safe_fe_artificer
             weight = 5
         }
         swap_type = {
@@ -596,6 +622,7 @@ safe_fe_acolyte_artisan = {
         is_same_species = owner
     }
 
+    # 舒适度产出
     triggered_planet_modifier = {
         potential = {
             always = yes
@@ -608,7 +635,6 @@ safe_fe_acolyte_artisan = {
         category = planet_safe_fe_acolyte_artisan
         produces = {
             consumer_goods = 10
-            trade = 2
         }
         produces = {
             trigger = {
@@ -621,6 +647,12 @@ safe_fe_acolyte_artisan = {
                 planet = { has_active_building = building_factory_3 }
             }
             consumer_goods = 2
+        }
+        upkeep = {
+            trigger = {
+                industrial_jobs_are_catalytic_trigger = no
+            }
+            minerals = 5
         }
         # 转职为熟练技工后的产出
         produces = {
@@ -662,29 +694,12 @@ safe_fe_acolyte_artisan = {
             consumer_goods = @councilor_machine_anglers_pearl_diver_consumer_goods_bonus
             mult = value:councilor_level|TYPE|councilor_machine_anglers|
         }
-        produces = {
-            trigger = {
-                exists = planet
-                planet = {
-                    artisan_is_pearl_diver_trigger = yes
-                }
-                has_councilor = { COUNCILOR = "councilor_machine_anglers" }
-            }
-            consumer_goods = @councilor_machine_anglers_pearl_diver_consumer_goods_bonus
-            mult = value:councilor_level|TYPE|councilor_machine_anglers|
-        }
         # 采用催化加工国策后的产出
         produces = {
             trigger = {
                 industrial_jobs_are_catalytic_trigger = yes
             }
             consumer_goods = 1.5
-        }
-        upkeep = {
-            trigger = {
-                industrial_jobs_are_catalytic_trigger = no
-            }
-            minerals = 5
         }
         upkeep = {
             trigger = {
@@ -703,7 +718,6 @@ safe_fe_acolyte_artisan = {
             minerals = 2
             food = -3
         }
-        # 附庸状态下的产出？
         produces = {
             trigger = {
                 planet = {
@@ -753,6 +767,7 @@ safe_fe_acolyte_artisan = {
         }
     }
 
+    # 转职为珍珠潜水员后的舒适度产出
     triggered_planet_modifier = {
         potential = {
             artisan_is_pearl_diver_trigger = yes
@@ -820,8 +835,21 @@ safe_fe_acolyte_artisan = {
         }
     }
 }
+# 转职（熟练工匠）
+safe_fe_artificer = {
+    category = precursor_artisan
 
-# 对应于普通帝国的冶金师
+    swappable_data = {
+        default = {
+            condition_string = SPECIALIST_JOB_TRIGGER
+            building_icon = building_affluence_center
+            icon = artificer
+        }
+    }
+    possible = { always = no }
+}
+
+## 对应于普通帝国的冶金师
 safe_fe_foundry = {
     category = precursor_artisan
     is_capped_by_modifier = yes
@@ -837,8 +865,9 @@ safe_fe_foundry = {
             trigger = {
                 industrial_jobs_are_catalytic_trigger = yes
             }
-            name = catalytic_technician
+            name = safe_fe_catalytic_technician
             desc = job_catalytic_technician_desc
+            icon = safe_fe_catalytic_technician
             weight = 5
         }
     }
@@ -864,18 +893,18 @@ safe_fe_foundry = {
         produces = {
             alloys = 10
         }
-        # 采用催化加工后的产出
-        produces = {
-            trigger = {
-                industrial_jobs_are_catalytic_trigger = yes
-            }
-            alloys = 1
-        }
         upkeep = {
             trigger = {
                 industrial_jobs_are_catalytic_trigger = no
             }
             minerals = 5
+        }
+        # 转职为催化技师后的产出与维护
+        produces = {
+            trigger = {
+                industrial_jobs_are_catalytic_trigger = yes
+            }
+            alloys = 1
         }
         upkeep = {
             trigger = {
@@ -955,6 +984,39 @@ safe_fe_foundry = {
     }
 
     inline_script = "jobs/automodding_priority_alloys"
+
+    promotion = {
+        time = @standard_promotion_time
+        effect = {
+            pop_amount_change_category = {
+                CATEGORY = precursor_artisan
+                AMOUNT = local_pop_amount
+            }
+        }
+    }
+}
+# 转职（催化技师）
+safe_fe_catalytic_technician = {
+    category = precursor_artisan
+
+    swappable_data = {
+        default = {
+            condition_string = SPECIALIST_JOB_TRIGGER
+            building_icon = building_nano_forge
+            icon = catalytic_technician
+        }
+    }
+    tags = { alloys }
+
+    possible_pre_triggers = {
+        has_owner = yes
+        is_being_purged = no
+        is_being_assimilated = no
+    }
+
+    possible = {
+        always = no
+    }
 
     promotion = {
         time = @standard_promotion_time
@@ -1066,7 +1128,7 @@ safe_fe_physicist = {
         upkeep = {
             consumer_goods = 1.5
         }
-        # 转自为星际气象学家的产出
+        # 转职为星际气象学家的产出
         produces = {
             trigger = {
                 exists = planet
@@ -1184,10 +1246,6 @@ safe_fe_physicist = {
             factor = 2
             has_living_standard = { type = living_standard_academic_privilege }
         }
-        modifier = {
-            factor = 5
-            has_trait = trait_cyborg_creed_of_research
-        }
     }
 
     inline_script = "jobs/automodding_priority_research"
@@ -1239,9 +1297,9 @@ safe_fe_biologist = {
             trigger = {
                 biologist_is_zookeeper_trigger = yes
             }
-            name = xeno_zoo_keeper
-            desc = xeno_zoo_keeper
-            icon = xeno_zoo_keeper
+            name = safe_fe_xeno_zoo_keeper
+            desc = job_safe_fe_xeno_zoo_keeper_desc
+            icon = safe_fe_xeno_zoo_keeper
             building_icon = building_xeno_zoo
             weight = 15
         }
@@ -1249,9 +1307,9 @@ safe_fe_biologist = {
             trigger = {
                 biologist_is_archaeo_engineer_trigger = yes
             }
-            name = archaeoengineers
-            desc = archaeoengineers
-            icon = archaeoengineers
+            name = safe_fe_archaeoengineers
+            desc = job_safe_fe_archaeoengineers_desc
+            icon = safe_fe_archaeoengineers
             building_icon = building_archaeostudies_faculty
             weight = 20
         }
@@ -1367,10 +1425,6 @@ safe_fe_biologist = {
             factor = 2
             has_living_standard = { type = living_standard_academic_privilege }
         }
-        modifier = {
-            factor = 5
-            has_trait = trait_cyborg_creed_of_research
-        }
     }
 
     inline_script = "jobs/automodding_priority_research"
@@ -1385,8 +1439,59 @@ safe_fe_biologist = {
         }
     }
 }
+# 转职（动物饲养员）
+safe_fe_xeno_zoo_keeper = {
+    category = precursor_artisan
 
-# 对应于普通帝国的工程学家
+    swappable_data = {
+        default = {
+            condition_string = SPECIALIST_JOB_TRIGGER
+            building_icon = building_xeno_zoo
+            icon = xeno_zoo_keeper
+        }
+    }
+
+    possible = {
+        always = no
+    }
+}
+# 转职（考古工程师）
+safe_fe_archaeoengineers = {
+    category = precursor_artisan
+
+    swappable_data = {
+        default = {
+            condition_string = SPECIALIST_JOB_TRIGGER
+            building_icon = building_archaeostudies_faculty
+            icon = archaeoengineers
+        }
+    }
+
+    tags = { research minor_artifacts }
+
+    possible_pre_triggers = {
+        has_owner = yes
+        is_being_purged = no
+        is_being_assimilated = no
+        is_sapient = yes
+    }
+
+    possible = {
+        always = no
+    }
+
+    promotion = {
+        time = @standard_promotion_time
+        effect = {
+            pop_amount_change_category = {
+                CATEGORY = precursor_artisan
+                AMOUNT = local_pop_amount
+            }
+        }
+    }
+}
+
+## 对应于普通帝国的工程学家
 safe_fe_engineer = {
     category = precursor_artisan
     is_capped_by_modifier = yes
@@ -1417,15 +1522,6 @@ safe_fe_engineer = {
             icon = munitions_decommissioner
             building_icon = building_research_lab_1
             weight = 10
-        }
-        swap_type = {
-            trigger = {
-                engineer_is_nanotech_researcher_trigger = yes
-            }
-            name = nanotech_researcher
-            desc = nanotech_researcher
-            building_icon = building_nanolab_1
-            weight = 15
         }
     }
 
@@ -1464,19 +1560,6 @@ safe_fe_engineer = {
         upkeep = {
             consumer_goods = 1.5
         }
-        # 转职为纳米研究者的产出
-        produces = {
-            trigger = {
-                engineer_is_nanotech_researcher_trigger = yes
-            }
-            engineering_research = 3
-        }
-        upkeep = {
-            trigger = {
-                engineer_is_nanotech_researcher_trigger = yes
-            }
-            nanites = 1
-        }
 
         inline_script = "output/researcher_output"
     }
@@ -1511,10 +1594,6 @@ safe_fe_engineer = {
         modifier = {
             factor = 2
             has_living_standard = { type = living_standard_academic_privilege }
-        }
-        modifier = {
-            factor = 5
-            has_trait = trait_cyborg_creed_of_research
         }
     }
 

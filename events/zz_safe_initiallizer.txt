@@ -85,9 +85,9 @@ country_event = {
                     district = district_farming
                     zone = zone_food
                 }
-                # 循环添加105个堕落帝国原生物种人口组（10.5K）
+                # 循环添加115个堕落帝国原生物种人口组（11.5K）
                 while = {
-                    count = 105
+                    count = 115
                     create_pop_group = {
                         species = owner_main_species
                     }
@@ -107,12 +107,11 @@ country_event = {
                 # 为城市核心添加建筑
                 add_building = building_ancient_palace
                 add_building = building_fe_dome
-                add_building = building_fe_temple_2
                 add_building = building_empyrean_shrine
                 add_building = building_fe_temple_2
                 add_building = building_fe_mine_2
                 add_building = building_fe_stronghold
-                add_building = building_fe_stronghold
+                add_building = building_dimensional_fabricator
                 add_building = building_dimensional_fabricator
                 add_building = building_affluence_center
                 add_building = building_nano_forge
@@ -186,9 +185,9 @@ country_event = {
                     district = district_farming
                     zone = zone_food
                 }
-                # 循环添加68个堕落帝国原生物种人口组（6.8K）
+                # 循环添加88个堕落帝国原生物种人口组（8.8K）
                 while = {
-                    count = 68
+                    count = 88
                     create_pop_group = {
                         species = owner_main_species
                     }
@@ -200,9 +199,9 @@ country_event = {
                 add_building = building_dimensional_fabricator
                 add_building = building_dimensional_fabricator
                 add_building = building_fe_stronghold
-                add_building = building_fe_stronghold
+                add_building = building_fe_temple_2
                 add_building = building_nano_forge
-                add_building = building_nano_forge
+                add_building = building_affluence_center
                 # 为发电区划添加建筑
                 add_building = {
                     district = district_generator

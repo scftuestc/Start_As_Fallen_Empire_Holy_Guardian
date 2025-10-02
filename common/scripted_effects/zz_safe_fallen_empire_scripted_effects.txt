@@ -1,6 +1,5 @@
 ### 用于进游戏时的初始化脚本，不动原版脚本，抄过来按需求修改用，加前缀safe
-
-# 创建护航就
+## 创建护航舰
 safe_create_fallen_empire_small_ship = {
     if = {
         limit = {
@@ -13,7 +12,8 @@ safe_create_fallen_empire_small_ship = {
         }
     }
 }
-# 创建战列巡洋舰
+
+## 创建战列巡洋舰
 safe_create_fallen_empire_large_ship = {
     if = {
         limit = {
@@ -26,7 +26,8 @@ safe_create_fallen_empire_large_ship = {
         }
     }
 }
-# 创建泰坦
+
+## 创建泰坦
 safe_create_fallen_empire_titan = {
     if = {
         limit = {
@@ -39,7 +40,8 @@ safe_create_fallen_empire_titan = {
         }
     }
 }
-# 创建巨像
+
+## 创建巨像
 safe_create_fallen_empire_colossus = {
     if = {
         limit = {
@@ -48,12 +50,13 @@ safe_create_fallen_empire_colossus = {
         }
         create_ship = {
             name = random
-            design = "NAME_Cleanser"
+            random_existing_design = colossus
             graphical_culture = owner
         }
     }
 }
-# 创建舰队(20艘护航舰+10艘战略巡洋舰+1艘泰坦)
+
+## 创建带10级指挥官的单只舰队(20艘护航舰+10艘战略巡洋舰+1艘泰坦)
 safe_create_fallen_empire_fleet = {
     owner = {
         create_leader = {
@@ -72,7 +75,7 @@ safe_create_fallen_empire_fleet = {
     }
     create_fleet = {
         effect = {
-            set_owner = root
+            set_owner = prev.root
             while = {
                 count = 10
                 safe_create_fallen_empire_large_ship = yes
@@ -82,12 +85,43 @@ safe_create_fallen_empire_fleet = {
                 safe_create_fallen_empire_small_ship = yes
             }
             safe_create_fallen_empire_titan = yes
-            set_location = root.capital_scope.star
+            # 随机位置
+            random_list = {
+                25 = {
+                    set_location = {
+                        target = prev
+                        distance = 30
+                        angle = random
+                    }
+                }
+                25 = {
+                    set_location = {
+                        target = prev
+                        distance = 45
+                        angle = random
+                    }
+                }
+                25 = {
+                    set_location = {
+                        target = prev
+                        distance = 60
+                        angle = random
+                    }
+                }
+                25 = {
+                    set_location = {
+                        target = prev
+                        distance = 75
+                        angle = random
+                    }
+                }
+            }
         }
     }
     last_created_fleet = { assign_leader = last_created_leader }
 }
-# 创建初始海军(40艘护航舰+20艘战略巡洋舰+2艘泰坦+1艘巨像)
+
+## 创建初始海军(2支舰队：40艘护航舰+20艘战略巡洋舰+2艘泰坦+1艘巨像)
 safe_create_fallen_empire_starting_navy = {
     while = {
         count = 2
@@ -99,12 +133,18 @@ safe_create_fallen_empire_starting_navy = {
             effect = {
                 set_owner = prev.owner
                 safe_create_fallen_empire_colossus = yes
-                set_location = root.capital_scope.star
+                # 随机位置
+                set_location = {
+                    target = prev
+                    distance = 30
+                    angle = random
+                }
             }
         }
     }
 }
-# 创建防御平台
+
+## 创建防御平台
 safe_create_fallen_empire_platform = {
     if = {
         limit = {
@@ -117,7 +157,8 @@ safe_create_fallen_empire_platform = {
         }
     }
 }
-# 创建首都恒星基地
+
+## 创建首都恒星基地
 # 直接使用原版的create_fe_home_citadel有bug，error.log 未指明原因。目前采用：定位原始首都的二级星堡，升级到堕落五级擎天堡的方案
 safe_create_fe_home_citadel = {
     # 模块设置
@@ -139,7 +180,8 @@ safe_create_fe_home_citadel = {
         safe_create_fallen_empire_platform = yes
     }
 }
-# 创建殖民地恒星基地
+
+## 创建边缘殖民地恒星基地
 safe_create_fe_citadel = {
     create_starbase = {
         owner = $OWNER$
@@ -164,7 +206,8 @@ safe_create_fe_citadel = {
         }
     }
 }
-# 创建深空擎天堡
+
+## 创建深空擎天堡
 safe_create_fe_dsc = {
     create_starbase = {
         owner = $OWNER$
@@ -176,14 +219,14 @@ safe_create_fe_dsc = {
         building = communications_jammer
         effect = {
             while = {
-                # 更改为4个
                 count = 4
                 safe_create_fallen_empire_platform = yes
             }
         }
     }
 }
-# 添加缺失的十层科技循环
+
+## 添加缺失的十层科技循环
 give_missing_repeatable_tech= {
     while = {
         count = 10
@@ -216,7 +259,8 @@ give_missing_repeatable_tech= {
         give_technology = { tech = tech_repeatable_reduced_building_time message = no }
     }
 }
-# 添加缺失的巨像科技
+
+## 添加缺失的巨像科技
 give_missing_colossus_tech = {
     if = {
         limit = { host_has_dlc = "Apocalypse" }
@@ -229,10 +273,10 @@ give_missing_colossus_tech = {
         give_technology = { tech = tech_pk_nanobots message = no }
     }
 }
-# 添加缺失的其他科技
+
+## 添加缺失的其他科技
 give_missing_other_tech = {
     # 缺失的科技为：创建帝国时，初始物种为机器族才能有的科技，以及灵能科技
-    # 还缺失走文灾飞路线的十个扭曲现实法则科技，蠢驴脑抽了，这也能算在堕落的全科技中吗？
     # 缺失的物理学科技补充
     give_technology = { tech = tech_archeology_lab_ancrel message = no}
     give_technology = { tech = tech_combat_computers_autonomous message = no }
@@ -246,7 +290,8 @@ give_missing_other_tech = {
     give_technology = { tech = tech_micro_replicators message = no }
     give_technology = { tech = tech_self_assembling_components message = no }
 }
-# 添加对应的飞升和传统书
+
+## 添加对应的飞升和传统
 add_ascension_perk_and_tradition = {
     if = {
         limit = { owner = { has_ethic = ethic_fanatic_spiritualist } }
@@ -256,7 +301,7 @@ add_ascension_perk_and_tradition = {
         add_ascension_perk = ap_world_shaper
         add_ascension_perk = ap_colossus
         add_ascension_perk = ap_mind_over_matter
-        # 添加传统树
+        # 添加灵能传统，并完成闭门
         add_tradition = tr_psionics_adopt # 开门
         add_tradition = tr_psionics_psi_corps
         add_tradition = tr_psionics_mind_readers

@@ -1,4 +1,4 @@
-version="0.1"
+version="0.2"
 tags={
 	"Balance"
 	"Buildings"
@@ -7,4 +7,4 @@ tags={
 	"Gameplay"
 }
 name="Start As Fallen Empire Holy Guardian"
-supported_version="v4.0.23"
+supported_version="v4.1.3"

@@ -60,7 +60,6 @@ building_ancient_palace = {
             }
         }
         modifier = {
-            # 岗位提供量翻倍
             job_fe_overseer_add = 400
             job_fe_protector_add = 400
         }
@@ -154,8 +153,7 @@ building_empyrean_shrine = {
                 NOT = { has_origin = Start_As_Fallen_Empire_Holy_Guardians }
             }
         }
-        # 增添至600个
-        job_fe_augur_add = 600
+        job_fe_augur_add = 400
     }
 
     triggered_planet_modifier = {
@@ -167,7 +165,7 @@ building_empyrean_shrine = {
             }
         }
         # 使用自定义的岗位
-        job_safe_fe_augur_add = 600
+        job_safe_fe_augur_add = 400
     }
 
     triggered_planet_modifier = {
@@ -175,7 +173,7 @@ building_empyrean_shrine = {
             exists = owner
             owner = { has_tradition = tr_psionics_psi_corps}
         }
-        pop_safe_fe_augur_bonus_workforce_mult = 0.5
+        pop_telepath_bonus_workforce_mult = 0.25
     }
 
     triggered_planet_modifier = {
@@ -221,7 +219,7 @@ building_empyrean_shrine = {
         upkeep = {
             alloys = @b2_alloy_upkeep
             energy = 20
-            sr_zro = 2
+            sr_zro = 1
         }
     }
 
@@ -303,7 +301,7 @@ building_fe_temple_1 = {
             biomass = @b3_biomass
         }
         produces = {
-            unity = 20
+            unity = 100
         }
     }
 
@@ -379,6 +377,7 @@ building_fe_temple_1 = {
 building_fe_temple_2 = {
     base_buildtime = @b2_time
     can_build = no
+    planet_limit = 1
 
     category = unity
 
@@ -447,7 +446,7 @@ building_fe_temple_2 = {
             biomass = @b3_biomass
         }
         produces = {
-            unity = 50
+            unity = 200
         }
     }
 
@@ -463,13 +462,18 @@ building_fe_temple_2 = {
         planet_decision_enact_speed_mult = 0.03
     }
 
+    triggered_planet_modifier = {
+        potential = { always = yes }
+        planet_bureaucrats_unity_produces_add = 1
+    }
+
     planet_modifier = {
-        pop_housing_usage_mult = -0.15
+        pop_housing_usage_mult = -0.25
     }
 
     inline_script = {
         script = jobs/priests_add
-        AMOUNT = 800
+        AMOUNT = 1000
     }
 
     on_queued = {
@@ -590,9 +594,9 @@ building_fe_lab_1 = {
             biomass = @b3_biomass
         }
         produces = {
-            physics_research = 25
-            society_research = 25
-            engineering_research = 25
+            physics_research = 40
+            society_research = 40
+            engineering_research = 40
         }
     }
 
@@ -643,16 +647,6 @@ building_fe_lab_1 = {
         }
     }
 
-    triggered_planet_modifier = {
-        potential = {
-            exists = owner
-            owner = { has_origin = Start_As_Fallen_Empire_Holy_Guardians }
-        }
-        pop_safe_fe_physicist_bonus_workforce_mult = 0.10
-        pop_safe_fe_biologist_bonus_workforce_mult = 0.10
-        pop_safe_fe_engineer_bonus_workforce_mult = 0.10
-    }
-
     upgrades = {
         building_fe_lab_2
     }
@@ -701,6 +695,7 @@ building_fe_lab_1 = {
 building_fe_lab_2 = {
     base_buildtime = @b2_time
     can_build = no
+    planet_limit = 1
 
     category = research
 
@@ -763,9 +758,9 @@ building_fe_lab_2 = {
             biomass = @b3_biomass
         }
         produces = {
-            physics_research = 50
-            society_research = 50
-            engineering_research = 50
+            physics_research = 80
+            society_research = 80
+            engineering_research = 80
         }
     }
 
@@ -782,7 +777,7 @@ building_fe_lab_2 = {
     }
     inline_script = {
         script = jobs/researchers_add
-        AMOUNT = 600
+        AMOUNT = @fe_jobs
     }
 
     triggered_planet_modifier = {
@@ -816,13 +811,8 @@ building_fe_lab_2 = {
     }
 
     triggered_planet_modifier = {
-        potential = {
-            exists = owner
-            owner = { has_origin = Start_As_Fallen_Empire_Holy_Guardians }
-        }
-        pop_safe_fe_physicist_bonus_workforce_mult = 0.20
-        pop_safe_fe_biologist_bonus_workforce_mult = 0.20
-        pop_safe_fe_engineer_bonus_workforce_mult = 0.20
+        potential = { always = yes }
+        pop_researcher_bonus_workforce_mult = 0.25
     }
 
     on_queued = {
@@ -952,14 +942,6 @@ building_affluence_emporium = {
         planet_decision_enact_speed_mult = 0.03
     }
 
-    triggered_planet_modifier = {
-        potential = {
-            exists = owner
-            owner = { has_origin = Start_As_Fallen_Empire_Holy_Guardians }
-        }
-        pop_safe_fe_acolyte_artisan_bonus_workforce_mult = 0.10
-    }
-
     inline_script = {
         script = jobs/factory_add
         AMOUNT = @fe_jobs
@@ -1018,6 +1000,7 @@ building_affluence_center = {
     base_buildtime = @b2_time
     can_build = no
     icon = building_affluence_center
+    planet_limit = 1
 
     category = manufacturing
 
@@ -1096,21 +1079,18 @@ building_affluence_center = {
     }
 
     triggered_planet_modifier = {
-        potential = {
-            exists = owner
-            owner = { has_origin = Start_As_Fallen_Empire_Holy_Guardians }
-        }
-        pop_safe_fe_acolyte_artisan_bonus_workforce_mult = 0.20
+        potential = { always = yes }
+        planet_artisans_consumer_goods_produces_add = 1
     }
 
     planet_modifier = {
-        planet_amenities_add = 2000
-        pop_happiness = 0.25
+        planet_amenities_add = 4000
+        pop_happiness = 0.15
     }
 
     inline_script = {
         script = jobs/factory_add
-        AMOUNT = 800
+        AMOUNT = 1000
     }
 
     on_queued = {
@@ -1238,14 +1218,6 @@ building_micro_forge = {
         planet_decision_enact_speed_mult = 0.03
     }
 
-    triggered_planet_modifier = {
-        potential = {
-            exists = owner
-            owner = { has_origin = Start_As_Fallen_Empire_Holy_Guardians }
-        }
-        pop_safe_fe_foundry_bonus_workforce_mult = 0.10
-    }
-
     upgrades = {
         building_nano_forge
     }
@@ -1294,6 +1266,7 @@ building_micro_forge = {
 building_nano_forge = {
     base_buildtime = @b2_time
     can_build = no
+    planet_limit = 1
 
     category = manufacturing
 
@@ -1338,12 +1311,12 @@ building_nano_forge = {
     }
 
     planet_modifier = {
-        planet_structures_upkeep_mult = -0.05
+        planet_structures_upkeep_mult = -0.10
     }
 
     inline_script = {
         script = jobs/foundry_add
-        AMOUNT = 800
+        AMOUNT = 1000
     }
 
     resources = {
@@ -1379,11 +1352,8 @@ building_nano_forge = {
     }
 
     triggered_planet_modifier = {
-        potential = {
-            exists = owner
-            owner = { has_origin = Start_As_Fallen_Empire_Holy_Guardians }
-        }
-        pop_safe_fe_foundry_bonus_workforce_mult = 0.20
+        potential = { always = yes }
+        planet_metallurgists_alloys_produces_add = 1
     }
 
     on_queued = {
@@ -1497,8 +1467,8 @@ building_class_3_singularity = {
             biomass = @b3_biomass
         }
         produces = {
-            energy = 200
-            trade = 20
+            energy = 250
+            sr_dark_matter = 5
         }
     }
 
@@ -1512,14 +1482,6 @@ building_class_3_singularity = {
         }
         planet_building_build_speed_mult = 0.03
         planet_decision_enact_speed_mult = 0.03
-    }
-
-    triggered_planet_modifier = {
-        potential = {
-            exists = owner
-            owner = { has_origin = Start_As_Fallen_Empire_Holy_Guardians }
-        }
-        pop_safe_fe_acolyte_generator_bonus_workforce_mult = 0.10
     }
 
     on_queued = {
@@ -1570,6 +1532,7 @@ building_class_3_singularity = {
 building_class_4_singularity = {
     base_buildtime = @b2_time
     can_build = no
+    planet_limit = 1
 
     category = resource
 
@@ -1614,8 +1577,7 @@ building_class_4_singularity = {
 
     inline_script = {
         script = jobs/technicians_add
-        # 增加至800个
-        AMOUNT = 800
+        AMOUNT = 1000
     }
 
     resources = {
@@ -1635,8 +1597,8 @@ building_class_4_singularity = {
             biomass = @b3_biomass
         }
         produces = {
-            energy = 300
-            trade = 50
+            energy = 400
+            sr_dark_matter = 10
         }
     }
 
@@ -1653,11 +1615,8 @@ building_class_4_singularity = {
     }
 
     triggered_planet_modifier = {
-        potential = {
-            exists = owner
-            owner = { has_origin = Start_As_Fallen_Empire_Holy_Guardians }
-        }
-        pop_safe_fe_acolyte_generator_bonus_workforce_mult = 0.20
+        potential = { always = yes }
+        planet_technician_energy_produces_add = 1
     }
 
     on_queued = {
@@ -1771,8 +1730,7 @@ building_fe_mine_1 = {
             biomass = @b3_biomass
         }
         produces = {
-            minerals = 200
-            trade = 25
+            minerals = 250
         }
     }
 
@@ -1786,14 +1744,6 @@ building_fe_mine_1 = {
         }
         planet_building_build_speed_mult = 0.03
         planet_decision_enact_speed_mult = 0.03
-    }
-
-    triggered_planet_modifier = {
-        potential = {
-            exists = owner
-            owner = { has_origin = Start_As_Fallen_Empire_Holy_Guardians }
-        }
-        pop_safe_fe_acolyte_mine_bonus_workforce_mult = 0.1
     }
 
     upgrades = {
@@ -1844,6 +1794,7 @@ building_fe_mine_1 = {
 building_fe_mine_2 = {
     base_buildtime = @b2_time
     can_build = no
+    planet_limit = 1
 
     category = resource
 
@@ -1889,8 +1840,7 @@ building_fe_mine_2 = {
 
     inline_script = {
         script = jobs/miners_add
-        # 增加至800
-        AMOUNT = 800
+        AMOUNT = 1000
     }
 
     resources = {
@@ -1911,7 +1861,6 @@ building_fe_mine_2 = {
         }
         produces = {
             minerals = 400
-            trade = 50
         }
     }
 
@@ -1928,11 +1877,8 @@ building_fe_mine_2 = {
     }
 
     triggered_planet_modifier = {
-        potential = {
-            exists = owner
-            owner = { has_origin = Start_As_Fallen_Empire_Holy_Guardians }
-        }
-        pop_safe_fe_acolyte_mine_bonus_workforce_mult = 0.2
+        potential = { always = yes }
+        planet_miners_minerals_produces_add = 1
     }
 
     on_queued = {
@@ -2043,8 +1989,7 @@ building_nourishment_complex = {
             biomass = @b3_biomass
         }
         produces = {
-            food = 125
-            trade = 25
+            food = 150
         }
     }
 
@@ -2058,14 +2003,6 @@ building_nourishment_complex = {
         }
         planet_building_build_speed_mult = 0.03
         planet_decision_enact_speed_mult = 0.03
-    }
-
-    triggered_planet_modifier = {
-        potential = {
-            exists = owner
-            owner = { has_origin = Start_As_Fallen_Empire_Holy_Guardians }
-        }
-        pop_safe_fe_acolyte_farm_bonus_workforce_mult = 0.10
     }
 
     on_queued = {
@@ -2116,6 +2053,7 @@ building_nourishment_complex = {
 building_nourishment_center = {
     base_buildtime = @b2_time
     can_build = no
+    planet_limit = 1
 
     category = resource
 
@@ -2159,13 +2097,12 @@ building_nourishment_center = {
     }
 
     planet_modifier = {
-        pop_environment_tolerance = 0.10
+        pop_environment_tolerance = 0.20
     }
 
     inline_script = {
         script = jobs/farmers_add
-        # 增加至800
-        AMOUNT = 800
+        AMOUNT = 1000
     }
 
     resources = {
@@ -2185,8 +2122,7 @@ building_nourishment_center = {
             biomass = @b3_biomass
         }
         produces = {
-            food = 200
-            trade = 50
+            food = 300
         }
     }
 
@@ -2203,11 +2139,8 @@ building_nourishment_center = {
     }
 
     triggered_planet_modifier = {
-        potential = {
-            exists = owner
-            owner = { has_origin = Start_As_Fallen_Empire_Holy_Guardians }
-        }
-        pop_safe_fe_acolyte_farm_bonus_workforce_mult = 0.20
+        potential = { always = yes }
+        planet_farmers_food_produces_add = 1
     }
 
     on_queued = {
@@ -2383,6 +2316,7 @@ building_fe_fortress = {
 building_fe_stronghold = {
     base_buildtime = @b2_time
     can_build = no
+    planet_limit = 1
 
     category = army
 
@@ -2429,11 +2363,12 @@ building_fe_stronghold = {
 
     inline_script = {
         script = jobs/soldiers_add
-        AMOUNT = 800
+        AMOUNT = 1000
     }
 
     planet_modifier = {
         planet_orbital_bombardment_damage = -0.25
+        planet_army_build_speed_mult = 0.25
     }
 
     resources = {
@@ -2464,6 +2399,11 @@ building_fe_stronghold = {
         }
         planet_building_build_speed_mult = 0.03
         planet_decision_enact_speed_mult = 0.03
+    }
+
+    triggered_planet_modifier = {
+        potential = { always = yes }
+        planet_soldiers_unity_produces_add = 0.5
     }
 
     on_queued = {

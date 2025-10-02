@@ -1,8 +1,8 @@
-## 原版堕落的岗位不做改动，加前缀safe重写
-## possible 中均做了限制，只有初始物种才能从事，符合条件的可以按权重转职
+# 原版堕落的岗位不做改动，加前缀safe重写
+# possible 中均做了限制，只有使用起源且初始物种才能从事该岗位，符合条件的可以按权重转职。
 
 #-----------------RULER------------------#
-# 对应于普通帝国的政客
+## 对应于普通帝国的政客
 safe_fe_sky_cardinal = {
     category = precursor_archon
     is_capped_by_modifier = yes
@@ -18,27 +18,27 @@ safe_fe_sky_cardinal = {
             trigger = {
                 politician_is_noble = yes
             }
-            name = noble
-            icon = noble
-            desc = job_noble_desc
+            name = safe_fe_noble
+            icon = safe_fe_noble
+            desc = job_safe_fe_noble_desc
             weight = 10
         }
         swap_type = {
             trigger = {
                 politician_is_merchant = yes
             }
-            name = merchant
-            icon = merchant
-            desc = job_merchant_desc
+            name = safe_fe_merchant
+            icon = safe_fe_merchant
+            desc = job_safe_fe_merchant_desc
             weight = 10
         }
         swap_type = {
             trigger = {
                 politician_is_planetary_warden = yes
             }
-            name = warden
-            icon = enforcer
-            desc = job_warden_desc
+            name = safe_fe_warden
+            icon = safe_fe_warden
+            desc = job_safe_fe_warden_desc
             weight = 15
         }
         swap_type = {
@@ -122,9 +122,8 @@ safe_fe_sky_cardinal = {
     }
 
     triggered_planet_modifier = {
-        potential = {
-            always = yes
-        }
+        potential = { always = yes }
+
         planet_amenities_add = 800
         mult = value:scripted_modifier_mult|MODIFIER|pop_job_amenities_mult|
     }
@@ -174,8 +173,51 @@ safe_fe_sky_cardinal = {
         }
     }
 }
+# 转职（贵族）
+safe_fe_noble = {
+    category = precursor_archon
+    is_capped_by_modifier = yes
 
-# 对应于普通帝国的执法者，在堕落里从专家层拉到精英层了
+    swappable_data = {
+        default = {
+            condition_string = RULER_JOB_TRIGGER
+            building_icon = building_palace
+            icon = noble
+        }
+    }
+
+    possible = { always = no }
+}
+# 转职（商人）
+safe_fe_merchant = {
+    category = precursor_archon
+
+    swappable_data = {
+        default = {
+            condition_string = RULER_JOB_TRIGGER
+            building_icon = building_fe_market_2
+            icon = merchant
+        }
+    }
+
+    possible = { always = no }
+}
+# 转职（行星狱长）
+safe_fe_warden = {
+    category = precursor_archon
+
+    swappable_data = {
+        default = {
+            condition_string = RULER_JOB_TRIGGER
+            building_icon = building_palace
+            icon = enforcer
+        }
+    }
+
+    possible = { always = no }
+}
+
+## 对应于普通帝国的执行官
 safe_fe_protector = {
     category = precursor_archon
     is_capped_by_modifier = yes
