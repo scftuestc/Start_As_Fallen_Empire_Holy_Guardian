@@ -138,12 +138,10 @@ safe_fe_sky_cardinal = {
         # No AI
         modifier = {
             factor = 0
-            exists = owner
-            owner = {
-                OR = {
-                    NOT = { has_origin = Start_As_Fallen_Empire_Holy_Guardians }
-                    is_ai = yes
-                }
+            exists = planet
+            exists = planet.controller
+            planet.controller = {
+                NOT = { has_origin = Start_As_Fallen_Empire_Holy_Guardians }
             }
         }
         # crisis purge
@@ -268,14 +266,13 @@ safe_fe_protector = {
     weight = {
         weight = @ruler_job_weight
 
+        # No AI
         modifier = {
             factor = 0
-            exists = owner
-            owner = {
-                OR = {
-                    NOT = { has_origin = Start_As_Fallen_Empire_Holy_Guardians }
-                    is_ai = yes
-                }
+            exists = planet
+            exists = planet.controller
+            planet.controller = {
+                NOT = { has_origin = Start_As_Fallen_Empire_Holy_Guardians }
             }
         }
         # 当帝国中存在初始物种的亚种时，有这些特质的物种选择该岗位的权重会更高

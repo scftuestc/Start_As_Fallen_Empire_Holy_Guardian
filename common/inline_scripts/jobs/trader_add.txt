@@ -1,0 +1,61 @@
+triggered_planet_modifier = {
+	potential = {
+		exists = owner
+		owner = {
+			is_gestalt = no
+			NOT = { has_origin = Start_As_Fallen_Empire_Holy_Guardians }
+		}
+	}
+	job_trader_add = $AMOUNT$
+}
+
+triggered_planet_modifier = {
+	potential = {
+		exists = owner
+		owner = {
+			is_gestalt = no
+			has_active_tradition = tr_mercantile_commercial_enterprise
+			NOT = { has_origin = Start_As_Fallen_Empire_Holy_Guardians }
+		}
+	}
+	job_trader_add = $AMOUNT$
+	mult = 0.5
+}
+
+triggered_planet_modifier = {
+	potential = {
+		exists = owner
+		owner = { is_gestalt = yes }
+		NOT = { has_origin = Start_As_Fallen_Empire_Holy_Guardians }
+	}
+	job_logistics_drone_add = $AMOUNT$
+}
+
+triggered_planet_modifier = {
+	potential = {
+		exists = owner
+		owner = {
+			is_gestalt = yes
+			has_active_tradition = tr_logistics_2
+			NOT = { has_origin = Start_As_Fallen_Empire_Holy_Guardians }
+		}
+	}
+	job_logistics_drone_add = $AMOUNT$
+	mult = 0.5
+}
+
+# Spiritualist FE
+# 自定义岗位
+triggered_planet_modifier = {
+	potential = {
+		exists = owner
+		owner = {
+			is_fallen_empire_spiritualist = yes
+			has_origin = Start_As_Fallen_Empire_Holy_Guardians
+		}
+	}
+	modifier = {
+		# 自定义岗位
+		job_safe_fe_trader_add = $AMOUNT$
+	}
+}

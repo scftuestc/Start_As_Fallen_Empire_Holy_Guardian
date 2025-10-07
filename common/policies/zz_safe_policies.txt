@@ -813,9 +813,10 @@ diplomatic_stance = {
         }
 
         modifier = {
+            country_unity_produces_mult = 0.10
             diplo_weight_mult = -2.0
             country_war_exhaustion_mult = -0.50
-            country_naval_cap_mult = 1.0
+            country_naval_cap_mult = 0.50
         }
 
         ai_weight = {

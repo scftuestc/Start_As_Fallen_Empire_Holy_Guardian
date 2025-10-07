@@ -44,9 +44,10 @@ safe_fe_acolyte_generator = {
 
     resources = {
         category = planet_safe_fe_acolyte_generator
+
         produces = {
-            energy = 15
-            sr_dark_matter = 0.5
+            energy = 20
+            volatile_motes = 1
         }
         produces = {
             trigger = {
@@ -204,8 +205,8 @@ safe_fe_acolyte_mine = {
     resources = {
         category = planet_safe_fe_acolyte_mine
         produces = {
-            minerals = 15
-            rare_crystals = 0.5
+            minerals = 20
+            rare_crystals = 1
         }
         produces = {
             trigger = {
@@ -417,8 +418,8 @@ safe_fe_acolyte_farm = {
     resources = {
         category = planet_safe_fe_acolyte_farm
         produces = {
-            food = 15
-            exotic_gases = 0.5
+            food = 20
+            exotic_gases = 1
         }
         # 转职成巨兽猎手后的产出
         produces = {
@@ -603,11 +604,12 @@ safe_fe_soldier = {
         potential = {
             always = yes
         }
-        planet_defense_armies_add = 5
+        planet_defense_armies_add = 8
     }
 
     resources = {
         category = planet_safe_fe_soldiers
+
         produces = {
             unity = 5
         }

@@ -28,7 +28,7 @@
  #############################
  ###------------- 天空主教（政客）--------------###
  ## 基本岗位描述
- planet_safe_fe_sky_cardinal:"[safe_fe_sky_cardinal.GetName]岗位"
+ planet_safe_fe_sky_cardinal:"$job_fe_sky_cardinal$岗位"
  job_safe_fe_sky_cardinal:"$job_fe_sky_cardinal$"
  job_safe_fe_sky_cardinal_icon:"[safe_fe_sky_cardinal.GetIcon]"
  job_safe_fe_sky_cardinal_plural:"$job_fe_sky_cardinal_plural$"
@@ -69,6 +69,32 @@
  ##################################
  ##--------- SPECIALIST ---------##
  ##################################
+ ###------------- 资货调衡使（商贩）--------------###
+ planet_safe_fe_traders:"$job_safe_fe_trader$岗位"
+ job_safe_fe_trader: "资货调衡使"
+ job_safe_fe_trader_with_icon: "[safe_fe_trader.GetIcon] [safe_fe_trader.GetName]"
+ job_safe_fe_trader_plural: "资货调衡使"
+ job_safe_fe_trader_plural_with_icon: "[safe_fe_trader.GetIcon] [safe_fe_trader.GetNamePlural]"
+ job_safe_fe_trader_desc: "此等专才司掌帝国物资的流转与调配，他们精于发掘物用之内在价值，并确保各域所得皆符其需、合其序。"
+ ## 修正描述
+ mod_job_trader_add:"[safe_fe_trader.GetName]岗位"
+
+ ###------------- 神仪演者（演艺人员）--------------###
+ ## 基本岗位描述
+ planet_safe_fe_entertainers:"$job_safe_fe_entertainer$岗位"
+ job_safe_fe_entertainer: "神仪演者"
+ job_safe_fe_entertainer_icon:"[safe_fe_entertainer.GetIcon]"
+ job_safe_fe_entertainer_plural: "神仪演者"
+ job_safe_fe_entertainer_desc: "在古老的训谕中记载，文明得以维系，不仅依靠力量与智慧，更需通过特定的仪式来滋养灵魂，凝聚共识。"
+ ## 修正描述
+ mod_job_safe_fe_entertainer_add:"[safe_fe_entertainer.GetName]岗位"
+ ## 转职岗位描述
+ safe_fe_duelist: "$job_safe_fe_duelist$"
+ job_safe_fe_duelist: "演武宗师"
+ job_safe_fe_duelist_plural: "演武宗师"
+ job_safe_fe_duelist_desc: "这些武艺大师在神圣的演武场中展示传承自古早纪元的战技，其每一次交锋皆为诠释力量美学的活态典籍。"
+ mod_job_safe_fe_duelist_add:"$job_safe_fe_duelist$岗位"
+
  ###------------- 虚境灵者（灵能使）--------------###
  ## 基本岗位描述
  planet_safe_fe_augur:"$job_safe_fe_augur$岗位"
@@ -80,7 +106,7 @@
  ## 修正描述
  mod_job_safe_fe_augur_add:"[safe_fe_augur.GetName]岗位"
  mod_job_safe_fe_augur_max_workforce_mult:"$job_safe_fe_augur$$MOD_JOB_MAX_WORKFORCE_MULT$"
- mod_pop_safe_fe_augur_bonus_workforce_mult:"$job_safe_fe_augur$的$MOD_POP_BONUS_WORKFORCE_MULT$"
+ mod_pop_safe_fe_augur_bonus_workforce_mult:"[safe_fe_augur.GetNamePlural]$BONUS_WORKFORCE_FOR$"
  ## 转职岗位描述
 
  ###------------- 卷宗圣吏（官僚）--------------###
@@ -134,7 +160,7 @@
  mod_job_safe_fe_foundry_add:"[safe_fe_foundry.GetName]岗位"
  mod_job_safe_fe_foundry_max_workforce_mult:"$job_safe_fe_foundry$$MOD_JOB_MAX_WORKFORCE_MULT$"
  mod_pop_safe_fe_foundry_workforce_mult:"$job_safe_fe_foundry$$MOD_POP_WORKFORCE_MULT$"
- mod_pop_safe_fe_foundry_bonus_workforce_mult:"$job_safe_fe_foundry$的$MOD_POP_BONUS_WORKFORCE_MULT$"
+ mod_pop_safe_fe_foundry_bonus_workforce_mult:"[safe_fe_foundry.GetNamePlural]$BONUS_WORKFORCE_FOR$"
  ## 转职岗位描述
  # 催化技师
  safe_fe_catalytic_technician:"$job_safe_fe_catalytic_technician$"
@@ -155,7 +181,7 @@
  mod_job_safe_fe_acolyte_artisan_add:"[safe_fe_acolyte_artisan.GetName]岗位"
  mod_job_safe_fe_acolyte_artisan_max_workforce_mult:"$job_safe_fe_acolyte_artisan$$MOD_JOB_MAX_WORKFORCE_MULT$"
  mod_pop_safe_fe_acolyte_artisan_workforce_mult:"$job_safe_fe_acolyte_artisan$$MOD_POP_WORKFORCE_MULT$"
- mod_pop_safe_fe_acolyte_artisan_bonus_workforce_mult:"$job_safe_fe_acolyte_artisan$的$MOD_POP_BONUS_WORKFORCE_MULT$"
+ mod_pop_safe_fe_acolyte_artisan_bonus_workforce_mult:"[safe_fe_acolyte_artisan.GetNamePlural]$BONUS_WORKFORCE_FOR$"
  ## 转职岗位描述
  # 天工造物师（熟练技工）
  safe_fe_artificer: "$job_safe_fe_artificer$"
@@ -175,7 +201,7 @@
  ## 修正描述
  mod_job_safe_fe_physicist_add:"[safe_fe_physicist.GetName]岗位"
  mod_pop_safe_fe_physicist_workforce_mult:"$job_safe_fe_physicist$$MOD_POP_WORKFORCE_MULT$"
- mod_pop_safe_fe_physicist_bonus_workforce_mult:"$job_safe_fe_physicist$的$MOD_POP_BONUS_WORKFORCE_MULT$"
+ mod_pop_safe_fe_physicist_bonus_workforce_mult:"[safe_fe_physicist.GetNamePlural]$BONUS_WORKFORCE_FOR$"
 
  ###------------- 生命织匠（生物学家）--------------###
  ## 基本岗位描述
@@ -188,7 +214,7 @@
  ## 修正描述
  mod_job_safe_fe_biologist_add:"[safe_fe_biologist.GetName]岗位"
  mod_pop_safe_fe_biologist_workforce_mult:"$job_safe_fe_biologist$$MOD_POP_WORKFORCE_MULT$"
- mod_pop_safe_fe_biologist_bonus_workforce_mult:"$job_safe_fe_biologist$的$MOD_POP_BONUS_WORKFORCE_MULT$"
+ mod_pop_safe_fe_biologist_bonus_workforce_mult:"[safe_fe_biologist.GetNamePlural]$BONUS_WORKFORCE_FOR$"
  ## 转职岗位描述
  # 异兽典牧官（动物饲养员）
  safe_fe_xeno_zoo_keeper:"$job_safe_fe_xeno_zoo_keeper$"
@@ -215,7 +241,7 @@
  ## 修正描述
  mod_job_safe_fe_engineer_add:"[safe_fe_engineer.GetName]岗位"
  mod_pop_safe_fe_engineer_workforce_mult:"$job_safe_fe_engineer$$MOD_POP_WORKFORCE_MULT$"
- mod_pop_safe_fe_engineer_bonus_workforce_mult:"$job_safe_fe_engineer$的$MOD_POP_BONUS_WORKFORCE_MULT$"
+ mod_pop_safe_fe_engineer_bonus_workforce_mult:"[safe_fe_engineer.GetNamePlural]$BONUS_WORKFORCE_FOR$"
 
  ##############################
  ##--------- WORKER ---------##
@@ -232,8 +258,7 @@
  mod_job_safe_fe_acolyte_generator_add:"[safe_fe_acolyte_generator.GetName]岗位"
  mod_job_safe_fe_acolyte_generator_max_workforce_mult:"$job_safe_fe_acolyte_generator$$MOD_JOB_MAX_WORKFORCE_MULT$"
  mod_pop_safe_fe_acolyte_generator_workforce_mult:"$job_safe_fe_acolyte_generator$$MOD_POP_WORKFORCE_MULT$"
- mod_pop_safe_fe_acolyte_generator_bonus_workforce_mult:"$job_safe_fe_acolyte_generator$的$MOD_POP_BONUS_WORKFORCE_MULT$"
- mod_planet_safe_fe_acolyte_generator_volatile_motes_produces_add:"每$pop_group_unit$$job_safe_fe_acolyte_generator_plural_with_icon$产出的£volatile_motes£$volatile_motes$"
+ mod_pop_safe_fe_acolyte_generator_bonus_workforce_mult:"[safe_fe_acolyte_generator.GetNamePlural]$BONUS_WORKFORCE_FOR$"
 
  ###------------- 焰锤侍者（矿工）--------------###
  ## 基本岗位描述
@@ -246,8 +271,7 @@
  ## 修正描述
  mod_job_safe_fe_acolyte_mine_add:"[safe_fe_acolyte_mine.GetName]岗位"
  mod_pop_safe_fe_acolyte_mine_workforce_mult:"$job_safe_fe_acolyte_mine$$MOD_POP_WORKFORCE_MULT$"
- mod_pop_safe_fe_acolyte_mine_bonus_workforce_mult:"$job_safe_fe_acolyte_mine$的$MOD_POP_BONUS_WORKFORCE_MULT$"
- mod_planet_safe_fe_acolyte_mine_rare_crystals_produces_add:"每$pop_group_unit$$job_safe_fe_acolyte_mine_plural_with_icon$产出的£rare_crystals£$rare_crystals$"
+ mod_pop_safe_fe_acolyte_mine_bonus_workforce_mult:"[safe_fe_acolyte_mine.GetNamePlural]$BONUS_WORKFORCE_FOR$"
 
  ### ----------------犁耕侍者（农夫）-----------------###
  ## 基本岗位描述
@@ -261,8 +285,7 @@
  mod_job_safe_fe_acolyte_farm_add:"[safe_fe_acolyte_farm.GetName]岗位"
  mod_job_safe_fe_acolyte_farm_max_workforce_mult:"$job_safe_fe_acolyte_farm$$MOD_JOB_MAX_WORKFORCE_MULT$"
  mod_pop_safe_fe_acolyte_farm_workforce_mult:"$job_safe_fe_acolyte_farm$$MOD_POP_WORKFORCE_MULT$"
- mod_pop_safe_fe_acolyte_farm_bonus_workforce_mult:"$job_safe_fe_acolyte_farm$的$MOD_POP_BONUS_WORKFORCE_MULT$"
- mod_planet_safe_fe_acolyte_farm_exotic_gases_produces_add:"每$pop_group_unit$$job_safe_fe_acolyte_farm_plural_with_icon$产出的£exotic_gases£$exotic_gases$"
+ mod_pop_safe_fe_acolyte_farm_bonus_workforce_mult:"[safe_fe_acolyte_farm.GetNamePlural]$BONUS_WORKFORCE_FOR$"
 
  ### ----------------晶盾卫戍（士兵）-----------------###
  ## 基本岗位描述

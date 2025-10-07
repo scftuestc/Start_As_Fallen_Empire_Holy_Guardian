@@ -159,59 +159,61 @@ official = {
 		### 原版普通帝国
 		## ruler阶层及其转职
 		# 政客及其转职
-		politician = 100
-		high_priest = 100
-		noble = 100
-		merchant = 100
-		executive = 100
+		politician = 10
+		high_priest = 10
+		noble = 10
+		merchant = 10
+		executive = 10
 
 		## specialist阶层及其转职
 		# 官僚及其转职
-		bureaucrat = 100
-		unifier = 100
-		manager = 100
-		preacher = 100
-		death_chronicler = 100
+		bureaucrat = 10
+		unifier = 10
+		manager = 10
+		preacher = 10
+		death_chronicler = 10
 		# 演艺人员
-		entertainer = 100
+		entertainer = 10
 		# 工匠
-		artisan = 100
+		artisan = 10
 		# 再职派员
-		reassigner = 100
+		reassigner = 10
 
 		## worker阶层及其转职
 		# 殖民者
-		colonist = 100
+		colonist = 10
 		# 职员
-		clerk = 100
+		clerk = 10
 		# 矿工及其转职
-		miner = 100
-		crystal_miner = 100
-		scrap_miner = 100
+		miner = 10
+		crystal_miner = 10
+		scrap_miner = 10
 		# 农夫及其转职
-		farmer = 100
-		angler = 100
+		farmer = 10
+		angler = 10
 
 		### 自定义的岗位
 		## ruler阶层及其转职
 		# 天空教主及其转职
-		safe_fe_sky_cardinal = 300
-		safe_fe_noble = 300
-		safe_fe_merchant = 300
+		safe_fe_sky_cardinal = 500
+		safe_fe_noble = 500
+		safe_fe_merchant = 500
 
 		## specialist阶层及其转职
 		# 卷宗圣吏及其转职
-		safe_fe_bureaucrat = 300
-		safe_fe_death_chronicler = 300
+		safe_fe_bureaucrat = 500
+		safe_fe_death_chronicler = 500
+		# 神仪演者
+		safe_fe_entertainer = 500
 
 		# 圣坊侍者及其转职
-		safe_fe_acolyte_artisan = 300
+		safe_fe_acolyte_artisan = 500
 
 		## worker阶层及其转职
 		# 焰锤侍者及其转职
-		safe_fe_acolyte_mine = 300
+		safe_fe_acolyte_mine = 500
 		# 犁耕侍者及其转职
-		safe_fe_acolyte_farm = 300
+		safe_fe_acolyte_farm = 500
 
 	}
 	icon = 4
@@ -327,26 +329,30 @@ commander = {
 		### 原版普通帝国
 		## ruler阶层及其转职
 		# 政客转职
-		noble = 100
-		knight_commander = 100
+		noble = 10
+		knight_commander = 10
 
 		## specialist阶层及其转职
         # 演艺人员转职
-		duelist = 100
+		duelist = 10
 		# 骑士
-		knight = 100
+		knight = 10
 
 		## worker阶层及其转职
 		# 护林员
-		ranger = 100
+		ranger = 10
 		# 扈从
-		squire = 100
+		squire = 10
 
 		### 自定义岗位
 		## ruler阶层及其转职
 		# 政客转职
-		safe_fe_noble = 300
+		safe_fe_noble = 500
+
 		## specialist阶层及其转职
+		# 演艺人员转职
+		safe_fe_duelist = 500
+
 		## worker阶层及其转职
 	}
 	icon = 1
@@ -441,63 +447,63 @@ scientist = {
 		### 原版普通帝国
 		## ruler阶层及其转职
 		# 政客转职
-		head_researcher = 100
-		noble = 100
+		head_researcher = 10
+		noble = 10
 
 		## specialist阶层及其转职
 		# 执法者转职
-		telepath = 100
+		telepath = 10
 		# 工匠转职
-		artificer = 100
-		catalytic_technician = 100
+		artificer = 10
+		catalytic_technician = 10
 		# 生物学家转职
-		xeno_zoo_keeper = 100
+		xeno_zoo_keeper = 10
 		# 冶金师
-		foundry = 100
+		foundry = 10
 		# 化学家（易爆）
-		chemist = 100
+		chemist = 10
 		# 转化师（水晶）
-		translucer = 100
+		translucer = 10
 		# 气体精炼工（天然气）
-		gas_refiner = 100
+		gas_refiner = 10
 		# 机器人专家
-		roboticist = 100
+		roboticist = 10
 		# 医务工作者
-		healthcare = 100
+		healthcare = 10
 
 		## worker阶层及其转职
 		# 殖民者
-		colonist = 100
+		colonist = 10
 		# 技工及其转职
-		technician = 100
-		mote_harvester = 100
+		technician = 10
+		mote_harvester = 10
 		# 农夫转职
-		gas_extractor = 100
-		puddle_technician = 100
+		gas_extractor = 10
+		puddle_technician = 10
 		# 转换者
-		bluelotus_technician = 100
+		bluelotus_technician = 10
 
 		## 其他（典范人物）
-		researcher = 100
+		researcher = 10
 
 		###自定义岗位
 		## ruler阶层及其转职
-		safe_fe_noble = 300
+		safe_fe_noble = 500
 
 		## specialist阶层及其转职
 		# 执法者转职
-		safe_fe_augur = 300
+		safe_fe_augur = 500
 		# 工匠转职
-		safe_fe_artificer = 300
-		safe_fe_catalytic_technician = 300
+		safe_fe_artificer = 500
+		safe_fe_catalytic_technician = 500
 		# 生物学家转职
-		safe_fe_xeno_zoo_keeper = 300
+		safe_fe_xeno_zoo_keeper = 500
 		# 冶金师
-		safe_fe_foundry = 300
+		safe_fe_foundry = 500
 
 		## worker阶层及其转职
 		# 技工及其转职
-		safe_fe_acolyte_generator = 300
+		safe_fe_acolyte_generator = 500
 
 	}
 	icon = 3

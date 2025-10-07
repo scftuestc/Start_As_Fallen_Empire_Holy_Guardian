@@ -1,19 +1,18 @@
 # 精英先驱者-继承自普通帝国的精英阶层
 precursor_archon = {
     rank = 4
-    change_job_threshold = 2
+    change_job_threshold = 2.0
 
     weight = {
         weight = 3
-        # AI无法使用
+        # NO AI
         modifier = {
             factor = 0
-            exists = owner
-            owner = {
-                OR = {
-                    is_ai = yes
-                    NOT = { has_origin = Start_As_Fallen_Empire_Holy_Guardians }
-                }
+            exists = planet
+            exists = planet.controller
+            planet.controller = {
+                is_country_type = ai_empire
+                NOT = { has_origin = Start_As_Fallen_Empire_Holy_Guardians }
             }
         }
         # crisis purge
@@ -38,8 +37,8 @@ precursor_archon = {
     allow_resettlement = { always = yes }
 
     resettlement_cost = {
-        energy = 300
-        consumer_goods = 10
+        energy = 500
+        consumer_goods = 50
     }
 
     resettlement_cost = {
@@ -81,13 +80,14 @@ precursor_artisan = {
 
     weight = {
         weight = 2
-        # AI无法使用
+        # NO AI
         modifier = {
             factor = 0
-            exists = owner
-            owner = {
+            exists = planet
+            exists = planet.controller
+            planet.controller = {
                 OR = {
-                    is_ai = yes
+                    is_country_type = ai_empire
                     NOT = { has_origin = Start_As_Fallen_Empire_Holy_Guardians }
                 }
             }
@@ -115,8 +115,8 @@ precursor_artisan = {
     allow_resettlement = { always = yes }
 
     resettlement_cost = {
-        energy = 150
-        consumer_goods = 5
+        energy = 250
+        consumer_goods = 25
     }
 
     resettlement_cost = {
@@ -170,13 +170,14 @@ precursor_warden = {
 
     weight = {
         weight = 1
-        # AI无法使用
+        # NO AI
         modifier = {
             factor = 0
-            exists = owner
-            owner = {
+            exists = planet
+            exists = planet.controller
+            planet.controller = {
                 OR = {
-                    is_ai = yes
+                    is_country_type = ai_empire
                     NOT = { has_origin = Start_As_Fallen_Empire_Holy_Guardians }
                 }
             }
@@ -208,8 +209,8 @@ precursor_warden = {
     allow_resettlement = { always = yes }
 
     resettlement_cost = {
-        energy = 50
-        consumer_goods = 1
+        energy = 100
+        consumer_goods = 10
     }
 
     resettlement_cost = {

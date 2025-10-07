@@ -8,16 +8,13 @@ planet_safe_fe_sky_cardinal = {
     generate_add_modifiers = {
         produces
     }
-
-    # 修正继承
+    # 修正继承（继承自政客）
     triggered_produces_modifier = {
         key = planet_politicians
         modifier_types = {
             add
         }
-        trigger = {
-            always = yes
-        }
+        trigger = { always = yes }
         use_parent_icon = yes
     }
 
@@ -53,6 +50,77 @@ planet_safe_fe_protector = {
 }
 
 #-----------------SPECIALIST------------------#
+## 资货调衡使
+planet_safe_fe_traders = {
+    icon = job_trader
+    use_for_ai_budget = no
+    parent = planet_jobs_specialist
+
+    generate_add_modifiers = {
+        produces
+    }
+    generate_mult_modifiers = {
+        produces
+        upkeep
+    }
+    # 修正继承(继承自商人)
+    triggered_produces_modifier = {
+        key = planet_traders
+        modifier_types = {
+            add
+            mult
+        }
+        trigger = { always = yes }
+        use_parent_icon = yes
+    }
+    triggered_upkeep_modifier = {
+        key = planet_traders
+        modifier_types = {
+            mult
+        }
+        trigger = { always = yes }
+        use_parent_icon = yes
+    }
+
+    modifier_category = pop_job
+}
+
+## 神仪演者
+planet_safe_fe_entertainers = {
+    icon = job_entertainer
+    use_for_ai_budget = no
+    parent = planet_jobs_specialist
+
+    generate_add_modifiers = {
+        produces
+        upkeep
+    }
+    generate_mult_modifiers = {
+        produces
+        upkeep
+    }
+    # 修正继承(继承自演艺人员)
+    triggered_produces_modifier = {
+        key = planet_entertainers
+        modifier_types = {
+            add
+            mult
+        }
+        trigger = { always = yes }
+        use_parent_icon = yes
+    }
+    triggered_upkeep_modifier = {
+        key = planet_entertainers
+        modifier_types = {
+            add
+            mult
+        }
+        trigger = { always = yes }
+        use_parent_icon = yes
+    }
+
+}
+
 ## 虚境灵使
 planet_safe_fe_augur = {
     icon = job_telepath
@@ -75,9 +143,7 @@ planet_safe_fe_augur = {
             add
             mult
         }
-        trigger = {
-            always = yes
-        }
+        trigger = { always = yes }
         use_parent_icon = yes
     }
     triggered_upkeep_modifier = {
@@ -85,9 +151,7 @@ planet_safe_fe_augur = {
         modifier_types = {
             mult
         }
-        trigger = {
-            always = yes
-        }
+        trigger = { always = yes }
         use_parent_icon = yes
     }
 
@@ -116,9 +180,7 @@ planet_safe_fe_bureaucrats = {
             add
             mult
         }
-        trigger = {
-            always = yes
-        }
+        trigger = { always = yes }
         use_parent_icon = yes
     }
     triggered_upkeep_modifier = {
@@ -127,9 +189,7 @@ planet_safe_fe_bureaucrats = {
             add
             mult
         }
-        trigger = {
-            always = yes
-        }
+        trigger = { always = yes }
         use_parent_icon = yes
     }
 
@@ -164,9 +224,7 @@ planet_safe_fe_acolyte_artisan = {
             add
             mult
         }
-        trigger = {
-            always = yes
-        }
+        trigger = { always = yes }
         use_parent_icon = yes
     }
     triggered_upkeep_modifier = {
@@ -175,9 +233,7 @@ planet_safe_fe_acolyte_artisan = {
             add
             mult
         }
-        trigger = {
-            always = yes
-        }
+        trigger = { always = yes }
         use_parent_icon = yes
     }
 
@@ -206,9 +262,7 @@ planet_safe_fe_foundry = {
             add
             mult
         }
-        trigger = {
-            always = yes
-        }
+        trigger = { always = yes }
         use_parent_icon = yes
     }
     triggered_upkeep_modifier = {
@@ -217,9 +271,7 @@ planet_safe_fe_foundry = {
             add
             mult
         }
-        trigger = {
-            always = yes
-        }
+        trigger = { always = yes }
         use_parent_icon = yes
     }
 
@@ -229,7 +281,9 @@ planet_safe_fe_foundry = {
 # 星律使徒
 planet_safe_fe_physicists = {
     icon = job_physicist
+    use_for_ai_budget = no
     parent = planet_researchers
+
     generate_add_modifiers = {
         produces
         upkeep
@@ -246,9 +300,7 @@ planet_safe_fe_physicists = {
             add
             mult
         }
-        trigger = {
-            always = yes
-        }
+        trigger = { always = yes }
         use_parent_icon = yes
     }
     triggered_upkeep_modifier = {
@@ -257,9 +309,7 @@ planet_safe_fe_physicists = {
             add
             mult
         }
-        trigger = {
-            always = yes
-        }
+        trigger = { always = yes }
         use_parent_icon = yes
     }
 
@@ -269,6 +319,7 @@ planet_safe_fe_physicists = {
 # 生命织匠
 planet_safe_fe_biologists = {
     icon = job_biologist
+    use_for_ai_budget = no
     parent = planet_researchers
 
     generate_add_modifiers = {
@@ -287,9 +338,7 @@ planet_safe_fe_biologists = {
             add
             mult
         }
-        trigger = {
-            always = yes
-        }
+        trigger = { always = yes }
         use_parent_icon = yes
     }
     triggered_upkeep_modifier = {
@@ -298,9 +347,7 @@ planet_safe_fe_biologists = {
             add
             mult
         }
-        trigger = {
-            always = yes
-        }
+        trigger = { always = yes }
         use_parent_icon = yes
     }
 
@@ -310,6 +357,7 @@ planet_safe_fe_biologists = {
 # 万械颂者
 planet_safe_fe_engineers = {
     icon = job_engineer
+    use_for_ai_budget = no
     parent = planet_researchers
 
     generate_add_modifiers = {
@@ -328,9 +376,7 @@ planet_safe_fe_engineers = {
             add
             mult
         }
-        trigger = {
-            always = yes
-        }
+        trigger = { always = yes }
         use_parent_icon = yes
     }
     triggered_upkeep_modifier = {
@@ -339,9 +385,7 @@ planet_safe_fe_engineers = {
             add
             mult
         }
-        trigger = {
-            always = yes
-        }
+        trigger = { always = yes }
         use_parent_icon = yes
     }
 
@@ -371,9 +415,7 @@ planet_safe_fe_acolyte_generator = {
             add
             mult
         }
-        trigger = {
-            always = yes
-        }
+        trigger = { always = yes }
         use_parent_icon = yes
     }
     triggered_upkeep_modifier = {
@@ -381,9 +423,7 @@ planet_safe_fe_acolyte_generator = {
         modifier_types = {
             add
         }
-        trigger = {
-            always = yes
-        }
+        trigger = { always = yes }
         use_parent_icon = yes
     }
 
@@ -412,9 +452,7 @@ planet_safe_fe_acolyte_mine = {
             add
             mult
         }
-        trigger = {
-            always = yes
-        }
+        trigger = { always = yes }
         use_parent_icon = yes
     }
     triggered_upkeep_modifier = {
@@ -422,9 +460,7 @@ planet_safe_fe_acolyte_mine = {
         modifier_types = {
             add
         }
-        trigger = {
-            always = yes
-        }
+        trigger = { always = yes }
         use_parent_icon = yes
     }
 
@@ -453,9 +489,7 @@ planet_safe_fe_acolyte_farm = {
             add
             mult
         }
-        trigger = {
-            always = yes
-        }
+        trigger = { always = yes }
         use_parent_icon = yes
     }
     triggered_upkeep_modifier = {
@@ -463,9 +497,7 @@ planet_safe_fe_acolyte_farm = {
         modifier_types = {
             add
         }
-        trigger = {
-            always = yes
-        }
+        trigger = { always = yes }
         use_parent_icon = yes
     }
 
@@ -475,6 +507,7 @@ planet_safe_fe_acolyte_farm = {
 # 晶盾卫戍
 planet_safe_fe_soldiers = {
     icon = job_soldier
+    use_for_ai_budget = no
     parent = planet_jobs_worker
 
     generate_mult_modifiers = {
@@ -492,9 +525,7 @@ planet_safe_fe_soldiers = {
         modifier_types = {
             add
         }
-        trigger = {
-            always = yes
-        }
+        trigger = { always = yes }
         use_parent_icon = yes
     }
     triggered_upkeep_modifier = {
@@ -502,9 +533,7 @@ planet_safe_fe_soldiers = {
         modifier_types = {
             add
         }
-        trigger = {
-            always = yes
-        }
+        trigger = { always = yes }
         use_parent_icon = yes
     }
 

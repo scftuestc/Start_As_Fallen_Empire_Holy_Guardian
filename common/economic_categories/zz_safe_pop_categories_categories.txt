@@ -126,57 +126,97 @@
 
 # pop_category_rulers : 定义了这个人口类别的“经济效果”：它会生成哪些修饰符（Modifiers），以便游戏的其他系统（如法令、科技）可以影响这个类别的所有人口。
 # 该系统支持父子继承
-# 修饰符继承规则：
-# 乘法修饰符（_mult）：会从父类别继承给子类别。子类实体同时享受父类和子类的乘法加成。
-# 加法修饰符（_add）：不会继承。只影响自身类别的实体。这是为了防止数值叠加出现混乱。
 
-# 精英先驱者
+# 精英先驱者（精英阶层）
 pop_category_precursor_archon = {
+    parent = planet_pops
+    use_for_ai_budget = no
+
+    generate_mult_modifiers = {
+        upkeep
+    }
+    generate_add_modifiers = {
+        upkeep
+        produces
+    }
     # 继承自普通帝国的精英阶层
-    parent = pop_category_rulers
-    use_for_ai_budget = no
+    triggered_produces_modifier = {
+        key = pop_category_rulers
+        modifier_types = {
+            add
+        }
+        trigger = { always = yes }
+        use_parent_icon = yes
+    }
+    triggered_upkeep_modifier = {
+        key = pop_category_rulers
+        modifier_types = {
+            add
+            mult
+        }
+        trigger = { always = yes }
+        use_parent_icon = yes
+    }
 
-    generate_mult_modifiers = {
-        upkeep
-        produces
-    }
-    generate_add_modifiers = {
-        upkeep
-        produces
-    }
     modifier_category = pop_group
 }
 
-# 匠师先驱者
+# 匠师先驱者（专家阶层）
 pop_category_precursor_artisan = {
-    # 继承自普通帝国的专家阶层
-    parent = pop_category_specialists
+    parent = planet_pops
     use_for_ai_budget = no
 
-    generate_mult_modifiers = {
-        upkeep
-        produces
-    }
     generate_add_modifiers = {
         upkeep
         produces
     }
+    # 继承自普通帝国的专家阶层
+    triggered_produces_modifier = {
+        key = pop_category_specialists
+        modifier_types = {
+            add
+        }
+        trigger = { always = yes }
+        use_parent_icon = yes
+    }
+    triggered_upkeep_modifier = {
+        key = pop_category_specialists
+        modifier_types = {
+            add
+        }
+        trigger = { always = yes }
+        use_parent_icon = yes
+    }
+
     modifier_category = pop_group
 }
 
-# 守望先驱者
+# 守望先驱者（工人阶层）
 pop_category_precursor_warden = {
-    # 继承自普通帝国工人阶层
-    parent = pop_category_workers
+    parent = planet_pops
     use_for_ai_budget = no
 
-    generate_mult_modifiers = {
-        upkeep
-        produces
-    }
     generate_add_modifiers = {
         upkeep
         produces
     }
+    # 继承自普通帝国工人阶层
+    triggered_produces_modifier = {
+        key = pop_category_workers
+        modifier_types = {
+            add
+        }
+        trigger = { always = yes }
+        use_parent_icon = yes
+    }
+    triggered_upkeep_modifier = {
+        key = pop_category_workers
+        modifier_types = {
+            add
+        }
+        trigger = { always = yes }
+        use_parent_icon = yes
+    }
+
     modifier_category = pop_group
 }

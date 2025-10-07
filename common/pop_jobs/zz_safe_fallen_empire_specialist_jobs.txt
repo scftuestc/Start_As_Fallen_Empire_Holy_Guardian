@@ -2,6 +2,385 @@
 ## possible 中均做了限制，只有初始物种才能从事，符合条件的可以按权重转职
 
 #-----------------SPECIALIST------------------#
+## 对应于普通帝国的商贩
+safe_fe_trader = {
+    category = precursor_artisan
+    is_capped_by_modifier = yes
+
+    swappable_data = {
+        default = {
+            condition_string = SPECIALIST_JOB_TRIGGER
+            building_icon = building_fe_market_2
+            icon = trader
+        }
+    }
+
+    tags = { trade amenities }
+
+    possible_pre_triggers = {
+        has_owner = yes
+        is_being_purged = no
+        is_being_assimilated = no
+        is_sapient = yes
+    }
+    possible = {
+        exists = owner
+        owner = {
+            is_fallen_empire_spiritualist = yes
+            has_origin = Start_As_Fallen_Empire_Holy_Guardians
+        }
+        is_same_species = owner
+    }
+
+    possible_precalc = can_fill_specialist_job
+
+    resources = {
+        category = planet_safe_fe_traders
+
+        produces = {
+            trade = 20
+        }
+        upkeep = {
+            consumer_goods = 1.5
+        }
+    }
+
+    overlord_resources = {
+        category = planet_corporate_franchising_meddling
+        produces = {
+            trigger = {
+                planet = {
+                    has_planet_flag = has_franchise_headquarters
+                }
+            }
+            unity = 1
+        }
+    }
+
+    triggered_planet_modifier = {
+        potential = {
+            exists = owner
+            owner = { has_tradition = tr_mercantile_commercial_enterprise }
+        }
+        planet_amenities_add = 200
+        mult = value:scripted_modifier_mult|MODIFIER|pop_job_amenities_mult|
+    }
+
+    triggered_planet_modifier = {
+        potential = {
+            exists = planet
+            planet = {
+                exists = orbital_defence
+                orbital_defence = {
+                    exists = starbase
+                    starbase = {
+                        has_starbase_building = ring_trade_hub
+                    }
+                }
+            }
+        }
+        planet_amenities_add = 100
+        mult = value:scripted_modifier_mult|MODIFIER|pop_job_amenities_mult|
+    }
+
+    weight = {
+        weight = @specialist_job_weight
+
+        mult = value:job_weights_modifier|JOB|safe_fe_trader|RESOURCE|trade|
+        mult = value:scripted_modifier_job_weight_mult|MODIFIER|pop_job_amenities_mult|
+        # No AI
+        modifier = {
+            factor = 0
+            exists = planet
+            exists = planet.controller
+            planet.controller = {
+                NOT = { has_origin = Start_As_Fallen_Empire_Holy_Guardians }
+            }
+        }
+        # crisis purge
+        modifier = {
+            factor = 0.01
+            exists = planet
+            exists = planet.controller
+            planet.controller = {
+                OR = {
+                    is_country_type = swarm
+                    is_country_type = ai_empire
+                }
+            }
+            OR = { # contingency won't purge itself
+                NOT = { exists = event_target:custodian_bot }
+                AND = {
+                    exists = event_target:custodian_bot
+                    NOT = { species = { is_same_value = event_target:custodian_bot } }
+                }
+            }
+        }
+    }
+
+    inline_script = "jobs/automodding_priority_trade"
+
+    promotion = {
+        time = @standard_promotion_time
+        effect = {
+            pop_amount_change_category = {
+                CATEGORY = specialist
+                AMOUNT = local_pop_amount
+            }
+        }
+    }
+}
+
+## 对应于普通帝国的演艺人员
+safe_fe_entertainer = {
+    category = precursor_artisan
+    is_capped_by_modifier = yes
+
+    swappable_data = {
+        default = {
+            condition_string = SPECIALIST_JOB_TRIGGER
+            building_icon = building_fe_entertainment_2
+            icon = entertainer
+        }
+        # 转职
+        swap_type = {
+            trigger = {
+                entertainer_is_duelist_trigger = yes
+                entertainer_is_storm_dancer_trigger = no
+            }
+            name = safe_fe_duelist
+            desc = job_safe_fe_duelist_desc
+            icon = safe_fe_duelist
+            condition_string = SPECIALIST_JOB_TRIGGER
+            weight = 5
+        }
+        swap_type = {
+            trigger = {
+                entertainer_is_duelist_trigger = no
+                entertainer_is_storm_dancer_trigger = yes
+            }
+            name = storm_dancer
+            desc = storm_dancer
+            icon = storm_dancer
+            building_icon = building_storm_summoning_theater
+            weight = 5
+        }
+        swap_type = {
+            trigger = {
+                entertainer_is_curator_trigger = yes
+            }
+            name = curator
+            desc = curator
+            icon = historical_curator
+            building_icon = aesthetic_wonders_holomuseum
+            weight = 10
+        }
+        swap_type = {
+            trigger = {
+                entertainer_is_duelist_trigger = yes
+                entertainer_is_storm_dancer_trigger = yes
+            }
+            name = storm_duelist
+            desc = storm_duelist
+            icon = duelist
+            building_icon = building_storm_summoning_theater
+            condition_string = BATTLE_THRALL_JOB_TRIGGER
+            weight = 20
+        }
+    }
+
+    tags = { amenities unity }
+
+    possible_pre_triggers = {
+        has_owner = yes
+        is_being_purged = no
+        is_being_assimilated = no
+        is_sapient = yes
+    }
+
+    possible = {
+        exists = owner
+        owner = {
+            is_fallen_empire_spiritualist = yes
+            has_origin = Start_As_Fallen_Empire_Holy_Guardians
+        }
+        is_same_species = owner
+
+        if = {
+            limit = {
+                entertainer_is_duelist_trigger = yes
+            }
+            battle_thrall_job_check_trigger = yes
+        }
+        else = {
+            entertainer_job_check_trigger = yes
+        }
+    }
+
+    resources = {
+        category = planet_safe_fe_entertainers
+
+        produces = {
+            unity = 5
+        }
+        upkeep = {
+            trigger = {
+                entertainer_is_duelist_trigger = no
+            }
+            consumer_goods = 1
+        }
+        # 转职为决斗者后的产出
+        produces = {
+            trigger = {
+                entertainer_is_duelist_trigger = yes
+            }
+            unity = 1
+        }
+        upkeep = {
+            trigger = {
+                entertainer_is_duelist_trigger = yes
+                entertainer_is_storm_dancer_trigger = no
+            }
+            alloys = 0.5
+        }
+        # 转职为风暴舞者后的产出
+        produces = {
+            trigger = {
+                entertainer_is_storm_dancer_trigger = yes
+            }
+            unity = 3
+        }
+        upkeep = {
+            trigger = {
+                entertainer_is_storm_dancer_trigger = yes
+                entertainer_is_duelist_trigger = no
+            }
+            consumer_goods = 1
+        }
+        # 转职为风暴决斗者后的维护费
+        upkeep = {
+            trigger = {
+                entertainer_is_storm_dancer_trigger = yes
+                entertainer_is_duelist_trigger = yes
+            }
+            alloys = 1
+        }
+    }
+
+    ## 舒适度产出
+    triggered_planet_modifier = {
+        potential = {
+            always = yes
+        }
+        planet_amenities_add = 1250
+        mult = value:scripted_modifier_mult|MODIFIER|pop_job_amenities_mult|
+    }
+
+    ## 决斗者产出
+    triggered_country_modifier = {
+        potential = {
+            entertainer_is_duelist_trigger = yes
+        }
+        country_naval_cap_add = 2
+    }
+
+    triggered_planet_modifier = {
+        potential = {
+            entertainer_is_duelist_trigger = yes
+            exists = owner
+            owner = {
+                has_councilor = { COUNCILOR = "councilor_warrior_culture" }
+            }
+        }
+        planet_amenities_add = 100
+        mult = value:scripted_modifier_councilor_level_mult|MODIFIER|pop_job_amenities_mult|TYPE|councilor_warrior_culture|
+    }
+
+    triggered_country_modifier = {
+        potential = {
+            entertainer_is_duelist_trigger = yes
+            has_councilor = { COUNCILOR = "councilor_warrior_culture" }
+        }
+
+        country_naval_cap_add = 0.2
+        mult = value:councilor_level|TYPE|councilor_warrior_culture|
+    }
+
+    triggered_planet_modifier = {
+        potential = {
+            exists = owner
+            owner = {
+                has_modifier = exploitation_accord
+            }
+        }
+        planet_jobs_produces_mult = @accord_exploitation_resources_from_jobs
+    }
+
+    weight = {
+        weight = @high_prio_specialist_job_weight
+        mult = value:job_weights_modifier|JOB|safe_fe_entertainer|RESOURCE|unity|FACTOR|0.25|
+        mult = value:scripted_modifier_job_weight_mult|MODIFIER|pop_job_amenities_mult|
+
+        modifier = {
+            factor = 50
+        }
+        modifier = {
+            add = 500
+            exists = planet
+            planet = {
+                has_modifier = artistic_boom
+            }
+        }
+        # No AI
+        modifier = {
+            factor = 0
+            exists = planet
+            exists = planet.controller
+            planet.controller = {
+                NOT = { has_origin = Start_As_Fallen_Empire_Holy_Guardians }
+            }
+        }
+        # crisis purge
+        modifier = {
+            factor = 0.01
+            exists = planet
+            exists = planet.controller
+            planet.controller = {
+                OR = {
+                    is_country_type = swarm
+                    is_country_type = ai_empire
+                }
+            }
+        }
+    }
+
+    inline_script = "jobs/automodding_priority_charisma"
+
+    promotion = {
+        time = @standard_promotion_time
+        effect = {
+            pop_amount_change_category = {
+                CATEGORY = precursor_artisan
+                AMOUNT = local_pop_amount
+            }
+        }
+    }
+}
+# 转职（决斗者）
+safe_fe_duelist = {
+    category = precursor_artisan
+    is_capped_by_modifier = yes
+
+    swappable_data = {
+        default = {
+            condition_string = SPECIALIST_JOB_TRIGGER
+            building_icon = building_fe_entertainment_2
+            icon = duelist
+        }
+    }
+    possible = { always = no }
+}
+
 ## 对应于普通帝国的灵能使
 safe_fe_augur = {
     category = precursor_artisan
@@ -108,12 +487,10 @@ safe_fe_augur = {
         # No AI
         modifier = {
             factor = 0
-            exists = owner
-            owner = {
-                OR = {
-                    NOT = { has_origin = Start_As_Fallen_Empire_Holy_Guardians }
-                    is_ai = yes
-                }
+            exists = planet
+            exists = planet.controller
+            planet.controller = {
+                NOT = { has_origin = Start_As_Fallen_Empire_Holy_Guardians }
             }
         }
         # crisis purge
@@ -386,12 +763,10 @@ safe_fe_bureaucrat = {
         # No AI
         modifier = {
             factor = 0
-            exists = owner
-            owner = {
-                OR = {
-                    NOT = { has_origin = Start_As_Fallen_Empire_Holy_Guardians }
-                    is_ai = yes
-                }
+            exists = planet
+            exists = planet.controller
+            planet.controller = {
+                NOT = { has_origin = Start_As_Fallen_Empire_Holy_Guardians }
             }
         }
         # crisis purge
@@ -785,12 +1160,10 @@ safe_fe_acolyte_artisan = {
         # No AI
         modifier = {
             factor = 0
-            exists = owner
-            owner = {
-                OR = {
-                    NOT = { has_origin = Start_As_Fallen_Empire_Holy_Guardians }
-                    is_ai = yes
-                }
+            exists = planet
+            exists = planet.controller
+            planet.controller = {
+                NOT = { has_origin = Start_As_Fallen_Empire_Holy_Guardians }
             }
         }
         # low income modifier
@@ -838,6 +1211,7 @@ safe_fe_acolyte_artisan = {
 # 转职（熟练工匠）
 safe_fe_artificer = {
     category = precursor_artisan
+    is_capped_by_modifier = yes
 
     swappable_data = {
         default = {
@@ -961,12 +1335,10 @@ safe_fe_foundry = {
         # No AI
         modifier = {
             factor = 0
-            exists = owner
-            owner = {
-                OR = {
-                    NOT = { has_origin = Start_As_Fallen_Empire_Holy_Guardians }
-                    is_ai = yes
-                }
+            exists = planet
+            exists = planet.controller
+            planet.controller = {
+                NOT = { has_origin = Start_As_Fallen_Empire_Holy_Guardians }
             }
         }
         # crisis purge
@@ -998,6 +1370,7 @@ safe_fe_foundry = {
 # 转职（催化技师）
 safe_fe_catalytic_technician = {
     category = precursor_artisan
+    is_capped_by_modifier = yes
 
     swappable_data = {
         default = {
@@ -1014,9 +1387,7 @@ safe_fe_catalytic_technician = {
         is_being_assimilated = no
     }
 
-    possible = {
-        always = no
-    }
+    possible = { always = no }
 
     promotion = {
         time = @standard_promotion_time
@@ -1229,17 +1600,16 @@ safe_fe_physicist = {
 
     weight = {
         weight = @specialist_job_weight
+
         mult = value:job_weights_modifier|JOB|safe_fe_physicist|RESOURCE|physics_research|
 
         # No AI
         modifier = {
             factor = 0
-            exists = owner
-            owner = {
-                OR = {
-                    NOT = { has_origin = Start_As_Fallen_Empire_Holy_Guardians }
-                    is_ai = yes
-                }
+            exists = planet
+            exists = planet.controller
+            planet.controller = {
+                NOT = { has_origin = Start_As_Fallen_Empire_Holy_Guardians }
             }
         }
         modifier = {
@@ -1408,17 +1778,16 @@ safe_fe_biologist = {
 
     weight = {
         weight = @specialist_job_weight
+
         mult = value:job_weights_modifier|JOB|safe_fe_biologist|RESOURCE|society_research|
 
         # No AI
         modifier = {
             factor = 0
-            exists = owner
-            owner = {
-                OR = {
-                    NOT = { has_origin = Start_As_Fallen_Empire_Holy_Guardians }
-                    is_ai = yes
-                }
+            exists = planet
+            exists = planet.controller
+            planet.controller = {
+                NOT = { has_origin = Start_As_Fallen_Empire_Holy_Guardians }
             }
         }
         modifier = {
@@ -1442,6 +1811,7 @@ safe_fe_biologist = {
 # 转职（动物饲养员）
 safe_fe_xeno_zoo_keeper = {
     category = precursor_artisan
+    is_capped_by_modifier = yes
 
     swappable_data = {
         default = {
@@ -1451,13 +1821,12 @@ safe_fe_xeno_zoo_keeper = {
         }
     }
 
-    possible = {
-        always = no
-    }
+    possible = { always = no }
 }
 # 转职（考古工程师）
 safe_fe_archaeoengineers = {
     category = precursor_artisan
+    is_capped_by_modifier = yes
 
     swappable_data = {
         default = {
@@ -1476,9 +1845,7 @@ safe_fe_archaeoengineers = {
         is_sapient = yes
     }
 
-    possible = {
-        always = no
-    }
+    possible = { always = no }
 
     promotion = {
         time = @standard_promotion_time
@@ -1578,17 +1945,16 @@ safe_fe_engineer = {
 
     weight = {
         weight = @specialist_job_weight
+
         mult = value:job_weights_modifier|JOB|safe_fe_engineer|RESOURCE|engineering_research|
 
         # No AI
         modifier = {
             factor = 0
-            exists = owner
-            owner = {
-                OR = {
-                    NOT = { has_origin = Start_As_Fallen_Empire_Holy_Guardians }
-                    is_ai = yes
-                }
+            exists = planet
+            exists = planet.controller
+            planet.controller = {
+                NOT = { has_origin = Start_As_Fallen_Empire_Holy_Guardians }
             }
         }
         modifier = {
