@@ -77,7 +77,7 @@
  job_safe_fe_trader_plural_with_icon: "[safe_fe_trader.GetIcon] [safe_fe_trader.GetNamePlural]"
  job_safe_fe_trader_desc: "此等专才司掌帝国物资的流转与调配，他们精于发掘物用之内在价值，并确保各域所得皆符其需、合其序。"
  ## 修正描述
- mod_job_trader_add:"[safe_fe_trader.GetName]岗位"
+ mod_job_safe_fe_trader_add:"[safe_fe_trader.GetName]岗位"
 
  ###------------- 神仪演者（演艺人员）--------------###
  ## 基本岗位描述

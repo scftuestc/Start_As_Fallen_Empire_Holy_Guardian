@@ -2,6 +2,7 @@
 precursor_archon = {
     rank = 4
     change_job_threshold = 2.0
+    display_category = precursor_archon
 
     weight = {
         weight = 3
@@ -77,6 +78,7 @@ precursor_archon = {
 precursor_artisan = {
     rank = 3
     change_job_threshold = 1.25
+    display_category = precursor_artisan
 
     weight = {
         weight = 2
@@ -167,6 +169,7 @@ precursor_artisan = {
 precursor_warden = {
     rank = 2
     change_job_threshold = 1.15
+    display_category = precursor_warden
 
     weight = {
         weight = 1

@@ -45,7 +45,7 @@ safe_create_fallen_empire_titan = {
 safe_create_fallen_empire_colossus = {
     if = {
         limit = {
-            host_has_dlc = apocalypse
+            host_has_dlc = "Apocalypse"
             owner = { has_ethic = ethic_fanatic_spiritualist }
         }
         create_ship = {

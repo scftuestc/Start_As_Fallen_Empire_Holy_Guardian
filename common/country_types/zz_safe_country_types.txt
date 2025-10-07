@@ -20,7 +20,7 @@ fallen_empire = {
     uses_special_buildables = no
     observable = yes
     # 默认yes
-    can_use_invalid_technology = no
+    can_use_invalid_technology = yes
 
     faction = {
         needs_border_access = no
@@ -132,7 +132,7 @@ awakened_fallen_empire = {
     uses_special_buildables = no
     observable = yes
     # 默认yes
-    can_use_invalid_technology = no
+    can_use_invalid_technology = yes
 
     faction = {
         needs_border_access = no

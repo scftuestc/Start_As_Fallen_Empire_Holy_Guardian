@@ -131,6 +131,7 @@
 pop_category_precursor_archon = {
     parent = planet_pops
     use_for_ai_budget = no
+    modifier_category = pop_group
 
     generate_mult_modifiers = {
         upkeep
@@ -157,14 +158,13 @@ pop_category_precursor_archon = {
         trigger = { always = yes }
         use_parent_icon = yes
     }
-
-    modifier_category = pop_group
 }
 
 # 匠师先驱者（专家阶层）
 pop_category_precursor_artisan = {
     parent = planet_pops
     use_for_ai_budget = no
+    modifier_category = pop_group
 
     generate_add_modifiers = {
         upkeep
@@ -187,14 +187,13 @@ pop_category_precursor_artisan = {
         trigger = { always = yes }
         use_parent_icon = yes
     }
-
-    modifier_category = pop_group
 }
 
 # 守望先驱者（工人阶层）
 pop_category_precursor_warden = {
     parent = planet_pops
     use_for_ai_budget = no
+    modifier_category = pop_group
 
     generate_add_modifiers = {
         upkeep
@@ -217,6 +216,4 @@ pop_category_precursor_warden = {
         trigger = { always = yes }
         use_parent_icon = yes
     }
-
-    modifier_category = pop_group
 }

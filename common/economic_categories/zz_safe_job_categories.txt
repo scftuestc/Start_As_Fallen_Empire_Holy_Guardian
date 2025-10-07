@@ -4,6 +4,7 @@ planet_safe_fe_sky_cardinal = {
     icon = job_politician
     use_for_ai_budget = no
     parent = planet_jobs_ruler
+    modifier_category = pop_job
 
     generate_add_modifiers = {
         produces
@@ -17,19 +18,18 @@ planet_safe_fe_sky_cardinal = {
         trigger = { always = yes }
         use_parent_icon = yes
     }
-
-    modifier_category = pop_job
 }
 # 天赐商宗
 planet_safe_fe_merchants = {
     icon = job_merchant
     parent = planet_safe_fe_sky_cardinal
-
+    modifier_category = pop_job
 }
 # 圣裔贵族
 planet_safe_fe_nobles = {
     icon = job_noble
     parent = planet_safe_fe_sky_cardinal
+    modifier_category = pop_job
 }
 
 ## 保护者
@@ -37,6 +37,7 @@ planet_safe_fe_protector = {
     icon = job_enforcer
     use_for_ai_budget = no
     parent = planet_jobs_ruler
+    modifier_category = pop_job
 
     generate_add_modifiers = {
         produces
@@ -46,7 +47,6 @@ planet_safe_fe_protector = {
         produces
         upkeep
     }
-    modifier_category = pop_job
 }
 
 #-----------------SPECIALIST------------------#
@@ -55,6 +55,7 @@ planet_safe_fe_traders = {
     icon = job_trader
     use_for_ai_budget = no
     parent = planet_jobs_specialist
+    modifier_category = pop_job
 
     generate_add_modifiers = {
         produces
@@ -81,8 +82,6 @@ planet_safe_fe_traders = {
         trigger = { always = yes }
         use_parent_icon = yes
     }
-
-    modifier_category = pop_job
 }
 
 ## 神仪演者
@@ -90,6 +89,7 @@ planet_safe_fe_entertainers = {
     icon = job_entertainer
     use_for_ai_budget = no
     parent = planet_jobs_specialist
+    modifier_category = pop_job
 
     generate_add_modifiers = {
         produces
@@ -118,7 +118,6 @@ planet_safe_fe_entertainers = {
         trigger = { always = yes }
         use_parent_icon = yes
     }
-
 }
 
 ## 虚境灵使
@@ -126,6 +125,7 @@ planet_safe_fe_augur = {
     icon = job_telepath
     use_for_ai_budget = no
     parent = planet_jobs_specialist
+    modifier_category = pop_job
 
     generate_add_modifiers = {
         produces
@@ -135,7 +135,6 @@ planet_safe_fe_augur = {
         produces
         upkeep
     }
-
     # 修正继承(继承自灵能使)
     triggered_produces_modifier = {
         key = planet_telepaths
@@ -154,8 +153,6 @@ planet_safe_fe_augur = {
         trigger = { always = yes }
         use_parent_icon = yes
     }
-
-    modifier_category = pop_job
 }
 
 ## 卷宗圣吏
@@ -163,6 +160,7 @@ planet_safe_fe_bureaucrats = {
     icon = "job_bureaucrat"
     use_for_ai_budget = no
     parent = planet_jobs_specialist
+    modifier_category = pop_job
 
     generate_mult_modifiers = {
         produces
@@ -192,14 +190,12 @@ planet_safe_fe_bureaucrats = {
         trigger = { always = yes }
         use_parent_icon = yes
     }
-
-    modifier_category = pop_job
-
 }
 # 文化工作者
 planet_safe_fe_culture_workers = {
     icon = job_culture_worker
     parent = planet_safe_fe_bureaucrats
+    modifier_category = pop_job
 }
 
 ## 圣坊侍者
@@ -207,6 +203,7 @@ planet_safe_fe_acolyte_artisan = {
     icon = "job_artisan"
     use_for_ai_budget = no
     parent = planet_jobs_specialist
+    modifier_category = pop_job
 
     generate_mult_modifiers = {
         produces
@@ -216,7 +213,6 @@ planet_safe_fe_acolyte_artisan = {
         produces
         upkeep
     }
-
     # 修正继承(继承自工匠)
     triggered_produces_modifier = {
         key = planet_artisans
@@ -236,15 +232,14 @@ planet_safe_fe_acolyte_artisan = {
         trigger = { always = yes }
         use_parent_icon = yes
     }
-
-    modifier_category = pop_job
 }
 
-# 熔炉侍者
+## 熔炉侍者
 planet_safe_fe_foundry = {
     icon = "job_foundry"
     use_for_ai_budget = no
     parent = planet_jobs_specialist
+    modifier_category = pop_job
 
     generate_mult_modifiers = {
         produces
@@ -254,7 +249,6 @@ planet_safe_fe_foundry = {
         produces
         upkeep
     }
-
     # 修正继承（继承自冶炼师）
     triggered_produces_modifier = {
         key = planet_metallurgists
@@ -274,15 +268,14 @@ planet_safe_fe_foundry = {
         trigger = { always = yes }
         use_parent_icon = yes
     }
-
-    modifier_category = pop_job
 }
 
-# 星律使徒
+## 星律使徒
 planet_safe_fe_physicists = {
     icon = job_physicist
     use_for_ai_budget = no
     parent = planet_researchers
+    modifier_category = pop_job
 
     generate_add_modifiers = {
         produces
@@ -292,7 +285,6 @@ planet_safe_fe_physicists = {
         produces
         upkeep
     }
-
     # 修正继承（继承自物理学家）
     triggered_produces_modifier = {
         key = planet_physicists
@@ -312,15 +304,14 @@ planet_safe_fe_physicists = {
         trigger = { always = yes }
         use_parent_icon = yes
     }
-
-    modifier_category = pop_job
 }
 
-# 生命织匠
+## 生命织匠
 planet_safe_fe_biologists = {
     icon = job_biologist
     use_for_ai_budget = no
     parent = planet_researchers
+    modifier_category = pop_job
 
     generate_add_modifiers = {
         produces
@@ -330,7 +321,6 @@ planet_safe_fe_biologists = {
         produces
         upkeep
     }
-
     # 修正继承（继承自生物学家）
     triggered_produces_modifier = {
         key = planet_biologists
@@ -350,15 +340,14 @@ planet_safe_fe_biologists = {
         trigger = { always = yes }
         use_parent_icon = yes
     }
-
-    modifier_category = pop_job
 }
 
-# 万械颂者
+## 万械颂者
 planet_safe_fe_engineers = {
     icon = job_engineer
     use_for_ai_budget = no
     parent = planet_researchers
+    modifier_category = pop_job
 
     generate_add_modifiers = {
         produces
@@ -368,7 +357,6 @@ planet_safe_fe_engineers = {
         produces
         upkeep
     }
-
     # 修正继承（继承自工程学家）
     triggered_produces_modifier = {
         key = planet_engineers
@@ -388,16 +376,15 @@ planet_safe_fe_engineers = {
         trigger = { always = yes }
         use_parent_icon = yes
     }
-
-    modifier_category = pop_job
 }
 
 #-----------------WORKER------------------#
-# 圣钳侍者
+## 圣钳侍者
 planet_safe_fe_acolyte_generator = {
     icon = "job_technician"
     use_for_ai_budget = no
     parent = planet_jobs_worker
+    modifier_category = pop_job
 
     generate_add_modifiers = {
         produces
@@ -407,7 +394,6 @@ planet_safe_fe_acolyte_generator = {
         produces
         upkeep
     }
-
     # 修正继承（继承自技工）
     triggered_produces_modifier = {
         key = planet_technician
@@ -426,15 +412,14 @@ planet_safe_fe_acolyte_generator = {
         trigger = { always = yes }
         use_parent_icon = yes
     }
-
-    modifier_category = pop_job
 }
 
-# 焰锤侍者
+## 焰锤侍者
 planet_safe_fe_acolyte_mine = {
     icon = "job_miner"
     use_for_ai_budget = no
     parent = planet_jobs_worker
+    modifier_category = pop_job
 
     generate_mult_modifiers = {
         produces
@@ -444,7 +429,6 @@ planet_safe_fe_acolyte_mine = {
         produces
         upkeep
     }
-
     # 修正继承（继承自矿工）
     triggered_produces_modifier = {
         key = planet_miners
@@ -463,15 +447,14 @@ planet_safe_fe_acolyte_mine = {
         trigger = { always = yes }
         use_parent_icon = yes
     }
-
-    modifier_category = pop_job
 }
 
-# 犁耕侍者
+## 犁耕侍者
 planet_safe_fe_acolyte_farm = {
     icon = "job_farmer"
     use_for_ai_budget = no
     parent = planet_jobs_worker
+    modifier_category = pop_job
 
     generate_mult_modifiers = {
         produces
@@ -481,7 +464,6 @@ planet_safe_fe_acolyte_farm = {
         produces
         upkeep
     }
-
     # 修正继承（继承自农夫）
     triggered_produces_modifier = {
         key = planet_farmers
@@ -500,8 +482,6 @@ planet_safe_fe_acolyte_farm = {
         trigger = { always = yes }
         use_parent_icon = yes
     }
-
-    modifier_category = pop_job
 }
 
 # 晶盾卫戍
@@ -509,6 +489,7 @@ planet_safe_fe_soldiers = {
     icon = job_soldier
     use_for_ai_budget = no
     parent = planet_jobs_worker
+    modifier_category = pop_job
 
     generate_mult_modifiers = {
         produces
@@ -518,7 +499,6 @@ planet_safe_fe_soldiers = {
         produces
         upkeep
     }
-
     # 修正继承（继承自士兵）
     triggered_produces_modifier = {
         key = planet_soldiers
@@ -536,6 +516,4 @@ planet_safe_fe_soldiers = {
         trigger = { always = yes }
         use_parent_icon = yes
     }
-
-    modifier_category = pop_job
 }
