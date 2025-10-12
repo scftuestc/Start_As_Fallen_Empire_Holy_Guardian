@@ -170,6 +170,8 @@ safe_fe_sky_cardinal = {
             }
         }
     }
+    # 失业
+    demotion_target = precursor_archon_unemployment
 }
 # 转职（贵族）
 safe_fe_noble = {
@@ -319,4 +321,6 @@ safe_fe_protector = {
             }
         }
     }
+    # 失业
+    demotion_target = precursor_archon_unemployment
 }

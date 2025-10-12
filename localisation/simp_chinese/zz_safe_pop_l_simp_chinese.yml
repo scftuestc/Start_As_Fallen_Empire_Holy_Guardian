@@ -5,22 +5,39 @@
  pop_cat_precursor_archon: "精英$pop_cat_precursor$"
  pop_cat_precursor_archon_plural: "$pop_cat_precursor_archon$"
  pop_cat_precursor_archon_desc: "这些古老的统治者们自文明的黎明时代便执掌权柄，其智慧与远见维系着帝国的永恒长存。"
+ # 修正描述
  mod_pop_cat_precursor_archon_political_power: "$pop_cat_precursor_archon$政治权力"
  mod_pop_cat_precursor_archon_happiness: "$pop_cat_precursor_archon$幸福度"
- # 匠师先驱者（专家阶层）
+ # 失业阶层
+ pop_cat_precursor_archon_unemployment: "$pop_cat_precursor_archon$"
+ pop_cat_precursor_archon_unemployment_plural: "$pop_cat_precursor_archon_plural$"
+ pop_cat_precursor_archon_unemployment_desc: "$pop_cat_precursor_archon_desc$"
+
+ ## 匠师先驱者（专家阶层）
  pop_category_precursor_artisan:"$pop_cat_precursor_artisan$"
  pop_cat_precursor_artisan: "匠师$pop_cat_precursor$"
  pop_cat_precursor_artisan_plural:"$pop_cat_precursor_artisan$"
  pop_cat_precursor_artisan_desc: "帝国艺术与科技的守护者，其掌握的古老技艺早已臻至化境，所造之物远超寻常的工业制品。"
+ # 修正描述
  mod_pop_cat_precursor_artisan_political_power: "$pop_cat_precursor_artisan$政治权力"
  mod_pop_cat_precursor_artisan_happiness: "$pop_cat_precursor_artisan$幸福度"
- # 守望先驱者（劳工阶层）
+ # 失业阶层
+ pop_cat_precursor_artisan_unemployment: "$pop_cat_precursor_artisan$"
+ pop_cat_precursor_artisan_unemployment_plural: "$pop_cat_precursor_artisan_plural$"
+ pop_cat_precursor_artisan_unemployment_desc: "$pop_cat_precursor_artisan_desc$"
+
+ ## 守望先驱者（劳工阶层）
  pop_category_precursor_warden:"$pop_cat_precursor_warden$"
  pop_cat_precursor_warden: "守望$pop_cat_precursor$"
  pop_cat_precursor_warden_plural:"$pop_cat_precursor_warden$"
  pop_cat_precursor_warden_desc: "帝国沉默而忠诚的基石，他们世代恪守职责，维持着古老社会机器的每一个齿轮精准运转。"
+ # 修正描述
  mod_pop_cat_precursor_warden_political_power: "$pop_cat_precursor_warden$政治权力"
  mod_pop_cat_precursor_warden_happiness: "$pop_cat_precursor_warden$幸福度"
+ # 失业阶层
+ pop_cat_precursor_warden_unemployment: "$pop_cat_precursor_warden$"
+ pop_cat_precursor_warden_unemployment_plural: "$pop_cat_precursor_warden_plural$"
+ pop_cat_precursor_warden_unemployment_desc: "$pop_cat_precursor_warden_desc$"
 
  ## pop_jobs 岗位
  #############################
@@ -297,6 +314,21 @@
  job_safe_fe_soldier_desc: "其身如星穹合金般坚不可摧，意志如脉冲星般恒定，以血肉筑成圣域边界。"
  ## 修正描述
  mod_job_safe_fe_soldier_add: "[safe_fe_soldier.GetName]岗位"
+
+ ####################################
+ ##--------- Unemployment ---------##
+ ####################################
+ job_precursor_archon_unemployment: "$job_unemployed$"
+ job_precursor_archon_unemployment_plural: "$job_unemployed_plural$"
+ job_precursor_archon_unemployment_desc: "$job_unemployed_desc$"
+ job_precursor_artisan_unemployment: "$job_unemployed$"
+ job_precursor_artisan_unemployment_plural: "$job_unemployed_plural$"
+ job_precursor_artisan_unemployment_desc: "$job_unemployed_desc$"
+ job_precursor_warden_unemployment: "$job_unemployed$"
+ job_precursor_warden_unemployment_plural: "$job_unemployed_plural$"
+ job_precursor_warden_unemployment_desc: "$job_unemployed_desc$"
+
+
 
 
 

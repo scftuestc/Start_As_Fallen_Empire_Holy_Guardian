@@ -120,15 +120,18 @@ safe_fe_trader = {
 
     inline_script = "jobs/automodding_priority_trade"
 
+    # 人口晋升
     promotion = {
         time = @standard_promotion_time
         effect = {
             pop_amount_change_category = {
-                CATEGORY = specialist
+                CATEGORY = precursor_artisan
                 AMOUNT = local_pop_amount
             }
         }
     }
+    # 失业
+    demotion_target = precursor_artisan_unemployment
 }
 
 ## 对应于普通帝国的演艺人员
@@ -356,6 +359,7 @@ safe_fe_entertainer = {
 
     inline_script = "jobs/automodding_priority_charisma"
 
+    # 人口晋升
     promotion = {
         time = @standard_promotion_time
         effect = {
@@ -365,6 +369,8 @@ safe_fe_entertainer = {
             }
         }
     }
+    # 失业
+    demotion_target = precursor_artisan_unemployment
 }
 # 转职（决斗者）
 safe_fe_duelist = {
@@ -379,6 +385,19 @@ safe_fe_duelist = {
         }
     }
     possible = { always = no }
+
+    # 人口晋升
+    promotion = {
+        time = @standard_promotion_time
+        effect = {
+            pop_amount_change_category = {
+                CATEGORY = precursor_artisan
+                AMOUNT = local_pop_amount
+            }
+        }
+    }
+    # 失业
+    demotion_target = precursor_artisan_unemployment
 }
 
 ## 对应于普通帝国的灵能使
@@ -508,6 +527,19 @@ safe_fe_augur = {
     }
 
     inline_script = "jobs/automodding_priority_unity"
+
+    # 人口晋升
+    promotion = {
+        time = @standard_promotion_time
+        effect = {
+            pop_amount_change_category = {
+                CATEGORY = precursor_artisan
+                AMOUNT = local_pop_amount
+            }
+        }
+    }
+    # 失业
+    demotion_target = precursor_artisan_unemployment
 }
 
 ## 对应于普通帝国的官僚，对于圣卫将转职为祭司
@@ -785,6 +817,7 @@ safe_fe_bureaucrat = {
 
     inline_script = "jobs/automodding_priority_unity"
 
+    # 人口晋升
     promotion = {
         time = @standard_promotion_time
         effect = {
@@ -794,6 +827,8 @@ safe_fe_bureaucrat = {
             }
         }
     }
+    # 失业
+    demotion_target = precursor_artisan_unemployment
 }
 
 # 转职（拜金教祭司）
@@ -810,6 +845,18 @@ safe_fe_numistic_priest = {
     }
 
     possible = { always = no }
+    # 人口晋升
+    promotion = {
+        time = @standard_promotion_time
+        effect = {
+            pop_amount_change_category = {
+                CATEGORY = precursor_artisan
+                AMOUNT = local_pop_amount
+            }
+        }
+    }
+    # 失业
+    demotion_target = precursor_artisan_unemployment
 }
 # 转职（文化工作者）
 safe_fe_culture_worker = {
@@ -823,7 +870,21 @@ safe_fe_culture_worker = {
             icon = culture_worker
         }
     }
+
     possible = { always = no }
+
+    # 人口晋升
+    promotion = {
+        time = @standard_promotion_time
+        effect = {
+            pop_amount_change_category = {
+                CATEGORY = precursor_artisan
+                AMOUNT = local_pop_amount
+            }
+        }
+    }
+    # 失业
+    demotion_target = precursor_artisan_unemployment
 }
 # 转职（死亡录书官）
 safe_fe_death_chronicler = {
@@ -840,6 +901,7 @@ safe_fe_death_chronicler = {
 
     possible = { always = no }
 
+    # 人口晋升
     promotion = {
         time = @standard_promotion_time
         effect = {
@@ -849,6 +911,8 @@ safe_fe_death_chronicler = {
             }
         }
     }
+    # 失业
+    demotion_target = precursor_artisan_unemployment
 }
 
 ## 圣卫中用于替换平民的阶层，设置为只有AI能用
@@ -1198,6 +1262,7 @@ safe_fe_acolyte_artisan = {
 
     inline_script = "jobs/automodding_priority_consumer_goods"
 
+    # 人口晋升
     promotion = {
         time = @standard_promotion_time
         effect = {
@@ -1207,6 +1272,8 @@ safe_fe_acolyte_artisan = {
             }
         }
     }
+    # 失业
+    demotion_target = precursor_artisan_unemployment
 }
 # 转职（熟练工匠）
 safe_fe_artificer = {
@@ -1220,7 +1287,21 @@ safe_fe_artificer = {
             icon = artificer
         }
     }
+
     possible = { always = no }
+
+    # 人口晋升
+    promotion = {
+        time = @standard_promotion_time
+        effect = {
+            pop_amount_change_category = {
+                CATEGORY = precursor_artisan
+                AMOUNT = local_pop_amount
+            }
+        }
+    }
+    # 失业
+    demotion_target = precursor_artisan_unemployment
 }
 
 ## 对应于普通帝国的冶金师
@@ -1357,6 +1438,7 @@ safe_fe_foundry = {
 
     inline_script = "jobs/automodding_priority_alloys"
 
+    # 人口晋升
     promotion = {
         time = @standard_promotion_time
         effect = {
@@ -1366,6 +1448,8 @@ safe_fe_foundry = {
             }
         }
     }
+    # 失业
+    demotion_target = precursor_artisan_unemployment
 }
 # 转职（催化技师）
 safe_fe_catalytic_technician = {
@@ -1389,6 +1473,7 @@ safe_fe_catalytic_technician = {
 
     possible = { always = no }
 
+    # 人口晋升
     promotion = {
         time = @standard_promotion_time
         effect = {
@@ -1398,6 +1483,8 @@ safe_fe_catalytic_technician = {
             }
         }
     }
+    # 失业
+    demotion_target = precursor_artisan_unemployment
 }
 
 # 对应于普通帝国的物理学家
@@ -1620,6 +1707,7 @@ safe_fe_physicist = {
 
     inline_script = "jobs/automodding_priority_research"
 
+    # 人口晋升
     promotion = {
         time = @standard_promotion_time
         effect = {
@@ -1629,6 +1717,8 @@ safe_fe_physicist = {
             }
         }
     }
+    # 失业
+    demotion_target = precursor_artisan_unemployment
 }
 
 # 对应于普通帝国的生物学家
@@ -1798,6 +1888,7 @@ safe_fe_biologist = {
 
     inline_script = "jobs/automodding_priority_research"
 
+    # 人口晋升
     promotion = {
         time = @standard_promotion_time
         effect = {
@@ -1807,6 +1898,8 @@ safe_fe_biologist = {
             }
         }
     }
+    # 失业
+    demotion_target = precursor_artisan_unemployment
 }
 # 转职（动物饲养员）
 safe_fe_xeno_zoo_keeper = {
@@ -1822,6 +1915,19 @@ safe_fe_xeno_zoo_keeper = {
     }
 
     possible = { always = no }
+
+    # 人口晋升
+    promotion = {
+        time = @standard_promotion_time
+        effect = {
+            pop_amount_change_category = {
+                CATEGORY = precursor_artisan
+                AMOUNT = local_pop_amount
+            }
+        }
+    }
+    # 失业
+    demotion_target = precursor_artisan_unemployment
 }
 # 转职（考古工程师）
 safe_fe_archaeoengineers = {
@@ -1847,6 +1953,7 @@ safe_fe_archaeoengineers = {
 
     possible = { always = no }
 
+    # 人口晋升
     promotion = {
         time = @standard_promotion_time
         effect = {
@@ -1856,6 +1963,8 @@ safe_fe_archaeoengineers = {
             }
         }
     }
+    # 失业
+    demotion_target = precursor_artisan_unemployment
 }
 
 ## 对应于普通帝国的工程学家
@@ -1965,6 +2074,7 @@ safe_fe_engineer = {
 
     inline_script = "jobs/automodding_priority_research"
 
+    # 人口晋升
     promotion = {
         time = @standard_promotion_time
         effect = {
@@ -1974,4 +2084,6 @@ safe_fe_engineer = {
             }
         }
     }
+    # 失业
+    demotion_target = precursor_artisan_unemployment
 }

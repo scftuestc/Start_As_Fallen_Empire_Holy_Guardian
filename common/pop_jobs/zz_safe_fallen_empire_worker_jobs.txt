@@ -118,6 +118,7 @@ safe_fe_acolyte_generator = {
 
     inline_script = "jobs/automodding_priority_energy"
 
+    # 人口晋升
     promotion = {
         time = @standard_promotion_time
         effect = {
@@ -127,6 +128,8 @@ safe_fe_acolyte_generator = {
             }
         }
     }
+    # 失业
+    demotion_target = precursor_warden_unemployment
 }
 
 # 对应普通帝国的矿工
@@ -336,6 +339,7 @@ safe_fe_acolyte_mine = {
 
     inline_script = "jobs/automodding_priority_minerals"
 
+    # 人口晋升
     promotion = {
         time = @standard_promotion_time
         effect = {
@@ -345,6 +349,8 @@ safe_fe_acolyte_mine = {
             }
         }
     }
+    # 失业
+    demotion_target = precursor_warden_unemployment
 }
 
 # 对应普通帝国的农夫
@@ -543,6 +549,7 @@ safe_fe_acolyte_farm = {
 
     inline_script = "jobs/automodding_priority_food"
 
+    # 人口晋升
     promotion = {
         time = @standard_promotion_time
         effect = {
@@ -552,6 +559,8 @@ safe_fe_acolyte_farm = {
             }
         }
     }
+    # 失业
+    demotion_target = precursor_warden_unemployment
 }
 
 # 对应原版普通帝国士兵
@@ -690,6 +699,7 @@ safe_fe_soldier = {
         }
     }
 
+    # 人口晋升
     promotion = {
         time = @standard_promotion_time
         effect = {
@@ -699,5 +709,7 @@ safe_fe_soldier = {
             }
         }
     }
+    # 失业
+    demotion_target = precursor_warden_unemployment
 }
 
