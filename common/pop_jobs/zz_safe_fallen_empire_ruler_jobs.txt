@@ -4,7 +4,8 @@
 #-----------------RULER------------------#
 ## 对应于普通帝国的政客
 safe_fe_sky_cardinal = {
-    category = precursor_archon
+    #category = precursor_archon
+    category = ruler
     is_capped_by_modifier = yes
 
     swappable_data = {
@@ -165,17 +166,17 @@ safe_fe_sky_cardinal = {
         time = @standard_promotion_time
         effect = {
             pop_amount_change_category = {
-                CATEGORY = precursor_archon
+                #CATEGORY = precursor_archon
+                CATEGORY = ruler
                 AMOUNT = local_pop_amount
             }
         }
     }
-    # 失业
-    demotion_target = precursor_archon_unemployment
 }
 # 转职（贵族）
 safe_fe_noble = {
-    category = precursor_archon
+    #category = precursor_archon
+    category = ruler
     is_capped_by_modifier = yes
 
     swappable_data = {
@@ -190,8 +191,8 @@ safe_fe_noble = {
 }
 # 转职（商人）
 safe_fe_merchant = {
-    category = precursor_archon
-
+    #category = precursor_archon
+    category = ruler
     swappable_data = {
         default = {
             condition_string = RULER_JOB_TRIGGER
@@ -204,8 +205,8 @@ safe_fe_merchant = {
 }
 # 转职（行星狱长）
 safe_fe_warden = {
-    category = precursor_archon
-
+    #category = precursor_archon
+    category = ruler
     swappable_data = {
         default = {
             condition_string = RULER_JOB_TRIGGER
@@ -219,7 +220,8 @@ safe_fe_warden = {
 
 ## 对应于普通帝国的执行官
 safe_fe_protector = {
-    category = precursor_archon
+    #category = precursor_archon
+    category = ruler
     is_capped_by_modifier = yes
 
     swappable_data = {
@@ -316,11 +318,10 @@ safe_fe_protector = {
         time = @standard_promotion_time
         effect = {
             pop_amount_change_category = {
-                CATEGORY = precursor_archon
+                #CATEGORY = precursor_archon
+                CATEGORY = ruler
                 AMOUNT = local_pop_amount
             }
         }
     }
-    # 失业
-    demotion_target = precursor_archon_unemployment
 }

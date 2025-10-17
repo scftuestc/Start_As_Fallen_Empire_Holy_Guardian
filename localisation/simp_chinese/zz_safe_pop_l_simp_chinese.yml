@@ -277,6 +277,14 @@
  mod_pop_safe_fe_acolyte_generator_workforce_mult:"$job_safe_fe_acolyte_generator$$MOD_POP_WORKFORCE_MULT$"
  mod_pop_safe_fe_acolyte_generator_bonus_workforce_mult:"[safe_fe_acolyte_generator.GetNamePlural]$BONUS_WORKFORCE_FOR$"
 
+ ###------------- 燃素驯服师（微粒捕获工）--------------###
+ ## 基本岗位描述
+ planet_safe_fe_mote_harvester:"$job_safe_fe_mote_harvester$岗位"
+ safe_fe_mote_harvester:"$job_safe_fe_mote_harvester$"
+ job_safe_fe_mote_harvester: "燃素驯服师"
+ job_safe_fe_mote_harvester_plural: "燃素驯服师"
+ job_safe_fe_mote_harvester_desc: "采掘微粒的工作是非常危险的，需要以精妙的灵能技艺束缚狂暴的原始能量，将混沌的燃素之力转化为可供帝国驱使的温顺形态。"
+
  ###------------- 焰锤侍者（矿工）--------------###
  ## 基本岗位描述
  planet_safe_fe_acolyte_mine:"$job_safe_fe_acolyte_mine$岗位"
@@ -289,6 +297,14 @@
  mod_job_safe_fe_acolyte_mine_add:"[safe_fe_acolyte_mine.GetName]岗位"
  mod_pop_safe_fe_acolyte_mine_workforce_mult:"$job_safe_fe_acolyte_mine$$MOD_POP_WORKFORCE_MULT$"
  mod_pop_safe_fe_acolyte_mine_bonus_workforce_mult:"[safe_fe_acolyte_mine.GetNamePlural]$BONUS_WORKFORCE_FOR$"
+
+ ###------------- 晶石遴选师（水晶矿工）--------------###
+ ## 基本岗位描述
+ planet_safe_fe_crystal_miner:"$job_safe_fe_crystal_miner$岗位"
+ safe_fe_crystal_miner:"$job_safe_fe_crystal_miner$"
+ job_safe_fe_crystal_miner:"晶石遴选师"
+ job_safe_fe_crystal_miner_plural:"晶石遴选师"
+ job_safe_fe_crystal_miner_desc:"$job_crystal_miner_desc$"
 
  ### ----------------犁耕侍者（农夫）-----------------###
  ## 基本岗位描述
@@ -303,6 +319,14 @@
  mod_job_safe_fe_acolyte_farm_max_workforce_mult:"$job_safe_fe_acolyte_farm$$MOD_JOB_MAX_WORKFORCE_MULT$"
  mod_pop_safe_fe_acolyte_farm_workforce_mult:"$job_safe_fe_acolyte_farm$$MOD_POP_WORKFORCE_MULT$"
  mod_pop_safe_fe_acolyte_farm_bonus_workforce_mult:"[safe_fe_acolyte_farm.GetNamePlural]$BONUS_WORKFORCE_FOR$"
+
+ ### ----------------虚气萃取师（气体采集工）-----------------###
+ ## 基本岗位描述
+ planet_safe_fe_gas_extractor:"$job_safe_fe_gas_extractor$岗位"
+ safe_fe_gas_extractor: "$job_safe_fe_gas_extractor$"
+ job_safe_fe_gas_extractor: "虚气萃取师"
+ job_safe_fe_gas_extractor_plural: "虚气萃取师"
+ job_safe_fe_gas_extractor_desc: "虚气萃取师通过精密的灵能共振技术，引导并收集蕴藏于地壳深处的稀有气态精华，维系着帝国诸多尖端造物的生命源泉。"
 
  ### ----------------晶盾卫戍（士兵）-----------------###
  ## 基本岗位描述

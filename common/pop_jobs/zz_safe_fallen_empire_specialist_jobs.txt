@@ -4,7 +4,8 @@
 #-----------------SPECIALIST------------------#
 ## 对应于普通帝国的商贩
 safe_fe_trader = {
-    category = precursor_artisan
+    #category = precursor_artisan
+    category = specialist
     is_capped_by_modifier = yes
 
     swappable_data = {
@@ -125,18 +126,18 @@ safe_fe_trader = {
         time = @standard_promotion_time
         effect = {
             pop_amount_change_category = {
-                CATEGORY = precursor_artisan
+                #CATEGORY = precursor_artisan
+                CATEGORY = specialist
                 AMOUNT = local_pop_amount
             }
         }
     }
-    # 失业
-    demotion_target = precursor_artisan_unemployment
 }
 
 ## 对应于普通帝国的演艺人员
 safe_fe_entertainer = {
-    category = precursor_artisan
+    #category = precursor_artisan
+    category = specialist
     is_capped_by_modifier = yes
 
     swappable_data = {
@@ -364,17 +365,17 @@ safe_fe_entertainer = {
         time = @standard_promotion_time
         effect = {
             pop_amount_change_category = {
-                CATEGORY = precursor_artisan
+                #CATEGORY = precursor_artisan
+                CATEGORY = specialist
                 AMOUNT = local_pop_amount
             }
         }
     }
-    # 失业
-    demotion_target = precursor_artisan_unemployment
 }
 # 转职（决斗者）
 safe_fe_duelist = {
-    category = precursor_artisan
+    #category = precursor_artisan
+    category = specialist
     is_capped_by_modifier = yes
 
     swappable_data = {
@@ -391,18 +392,18 @@ safe_fe_duelist = {
         time = @standard_promotion_time
         effect = {
             pop_amount_change_category = {
-                CATEGORY = precursor_artisan
+                #CATEGORY = precursor_artisan
+                CATEGORY = specialist
                 AMOUNT = local_pop_amount
             }
         }
     }
-    # 失业
-    demotion_target = precursor_artisan_unemployment
 }
 
 ## 对应于普通帝国的灵能使
 safe_fe_augur = {
-    category = precursor_artisan
+    #category = precursor_artisan
+    category = specialist
     is_capped_by_modifier = yes
     can_be_automated = no
 
@@ -533,18 +534,18 @@ safe_fe_augur = {
         time = @standard_promotion_time
         effect = {
             pop_amount_change_category = {
-                CATEGORY = precursor_artisan
+                #CATEGORY = precursor_artisan
+                CATEGORY = specialist
                 AMOUNT = local_pop_amount
             }
         }
     }
-    # 失业
-    demotion_target = precursor_artisan_unemployment
 }
 
 ## 对应于普通帝国的官僚，对于圣卫将转职为祭司
 safe_fe_bureaucrat = {
-    category = precursor_artisan
+    #category = precursor_artisan
+    category = specialist
     is_capped_by_modifier = yes
 
     swappable_data = {
@@ -673,14 +674,6 @@ safe_fe_bureaucrat = {
             unity = -1
             society_research = 1
         }
-        produces = {
-            trigger = {
-                bureaucrat_is_death_priest = yes
-                exists = owner
-                owner = { has_sacrificial_edict = yes }
-            }
-            unity = 3
-        }
         # 转职为拜金教祭司后的产出
         produces = {
             trigger = {
@@ -698,7 +691,7 @@ safe_fe_bureaucrat = {
                 bureaucrat_is_superstitious_beliefs_priest_corporate = yes
             }
             unity = -1
-            trade = 6
+            trade = 2
         }
 
         inline_script = "jobs/ethic_job_resources_memorialist"
@@ -822,18 +815,18 @@ safe_fe_bureaucrat = {
         time = @standard_promotion_time
         effect = {
             pop_amount_change_category = {
-                CATEGORY = precursor_artisan
+                #CATEGORY = precursor_artisan
+                CATEGORY = specialist
                 AMOUNT = local_pop_amount
             }
         }
     }
-    # 失业
-    demotion_target = precursor_artisan_unemployment
 }
 
 # 转职（拜金教祭司）
 safe_fe_numistic_priest = {
-    category = precursor_artisan
+    #category = precursor_artisan
+    category = specialist
     is_capped_by_modifier = yes
 
     swappable_data = {
@@ -850,17 +843,17 @@ safe_fe_numistic_priest = {
         time = @standard_promotion_time
         effect = {
             pop_amount_change_category = {
-                CATEGORY = precursor_artisan
+                #CATEGORY = precursor_artisan
+                CATEGORY = specialist
                 AMOUNT = local_pop_amount
             }
         }
     }
-    # 失业
-    demotion_target = precursor_artisan_unemployment
 }
 # 转职（文化工作者）
 safe_fe_culture_worker = {
-    category = precursor_artisan
+    #category = precursor_artisan
+    category = specialist
     is_capped_by_modifier = yes
 
     swappable_data = {
@@ -878,17 +871,17 @@ safe_fe_culture_worker = {
         time = @standard_promotion_time
         effect = {
             pop_amount_change_category = {
-                CATEGORY = precursor_artisan
+                #CATEGORY = precursor_artisan
+                CATEGORY = specialist
                 AMOUNT = local_pop_amount
             }
         }
     }
-    # 失业
-    demotion_target = precursor_artisan_unemployment
 }
 # 转职（死亡录书官）
 safe_fe_death_chronicler = {
-    category = precursor_artisan
+    #category = precursor_artisan
+    category = specialist
     is_capped_by_modifier = yes
 
     swappable_data = {
@@ -906,13 +899,12 @@ safe_fe_death_chronicler = {
         time = @standard_promotion_time
         effect = {
             pop_amount_change_category = {
-                CATEGORY = precursor_artisan
+                #CATEGORY = precursor_artisan
+                CATEGORY = specialist
                 AMOUNT = local_pop_amount
             }
         }
     }
-    # 失业
-    demotion_target = precursor_artisan_unemployment
 }
 
 ## 圣卫中用于替换平民的阶层，设置为只有AI能用
@@ -1002,7 +994,8 @@ fe_acolyte_artisan = {
 
 ## 对应于普通帝国的工匠
 safe_fe_acolyte_artisan = {
-    category = precursor_artisan
+    #category = precursor_artisan
+    category = specialist
     is_capped_by_modifier = yes
 
     swappable_data = {
@@ -1267,17 +1260,17 @@ safe_fe_acolyte_artisan = {
         time = @standard_promotion_time
         effect = {
             pop_amount_change_category = {
-                CATEGORY = precursor_artisan
+                #CATEGORY = precursor_artisan
+                CATEGORY = specialist
                 AMOUNT = local_pop_amount
             }
         }
     }
-    # 失业
-    demotion_target = precursor_artisan_unemployment
 }
 # 转职（熟练工匠）
 safe_fe_artificer = {
-    category = precursor_artisan
+    #category = precursor_artisan
+    category = specialist
     is_capped_by_modifier = yes
 
     swappable_data = {
@@ -1295,18 +1288,18 @@ safe_fe_artificer = {
         time = @standard_promotion_time
         effect = {
             pop_amount_change_category = {
-                CATEGORY = precursor_artisan
+                #CATEGORY = precursor_artisan
+                CATEGORY = specialist
                 AMOUNT = local_pop_amount
             }
         }
     }
-    # 失业
-    demotion_target = precursor_artisan_unemployment
 }
 
 ## 对应于普通帝国的冶金师
 safe_fe_foundry = {
-    category = precursor_artisan
+    #category = precursor_artisan
+    category = specialist
     is_capped_by_modifier = yes
 
     swappable_data = {
@@ -1443,17 +1436,17 @@ safe_fe_foundry = {
         time = @standard_promotion_time
         effect = {
             pop_amount_change_category = {
-                CATEGORY = precursor_artisan
+                #CATEGORY = precursor_artisan
+                CATEGORY = specialist
                 AMOUNT = local_pop_amount
             }
         }
     }
-    # 失业
-    demotion_target = precursor_artisan_unemployment
 }
 # 转职（催化技师）
 safe_fe_catalytic_technician = {
-    category = precursor_artisan
+    #category = precursor_artisan
+    category = specialist
     is_capped_by_modifier = yes
 
     swappable_data = {
@@ -1478,18 +1471,18 @@ safe_fe_catalytic_technician = {
         time = @standard_promotion_time
         effect = {
             pop_amount_change_category = {
-                CATEGORY = precursor_artisan
+                #CATEGORY = precursor_artisan
+                CATEGORY = specialist
                 AMOUNT = local_pop_amount
             }
         }
     }
-    # 失业
-    demotion_target = precursor_artisan_unemployment
 }
 
 # 对应于普通帝国的物理学家
 safe_fe_physicist = {
-    category = precursor_artisan
+    #category = precursor_artisan
+    category = specialist
     is_capped_by_modifier = yes
 
     swappable_data = {
@@ -1712,18 +1705,18 @@ safe_fe_physicist = {
         time = @standard_promotion_time
         effect = {
             pop_amount_change_category = {
-                CATEGORY = precursor_artisan
+                #CATEGORY = precursor_artisan
+                CATEGORY = specialist
                 AMOUNT = local_pop_amount
             }
         }
     }
-    # 失业
-    demotion_target = precursor_artisan_unemployment
 }
 
 # 对应于普通帝国的生物学家
 safe_fe_biologist = {
-    category = precursor_artisan
+    #category = precursor_artisan
+    category = specialist
     is_capped_by_modifier = yes
 
     swappable_data = {
@@ -1893,17 +1886,17 @@ safe_fe_biologist = {
         time = @standard_promotion_time
         effect = {
             pop_amount_change_category = {
-                CATEGORY = precursor_artisan
+                #CATEGORY = precursor_artisan
+                CATEGORY = specialist
                 AMOUNT = local_pop_amount
             }
         }
     }
-    # 失业
-    demotion_target = precursor_artisan_unemployment
 }
 # 转职（动物饲养员）
 safe_fe_xeno_zoo_keeper = {
-    category = precursor_artisan
+    #category = precursor_artisan
+    category = specialist
     is_capped_by_modifier = yes
 
     swappable_data = {
@@ -1921,17 +1914,18 @@ safe_fe_xeno_zoo_keeper = {
         time = @standard_promotion_time
         effect = {
             pop_amount_change_category = {
-                CATEGORY = precursor_artisan
+                #CATEGORY = precursor_artisan
+                CATEGORY = specialist
                 AMOUNT = local_pop_amount
             }
         }
     }
-    # 失业
-    demotion_target = precursor_artisan_unemployment
+
 }
 # 转职（考古工程师）
 safe_fe_archaeoengineers = {
-    category = precursor_artisan
+    #category = precursor_artisan
+    category = specialist
     is_capped_by_modifier = yes
 
     swappable_data = {
@@ -1958,18 +1952,18 @@ safe_fe_archaeoengineers = {
         time = @standard_promotion_time
         effect = {
             pop_amount_change_category = {
-                CATEGORY = precursor_artisan
+                #CATEGORY = precursor_artisan
+                CATEGORY = specialist
                 AMOUNT = local_pop_amount
             }
         }
     }
-    # 失业
-    demotion_target = precursor_artisan_unemployment
 }
 
 ## 对应于普通帝国的工程学家
 safe_fe_engineer = {
-    category = precursor_artisan
+    #category = precursor_artisan
+    category = specialist
     is_capped_by_modifier = yes
 
     swappable_data = {
@@ -2079,11 +2073,10 @@ safe_fe_engineer = {
         time = @standard_promotion_time
         effect = {
             pop_amount_change_category = {
-                CATEGORY = precursor_artisan
+                #CATEGORY = precursor_artisan
+                CATEGORY = specialist
                 AMOUNT = local_pop_amount
             }
         }
     }
-    # 失业
-    demotion_target = precursor_artisan_unemployment
 }

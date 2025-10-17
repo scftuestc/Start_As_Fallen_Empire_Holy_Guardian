@@ -60,6 +60,71 @@ triggered_district_planet_modifier = {
 	mult = 5
 }
 
+### Gestalt Empires
+# Planets
+triggered_district_planet_modifier = {
+	potential = {
+		exists = owner
+		owner = {
+			is_gestalt = yes
+		}
+		planet_is_habitat_equivalent = no
+		planet_is_ecu_equivalent = no
+		planet_is_ring_world_equivalent = no
+	}
+	job_agri_drone_add = $AMOUNT$
+}
+
+# Habitats
+triggered_district_planet_modifier = {
+	potential = {
+		exists = owner
+		owner = {
+			is_gestalt = yes
+		}
+		planet_is_habitat_equivalent = yes
+	}
+	job_agri_drone_add = $AMOUNT$
+	mult = owner.value:hab_void_dweller_jobs
+}
+
+# Machine/Hive Worlds
+triggered_district_planet_modifier = {
+	potential = {
+		exists = owner
+		owner = {
+			is_gestalt = yes
+		}
+		planet_is_ecu_equivalent = yes
+	}
+	job_agri_drone_add = $AMOUNT$
+	mult = 3
+}
+
+# Ringworlds
+triggered_district_planet_modifier = {
+	potential = {
+		exists = owner
+		owner = {
+			is_gestalt = yes
+		}
+		planet_is_ring_world_equivalent = yes
+	}
+	job_agri_drone_add = $AMOUNT$
+	mult = 5
+}
+
+### Tankbound Empires
+# Habitats
+triggered_district_planet_modifier = {
+	potential = {
+		exists = owner
+		owner = { is_tankbound_empire = yes }
+		planet_is_habitat_equivalent = yes
+	}
+	job_farmer_automated_workforce_mult = 1.0
+}
+
 ### Spiritualist FE
 # Planets
 triggered_district_planet_modifier = {
@@ -172,59 +237,5 @@ triggered_district_planet_modifier = {
 	}
 	# 自定义岗位
 	job_safe_fe_acolyte_farm_add = $AMOUNT$
-	mult = 5
-}
-
-### Gestalt Empires
-# Planets
-triggered_district_planet_modifier = {
-	potential = {
-		exists = owner
-		owner = {
-			is_gestalt = yes
-		}
-		planet_is_habitat_equivalent = no
-		planet_is_ecu_equivalent = no
-		planet_is_ring_world_equivalent = no
-	}
-	job_agri_drone_add = $AMOUNT$
-}
-
-# Habitats
-triggered_district_planet_modifier = {
-	potential = {
-		exists = owner
-		owner = {
-			is_gestalt = yes
-		}
-		planet_is_habitat_equivalent = yes
-	}
-	job_agri_drone_add = $AMOUNT$
-	mult = owner.value:hab_void_dweller_jobs
-}
-
-# Machine/Hive Worlds
-triggered_district_planet_modifier = {
-	potential = {
-		exists = owner
-		owner = {
-			is_gestalt = yes
-		}
-		planet_is_ecu_equivalent = yes
-	}
-	job_agri_drone_add = $AMOUNT$
-	mult = 3
-}
-
-# Ringworlds
-triggered_district_planet_modifier = {
-	potential = {
-		exists = owner
-		owner = {
-			is_gestalt = yes
-		}
-		planet_is_ring_world_equivalent = yes
-	}
-	job_agri_drone_add = $AMOUNT$
 	mult = 5
 }

@@ -20,6 +20,7 @@ diplomatic_stance = {
             is_country_type = primitive
             is_country_type = awakened_marauders
             is_country_type = mirrored_country
+            is_country_type = exiled
         }
     }
 
@@ -268,6 +269,7 @@ diplomatic_stance = {
             OR = {
                 is_country_type = default
                 is_country_type = awakened_fallen_empire
+                is_country_type = exiled
             }
         }
 
@@ -799,7 +801,6 @@ diplomatic_stance = {
         }
     }
 
-    # 修改韬光养晦的效果和描述
     option = {
         name = "diplo_stance_isolationist_fallen_empire"
         icon = "GFX_diplomatic_stance_isolationist"

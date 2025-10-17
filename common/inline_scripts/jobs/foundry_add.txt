@@ -5,21 +5,8 @@ triggered_planet_modifier = {
 			is_regular_empire = yes
 			NOT = { has_origin = Start_As_Fallen_Empire_Holy_Guardians }
 		}
-		NOT = {	has_modifier = penal_colony }
 	}
 	job_foundry_add = $AMOUNT$
-}
-
-# Spiritualist FE
-# 自定义岗位
-triggered_planet_modifier = {
-	potential = {
-		exists = owner
-		owner = { has_origin = Start_As_Fallen_Empire_Holy_Guardians }
-		NOT = { has_modifier = penal_colony }
-	}
-	# 自定义岗位
-	job_safe_fe_foundry_add = $AMOUNT$
 }
 
 triggered_planet_modifier = {
@@ -28,7 +15,6 @@ triggered_planet_modifier = {
 		owner = {
 			is_hive_empire = yes
 		}
-		NOT = {	has_modifier = penal_colony }
 	}
 	job_fabricator_add = $AMOUNT$
 }
@@ -39,7 +25,20 @@ triggered_planet_modifier = {
 		owner = {
 			is_machine_empire = yes
 		}
-		NOT = {	has_modifier = penal_colony }
 	}
 	job_fabricator_add = $AMOUNT$
+}
+
+## Spiritualist FE
+# 自定义岗位
+triggered_planet_modifier = {
+	potential = {
+		exists = owner
+		owner = {
+			is_fallen_empire_spiritualist = yes
+			has_origin = Start_As_Fallen_Empire_Holy_Guardians
+		}
+	}
+	## 自定义岗位
+	job_safe_fe_foundry_add = $AMOUNT$
 }

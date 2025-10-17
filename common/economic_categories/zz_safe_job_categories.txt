@@ -1,5 +1,5 @@
 #-----------------RULER------------------#
-## 天空教主
+## 天空教主（政客）
 planet_safe_fe_sky_cardinal = {
     icon = job_politician
     use_for_ai_budget = no
@@ -19,20 +19,20 @@ planet_safe_fe_sky_cardinal = {
         use_parent_icon = yes
     }
 }
-# 天赐商宗
+# 天赐商宗（商人）
 planet_safe_fe_merchants = {
     icon = job_merchant
     parent = planet_safe_fe_sky_cardinal
     modifier_category = pop_job
 }
-# 圣裔贵族
+# 圣裔贵族（贵族）
 planet_safe_fe_nobles = {
     icon = job_noble
     parent = planet_safe_fe_sky_cardinal
     modifier_category = pop_job
 }
 
-## 保护者
+## 保护者（执法者）
 planet_safe_fe_protector = {
     icon = job_enforcer
     use_for_ai_budget = no
@@ -50,7 +50,7 @@ planet_safe_fe_protector = {
 }
 
 #-----------------SPECIALIST------------------#
-## 资货调衡使
+## 资货调衡使（商人）
 planet_safe_fe_traders = {
     icon = job_trader
     use_for_ai_budget = no
@@ -84,7 +84,7 @@ planet_safe_fe_traders = {
     }
 }
 
-## 神仪演者
+## 神仪演者（演艺人员）
 planet_safe_fe_entertainers = {
     icon = job_entertainer
     use_for_ai_budget = no
@@ -155,7 +155,7 @@ planet_safe_fe_augur = {
     }
 }
 
-## 卷宗圣吏
+## 卷宗圣吏（官吏）
 planet_safe_fe_bureaucrats = {
     icon = "job_bureaucrat"
     use_for_ai_budget = no
@@ -198,7 +198,7 @@ planet_safe_fe_culture_workers = {
     modifier_category = pop_job
 }
 
-## 圣坊侍者
+## 圣坊侍者（工匠）
 planet_safe_fe_acolyte_artisan = {
     icon = "job_artisan"
     use_for_ai_budget = no
@@ -234,7 +234,7 @@ planet_safe_fe_acolyte_artisan = {
     }
 }
 
-## 熔炉侍者
+## 熔炉侍者（冶金师）
 planet_safe_fe_foundry = {
     icon = "job_foundry"
     use_for_ai_budget = no
@@ -270,7 +270,7 @@ planet_safe_fe_foundry = {
     }
 }
 
-## 星律使徒
+## 星律使徒（物理学家）
 planet_safe_fe_physicists = {
     icon = job_physicist
     use_for_ai_budget = no
@@ -306,7 +306,7 @@ planet_safe_fe_physicists = {
     }
 }
 
-## 生命织匠
+## 生命织匠（生物学家）
 planet_safe_fe_biologists = {
     icon = job_biologist
     use_for_ai_budget = no
@@ -342,7 +342,7 @@ planet_safe_fe_biologists = {
     }
 }
 
-## 万械颂者
+## 万械颂者（工程学家）
 planet_safe_fe_engineers = {
     icon = job_engineer
     use_for_ai_budget = no
@@ -379,7 +379,7 @@ planet_safe_fe_engineers = {
 }
 
 #-----------------WORKER------------------#
-## 圣钳侍者
+## 圣钳侍者（技工）
 planet_safe_fe_acolyte_generator = {
     icon = "job_technician"
     use_for_ai_budget = no
@@ -414,7 +414,7 @@ planet_safe_fe_acolyte_generator = {
     }
 }
 
-## 焰锤侍者
+## 焰锤侍者（矿工）
 planet_safe_fe_acolyte_mine = {
     icon = "job_miner"
     use_for_ai_budget = no
@@ -449,7 +449,38 @@ planet_safe_fe_acolyte_mine = {
     }
 }
 
-## 犁耕侍者
+## 晶石遴选师（水晶矿工）
+planet_safe_fe_sr_miners = { #added because we don't want miners_minerals_produces_add to apply to these
+    icon = job_crystal_miner
+    parent = planet_miners
+
+    generate_add_modifiers = {
+        upkeep
+    }
+    generate_mult_modifiers = {
+        produces
+    }
+    modifier_category = pop_job
+    # 修正继承（继承自水晶矿工）
+    triggered_produces_modifier = {
+        key = planet_sr_miners
+        modifier_types = {
+            mult
+        }
+        trigger = { always = yes }
+        use_parent_icon = yes
+    }
+    triggered_upkeep_modifier = {
+        key = planet_miners
+        modifier_types = {
+            add
+        }
+        trigger = { always = yes }
+        use_parent_icon = yes
+    }
+}
+
+## 犁耕侍者（农夫）
 planet_safe_fe_acolyte_farm = {
     icon = "job_farmer"
     use_for_ai_budget = no
@@ -484,7 +515,7 @@ planet_safe_fe_acolyte_farm = {
     }
 }
 
-# 晶盾卫戍
+## 晶盾卫戍（士兵）
 planet_safe_fe_soldiers = {
     icon = job_soldier
     use_for_ai_budget = no

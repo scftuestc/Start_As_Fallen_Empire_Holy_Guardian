@@ -2,9 +2,10 @@
 ## possible 中均做了限制，只有初始物种才能从事，符合条件的可以按权重转职
 
 #-----------------WORKER------------------#
-# 对应普通帝国的技工
+## 对应普通帝国的技工
 safe_fe_acolyte_generator = {
-    category = precursor_warden
+    #category = precursor_warden
+    category = worker
     is_capped_by_modifier = yes
 
     swappable_data = {
@@ -18,8 +19,8 @@ safe_fe_acolyte_generator = {
                 technician_is_mote_harvester_trigger = yes
             }
             icon = mote_harvester
-            name = mote_harvester
-            desc = mote_harvester
+            name = safe_fe_mote_harvester
+            desc = job_safe_fe_mote_harvester_desc
             building_icon = building_mote_harvesting_traps
             weight = 20
         }
@@ -123,18 +124,114 @@ safe_fe_acolyte_generator = {
         time = @standard_promotion_time
         effect = {
             pop_amount_change_category = {
-                CATEGORY = precursor_warden
+                #CATEGORY = precursor_warden
+                CATEGORY = worker
                 AMOUNT = local_pop_amount
             }
         }
     }
-    # 失业
-    demotion_target = precursor_warden_unemployment
 }
 
-# 对应普通帝国的矿工
+## 对应普通帝国的微粒捕获工
+safe_fe_mote_harvester = {
+    category = worker
+    is_capped_by_modifier = yes
+
+    swappable_data = {
+        default = {
+            condition_string = WORKER_JOB_TRIGGER
+            building_icon = building_mote_harvesting_traps
+            icon = mote_harvester
+        }
+    }
+
+    tags = { strategic_resource volatile_motes }
+
+    possible_pre_triggers = {
+        has_owner = yes
+        is_being_purged = no
+        is_being_assimilated = no
+        is_sapient = yes
+    }
+
+    possible_precalc = can_fill_worker_job
+
+    possible = {
+        hidden_trigger = { exists = owner }
+        owner = {
+            is_gestalt = no
+            has_origin = Start_As_Fallen_Empire_Holy_Guardians
+        }
+        is_same_species = owner
+    }
+
+    resources = {
+        # 不清楚为什么原版这里使用的是水晶矿工的资源
+        category = planet_safe_fe_sr_miners
+        produces = {
+            volatile_motes = 5
+        }
+
+        produces = {
+            trigger = {
+                planet = {
+                    has_deposit = d_explosive_atmosphere
+                }
+            }
+            volatile_motes = 1
+        }
+    }
+
+    weight = {
+        weight = @specialist_job_weight # Important job
+        mult = value:job_weights_modifier|JOB|safe_fe_mote_harvester|RESOURCE|volatile_motes|
+
+        # No AI
+        modifier = {
+            factor = 0
+            exists = owner
+            owner = {
+                OR = {
+                    NOT = { has_origin = Start_As_Fallen_Empire_Holy_Guardians }
+                    is_ai = yes
+                }
+            }
+        }
+        # crisis purge
+        modifier = {
+            factor = 0.01
+            exists = planet
+            exists = planet.controller
+            planet.controller = {
+                OR = {
+                    is_country_type = swarm
+                    is_country_type = ai_empire
+                }
+            }
+        }
+    }
+
+    auto_trait_prio = {
+        trait_industrious
+        trait_very_strong
+        trait_strong
+    }
+
+    promotion = {
+        time = @standard_promotion_time
+        effect = {
+            pop_amount_change_category = {
+                CATEGORY = worker
+                AMOUNT = local_pop_amount
+            }
+        }
+    }
+}
+
+## 对应普通帝国的矿工
 safe_fe_acolyte_mine = {
-    category = precursor_warden
+    #category = precursor_warden
+    category = worker
     is_capped_by_modifier = yes
 
     swappable_data = {
@@ -181,8 +278,8 @@ safe_fe_acolyte_mine = {
                 miner_is_crystal_miner_trigger = yes
             }
             icon = crystal_miner
-            name = crystal_miner
-            desc = crystal_miner
+            name = safe_fe_crystal_miner
+            desc = job_safe_fe_crystal_miner_desc
             building_icon = building_crystal_mines
             weight = 20
         }
@@ -344,18 +441,108 @@ safe_fe_acolyte_mine = {
         time = @standard_promotion_time
         effect = {
             pop_amount_change_category = {
-                CATEGORY = precursor_warden
+                #CATEGORY = precursor_warden
+                CATEGORY = worker
                 AMOUNT = local_pop_amount
             }
         }
     }
-    # 失业
-    demotion_target = precursor_warden_unemployment
 }
 
-# 对应普通帝国的农夫
+## 对应于普通帝国的水晶矿工
+safe_fe_crystal_miner = {
+    category = worker
+    is_capped_by_modifier = yes
+
+    swappable_data = {
+        default = {
+            condition_string = WORKER_JOB_TRIGGER
+            building_icon = building_crystal_mines
+            icon = crystal_miner
+        }
+    }
+
+    tags = { strategic_resource rare_crystals }
+
+    possible_pre_triggers = {
+        has_owner = yes
+        is_being_purged = no
+        is_being_assimilated = no
+        is_sapient = yes
+    }
+
+    possible_precalc = can_fill_worker_job
+
+    possible = {
+        hidden_trigger = { exists = owner }
+        owner = {
+            is_gestalt = no
+            has_origin = Start_As_Fallen_Empire_Holy_Guardians
+        }
+        is_same_species = owner
+    }
+
+    resources = {
+        category = planet_safe_fe_sr_miners
+        produces = {
+            rare_crystals = 5
+        }
+        upkeep = {
+            trigger = {
+                planet = {
+                    any_deposit = {
+                        is_deposit_type = d_lava_tubes
+                    }
+                }
+            }
+            energy = @lava_tubes_mining_job_upkeep
+        }
+    }
+
+    weight = {
+        weight = @specialist_job_weight # Important job
+
+        mult = value:job_weights_modifier|JOB|safe_fe_crystal_miner|RESOURCE|rare_crystals|
+        # No AI
+        modifier = {
+            factor = 0
+            exists = owner
+            owner = {
+                OR = {
+                    NOT = { has_origin = Start_As_Fallen_Empire_Holy_Guardians }
+                    is_ai = yes
+                }
+            }
+        }
+        # crisis purge
+        modifier = {
+            factor = 0.01
+            exists = planet
+            exists = planet.controller
+            planet.controller = {
+                OR = {
+                    is_country_type = swarm
+                    is_country_type = ai_empire
+                }
+            }
+        }
+    }
+
+    promotion = {
+        time = @standard_promotion_time
+        effect = {
+            pop_amount_change_category = {
+                CATEGORY = worker
+                AMOUNT = local_pop_amount
+            }
+        }
+    }
+}
+
+## 对应普通帝国的农夫
 safe_fe_acolyte_farm = {
-    category = precursor_warden
+    #category = precursor_warden
+    category = worker
     is_capped_by_modifier = yes
 
     swappable_data = {
@@ -387,8 +574,8 @@ safe_fe_acolyte_farm = {
             trigger = {
                 farmer_is_gas_extractor_trigger = yes
             }
-            name = gas_extractor
-            desc = gas_extractor
+            name = safe_fe_gas_extractor
+            desc = job_safe_fe_gas_extractor_desc
             icon = gas_extractor
             building_icon = building_gas_extractors
             weight = 20
@@ -554,18 +741,96 @@ safe_fe_acolyte_farm = {
         time = @standard_promotion_time
         effect = {
             pop_amount_change_category = {
-                CATEGORY = precursor_warden
+                #CATEGORY = precursor_warden
+                CATEGORY = worker
                 AMOUNT = local_pop_amount
             }
         }
     }
-    # 失业
-    demotion_target = precursor_warden_unemployment
 }
 
-# 对应原版普通帝国士兵
+## 对应于普通帝国的气体采集工
+safe_fe_gas_extractor = {
+    category = worker
+    swappable_data = {
+        default = {
+            condition_string = WORKER_JOB_TRIGGER
+            building_icon = building_gas_extractors
+            icon = gas_extractor
+        }
+    }
+
+    tags = { strategic_resource exotic_gases }
+
+    possible_pre_triggers = {
+        has_owner = yes
+        is_being_purged = no
+        is_being_assimilated = no
+        is_sapient = yes
+    }
+
+    possible_precalc = can_fill_worker_job
+
+    possible = {
+        hidden_trigger = { exists = owner }
+        owner = {
+            is_gestalt = no
+            has_origin = Start_As_Fallen_Empire_Holy_Guardians
+        }
+        is_same_species = owner
+    }
+
+    resources = {
+        category = planet_sr_miners
+        produces = {
+            exotic_gases = 5
+        }
+    }
+
+    weight = {
+        weight = @specialist_job_weight # Important job
+
+        mult = value:job_weights_modifier|JOB|safe_fe_gas_extractor|RESOURCE|exotic_gases|
+        # No AI
+        modifier = {
+            factor = 0
+            exists = owner
+            owner = {
+                OR = {
+                    NOT = { has_origin = Start_As_Fallen_Empire_Holy_Guardians }
+                    is_ai = yes
+                }
+            }
+        }
+        # crisis purge
+        modifier = {
+            factor = 0.01
+            exists = planet
+            exists = planet.controller
+            planet.controller = {
+                OR = {
+                    is_country_type = swarm
+                    is_country_type = ai_empire
+                }
+            }
+        }
+    }
+
+    promotion = {
+        time = @standard_promotion_time
+        effect = {
+            pop_amount_change_category = {
+                CATEGORY = worker
+                AMOUNT = local_pop_amount
+            }
+        }
+    }
+}
+
+## 对应于版普通帝国的士兵
 safe_fe_soldier = {
-    category = precursor_warden
+    #category = precursor_warden
+    category = worker
     is_capped_by_modifier = yes
 
     swappable_data = {
@@ -704,12 +969,11 @@ safe_fe_soldier = {
         time = @standard_promotion_time
         effect = {
             pop_amount_change_category = {
-                CATEGORY = precursor_warden
+                #CATEGORY = precursor_warden
+                CATEGORY = worker
                 AMOUNT = local_pop_amount
             }
         }
     }
-    # 失业
-    demotion_target = precursor_warden_unemployment
 }
 

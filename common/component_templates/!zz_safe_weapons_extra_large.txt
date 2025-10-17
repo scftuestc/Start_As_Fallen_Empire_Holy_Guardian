@@ -1,0 +1,70 @@
+# ####################
+# Energy Lance
+# ####################
+
+## Titan Lance
+weapon_component_template = {
+	key = "TITAN_LASER"
+	size = titanic
+	type = instant
+	prio_projectile = yes
+
+	potential = {
+		from = {
+			country_uses_bio_ships = no
+			is_fallen_empire = yes
+		}
+	}
+
+	# 跟改为no
+	hidden = no
+
+	icon = "GFX_ship_part_energy_lance_2"
+	icon_frame = 1
+
+	firing_arc = 25.0
+	damage = { min = 10000 max = 15000 }
+	hull_damage = 1.5
+	shield_damage = 1.5
+	shield_penetration = 0
+	armor_damage = 1.5
+	armor_penetration = 0
+	total_fire_time = 360
+	accuracy = 0.95
+	windup = { min = 8 max = 22 }
+	range = 400
+
+	use_ship_main_target = no
+
+	tags = { weapon_type_energy weapon_role_artillery t_slot }
+
+	component_set = "TITAN_LASER"
+	projectile_gfx = "titan_laser"
+	resources = {
+		category = ship_components
+		cost = {
+			alloys = @titanic_t6_cost
+			rare_crystals = @titanic_t6_rare
+		}
+		upkeep = {
+			energy = @titanic_t6_upkeep_energy
+			alloys = @titanic_t6_upkeep_alloys
+		}
+	}
+
+	target_weights = {
+		titan = 3
+		battleship = 2
+		stinger_stage_1 = 1.5
+		stinger_stage_2 = 2
+		stinger_stage_3 = 2
+	}
+
+	ai_weight = {
+		weight = 1
+		modifier = {
+			factor = 0.0
+			no_resource_for_component = { RESOURCE = rare_crystals }
+		}
+	}
+}
